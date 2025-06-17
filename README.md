@@ -42,7 +42,6 @@
 ### 👥 Staff & Customer Profiles
 - Roles: Admin, Manager, Cashier, Accountant 
 - Customer history
-- Multi-branch store users  
 
 ### 🧾 Accounting System
 - **Profit & Loss Statement** (P&L)  
