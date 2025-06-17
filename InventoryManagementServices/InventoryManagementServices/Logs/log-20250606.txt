@@ -1,0 +1,107 @@
+2025-06-06 16:20:46.671 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-06 16:20:46.723 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-06 16:20:46.855 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 16:20:46.858 +05:30 [INF] Hosting environment: Development
+2025-06-06 16:20:46.860 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-06 16:20:48.890 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger - null null
+2025-06-06 16:20:49.403 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger - 301 0 null 519.7966ms
+2025-06-06 16:20:49.438 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-06 16:20:49.707 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 269.2396ms
+2025-06-06 16:20:49.924 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/swagger-ui.css - null null
+2025-06-06 16:20:49.938 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/swagger-ui-bundle.js - null null
+2025-06-06 16:20:49.938 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-06 16:20:49.938 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-06 16:20:49.938 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-06 16:20:50.034 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 96.1521ms
+2025-06-06 16:20:50.067 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-06-06 16:20:50.165 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-06 16:20:50.195 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-06 16:20:50.240 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/swagger-ui.css - 200 152034 text/css 315.4947ms
+2025-06-06 16:20:50.247 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 308.5639ms
+2025-06-06 16:20:50.269 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 330.7924ms
+2025-06-06 16:20:50.332 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 394.0699ms
+2025-06-06 16:20:51.543 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-06 16:20:51.661 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 117.7893ms
+2025-06-06 16:21:28.837 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-06 16:21:28.869 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 31.7557ms
+2025-06-06 16:21:29.013 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/favicon.ico - null null
+2025-06-06 16:21:29.021 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/favicon.ico - 404 0 null 8.7377ms
+2025-06-06 16:21:29.030 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7163/favicon.ico, Response status code: 404
+2025-06-06 16:22:48.647 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/api/Product/get/product/all?organizationId=5711e964-a0c6-44ff-ab2e-ea484a063fde - null null
+2025-06-06 16:22:48.688 +05:30 [INF] Executing endpoint 'API.Controllers.ProductController.GetAllProduct (API)'
+2025-06-06 16:22:48.861 +05:30 [INF] Route matched with {action = "GetAllProduct", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllProduct(System.Guid) on controller API.Controllers.ProductController (API).
+2025-06-06 16:22:55.557 +05:30 [INF] Executed DbCommand (262ms) [Parameters=[@__OrganizationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`, `i`.`Id`, `i`.`ContentType`, `i`.`CreatedAt`, `i`.`FileName`, `i`.`ImageData`, `i`.`ProductId`, `u`.`IsDeleted`, `u`.`Measurement`, `u`.`OrgnaisationId`, `p0`.`IsDeleted`, `p0`.`OrgnaisationId`, `p0`.`ProductCategoryName`, `h`.`GstRate`, `h`.`HSNCodeNumber`, `h`.`IsDeleted`, `h`.`OrgnaisationId`
+FROM `Products` AS `p`
+INNER JOIN `UnitOfMeasures` AS `u` ON `p`.`UnitOfMeasuresId` = `u`.`Id`
+INNER JOIN `ProductCategories` AS `p0` ON `p`.`ProductCategoryId` = `p0`.`ProductCategoryId`
+INNER JOIN `HsnCodes` AS `h` ON `p`.`HsnCodeId` = `h`.`HsnCodeId`
+LEFT JOIN `Images` AS `i` ON `p`.`Id` = `i`.`ProductId`
+WHERE NOT (`p`.`IsDeleted`) AND (`p`.`OrgnaisationId` = @__OrganizationId_0)
+ORDER BY `p`.`Id`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`
+2025-06-06 16:22:56.172 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Collections.Generic.List`1[[Application.Dto.ProductReadDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-06 16:22:56.275 +05:30 [INF] Executed action API.Controllers.ProductController.GetAllProduct (API) in 7401.0883ms
+2025-06-06 16:22:56.285 +05:30 [INF] Executed endpoint 'API.Controllers.ProductController.GetAllProduct (API)'
+2025-06-06 16:22:56.303 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/api/Product/get/product/all?organizationId=5711e964-a0c6-44ff-ab2e-ea484a063fde - 200 null application/json; charset=utf-8 7655.7611ms
+2025-06-06 17:55:24.435 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-06 17:55:24.473 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-06 17:55:24.572 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 17:55:24.582 +05:30 [INF] Hosting environment: Development
+2025-06-06 17:55:24.590 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-06 17:55:24.921 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-06 17:55:25.343 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 422.8673ms
+2025-06-06 17:55:27.278 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-06 17:55:27.278 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-06 17:55:27.284 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.3473ms
+2025-06-06 17:55:27.308 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.2318ms
+2025-06-06 17:55:27.838 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-06 17:55:27.853 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.8019ms
+2025-06-06 17:55:27.876 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/favicon-32x32.png - null null
+2025-06-06 17:55:27.884 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-06 17:55:27.886 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/favicon-32x32.png - 200 628 image/png 9.8667ms
+2025-06-06 17:56:23.766 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/api/Product/export/5711e964-a0c6-44ff-ab2e-ea484a063fde/products/excel - null null
+2025-06-06 17:56:23.775 +05:30 [INF] Executing endpoint 'API.Controllers.ProductController.ExportProducts (API)'
+2025-06-06 17:56:23.813 +05:30 [INF] Route matched with {action = "ExportProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportProducts(System.Guid) on controller API.Controllers.ProductController (API).
+2025-06-06 17:56:30.191 +05:30 [INF] Executed DbCommand (268ms) [Parameters=[@__OrganizationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`, `i`.`Id`, `i`.`ContentType`, `i`.`CreatedAt`, `i`.`FileName`, `i`.`ImageData`, `i`.`ProductId`, `u`.`IsDeleted`, `u`.`Measurement`, `u`.`OrgnaisationId`, `p0`.`IsDeleted`, `p0`.`OrgnaisationId`, `p0`.`ProductCategoryName`, `h`.`GstRate`, `h`.`HSNCodeNumber`, `h`.`IsDeleted`, `h`.`OrgnaisationId`
+FROM `Products` AS `p`
+INNER JOIN `UnitOfMeasures` AS `u` ON `p`.`UnitOfMeasuresId` = `u`.`Id`
+INNER JOIN `ProductCategories` AS `p0` ON `p`.`ProductCategoryId` = `p0`.`ProductCategoryId`
+INNER JOIN `HsnCodes` AS `h` ON `p`.`HsnCodeId` = `h`.`HsnCodeId`
+LEFT JOIN `Images` AS `i` ON `p`.`Id` = `i`.`ProductId`
+WHERE NOT (`p`.`IsDeleted`) AND (`p`.`OrgnaisationId` = @__OrganizationId_0)
+ORDER BY `p`.`Id`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`
+2025-06-06 17:56:30.440 +05:30 [ERR] Please use the static 'ExcelPackage.License' property to set the required license information from EPPlus 8 and later versions. For more info see http://epplussoftware.com/developers/licensenotsetexception.
+2025-06-06 17:56:30.445 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-06 17:56:30.457 +05:30 [INF] Executed action API.Controllers.ProductController.ExportProducts (API) in 6640.6025ms
+2025-06-06 17:56:30.459 +05:30 [INF] Executed endpoint 'API.Controllers.ProductController.ExportProducts (API)'
+2025-06-06 17:56:30.467 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/api/Product/export/5711e964-a0c6-44ff-ab2e-ea484a063fde/products/excel - 500 null application/json; charset=utf-8 6701.5164ms
+2025-06-06 18:07:41.990 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-06 18:07:42.035 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-06 18:07:42.137 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-06 18:07:42.139 +05:30 [INF] Hosting environment: Development
+2025-06-06 18:07:42.140 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-06 18:07:42.496 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-06 18:07:42.659 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 164.708ms
+2025-06-06 18:07:42.784 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-06 18:07:42.784 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-06 18:07:42.793 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.5605ms
+2025-06-06 18:07:42.817 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.3582ms
+2025-06-06 18:07:43.389 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-06 18:07:43.413 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.1884ms
+2025-06-06 18:08:15.917 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/api/Product/export/5711e964-a0c6-44ff-ab2e-ea484a063fde/products/excel - null null
+2025-06-06 18:08:15.928 +05:30 [INF] Executing endpoint 'API.Controllers.ProductController.ExportProducts (API)'
+2025-06-06 18:08:15.963 +05:30 [INF] Route matched with {action = "ExportProducts", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ExportProducts(System.Guid) on controller API.Controllers.ProductController (API).
+2025-06-06 18:08:18.116 +05:30 [INF] Executed DbCommand (155ms) [Parameters=[@__OrganizationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`, `i`.`Id`, `i`.`ContentType`, `i`.`CreatedAt`, `i`.`FileName`, `i`.`ImageData`, `i`.`ProductId`, `u`.`IsDeleted`, `u`.`Measurement`, `u`.`OrgnaisationId`, `p0`.`IsDeleted`, `p0`.`OrgnaisationId`, `p0`.`ProductCategoryName`, `h`.`GstRate`, `h`.`HSNCodeNumber`, `h`.`IsDeleted`, `h`.`OrgnaisationId`
+FROM `Products` AS `p`
+INNER JOIN `UnitOfMeasures` AS `u` ON `p`.`UnitOfMeasuresId` = `u`.`Id`
+INNER JOIN `ProductCategories` AS `p0` ON `p`.`ProductCategoryId` = `p0`.`ProductCategoryId`
+INNER JOIN `HsnCodes` AS `h` ON `p`.`HsnCodeId` = `h`.`HsnCodeId`
+LEFT JOIN `Images` AS `i` ON `p`.`Id` = `i`.`ProductId`
+WHERE NOT (`p`.`IsDeleted`) AND (`p`.`OrgnaisationId` = @__OrganizationId_0)
+ORDER BY `p`.`Id`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`
+2025-06-06 18:08:19.147 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-06 18:08:19.164 +05:30 [INF] Executed action API.Controllers.ProductController.ExportProducts (API) in 3196.3083ms
+2025-06-06 18:08:19.167 +05:30 [INF] Executed endpoint 'API.Controllers.ProductController.ExportProducts (API)'
+2025-06-06 18:08:19.174 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/api/Product/export/5711e964-a0c6-44ff-ab2e-ea484a063fde/products/excel - 200 null application/json; charset=utf-8 3256.5585ms

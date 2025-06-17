@@ -1,0 +1,129 @@
+2025-06-12 17:17:22.348 +05:30 [INF] Executed DbCommand (302ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='InventoryService' AND TABLE_NAME='__EFMigrationsHistory';
+2025-06-12 17:17:25.117 +05:30 [INF] Executed DbCommand (293ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='InventoryService' AND TABLE_NAME='__EFMigrationsHistory';
+2025-06-12 17:17:25.729 +05:30 [INF] Executed DbCommand (302ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2025-06-12 17:17:25.747 +05:30 [INF] Applying migration '20250612114636_purchase-return'.
+2025-06-12 17:17:27.366 +05:30 [INF] Executed DbCommand (650ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE `Purchases` ADD `CreatedAt` datetime(6) NOT NULL DEFAULT '0001-01-01 00:00:00';
+2025-06-12 17:17:27.686 +05:30 [INF] Executed DbCommand (320ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE `PurchaseInvoices` ADD `InvoiceNumber` longtext CHARACTER SET utf8mb4 NOT NULL;
+2025-06-12 17:17:28.008 +05:30 [INF] Executed DbCommand (322ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PurchaseReturnInvoices` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `InvoiceNumber` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `OriginalPurchaseInvoiceId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `SubTotal` decimal(65,30) NOT NULL,
+    `TaxAmount` decimal(65,30) NOT NULL,
+    `TotalAmount` decimal(65,30) NOT NULL,
+    `CGST` decimal(65,30) NULL,
+    `IGST` decimal(65,30) NULL,
+    `UGST` decimal(65,30) NULL,
+    `SGST` decimal(65,30) NULL,
+    `Narration` longtext CHARACTER SET utf8mb4 NULL,
+    `GstType` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `ReturnDate` datetime NOT NULL,
+    `CreatedAt` datetime NOT NULL,
+    CONSTRAINT `PK_PurchaseReturnInvoices` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PurchaseReturnInvoices_PurchaseInvoices_OriginalPurchaseInvo~` FOREIGN KEY (`OriginalPurchaseInvoiceId`) REFERENCES `PurchaseInvoices` (`Id`) ON DELETE RESTRICT
+) CHARACTER SET=utf8mb4;
+2025-06-12 17:17:28.321 +05:30 [INF] Executed DbCommand (312ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PurchaseReturns` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `OriginalPurchaseId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `ReturnDate` date NOT NULL,
+    `PurchaseReturnInvoiceId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `LedgerId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `Reason` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `Notes` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `CreatedBy` char(36) COLLATE ascii_general_ci NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `OrganizationId` char(36) COLLATE ascii_general_ci NOT NULL,
+    CONSTRAINT `PK_PurchaseReturns` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PurchaseReturns_PurchaseReturnInvoices_PurchaseReturnInvoice~` FOREIGN KEY (`PurchaseReturnInvoiceId`) REFERENCES `PurchaseReturnInvoices` (`Id`) ON DELETE CASCADE,
+    CONSTRAINT `FK_PurchaseReturns_Purchases_OriginalPurchaseId` FOREIGN KEY (`OriginalPurchaseId`) REFERENCES `Purchases` (`Id`) ON DELETE RESTRICT
+) CHARACTER SET=utf8mb4;
+2025-06-12 17:17:28.636 +05:30 [INF] Executed DbCommand (314ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PurchaseReturnItems` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `PurchaseReturnId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `OriginalPurchaseItemId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `ProductId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `ReturnedQuantity` int NOT NULL,
+    `TotalAmount` decimal(65,30) NOT NULL,
+    `TaxAmount` decimal(65,30) NOT NULL,
+    `CGST` decimal(65,30) NULL,
+    `IGST` decimal(65,30) NULL,
+    `UGST` decimal(65,30) NULL,
+    `SGST` decimal(65,30) NULL,
+    `Discount` decimal(65,30) NOT NULL,
+    CONSTRAINT `PK_PurchaseReturnItems` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PurchaseReturnItems_Products_ProductId` FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`) ON DELETE RESTRICT,
+    CONSTRAINT `FK_PurchaseReturnItems_PurchaseItems_OriginalPurchaseItemId` FOREIGN KEY (`OriginalPurchaseItemId`) REFERENCES `PurchaseItems` (`Id`) ON DELETE RESTRICT,
+    CONSTRAINT `FK_PurchaseReturnItems_PurchaseReturns_PurchaseReturnId` FOREIGN KEY (`PurchaseReturnId`) REFERENCES `PurchaseReturns` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+2025-06-12 17:17:28.951 +05:30 [INF] Executed DbCommand (315ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PurchaseReturnInvoices_OriginalPurchaseInvoiceId` ON `PurchaseReturnInvoices` (`OriginalPurchaseInvoiceId`);
+2025-06-12 17:17:29.257 +05:30 [INF] Executed DbCommand (305ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PurchaseReturnItems_OriginalPurchaseItemId` ON `PurchaseReturnItems` (`OriginalPurchaseItemId`);
+2025-06-12 17:17:29.563 +05:30 [INF] Executed DbCommand (305ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PurchaseReturnItems_ProductId` ON `PurchaseReturnItems` (`ProductId`);
+2025-06-12 17:17:29.866 +05:30 [INF] Executed DbCommand (303ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PurchaseReturnItems_PurchaseReturnId` ON `PurchaseReturnItems` (`PurchaseReturnId`);
+2025-06-12 17:17:30.170 +05:30 [INF] Executed DbCommand (304ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PurchaseReturns_OriginalPurchaseId` ON `PurchaseReturns` (`OriginalPurchaseId`);
+2025-06-12 17:17:30.482 +05:30 [INF] Executed DbCommand (311ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_PurchaseReturns_PurchaseReturnInvoiceId` ON `PurchaseReturns` (`PurchaseReturnInvoiceId`);
+2025-06-12 17:17:30.787 +05:30 [INF] Executed DbCommand (305ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20250612114636_purchase-return', '8.0.13');
+2025-06-12 17:35:37.919 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:35:37.957 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:35:38.034 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:35:38.036 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:35:38.038 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:35:38.390 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:35:38.509 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 120.2165ms
+2025-06-12 17:35:38.550 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:35:38.550 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:35:38.559 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.628ms
+2025-06-12 17:35:38.574 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.8645ms
+2025-06-12 17:35:39.111 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:35:39.130 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.4251ms
+2025-06-12 17:36:06.298 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:36:06.323 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:36:06.393 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:36:06.394 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:36:06.395 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:36:06.514 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:36:06.611 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 97.8554ms
+2025-06-12 17:36:06.765 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:36:06.765 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:36:06.773 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.1388ms
+2025-06-12 17:36:06.785 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.3898ms
+2025-06-12 17:36:06.869 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:36:06.887 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.983ms
+2025-06-12 17:36:32.077 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:36:32.107 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:36:32.166 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:36:32.169 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:36:32.171 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:36:32.282 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:36:32.387 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 106.0294ms
+2025-06-12 17:36:32.394 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:36:32.394 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:36:32.400 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.6403ms
+2025-06-12 17:36:32.420 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 26.1067ms
+2025-06-12 17:36:32.587 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:36:32.603 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.3428ms
+2025-06-12 17:57:23.035 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:57:23.066 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 31.2772ms
+2025-06-12 17:57:23.106 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:57:23.107 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:57:23.112 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.6782ms
+2025-06-12 17:57:23.129 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.4781ms
+2025-06-12 17:57:23.408 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:57:23.432 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.6441ms

@@ -1,0 +1,656 @@
+2025-06-04 10:25:51.613 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:25:51.657 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:25:51.754 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:25:51.756 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:25:51.757 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:25:52.299 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:25:52.498 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 201.0162ms
+2025-06-04 10:25:52.525 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:25:52.541 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 16.115ms
+2025-06-04 10:25:52.547 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:25:52.672 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 124.8907ms
+2025-06-04 10:25:52.984 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:25:52.997 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.0599ms
+2025-06-04 10:30:55.227 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:30:55.334 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 111.0955ms
+2025-06-04 10:30:55.372 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:30:55.372 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:30:55.381 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 8.8195ms
+2025-06-04 10:30:55.406 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 33.1362ms
+2025-06-04 10:30:55.513 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:30:55.575 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 62.5601ms
+2025-06-04 10:39:25.965 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 167
+2025-06-04 10:39:26.024 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:39:26.106 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:39:31.021 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-06-04 10:39:31.084 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 4972.1739ms
+2025-06-04 10:39:31.088 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:39:31.090 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - 400 null application/problem+json; charset=utf-8 5125.395ms
+2025-06-04 10:40:15.351 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 172
+2025-06-04 10:40:15.357 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:40:15.361 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:40:16.963 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-06-04 10:40:16.965 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 1602.2238ms
+2025-06-04 10:40:16.967 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:40:16.969 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - 400 null application/problem+json; charset=utf-8 1617.6484ms
+2025-06-04 10:40:36.215 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 171
+2025-06-04 10:40:36.219 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:40:36.221 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:40:41.036 +05:30 [ERR] Failed executing DbCommand (178ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 10:40:41.271 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.AppDbContext.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-06-04 10:40:41.361 +05:30 [ERR] Transaction failed while inserting organization and subscription.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Repository.OrganizationRepository.OrganizationRepository.AddCompanyWithSubscriptionAsync(OrganizationDetails org, Subscriptions sub) in D:\RetailDock\services\Developer Service\Infrastructure\Repository\OrganizationRepository\OrganizationRepository.cs:line 29
+2025-06-04 10:40:41.413 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 10:40:41.417 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 5194.0844ms
+2025-06-04 10:40:41.419 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:40:41.424 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - 500 null application/json; charset=utf-8 5208.5823ms
+2025-06-04 10:41:32.499 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:41:32.538 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:41:32.611 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:41:32.612 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:41:32.613 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:41:33.460 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:41:33.671 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 220.4291ms
+2025-06-04 10:41:33.698 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:41:33.700 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:41:33.721 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 23.6815ms
+2025-06-04 10:41:33.762 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.4727ms
+2025-06-04 10:41:33.838 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:41:33.859 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.2859ms
+2025-06-04 10:43:19.958 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:43:20.009 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 52.9992ms
+2025-06-04 10:43:20.092 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:43:20.092 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:43:20.096 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 4.2447ms
+2025-06-04 10:43:20.109 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.4243ms
+2025-06-04 10:43:20.320 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:43:20.342 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.9303ms
+2025-06-04 10:43:42.454 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:43:42.667 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:43:42.840 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:43:42.842 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:43:42.844 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:43:42.911 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:43:43.164 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 261.6716ms
+2025-06-04 10:43:43.176 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:43:43.192 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 16.1774ms
+2025-06-04 10:43:43.195 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:43:43.241 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 47.2415ms
+2025-06-04 10:43:43.339 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:43:43.361 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.5064ms
+2025-06-04 10:46:12.145 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:46:12.192 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:46:12.280 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:46:12.282 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:46:12.283 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:46:12.673 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:46:12.822 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 150.3517ms
+2025-06-04 10:46:12.846 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:46:12.852 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:46:12.858 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 12.1525ms
+2025-06-04 10:46:12.886 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.3302ms
+2025-06-04 10:46:13.013 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:46:13.041 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.9483ms
+2025-06-04 10:46:32.339 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 171
+2025-06-04 10:46:32.650 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:46:34.289 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:46:37.063 +05:30 [ERR] Failed executing DbCommand (122ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 10:46:37.405 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.AppDbContext.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-06-04 10:46:37.563 +05:30 [ERR] Transaction failed while inserting organization and subscription.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Infrastructure.Repository.OrganizationRepository.OrganizationRepository.AddCompanyWithSubscriptionAsync(OrganizationDetails org, Subscriptions sub) in D:\RetailDock\services\Developer Service\Infrastructure\Repository\OrganizationRepository\OrganizationRepository.cs:line 29
+2025-06-04 10:46:37.593 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 10:46:37.606 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 3301.5698ms
+2025-06-04 10:46:37.608 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:46:37.615 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - 500 null application/json; charset=utf-8 5275.7567ms
+2025-06-04 10:47:21.253 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:47:21.289 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:47:21.370 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:47:21.371 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:47:21.372 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:47:22.218 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:47:22.433 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 223.1599ms
+2025-06-04 10:47:22.462 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:47:22.462 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:47:22.479 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 16.9605ms
+2025-06-04 10:47:22.530 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.6531ms
+2025-06-04 10:47:22.608 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:47:22.625 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.8145ms
+2025-06-04 10:48:23.041 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 171
+2025-06-04 10:48:23.253 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:48:24.234 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:49:11.408 +05:30 [ERR] Failed executing DbCommand (105ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 10:49:11.616 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.AppDbContext.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-06-04 10:51:19.055 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:51:19.080 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:51:19.136 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:51:19.137 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:51:19.138 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:51:19.736 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:51:19.892 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 157.3219ms
+2025-06-04 10:51:19.972 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:51:19.972 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:51:19.981 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 9.2562ms
+2025-06-04 10:51:20.017 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.0443ms
+2025-06-04 10:51:20.135 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:51:20.148 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.9938ms
+2025-06-04 10:51:33.542 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:51:33.584 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:51:33.821 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:51:33.824 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:51:33.827 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:51:34.324 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:51:34.574 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 256.8691ms
+2025-06-04 10:51:34.631 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:51:34.631 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:51:34.683 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 51.964ms
+2025-06-04 10:51:34.735 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 103.5462ms
+2025-06-04 10:51:34.806 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:51:34.826 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.5988ms
+2025-06-04 10:52:34.746 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 211
+2025-06-04 10:52:34.768 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:52:34.820 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:53:11.014 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:53:11.067 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:53:11.180 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:53:11.181 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:53:11.183 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:53:11.743 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:53:12.057 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 323.8906ms
+2025-06-04 10:53:12.093 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:53:12.093 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:53:12.146 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 53.3755ms
+2025-06-04 10:53:12.215 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 122.2017ms
+2025-06-04 10:53:12.343 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:53:12.368 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.6957ms
+2025-06-04 10:53:51.297 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 211
+2025-06-04 10:53:51.312 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:53:51.386 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:54:39.928 +05:30 [ERR] Failed executing DbCommand (158ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 10:54:40.161 +05:30 [ERR] An exception occurred in the database while saving changes for context type 'Infrastructure.AppDbContext.ApplicationDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Column 'OrganizationName' cannot be null
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-06-04 10:56:52.197 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 10:56:52.229 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 10:56:52.294 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 10:56:52.296 +05:30 [INF] Hosting environment: Development
+2025-06-04 10:56:52.297 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 10:56:52.901 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:56:53.069 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 170.677ms
+2025-06-04 10:56:53.146 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:56:53.158 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 11.2923ms
+2025-06-04 10:56:53.160 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:56:53.194 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.3311ms
+2025-06-04 10:56:53.385 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:56:53.401 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.93ms
+2025-06-04 10:57:06.835 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 10:57:06.843 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 7.7181ms
+2025-06-04 10:57:06.903 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 10:57:06.903 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 10:57:06.909 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 6.5246ms
+2025-06-04 10:57:06.915 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.6431ms
+2025-06-04 10:57:07.024 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 10:57:07.035 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.9256ms
+2025-06-04 10:58:05.176 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - application/json 211
+2025-06-04 10:58:05.192 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:58:05.234 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 10:58:07.796 +05:30 [INF] Executed DbCommand (139ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 10:58:07.957 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 10:58:07.964 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 2724.3327ms
+2025-06-04 10:58:07.966 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 10:58:07.974 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda25f-6422-4dc6-86b5-362f4204a9db - 200 null application/json; charset=utf-8 2797.7002ms
+2025-06-04 12:02:06.294 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 12:02:06.509 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 225.2299ms
+2025-06-04 12:02:06.648 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 12:02:06.648 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 12:02:06.658 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 10.3559ms
+2025-06-04 12:02:06.719 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.0391ms
+2025-06-04 12:02:07.020 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 12:02:07.132 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 111.3987ms
+2025-06-04 12:14:29.234 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 12:14:29.356 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 95.4086ms
+2025-06-04 12:14:49.352 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 12:14:50.068 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 716.2428ms
+2025-06-04 12:22:48.597 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda333-9fae-4bb4-817d-652ca2201b0d - application/json 213
+2025-06-04 12:22:48.683 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:22:48.715 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 12:22:51.888 +05:30 [INF] Executed DbCommand (302ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 12:22:52.075 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 12:22:52.085 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 3352.3966ms
+2025-06-04 12:22:52.091 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:22:52.095 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda333-9fae-4bb4-817d-652ca2201b0d - 200 null application/json; charset=utf-8 3502.4335ms
+2025-06-04 12:36:45.202 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 12:36:45.303 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 104.6162ms
+2025-06-04 12:36:45.374 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 12:36:45.375 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 12:36:45.388 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 13.353ms
+2025-06-04 12:36:45.418 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 43.7295ms
+2025-06-04 12:36:45.655 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 12:36:45.719 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 64.5257ms
+2025-06-04 12:42:40.003 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 199
+2025-06-04 12:42:40.013 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:42:40.029 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 12:42:40.652 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-06-04 12:42:40.778 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 741.9699ms
+2025-06-04 12:42:40.782 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:42:40.786 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 400 null application/problem+json; charset=utf-8 782.9803ms
+2025-06-04 12:42:58.636 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 198
+2025-06-04 12:42:58.641 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:42:58.647 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 12:42:59.562 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-06-04 12:42:59.569 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 909.4352ms
+2025-06-04 12:42:59.602 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:42:59.639 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 400 null application/problem+json; charset=utf-8 972.7352ms
+2025-06-04 12:43:17.028 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 200
+2025-06-04 12:43:17.038 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:43:17.042 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 12:43:19.998 +05:30 [INF] Executed DbCommand (262ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 12:43:20.344 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 12:43:20.348 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 3297.2447ms
+2025-06-04 12:43:20.352 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:43:20.354 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 200 null application/json; charset=utf-8 3326.3999ms
+2025-06-04 12:53:25.272 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 12:53:25.318 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 12:53:25.400 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 12:53:25.403 +05:30 [INF] Hosting environment: Development
+2025-06-04 12:53:25.404 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 12:53:25.862 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 12:53:27.432 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 1573.6049ms
+2025-06-04 12:53:31.251 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 12:53:31.251 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 12:53:31.264 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 13.4045ms
+2025-06-04 12:53:31.313 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.5177ms
+2025-06-04 12:53:32.209 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 12:53:32.239 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.5431ms
+2025-06-04 12:55:30.537 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 199
+2025-06-04 12:55:30.569 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:55:30.651 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 12:55:32.979 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-06-04 12:55:33.048 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 2374.476ms
+2025-06-04 12:55:33.052 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:55:33.059 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 400 null application/problem+json; charset=utf-8 2522.0092ms
+2025-06-04 12:55:47.541 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 200
+2025-06-04 12:55:47.552 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:55:47.559 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 12:55:52.152 +05:30 [INF] Executed DbCommand (261ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-04 12:55:53.459 +05:30 [INF] Executed DbCommand (100ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 12:55:53.798 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 12:55:53.805 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 6237.6867ms
+2025-06-04 12:55:53.809 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 12:55:53.828 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 200 null application/json; charset=utf-8 6287.0203ms
+2025-06-04 13:06:38.131 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 200
+2025-06-04 13:06:38.164 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:06:38.172 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 13:06:40.132 +05:30 [INF] Executed DbCommand (96ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-04 13:06:40.638 +05:30 [INF] Executed DbCommand (98ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 13:06:40.853 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 13:06:40.859 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 2682.5682ms
+2025-06-04 13:06:40.860 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:06:40.862 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 200 null application/json; charset=utf-8 2732.1665ms
+2025-06-04 13:20:26.957 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 13:20:27.193 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 13:20:27.349 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 13:20:27.376 +05:30 [INF] Hosting environment: Development
+2025-06-04 13:20:27.378 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 13:20:29.193 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 13:20:36.112 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 6926.9525ms
+2025-06-04 13:20:36.685 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 13:20:36.741 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 13:20:36.820 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 133.8313ms
+2025-06-04 13:20:41.739 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 4998.9483ms
+2025-06-04 13:20:43.578 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 13:20:43.668 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 90.5596ms
+2025-06-04 13:20:49.292 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 13:20:49.332 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 40.2421ms
+2025-06-04 13:20:49.486 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 13:20:49.486 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 13:20:49.603 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 117.8057ms
+2025-06-04 13:20:49.603 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 118.492ms
+2025-06-04 13:20:50.487 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 13:20:50.528 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.8271ms
+2025-06-04 13:21:51.410 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 200
+2025-06-04 13:21:51.452 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:21:51.562 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 13:22:09.457 +05:30 [INF] Executed DbCommand (182ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-04 13:22:34.338 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 13:22:34.396 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 42827.7521ms
+2025-06-04 13:22:34.402 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:22:34.411 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 400 null application/json; charset=utf-8 43001.3861ms
+2025-06-04 13:22:49.245 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 13:22:49.928 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 13:22:50.683 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 13:22:50.691 +05:30 [INF] Hosting environment: Development
+2025-06-04 13:22:50.696 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 13:22:51.895 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 13:22:53.207 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 1339.0057ms
+2025-06-04 13:22:54.673 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 13:22:54.810 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 13:22:54.938 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 265.2621ms
+2025-06-04 13:22:55.570 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 770.9304ms
+2025-06-04 13:22:56.147 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 13:22:56.367 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 219.684ms
+2025-06-04 13:23:13.872 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 200
+2025-06-04 13:23:13.909 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:23:14.018 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 13:23:29.257 +05:30 [INF] Executed DbCommand (278ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-04 13:27:35.770 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 13:27:35.851 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 13:27:36.150 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 13:27:36.154 +05:30 [INF] Hosting environment: Development
+2025-06-04 13:27:36.160 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 13:27:37.383 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 13:27:37.714 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 355.2949ms
+2025-06-04 13:27:37.743 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 13:27:37.756 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 13:27:37.768 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 25.4299ms
+2025-06-04 13:27:37.859 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 103.2542ms
+2025-06-04 13:27:37.958 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 13:27:37.991 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.0547ms
+2025-06-04 13:29:34.717 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - application/json 200
+2025-06-04 13:29:34.911 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:29:35.131 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 13:29:52.437 +05:30 [INF] Executed DbCommand (209ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-04 13:30:39.178 +05:30 [INF] Executed DbCommand (189ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 13:31:02.985 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 13:31:07.409 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 92261.6513ms
+2025-06-04 13:31:07.418 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 13:31:07.444 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda335-ef6e-4af2-85b0-6823f046d7d8 - 200 null application/json; charset=utf-8 92736.6485ms
+2025-06-04 20:06:55.953 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-04 20:06:56.621 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-04 20:06:59.104 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-04 20:06:59.687 +05:30 [INF] Hosting environment: Development
+2025-06-04 20:06:59.854 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-04 20:07:00.140 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-04 20:07:04.021 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 3859.9182ms
+2025-06-04 20:07:04.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-04 20:07:04.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-04 20:07:07.386 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 3219.6148ms
+2025-06-04 20:07:10.711 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 6544.8347ms
+2025-06-04 20:07:11.321 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-04 20:07:12.915 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1594.2625ms
+2025-06-04 20:11:55.336 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda372-5f65-45c0-813c-96ebc726ab38 - application/json 202
+2025-06-04 20:11:55.531 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 20:11:55.798 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-04 20:12:15.039 +05:30 [INF] Executed DbCommand (443ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-04 20:12:17.804 +05:30 [INF] Executed DbCommand (109ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-04 20:12:18.623 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-04 20:12:18.827 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 22978.1536ms
+2025-06-04 20:12:18.911 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-04 20:12:19.077 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda372-5f65-45c0-813c-96ebc726ab38 - 200 null application/json; charset=utf-8 23746.5485ms

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcContracts";
+
+package product;
+
+service ProductService {
+  rpc GetProductsByOrganization (OrganizationRequest) returns (ProductListResponse);
+}
+
+message OrganizationRequest {
+  string organizationId = 1;
+}
+
+message Product {
+  string id = 1;
+  string productName = 2;
+  int32 stock = 3;
+  string productCategory = 4;
+  double taxRate = 5;
+  double costPrice = 6;
+  double sellingPrice = 7;
+  double mrp = 8;
+  string unitOfMeasures = 9;
+  string productCode = 10;
+}
+
+message ProductListResponse {
+  repeated Product products = 1;
+}
+

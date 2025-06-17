@@ -1,0 +1,72 @@
+2025-06-17 10:03:59.023 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-17 10:03:59.054 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-17 10:03:59.125 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 10:03:59.127 +05:30 [INF] Hosting environment: Development
+2025-06-17 10:03:59.128 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-17 10:03:59.358 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-17 10:03:59.486 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 128.1417ms
+2025-06-17 10:03:59.503 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 10:03:59.509 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.2772ms
+2025-06-17 10:03:59.512 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-17 10:03:59.554 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.2389ms
+2025-06-17 10:03:59.767 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-17 10:03:59.822 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 54.394ms
+2025-06-17 17:26:20.284 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-17 17:26:20.366 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-17 17:26:20.603 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 17:26:21.216 +05:30 [INF] Hosting environment: Development
+2025-06-17 17:26:21.217 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\InventoryManagementServices\InventoryManagementServices
+2025-06-17 17:26:26.589 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-17 17:26:26.725 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 139.49ms
+2025-06-17 17:26:26.984 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 17:26:26.989 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 4.6477ms
+2025-06-17 17:26:27.039 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-17 17:26:27.071 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.1426ms
+2025-06-17 17:26:27.353 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-17 17:26:27.373 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.4082ms
+2025-06-17 19:23:29.065 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-17 19:23:29.148 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-17 19:23:29.433 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 19:23:29.548 +05:30 [INF] Hosting environment: Development
+2025-06-17 19:23:29.554 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-17 19:23:29.561 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\InventoryManagementServices\InventoryManagementServices
+2025-06-17 19:23:30.285 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 732.6104ms
+2025-06-17 19:23:30.333 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 19:23:30.333 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-17 19:23:30.403 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 69.5833ms
+2025-06-17 19:23:30.458 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 125.1779ms
+2025-06-17 19:23:34.023 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-17 19:23:34.070 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.0297ms
+2025-06-17 19:30:08.578 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/product.ProductService/GetProductsByOrganization - application/grpc null
+2025-06-17 19:30:08.863 +05:30 [INF] Executing endpoint 'gRPC - /product.ProductService/GetProductsByOrganization'
+2025-06-17 19:30:14.646 +05:30 [INF] Received gRPC request for products of orgId: 5711e964-a0c6-44ff-ab2e-ea484a063fde
+2025-06-17 19:30:19.672 +05:30 [INF] Executed DbCommand (570ms) [Parameters=[@__OrganizationId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`, `i`.`Id`, `i`.`ContentType`, `i`.`CreatedAt`, `i`.`FileName`, `i`.`ImageData`, `i`.`ProductId`, `u`.`IsDeleted`, `u`.`Measurement`, `u`.`OrgnaisationId`, `p0`.`IsDeleted`, `p0`.`OrgnaisationId`, `p0`.`ProductCategoryName`, `h`.`GstRate`, `h`.`HSNCodeNumber`, `h`.`IsDeleted`, `h`.`OrgnaisationId`
+FROM `Products` AS `p`
+INNER JOIN `UnitOfMeasures` AS `u` ON `p`.`UnitOfMeasuresId` = `u`.`Id`
+INNER JOIN `ProductCategories` AS `p0` ON `p`.`ProductCategoryId` = `p0`.`ProductCategoryId`
+INNER JOIN `HsnCodes` AS `h` ON `p`.`HsnCodeId` = `h`.`HsnCodeId`
+LEFT JOIN `Images` AS `i` ON `p`.`Id` = `i`.`ProductId`
+WHERE NOT (`p`.`IsDeleted`) AND (`p`.`OrgnaisationId` = @__OrganizationId_0)
+ORDER BY `p`.`Id`, `u`.`Id`, `p0`.`ProductCategoryId`, `h`.`HsnCodeId`
+2025-06-17 19:30:20.394 +05:30 [INF] Executed endpoint 'gRPC - /product.ProductService/GetProductsByOrganization'
+2025-06-17 19:30:20.419 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7163/product.ProductService/GetProductsByOrganization - 200 null application/grpc 11846.2937ms
+2025-06-17 19:30:27.230 +05:30 [WRN] As of ""2025-06-17T14:00:27.2037987+00:00"", the heartbeat has been running for ""00:00:01.9793711"" which is longer than ""00:00:01"". This could be caused by thread pool starvation.
+2025-06-17 20:17:06.776 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-17 20:17:06.915 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-17 20:17:07.257 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 20:17:07.262 +05:30 [INF] Hosting environment: Development
+2025-06-17 20:17:07.266 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\InventoryManagementServices\InventoryManagementServices
+2025-06-17 20:17:10.601 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-17 20:17:11.806 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 1213.655ms
+2025-06-17 20:17:12.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 20:17:12.205 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 38.8899ms
+2025-06-17 20:17:12.304 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-17 20:17:12.737 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 433.1325ms
+2025-06-17 20:17:13.358 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-17 20:17:13.509 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 150.8187ms
+2025-06-17 20:25:39.702 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-17 20:25:39.769 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-17 20:25:39.957 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 20:25:39.964 +05:30 [INF] Hosting environment: Development
+2025-06-17 20:25:39.970 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\InventoryManagementServices\InventoryManagementServices
