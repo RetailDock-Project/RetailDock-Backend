@@ -24,3 +24,16 @@
 2025-06-17 17:26:19.109 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 186.8381ms
 2025-06-17 17:26:19.394 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
 2025-06-17 17:26:19.495 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 100.4573ms
+2025-06-17 19:23:19.528 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-17 19:23:19.592 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-17 19:23:19.716 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 19:23:19.730 +05:30 [INF] Hosting environment: Development
+2025-06-17 19:23:19.732 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-17 19:23:20.791 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-17 19:23:21.090 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 299.4739ms
+2025-06-17 19:23:21.226 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 19:23:21.228 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-17 19:23:21.254 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 27.3334ms
+2025-06-17 19:23:21.331 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 102.5276ms
+2025-06-17 19:23:21.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-17 19:23:21.741 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.2446ms

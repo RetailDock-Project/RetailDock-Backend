@@ -192,6 +192,12 @@ D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Au
 D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Google.Protobuf.dll
+D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
+D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
+D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Core.Api.dll
+D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Net.Client.dll
+D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
+D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Net.Common.dll
 D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Humanizer.dll
 D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\K4os.Compression.LZ4.dll
 D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\K4os.Compression.LZ4.Streams.dll
@@ -374,9 +380,3 @@ D:\RetailDock-Backend\services\BillingService\BillingService\obj\Debug\net8.0\re
 D:\RetailDock-Backend\services\BillingService\BillingService\obj\Debug\net8.0\BillingService.pdb
 D:\RetailDock-Backend\services\BillingService\BillingService\obj\Debug\net8.0\BillingService.genruntimeconfig.cache
 D:\RetailDock-Backend\services\BillingService\BillingService\obj\Debug\net8.0\ref\BillingService.dll
-D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll
-D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.AspNetCore.Server.ClientFactory.dll
-D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Core.Api.dll
-D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Net.Client.dll
-D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Net.ClientFactory.dll
-D:\RetailDock-Backend\services\BillingService\BillingService\bin\Debug\net8.0\Grpc.Net.Common.dll
