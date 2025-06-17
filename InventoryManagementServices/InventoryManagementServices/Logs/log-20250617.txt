@@ -11,3 +11,16 @@
 2025-06-17 10:03:59.554 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.2389ms
 2025-06-17 10:03:59.767 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
 2025-06-17 10:03:59.822 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 54.394ms
+2025-06-17 17:26:20.284 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-17 17:26:20.366 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-17 17:26:20.603 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 17:26:21.216 +05:30 [INF] Hosting environment: Development
+2025-06-17 17:26:21.217 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\InventoryManagementServices\InventoryManagementServices
+2025-06-17 17:26:26.589 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-17 17:26:26.725 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 139.49ms
+2025-06-17 17:26:26.984 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-17 17:26:26.989 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 4.6477ms
+2025-06-17 17:26:27.039 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-17 17:26:27.071 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.1426ms
+2025-06-17 17:26:27.353 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-17 17:26:27.373 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.4082ms
