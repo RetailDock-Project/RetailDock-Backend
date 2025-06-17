@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xVl1kBdTB/8=",
+  "dgSpecHash": "ABKicvBn/XU=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0\\microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.0\\microsoft.extensions.configuration.binder.9.0.0.nupkg.sha512",

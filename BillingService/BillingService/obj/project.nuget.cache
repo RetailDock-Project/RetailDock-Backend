@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bb/QD8kthjQ=",
+  "dgSpecHash": "6FARhFmP8eE=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
@@ -46,6 +46,7 @@
     "C:\\Users\\abdul\\.nuget\\packages\\mysql.data\\9.3.0\\mysql.data.9.3.0.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.3\\pomelo.entityframeworkcore.mysql.8.0.3.nupkg.sha512",
+    "C:\\Users\\abdul\\.nuget\\packages\\questpdf\\2025.5.1\\questpdf.2025.5.1.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\rabbitmq.client\\7.1.2\\rabbitmq.client.7.1.2.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\serilog\\4.3.1-dev-02373\\serilog.4.3.1-dev-02373.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\serilog.aspnetcore\\9.0.0\\serilog.aspnetcore.9.0.0.nupkg.sha512",

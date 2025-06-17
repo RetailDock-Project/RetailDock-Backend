@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RetailDock\\services\\BillingService\\Application\\Application.csproj": {}
+    "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj": {}
   },
   "projects": {
-    "D:\\RetailDock\\services\\BillingService\\Application\\Application.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\BillingService\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\RetailDock\\services\\BillingService\\Application\\Application.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\BillingService\\Application\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock\\services\\BillingService\\Common\\Common.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\BillingService\\Common\\Common.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj"
               }
             }
           }
@@ -54,6 +54,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2025.5.1, )"
+            },
             "Serilog": {
               "target": "Package",
               "version": "[4.3.1-dev-02373, )"
@@ -83,14 +87,14 @@
         }
       }
     },
-    "D:\\RetailDock\\services\\BillingService\\Common\\Common.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\BillingService\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "D:\\RetailDock\\services\\BillingService\\Common\\Common.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\BillingService\\Common\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -111,8 +115,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj"
               }
             }
           }
@@ -158,14 +162,14 @@
         }
       }
     },
-    "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\BillingService\\Domain\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

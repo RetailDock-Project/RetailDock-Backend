@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E3NQcNYZyvo=",
+  "dgSpecHash": "0IqUwnSRHgg=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\InventoryManagementServices\\Application\\Application.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\barcodelib\\2.2.5\\barcodelib.2.2.5.nupkg.sha512",

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj",
+      "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock\\services\\BillingService\\Domain\\obj\\",
+      "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

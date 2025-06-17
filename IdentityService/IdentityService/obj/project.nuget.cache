@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uqMdU8r2/P4=",
+  "dgSpecHash": "jfFSPU1coa4=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\IdentityService.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\IdentityService\\IdentityService\\IdentityService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",

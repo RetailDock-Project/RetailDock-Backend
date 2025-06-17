@@ -2574,11 +2574,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock\\services\\InventoryManagementServices\\Application\\Application.csproj",
+      "projectUniqueName": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\RetailDock\\services\\InventoryManagementServices\\Application\\Application.csproj",
+      "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock\\services\\InventoryManagementServices\\Application\\obj\\",
+      "outputPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2599,8 +2599,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock\\services\\InventoryManagementServices\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\InventoryManagementServices\\Domain\\Domain.csproj"
+            "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj"
             }
           }
         }

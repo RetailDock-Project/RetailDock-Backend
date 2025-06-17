@@ -3601,11 +3601,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+      "projectUniqueName": "D:\\RetailDock-Backend\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
       "projectName": "DeveloperService",
-      "projectPath": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+      "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
       "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\obj\\",
+      "outputPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Developer Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3626,11 +3626,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock\\services\\Developer Service\\Application\\Application.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\Developer Service\\Application\\Application.csproj"
+            "D:\\RetailDock-Backend\\services\\Developer Service\\Application\\Application.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Application\\Application.csproj"
             },
-            "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj"
+            "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

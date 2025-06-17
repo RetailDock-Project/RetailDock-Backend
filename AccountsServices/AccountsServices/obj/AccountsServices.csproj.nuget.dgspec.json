@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj": {}
+    "D:\\RetailDock-Backend\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj": {}
   },
   "projects": {
-    "D:\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj": {
+    "D:\\RetailDock-Backend\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
         "projectName": "AccountsServices",
-        "projectPath": "D:\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\AccountsServices\\AccountsServices\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\AccountsServices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj"
+              "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj"
               },
-              "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj"
+              "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -105,14 +105,14 @@
         }
       }
     },
-    "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj": {
+    "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\AccountsServices\\Application\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -133,11 +133,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock\\services\\AccountsServices\\Common\\Common.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Common\\Common.csproj"
+              "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj"
               },
-              "D:\\RetailDock\\services\\AccountsServices\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Domain\\Domain.csproj"
+              "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj"
               }
             }
           }
@@ -191,14 +191,14 @@
         }
       }
     },
-    "D:\\RetailDock\\services\\AccountsServices\\Common\\Common.csproj": {
+    "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\AccountsServices\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Common\\Common.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\AccountsServices\\Common\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -270,14 +270,14 @@
         }
       }
     },
-    "D:\\RetailDock\\services\\AccountsServices\\Domain\\Domain.csproj": {
+    "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\AccountsServices\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Domain\\Domain.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\AccountsServices\\Domain\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -349,14 +349,14 @@
         }
       }
     },
-    "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\obj\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -377,8 +377,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj": {
-                "projectPath": "D:\\RetailDock\\services\\AccountsServices\\Application\\Application.csproj"
+              "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj"
               }
             }
           }

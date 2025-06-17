@@ -4901,11 +4901,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+      "projectUniqueName": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+      "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
       "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\obj\\",
+      "outputPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4926,11 +4926,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock\\services\\InventoryManagementServices\\Application\\Application.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\InventoryManagementServices\\Application\\Application.csproj"
+            "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj"
             },
-            "D:\\RetailDock\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj"
+            "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
