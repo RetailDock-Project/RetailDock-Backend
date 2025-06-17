@@ -1,0 +1,369 @@
+[
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "addNewCustomer",
+    "RelativePath": "api/Customers/addNewCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "customer",
+        "Type": "Application.DTOs.CreateCustomerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "fetchallCustomers",
+    "RelativePath": "api/Customers/getAllCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "fetchCreditCustomers",
+    "RelativePath": "api/Customers/getCreditCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "viewCustomer",
+    "RelativePath": "api/Customers/viewCustomerById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "viewCustomerMobile",
+    "RelativePath": "api/Customers/viewCustomerByMobile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mobile",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "viewCustomerDetailsByDate",
+    "RelativePath": "api/Customers/viewCustomerDetailsByDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fromDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "toDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.CustomersController",
+    "Method": "CustomerSalesDetails",
+    "RelativePath": "api/Customers/viewCustomerSale",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleController",
+    "Method": "AddNewSale",
+    "RelativePath": "api/Sale/AddNewSale",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sales",
+        "Type": "Application.DTOs.SalesAddDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleController",
+    "Method": "GetSalesByDate",
+    "RelativePath": "api/Sale/GetAllSaleByDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "fromDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "toDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleController",
+    "Method": "GetSalesById",
+    "RelativePath": "api/Sale/GetAllSaleById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "saleId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleController",
+    "Method": "GetSalesByInvoice",
+    "RelativePath": "api/Sale/GetAllSaleByInvoice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "invoiceNum",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleController",
+    "Method": "GetAllSalesDetails",
+    "RelativePath": "api/Sale/GetAllSaleDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleReturnController",
+    "Method": "AddSaleReturn",
+    "RelativePath": "api/SaleReturn/AddSaleReturn",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salesReturn",
+        "Type": "Application.DTOs.AddSalesReturnDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleReturnController",
+    "Method": "GetAllSalesReturn",
+    "RelativePath": "api/SaleReturn/GetAllSaleReturn",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleReturnController",
+    "Method": "GetSalesReturnByDate",
+    "RelativePath": "api/SaleReturn/GetAllSaleReturnByDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "fromDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "toDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleReturnController",
+    "Method": "GetSalesReturnById",
+    "RelativePath": "api/SaleReturn/GetAllSaleReturnById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "returnId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BillingService.Controllers.SaleReturnController",
+    "Method": "GetSalesReturnByInvoice",
+    "RelativePath": "api/SaleReturn/GetAllSaleReturnByInvoice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "invoiceNum",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

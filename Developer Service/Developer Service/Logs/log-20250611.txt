@@ -1,0 +1,16 @@
+2025-06-11 16:32:50.426 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-11 16:32:50.483 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-11 16:32:50.619 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-11 16:32:50.622 +05:30 [INF] Hosting environment: Development
+2025-06-11 16:32:50.626 +05:30 [INF] Content root path: D:\RetailDock\services\Developer Service\Developer Service
+2025-06-11 16:32:52.745 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-11 16:32:54.297 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 1530.7355ms
+2025-06-11 16:32:54.650 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-11 16:32:54.678 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-11 16:32:54.894 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 244.8083ms
+2025-06-11 16:32:58.804 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 4125.7856ms
+2025-06-11 16:33:02.088 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-11 16:33:02.139 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.3042ms
+2025-06-11 16:33:02.222 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/favicon-32x32.png - null null
+2025-06-11 16:33:02.258 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-11 16:33:02.262 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/favicon-32x32.png - 200 628 image/png 40.273ms

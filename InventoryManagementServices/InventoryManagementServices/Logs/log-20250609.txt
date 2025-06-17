@@ -1,0 +1,190 @@
+2025-06-09 12:59:04.838 +05:30 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='InventoryService' AND TABLE_NAME='__EFMigrationsHistory';
+2025-06-09 12:59:05.475 +05:30 [INF] Executed DbCommand (60ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='InventoryService' AND TABLE_NAME='__EFMigrationsHistory';
+2025-06-09 12:59:05.623 +05:30 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+2025-06-09 12:59:05.636 +05:30 [INF] Applying migration '20250609072745_purchase-added'.
+2025-06-09 12:59:06.007 +05:30 [INF] Executed DbCommand (97ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PurchaseInvoices` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `PaymentMode` int NOT NULL,
+    `SubTotal` decimal(65,30) NOT NULL,
+    `TaxAmount` decimal(65,30) NOT NULL,
+    `TotalAmount` decimal(65,30) NOT NULL,
+    `Narration` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `CreatedAt` datetime(6) NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    CONSTRAINT `PK_PurchaseInvoices` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+2025-06-09 12:59:06.082 +05:30 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `Purchases` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `PurchaseInvoiceId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `SupplierId` int NOT NULL,
+    `Purchasedate` datetime(6) NOT NULL,
+    `DueDate` datetime(6) NOT NULL,
+    `CreatedBy` char(36) COLLATE ascii_general_ci NOT NULL,
+    `UpdatedBy` char(36) COLLATE ascii_general_ci NOT NULL,
+    `UpdatedAt` datetime(6) NOT NULL,
+    `OrganizationId` char(36) COLLATE ascii_general_ci NOT NULL,
+    CONSTRAINT `PK_Purchases` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Purchases_PurchaseInvoices_PurchaseInvoiceId` FOREIGN KEY (`PurchaseInvoiceId`) REFERENCES `PurchaseInvoices` (`Id`) ON DELETE RESTRICT
+) CHARACTER SET=utf8mb4;
+2025-06-09 12:59:06.167 +05:30 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE `PurchaseItems` (
+    `Id` char(36) COLLATE ascii_general_ci NOT NULL,
+    `PurchaseId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `ProductId` char(36) COLLATE ascii_general_ci NOT NULL,
+    `Quantity` int NOT NULL,
+    `RatePerPiece` decimal(65,30) NOT NULL,
+    `Discount` decimal(65,30) NOT NULL,
+    `TotalAmount` decimal(65,30) NOT NULL,
+    `ExpiryDate` date NULL,
+    CONSTRAINT `PK_PurchaseItems` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_PurchaseItems_Purchases_PurchaseId` FOREIGN KEY (`PurchaseId`) REFERENCES `Purchases` (`Id`) ON DELETE RESTRICT
+) CHARACTER SET=utf8mb4;
+2025-06-09 12:59:06.248 +05:30 [INF] Executed DbCommand (80ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX `IX_PurchaseItems_PurchaseId` ON `PurchaseItems` (`PurchaseId`);
+2025-06-09 12:59:06.332 +05:30 [INF] Executed DbCommand (84ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_Purchases_PurchaseInvoiceId` ON `Purchases` (`PurchaseInvoiceId`);
+2025-06-09 12:59:06.410 +05:30 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20250609072745_purchase-added', '8.0.13');
+2025-06-09 17:29:01.185 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-09 17:29:01.221 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-09 17:29:01.300 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 17:29:01.301 +05:30 [INF] Hosting environment: Development
+2025-06-09 17:29:01.302 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-09 17:29:02.875 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger - null null
+2025-06-09 17:29:03.007 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger - 301 0 null 132.2488ms
+2025-06-09 17:29:03.016 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 17:29:03.068 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 52.3344ms
+2025-06-09 17:29:03.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 17:29:03.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-09 17:29:03.126 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/swagger-ui-bundle.js - null null
+2025-06-09 17:29:03.133 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 17:29:03.133 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 7.5032ms
+2025-06-09 17:29:03.167 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-09 17:29:03.169 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 43.6042ms
+2025-06-09 17:29:03.220 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-09 17:29:03.223 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 97.3764ms
+2025-06-09 17:29:03.249 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 115.7289ms
+2025-06-09 17:29:03.504 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 17:29:03.527 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - API.Controllers.PurchaseController.AddPurchase (API). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-06-09 17:29:03.536 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 500 null text/plain; charset=utf-8 31.64ms
+2025-06-09 17:31:10.934 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-09 17:31:10.974 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-09 17:31:11.058 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 17:31:11.061 +05:30 [INF] Hosting environment: Development
+2025-06-09 17:31:11.063 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-09 17:31:11.614 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 17:31:11.750 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 136.3683ms
+2025-06-09 17:31:11.862 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 17:31:11.867 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 17:31:11.874 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.622ms
+2025-06-09 17:31:11.892 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.9295ms
+2025-06-09 17:31:12.155 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 17:31:12.175 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.8948ms
+2025-06-09 17:31:36.795 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-09 17:31:36.825 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-09 17:31:36.899 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 17:31:36.900 +05:30 [INF] Hosting environment: Development
+2025-06-09 17:31:36.902 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-09 17:31:36.964 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 17:31:37.075 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 111.3963ms
+2025-06-09 17:31:37.093 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 17:31:37.096 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 17:31:37.101 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 4.906ms
+2025-06-09 17:31:37.117 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.0451ms
+2025-06-09 17:31:37.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 17:31:37.184 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.3331ms
+2025-06-09 17:32:05.721 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-09 17:32:05.748 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-09 17:32:05.814 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 17:32:05.816 +05:30 [INF] Hosting environment: Development
+2025-06-09 17:32:05.819 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-09 17:32:05.910 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 17:32:06.026 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 116.2265ms
+2025-06-09 17:32:06.058 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 17:32:06.058 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 17:32:06.063 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 4.7867ms
+2025-06-09 17:32:06.083 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.0598ms
+2025-06-09 17:32:06.114 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 17:32:06.132 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.2784ms
+2025-06-09 17:33:09.341 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 17:33:09.359 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 17.8287ms
+2025-06-09 17:33:09.408 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 17:33:09.418 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 10.4886ms
+2025-06-09 17:33:09.439 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 17:33:09.449 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.184ms
+2025-06-09 17:33:09.553 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 17:33:09.581 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.7206ms
+2025-06-09 18:20:29.181 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-09 18:20:29.260 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-09 18:20:29.498 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 18:20:29.503 +05:30 [INF] Hosting environment: Development
+2025-06-09 18:20:29.506 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-09 18:20:31.421 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 18:20:31.846 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 430.9061ms
+2025-06-09 18:20:31.979 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 18:20:31.979 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 18:20:32.011 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 31.8432ms
+2025-06-09 18:20:32.076 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 96.5932ms
+2025-06-09 18:20:32.462 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 18:20:32.558 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 95.8929ms
+2025-06-09 18:34:23.291 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-09 18:34:23.560 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-09 18:34:24.221 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-09 18:34:24.248 +05:30 [INF] Hosting environment: Development
+2025-06-09 18:34:24.256 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-09 18:34:24.596 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 18:34:28.614 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 4026.5504ms
+2025-06-09 18:34:28.995 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 18:34:28.995 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 18:34:29.052 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 57.0348ms
+2025-06-09 18:34:29.223 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 227.6833ms
+2025-06-09 18:34:30.358 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 18:34:30.624 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 266.1115ms
+2025-06-09 18:38:02.049 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 18:38:02.068 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 18.2141ms
+2025-06-09 18:38:02.115 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 18:38:02.115 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 18:38:02.122 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.5426ms
+2025-06-09 18:38:02.134 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.7819ms
+2025-06-09 18:38:02.804 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 18:38:02.830 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.0447ms
+2025-06-09 18:38:22.109 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 18:38:22.121 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 12.3376ms
+2025-06-09 18:38:22.160 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 18:38:22.164 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 18:38:22.172 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.3266ms
+2025-06-09 18:38:22.176 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.1025ms
+2025-06-09 18:38:22.269 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 18:38:22.292 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.7896ms
+2025-06-09 18:38:22.862 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 18:38:22.872 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 10.165ms
+2025-06-09 18:38:22.902 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 18:38:22.902 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 18:38:22.911 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 9.1528ms
+2025-06-09 18:38:22.914 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.1121ms
+2025-06-09 18:38:22.976 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 18:38:22.994 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.7917ms
+2025-06-09 18:38:23.457 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-09 18:38:23.465 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 8.3177ms
+2025-06-09 18:38:23.533 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-09 18:38:23.533 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-09 18:38:23.542 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.9218ms
+2025-06-09 18:38:23.556 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.6906ms
+2025-06-09 18:38:23.672 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-09 18:38:23.687 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.5853ms

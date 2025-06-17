@@ -1,0 +1,110 @@
+[
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "BlockOrganization",
+    "RelativePath": "api/Organization/organization/block",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrganizationId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "GteTotalOrganizations",
+    "RelativePath": "api/Organization/organization/count/get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "GetOrganizationDetailsAsync",
+    "RelativePath": "api/Organization/organization/details/get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "GetOrganizationStatusSummeryAsync",
+    "RelativePath": "api/Organization/organization/status/summery",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "AddSubscription",
+    "RelativePath": "api/Organization/subscription/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addSubscriptionDTO",
+        "Type": "Application.DTOs.AddSubscriptionDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "GteTotalAmountReceivedByMonth",
+    "RelativePath": "api/Organization/subscription/received/Amount/by/current/month",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "GteTotalAmountReceivedByYear",
+    "RelativePath": "api/Organization/subscription/received/Amount/by/current/year",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Developer_Service.Controllers.OrganizationController.OrganizationController",
+    "Method": "GteTotalAmountReceivedBydate",
+    "RelativePath": "api/Organization/subscription/received/Amount/by/date",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FromDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,685 @@
+2025-06-12 09:39:49.735 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 09:39:49.776 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 09:39:49.867 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 09:39:49.869 +05:30 [INF] Hosting environment: Development
+2025-06-12 09:39:49.871 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 09:39:50.358 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 09:39:50.592 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 235.6846ms
+2025-06-12 09:39:50.643 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 09:39:50.656 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 13.5882ms
+2025-06-12 09:39:50.662 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 09:39:50.760 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 98.1612ms
+2025-06-12 09:39:50.995 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 09:39:51.029 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.9834ms
+2025-06-12 14:41:07.548 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 14:41:07.579 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 14:41:07.649 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 14:41:07.651 +05:30 [INF] Hosting environment: Development
+2025-06-12 14:41:07.653 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 14:41:08.056 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 14:41:08.202 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 145.9217ms
+2025-06-12 14:41:08.270 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 14:41:08.270 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 14:41:08.279 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.3581ms
+2025-06-12 14:41:08.330 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.834ms
+2025-06-12 14:41:08.476 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 14:41:08.501 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.5067ms
+2025-06-12 14:52:37.180 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 14:52:37.213 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 14:52:37.293 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 14:52:37.295 +05:30 [INF] Hosting environment: Development
+2025-06-12 14:52:37.296 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 14:52:37.369 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 14:52:37.510 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 141.2499ms
+2025-06-12 14:52:37.601 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 14:52:37.601 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 14:52:37.611 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 9.9918ms
+2025-06-12 14:52:37.630 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.5024ms
+2025-06-12 14:52:37.823 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 14:52:37.846 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.2765ms
+2025-06-12 15:48:45.569 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 15:48:45.619 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 15:48:45.745 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 15:48:45.747 +05:30 [INF] Hosting environment: Development
+2025-06-12 15:48:45.748 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 15:48:46.395 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 15:48:46.557 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 163.4339ms
+2025-06-12 15:48:46.734 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 15:48:46.751 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 15:48:46.758 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 7.0899ms
+2025-06-12 15:48:46.766 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.1311ms
+2025-06-12 15:48:47.692 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 15:48:47.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 17.7248ms
+2025-06-12 15:49:11.654 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 15:49:11.664 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 9.5025ms
+2025-06-12 15:49:11.693 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 15:49:11.694 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 15:49:11.700 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.0872ms
+2025-06-12 15:49:11.705 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.6321ms
+2025-06-12 15:49:11.900 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 15:49:11.915 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.0677ms
+2025-06-12 15:51:00.811 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 15:51:00.840 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 15:51:00.906 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 15:51:00.907 +05:30 [INF] Hosting environment: Development
+2025-06-12 15:51:00.908 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 15:51:01.077 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 15:51:01.222 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 148.112ms
+2025-06-12 15:51:01.238 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 15:51:01.242 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 15:51:01.248 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.0934ms
+2025-06-12 15:51:01.261 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.0835ms
+2025-06-12 15:51:01.412 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 15:51:01.431 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.0396ms
+2025-06-12 15:56:42.870 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 15:56:42.910 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 15:56:43.014 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 15:56:43.017 +05:30 [INF] Hosting environment: Development
+2025-06-12 15:56:43.018 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 15:56:43.175 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 15:56:43.317 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 142.986ms
+2025-06-12 15:56:43.331 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 15:56:43.331 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 15:56:43.342 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 10.3985ms
+2025-06-12 15:56:43.367 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.2455ms
+2025-06-12 15:56:43.847 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 15:56:43.867 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.9923ms
+2025-06-12 16:05:08.706 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:05:08.743 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:05:08.836 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:05:08.839 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:05:08.840 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:05:08.989 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:05:09.129 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 140.807ms
+2025-06-12 16:05:09.260 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:05:09.264 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:05:09.271 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.3979ms
+2025-06-12 16:05:09.294 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.2264ms
+2025-06-12 16:05:09.870 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:05:09.893 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.4433ms
+2025-06-12 16:11:34.672 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:11:34.702 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:11:34.775 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:11:34.777 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:11:34.777 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:11:35.237 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:11:35.352 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 116.3239ms
+2025-06-12 16:11:35.432 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:11:35.435 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:11:35.440 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.1023ms
+2025-06-12 16:11:35.461 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.2523ms
+2025-06-12 16:11:38.685 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:11:39.186 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 501.0376ms
+2025-06-12 16:29:22.559 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:29:22.585 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 28.2289ms
+2025-06-12 16:29:22.631 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:29:22.767 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 136.1432ms
+2025-06-12 16:34:11.080 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:34:11.112 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:34:11.487 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:34:11.489 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:34:11.490 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:34:14.077 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:34:14.196 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 119.8368ms
+2025-06-12 16:34:14.303 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:34:14.316 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:34:14.322 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.3716ms
+2025-06-12 16:34:14.327 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.298ms
+2025-06-12 16:34:14.548 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:34:14.573 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.2528ms
+2025-06-12 16:37:24.088 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:37:24.115 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:37:24.175 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:37:24.177 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:37:24.178 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:37:24.504 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:37:24.623 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 120.1594ms
+2025-06-12 16:37:24.649 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:37:24.649 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:37:24.661 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 11.9246ms
+2025-06-12 16:37:24.679 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.1247ms
+2025-06-12 16:37:25.101 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:37:25.135 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.822ms
+2025-06-12 16:41:17.631 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:41:17.643 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 11.9325ms
+2025-06-12 16:41:17.689 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:41:17.694 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:41:17.700 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.2601ms
+2025-06-12 16:41:17.705 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.4359ms
+2025-06-12 16:41:18.263 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:41:18.288 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 24.9831ms
+2025-06-12 16:43:12.836 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:43:12.864 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:43:12.933 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:43:12.935 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:43:12.936 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:43:13.291 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:43:13.400 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 108.9144ms
+2025-06-12 16:43:13.419 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:43:13.419 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:43:13.427 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 7.8503ms
+2025-06-12 16:43:13.439 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.0709ms
+2025-06-12 16:43:13.511 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:43:13.532 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.273ms
+2025-06-12 16:49:00.231 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 16:49:00.251 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 16:49:00.297 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 16:49:09.602 +05:30 [ERR] Failed executing DbCommand (361ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt0`, `t`.`GstType`, `t`.`IGST`, `t`.`InvoiceNumber`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt` AS `CreatedAt0`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`InvoiceNumber`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 16:49:09.651 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+MySqlConnector.MySqlException (0x80004005): Unknown column 'p.CreatedAt' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Unknown column 'p.CreatedAt' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-06-12 16:49:09.662 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-12 16:49:09.670 +05:30 [INF] Executed action API.Controllers.PurchaseController.AddPurchaseReturn (API) in 9362.046ms
+2025-06-12 16:49:09.671 +05:30 [INF] Executed endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 16:49:09.678 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - 500 null application/json; charset=utf-8 9447.1813ms
+2025-06-12 16:49:35.307 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:49:35.342 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:49:35.422 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:49:35.424 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:49:35.426 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:49:36.514 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:49:36.866 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 364.7536ms
+2025-06-12 16:49:36.966 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:49:36.985 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:49:36.987 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 20.4596ms
+2025-06-12 16:49:37.068 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 83.0295ms
+2025-06-12 16:49:37.172 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:49:37.208 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.105ms
+2025-06-12 16:50:13.201 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 16:50:13.217 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 16:50:13.259 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 16:51:41.898 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:51:41.930 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:51:42.007 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:51:42.008 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:51:42.009 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:51:50.767 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:51:51.003 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 246.2097ms
+2025-06-12 16:51:51.052 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:51:51.067 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 15.5155ms
+2025-06-12 16:51:51.096 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:51:51.131 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.91ms
+2025-06-12 16:51:51.409 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:51:51.443 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.0053ms
+2025-06-12 16:53:22.722 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 16:53:22.736 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 16:53:22.788 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 16:53:43.768 +05:30 [ERR] Failed executing DbCommand (2,574ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedAt`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt0`, `t`.`GstType`, `t`.`IGST`, `t`.`InvoiceNumber`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt` AS `CreatedAt0`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`InvoiceNumber`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 16:53:43.868 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+MySqlConnector.MySqlException (0x80004005): Unknown column 'p.CreatedAt' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Unknown column 'p.CreatedAt' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-06-12 16:54:43.310 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:54:43.339 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:54:43.410 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:54:43.412 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:54:43.413 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:54:44.519 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:54:44.758 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 251.4723ms
+2025-06-12 16:54:44.791 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:54:44.793 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:54:44.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.7454ms
+2025-06-12 16:54:44.849 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 56.0924ms
+2025-06-12 16:54:44.957 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:54:45.001 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.6925ms
+2025-06-12 16:55:38.437 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 16:55:38.449 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 16:55:38.489 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 16:56:04.049 +05:30 [ERR] Failed executing DbCommand (424ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt`, `t`.`GstType`, `t`.`IGST`, `t`.`InvoiceNumber`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`InvoiceNumber`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 16:56:04.124 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+MySqlConnector.MySqlException (0x80004005): Unknown column 'p0.InvoiceNumber' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Unknown column 'p0.InvoiceNumber' in 'field list'
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-06-12 16:56:42.427 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:56:42.466 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:56:42.541 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:56:42.542 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:56:42.543 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:56:43.716 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:56:44.399 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 693.5515ms
+2025-06-12 16:56:44.414 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:56:44.424 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 10.3094ms
+2025-06-12 16:56:44.484 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:56:44.519 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.3071ms
+2025-06-12 16:56:45.088 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:56:45.134 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.6956ms
+2025-06-12 16:57:15.742 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 16:57:15.756 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 16:57:15.792 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 16:57:31.171 +05:30 [INF] Executed DbCommand (875ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt`, `t`.`GstType`, `t`.`IGST`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 16:57:55.434 +05:30 [INF] Executed DbCommand (423ms) [Parameters=[@__invoiceId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`CreatedAt`, `p`.`GstType`, `p`.`IGST`, `p`.`IsPaid`, `p`.`Narration`, `p`.`PaymentMode`, `p`.`SGST`, `p`.`SubTotal`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`, `p`.`UpdatedAt`
+FROM `PurchaseInvoices` AS `p`
+WHERE `p`.`Id` = @__invoiceId_0
+LIMIT 1
+2025-06-12 16:58:17.763 +05:30 [INF] Executed DbCommand (2,489ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`
+FROM `Products` AS `p`
+WHERE `p`.`Id` = @__productId_0
+LIMIT 1
+2025-06-12 16:59:13.472 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 16:59:13.505 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 16:59:13.597 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 16:59:13.600 +05:30 [INF] Hosting environment: Development
+2025-06-12 16:59:13.602 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 16:59:15.128 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 16:59:15.390 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 274.3384ms
+2025-06-12 16:59:15.411 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 16:59:15.423 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 16:59:15.427 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 17.1759ms
+2025-06-12 16:59:15.471 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.4262ms
+2025-06-12 16:59:15.548 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 16:59:15.592 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.4887ms
+2025-06-12 17:00:32.021 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 17:00:32.039 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:00:32.095 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 17:01:12.752 +05:30 [INF] Executed DbCommand (909ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt`, `t`.`GstType`, `t`.`IGST`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 17:01:19.842 +05:30 [INF] Executed DbCommand (2,098ms) [Parameters=[@__invoiceId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`CreatedAt`, `p`.`GstType`, `p`.`IGST`, `p`.`IsPaid`, `p`.`Narration`, `p`.`PaymentMode`, `p`.`SGST`, `p`.`SubTotal`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`, `p`.`UpdatedAt`
+FROM `PurchaseInvoices` AS `p`
+WHERE `p`.`Id` = @__invoiceId_0
+LIMIT 1
+2025-06-12 17:01:32.360 +05:30 [INF] Executed DbCommand (995ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`
+FROM `Products` AS `p`
+WHERE `p`.`Id` = @__productId_0
+LIMIT 1
+2025-06-12 17:01:46.881 +05:30 [INF] Executed DbCommand (616ms) [Parameters=[@__itemId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`Discount`, `p`.`ExpiryDate`, `p`.`IGST`, `p`.`ProductId`, `p`.`PurchaseId`, `p`.`Quantity`, `p`.`RatePerPiece`, `p`.`SGST`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`
+FROM `PurchaseItems` AS `p`
+WHERE `p`.`Id` = @__itemId_0
+LIMIT 1
+2025-06-12 17:02:41.702 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:02:41.780 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:02:41.922 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:02:41.924 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:02:41.925 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:02:43.698 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:02:44.000 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 314.486ms
+2025-06-12 17:02:44.055 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:02:44.064 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 8.96ms
+2025-06-12 17:02:44.093 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:02:44.135 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.8884ms
+2025-06-12 17:02:44.296 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:02:44.329 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.8738ms
+2025-06-12 17:03:30.976 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 17:03:30.988 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:03:31.022 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 17:03:41.957 +05:30 [INF] Executed DbCommand (576ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt`, `t`.`GstType`, `t`.`IGST`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 17:03:44.296 +05:30 [INF] Executed DbCommand (390ms) [Parameters=[@__invoiceId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`CreatedAt`, `p`.`GstType`, `p`.`IGST`, `p`.`IsPaid`, `p`.`Narration`, `p`.`PaymentMode`, `p`.`SGST`, `p`.`SubTotal`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`, `p`.`UpdatedAt`
+FROM `PurchaseInvoices` AS `p`
+WHERE `p`.`Id` = @__invoiceId_0
+LIMIT 1
+2025-06-12 17:03:51.600 +05:30 [INF] Executed DbCommand (333ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`
+FROM `Products` AS `p`
+WHERE `p`.`Id` = @__productId_0
+LIMIT 1
+2025-06-12 17:03:57.755 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-12 17:04:02.128 +05:30 [INF] Executed action API.Controllers.PurchaseController.AddPurchaseReturn (API) in 31097.5682ms
+2025-06-12 17:04:02.132 +05:30 [INF] Executed endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:04:02.139 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - 404 null application/json; charset=utf-8 31163.7677ms
+2025-06-12 17:05:53.712 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:05:53.749 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:05:53.835 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:05:53.836 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:05:53.837 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:05:55.203 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:05:55.899 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 706.6497ms
+2025-06-12 17:05:56.075 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:05:56.075 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:05:56.121 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 47.5689ms
+2025-06-12 17:05:56.166 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 92.7191ms
+2025-06-12 17:05:58.303 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:05:58.333 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 29.8722ms
+2025-06-12 17:08:04.845 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 17:08:04.859 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:08:04.906 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 17:08:16.224 +05:30 [INF] Executed DbCommand (965ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt`, `t`.`GstType`, `t`.`IGST`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 17:08:21.157 +05:30 [INF] Executed DbCommand (308ms) [Parameters=[@__invoiceId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`CreatedAt`, `p`.`GstType`, `p`.`IGST`, `p`.`IsPaid`, `p`.`Narration`, `p`.`PaymentMode`, `p`.`SGST`, `p`.`SubTotal`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`, `p`.`UpdatedAt`
+FROM `PurchaseInvoices` AS `p`
+WHERE `p`.`Id` = @__invoiceId_0
+LIMIT 1
+2025-06-12 17:08:33.003 +05:30 [INF] Executed DbCommand (1,653ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`
+FROM `Products` AS `p`
+WHERE `p`.`Id` = @__productId_0
+LIMIT 1
+2025-06-12 17:08:41.073 +05:30 [INF] Executed DbCommand (402ms) [Parameters=[@__itemId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`Discount`, `p`.`ExpiryDate`, `p`.`IGST`, `p`.`ProductId`, `p`.`PurchaseId`, `p`.`Quantity`, `p`.`RatePerPiece`, `p`.`SGST`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`
+FROM `PurchaseItems` AS `p`
+WHERE `p`.`Id` = @__itemId_0
+LIMIT 1
+2025-06-12 17:08:58.857 +05:30 [ERR] Failed executing DbCommand (587ms) [Parameters=[@__originalPurchaseItemId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM(`p`.`ReturnedQuantity`), 0)
+FROM `PurchaseReturnItems` AS `p`
+WHERE `p`.`OriginalPurchaseItemId` = @__originalPurchaseItemId_0
+2025-06-12 17:08:58.919 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'InventoryService.PurchaseReturnItems' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'InventoryService.PurchaseReturnItems' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-06-12 17:08:59.060 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-12 17:08:59.072 +05:30 [INF] Executed action API.Controllers.PurchaseController.AddPurchaseReturn (API) in 54157.4452ms
+2025-06-12 17:08:59.073 +05:30 [INF] Executed endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:08:59.081 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - 500 null application/json; charset=utf-8 54236.4164ms
+2025-06-12 17:10:18.339 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:10:18.377 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:10:18.489 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:10:18.490 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:10:18.490 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:10:19.930 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:10:20.232 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 313.9321ms
+2025-06-12 17:10:20.595 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:10:20.595 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:10:20.608 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 13.5327ms
+2025-06-12 17:10:20.656 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.0559ms
+2025-06-12 17:10:20.830 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:10:20.860 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 31.3229ms
+2025-06-12 17:10:51.835 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - application/json 391
+2025-06-12 17:10:51.852 +05:30 [INF] Executing endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:10:51.894 +05:30 [INF] Route matched with {action = "AddPurchaseReturn", controller = "Purchase"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddPurchaseReturn(Application.Dto.PurchaseReturnDto, System.Guid, System.Guid) on controller API.Controllers.PurchaseController (API).
+2025-06-12 17:11:18.979 +05:30 [INF] Executed DbCommand (820ms) [Parameters=[@__purchaseId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`Id`, `t`.`CreatedBy`, `t`.`DueDate`, `t`.`LedgerId`, `t`.`OrganizationId`, `t`.`PurchaseInvoiceId`, `t`.`Purchasedate`, `t`.`SupplierInvoiceNumber`, `t`.`UpdatedAt`, `t`.`UpdatedBy`, `t`.`Id0`, `t`.`CGST`, `t`.`CreatedAt`, `t`.`GstType`, `t`.`IGST`, `t`.`IsPaid`, `t`.`Narration`, `t`.`PaymentMode`, `t`.`SGST`, `t`.`SubTotal`, `t`.`TaxAmount`, `t`.`TotalAmount`, `t`.`UGST`, `t`.`UpdatedAt0`, `t0`.`Id`, `t0`.`CGST`, `t0`.`Discount`, `t0`.`ExpiryDate`, `t0`.`IGST`, `t0`.`ProductId`, `t0`.`PurchaseId`, `t0`.`Quantity`, `t0`.`RatePerPiece`, `t0`.`SGST`, `t0`.`TaxAmount`, `t0`.`TotalAmount`, `t0`.`UGST`, `t0`.`Id0`, `t0`.`BarCodeImageBase64`, `t0`.`CostPrice`, `t0`.`CreatedAt`, `t0`.`CreatedBy`, `t0`.`Description`, `t0`.`HsnCodeId`, `t0`.`IsDeleted`, `t0`.`LastStockUpdate`, `t0`.`MRP`, `t0`.`OrgnaisationId`, `t0`.`ProductCategoryId`, `t0`.`ProductCode`, `t0`.`ProductName`, `t0`.`ReOrderLevel`, `t0`.`SellingPrice`, `t0`.`Stock`, `t0`.`UnitOfMeasuresId`, `t0`.`UpdatedAt`, `t0`.`UpdatedBy`
+FROM (
+    SELECT `p`.`Id`, `p`.`CreatedBy`, `p`.`DueDate`, `p`.`LedgerId`, `p`.`OrganizationId`, `p`.`PurchaseInvoiceId`, `p`.`Purchasedate`, `p`.`SupplierInvoiceNumber`, `p`.`UpdatedAt`, `p`.`UpdatedBy`, `p0`.`Id` AS `Id0`, `p0`.`CGST`, `p0`.`CreatedAt`, `p0`.`GstType`, `p0`.`IGST`, `p0`.`IsPaid`, `p0`.`Narration`, `p0`.`PaymentMode`, `p0`.`SGST`, `p0`.`SubTotal`, `p0`.`TaxAmount`, `p0`.`TotalAmount`, `p0`.`UGST`, `p0`.`UpdatedAt` AS `UpdatedAt0`
+    FROM `Purchases` AS `p`
+    INNER JOIN `PurchaseInvoices` AS `p0` ON `p`.`PurchaseInvoiceId` = `p0`.`Id`
+    WHERE `p`.`Id` = @__purchaseId_0
+    LIMIT 1
+) AS `t`
+LEFT JOIN (
+    SELECT `p1`.`Id`, `p1`.`CGST`, `p1`.`Discount`, `p1`.`ExpiryDate`, `p1`.`IGST`, `p1`.`ProductId`, `p1`.`PurchaseId`, `p1`.`Quantity`, `p1`.`RatePerPiece`, `p1`.`SGST`, `p1`.`TaxAmount`, `p1`.`TotalAmount`, `p1`.`UGST`, `p2`.`Id` AS `Id0`, `p2`.`BarCodeImageBase64`, `p2`.`CostPrice`, `p2`.`CreatedAt`, `p2`.`CreatedBy`, `p2`.`Description`, `p2`.`HsnCodeId`, `p2`.`IsDeleted`, `p2`.`LastStockUpdate`, `p2`.`MRP`, `p2`.`OrgnaisationId`, `p2`.`ProductCategoryId`, `p2`.`ProductCode`, `p2`.`ProductName`, `p2`.`ReOrderLevel`, `p2`.`SellingPrice`, `p2`.`Stock`, `p2`.`UnitOfMeasuresId`, `p2`.`UpdatedAt`, `p2`.`UpdatedBy`
+    FROM `PurchaseItems` AS `p1`
+    INNER JOIN `Products` AS `p2` ON `p1`.`ProductId` = `p2`.`Id`
+) AS `t0` ON `t`.`Id` = `t0`.`PurchaseId`
+ORDER BY `t`.`Id`, `t`.`Id0`, `t0`.`Id`
+2025-06-12 17:11:24.641 +05:30 [INF] Executed DbCommand (240ms) [Parameters=[@__invoiceId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`CreatedAt`, `p`.`GstType`, `p`.`IGST`, `p`.`IsPaid`, `p`.`Narration`, `p`.`PaymentMode`, `p`.`SGST`, `p`.`SubTotal`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`, `p`.`UpdatedAt`
+FROM `PurchaseInvoices` AS `p`
+WHERE `p`.`Id` = @__invoiceId_0
+LIMIT 1
+2025-06-12 17:11:34.114 +05:30 [INF] Executed DbCommand (284ms) [Parameters=[@__productId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`BarCodeImageBase64`, `p`.`CostPrice`, `p`.`CreatedAt`, `p`.`CreatedBy`, `p`.`Description`, `p`.`HsnCodeId`, `p`.`IsDeleted`, `p`.`LastStockUpdate`, `p`.`MRP`, `p`.`OrgnaisationId`, `p`.`ProductCategoryId`, `p`.`ProductCode`, `p`.`ProductName`, `p`.`ReOrderLevel`, `p`.`SellingPrice`, `p`.`Stock`, `p`.`UnitOfMeasuresId`, `p`.`UpdatedAt`, `p`.`UpdatedBy`
+FROM `Products` AS `p`
+WHERE `p`.`Id` = @__productId_0
+LIMIT 1
+2025-06-12 17:11:37.522 +05:30 [INF] Executed DbCommand (258ms) [Parameters=[@__itemId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT `p`.`Id`, `p`.`CGST`, `p`.`Discount`, `p`.`ExpiryDate`, `p`.`IGST`, `p`.`ProductId`, `p`.`PurchaseId`, `p`.`Quantity`, `p`.`RatePerPiece`, `p`.`SGST`, `p`.`TaxAmount`, `p`.`TotalAmount`, `p`.`UGST`
+FROM `PurchaseItems` AS `p`
+WHERE `p`.`Id` = @__itemId_0
+LIMIT 1
+2025-06-12 17:11:47.384 +05:30 [ERR] Failed executing DbCommand (285ms) [Parameters=[@__originalPurchaseItemId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM(`p`.`ReturnedQuantity`), 0)
+FROM `PurchaseReturnItems` AS `p`
+WHERE `p`.`OriginalPurchaseItemId` = @__originalPurchaseItemId_0
+2025-06-12 17:11:47.472 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'Infrastructure.Context.AppDbContext'.
+MySqlConnector.MySqlException (0x80004005): Table 'InventoryService.PurchaseReturnItems' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+MySqlConnector.MySqlException (0x80004005): Table 'InventoryService.PurchaseReturnItems' doesn't exist
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 894
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 37
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.InitAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 483
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 357
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 350
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-06-12 17:11:47.617 +05:30 [INF] Executing ObjectResult, writing value of type 'Domain.Entities.Responses`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-12 17:11:47.627 +05:30 [INF] Executed action API.Controllers.PurchaseController.AddPurchaseReturn (API) in 55729.3849ms
+2025-06-12 17:11:47.629 +05:30 [INF] Executed endpoint 'API.Controllers.PurchaseController.AddPurchaseReturn (API)'
+2025-06-12 17:11:47.636 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7163/api/Purchase/return?userId=08dd9f8a-4085-42b9-8b06-2ebe157fa60e&orgid=5711e964-a0c6-44ff-ab2e-ea484a063fde - 500 null application/json; charset=utf-8 55801.0065ms
+2025-06-12 17:15:50.055 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:15:50.089 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:15:50.747 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:15:50.751 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:15:50.756 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:15:52.572 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:15:52.792 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 221.44ms
+2025-06-12 17:15:52.854 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:15:52.875 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 20.9019ms
+2025-06-12 17:15:52.958 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:15:52.978 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 19.7696ms
+2025-06-12 17:15:53.291 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:15:53.333 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 41.8901ms
+2025-06-12 17:16:31.945 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:16:31.971 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:16:32.030 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:16:32.032 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:16:32.033 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:16:32.302 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:16:32.407 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 105.6106ms
+2025-06-12 17:16:32.429 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:16:32.429 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:16:32.436 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 6.7903ms
+2025-06-12 17:16:32.453 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.464ms
+2025-06-12 17:16:32.580 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:16:32.595 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.3879ms
+2025-06-12 17:17:15.306 +05:30 [INF] Now listening on: https://localhost:7163
+2025-06-12 17:17:15.332 +05:30 [INF] Now listening on: http://localhost:5063
+2025-06-12 17:17:15.392 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 17:17:15.395 +05:30 [INF] Hosting environment: Development
+2025-06-12 17:17:15.396 +05:30 [INF] Content root path: D:\RetailDock\services\InventoryManagementServices\InventoryManagementServices
+2025-06-12 17:17:15.527 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:17:15.628 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 102.4948ms
+2025-06-12 17:17:15.642 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:17:15.642 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:17:15.648 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.2262ms
+2025-06-12 17:17:15.666 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 23.5527ms
+2025-06-12 17:17:15.835 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:17:15.854 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.1169ms
+2025-06-12 17:17:44.504 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/index.html - null null
+2025-06-12 17:17:44.511 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/index.html - 200 null text/html;charset=utf-8 7.5349ms
+2025-06-12 17:17:44.527 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 17:17:44.527 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/_vs/browserLink - null null
+2025-06-12 17:17:44.532 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_framework/aspnetcore-browser-refresh.js - 200 13758 application/javascript; charset=utf-8 5.3123ms
+2025-06-12 17:17:44.543 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/_vs/browserLink - 200 null text/javascript; charset=UTF-8 15.8467ms
+2025-06-12 17:17:44.699 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - null null
+2025-06-12 17:17:44.710 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7163/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.6196ms

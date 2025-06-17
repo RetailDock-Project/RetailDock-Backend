@@ -1,0 +1,902 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\RetailDock\\services\\IdentityService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\messaging\\rabbitmqsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\messaging\\rabbitmqsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\messaging\\rabbitmqservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\messaging\\rabbitmqservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\messaging\\organizationsubscribedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\messaging\\organizationsubscribedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\controllers\\base\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\controllers\\base\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\data\\identitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\data\\identitydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\migrations\\20250606063300_orgid-added-to-role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\20250606063300_orgid-added-to-role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\repositories\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\authrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\irepositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\irepositories\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepositories\\iauthrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\iservices\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservices\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\repositories\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\rolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\services\\roleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\irepositories\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepositories\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\iservices\\iroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservices\\iroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\dtos\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\dtos\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\dtos\\organizationuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\dtos\\organizationuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\entities\\userorganizationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\userorganizationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\mappings\\mapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\mappings\\mapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\dtos\\otpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\dtos\\otpdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\repositories\\otprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\otprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\extensions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\extensions\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\entities\\organizationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\organizationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\events\\organizationsubscribedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\events\\organizationsubscribedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\irepositories\\iemailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepositories\\iemailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\repositories\\emailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\emailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\identityservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\identityservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0AFA96F3-1971-4AEC-B879-BA765E70F804}|Common\\Common.csproj|d:\\retaildock\\services\\identityservice\\common\\common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0AFA96F3-1971-4AEC-B879-BA765E70F804}|Common\\Common.csproj|solutionrelative:common\\common.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\services\\otpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\services\\otpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|d:\\retaildock\\services\\identityservice\\identityservice\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1E8EAC0-9813-4E7E-A84B-88DAB3F9AE4C}|IdentityService\\IdentityService.csproj|solutionrelative:identityservice\\controllers\\emailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\iservices\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservices\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|d:\\retaildock\\services\\identityservice\\domain\\entities\\organizationrolepermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{18437113-A369-408A-9A78-37EDB7529F19}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\organizationrolepermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\iservices\\iotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservices\\iotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\iservices\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservices\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|d:\\retaildock\\services\\identityservice\\application\\interfaces\\irepositories\\iotprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02D76577-F9F4-4A84-8777-F7F8BC906AA1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepositories\\iotprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\migrations\\20250530144107_roles-tables-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\20250530144107_roles-tables-added.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\migrations\\20250529131014_initial-migration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\20250529131014_initial-migration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\identityservice\\infrastructure\\migrations\\20250529131821_user-table-update.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11183620-8EAD-45A8-8F13-BFEF001A2FD4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\migrations\\20250529131821_user-table-update.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IRoleService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IRoleService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IServices\\IRoleService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IRoleService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IServices\\IRoleService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T09:38:38.624Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\Base\\BaseController.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Controllers\\Base\\BaseController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\Base\\BaseController.cs",
+              "RelativeToolTip": "IdentityService\\Controllers\\Base\\BaseController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T13:26:24.587Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrganizationSubscribedConsumer.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Messaging\\OrganizationSubscribedConsumer.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Messaging\\OrganizationSubscribedConsumer.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Messaging\\OrganizationSubscribedConsumer.cs",
+              "RelativeToolTip": "Infrastructure\\Messaging\\OrganizationSubscribedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:39:55.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RabbitMQService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Messaging\\RabbitMQService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Messaging\\RabbitMQService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Messaging\\RabbitMQService.cs",
+              "RelativeToolTip": "Infrastructure\\Messaging\\RabbitMQService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:36:59.75Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RabbitMQSettings.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "RelativeToolTip": "Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:35:56.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\appsettings.json",
+              "RelativeDocumentMoniker": "IdentityService\\appsettings.json",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\appsettings.json",
+              "RelativeToolTip": "IdentityService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-03T13:39:05.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IdentityDbContext.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Data\\IdentityDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Data\\IdentityDbContext.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Data\\IdentityDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Data\\IdentityDbContext.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAwwGUAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T05:44:59.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IAuthRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IAuthRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IAuthRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IAuthRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IAuthRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:33:00.216Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AuthRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\AuthRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\AuthRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\AuthRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\AuthRepository.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:33:36.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\UserRepository.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAkwD8AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:51:13.042Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "20250606063300_orgId-added-to-role.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250606063300_orgId-added-to-role.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250606063300_orgId-added-to-role.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250606063300_orgId-added-to-role.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20250606063300_orgId-added-to-role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T06:33:01.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IUserService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IServices\\IUserService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IUserService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IServices\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:43:00.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IUserRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IUserRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:51:35.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Program.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Program.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Program.cs",
+              "RelativeToolTip": "IdentityService\\Program.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAswHoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T06:00:35.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\UserService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\UserService.cs",
+              "RelativeToolTip": "Application\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:42:36.961Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\AuthService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\AuthService.cs",
+              "RelativeToolTip": "Application\\Services\\AuthService.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAYwH0AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:31:58.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IServices\\IAuthService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IAuthService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IServices\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:32:24.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RoleRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\RoleRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\RoleRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\RoleRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\RoleRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAuwCQAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:00:20.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RoleService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\RoleService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\RoleService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\RoleService.cs",
+              "RelativeToolTip": "Application\\Services\\RoleService.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwC4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T09:37:34.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IRoleRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IRoleRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IRoleRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IRoleRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IRoleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:00:54.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Controllers\\RoleController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "IdentityService\\Controllers\\RoleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:03:31.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "IdentityService\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAmwBkAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T09:28:15.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\UserController.cs",
+              "RelativeToolTip": "IdentityService\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T08:22:11.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RoleDto.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\RoleDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\RoleDto.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\RoleDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\RoleDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T11:17:25.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Role.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\Role.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Role.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\Role.cs",
+              "RelativeToolTip": "Domain\\Entities\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T07:19:56.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Services\\JwtService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Services\\JwtService.cs",
+              "RelativeToolTip": "Infrastructure\\Services\\JwtService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T04:59:26.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "OrganizationUserDto.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\OrganizationUserDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\OrganizationUserDto.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\OrganizationUserDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\OrganizationUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T11:46:39.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\User.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\User.cs",
+              "RelativeToolTip": "Domain\\Entities\\User.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAewCkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T07:01:14.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "UserOrganizationRole.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\UserOrganizationRole.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\UserOrganizationRole.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\UserOrganizationRole.cs",
+              "RelativeToolTip": "Domain\\Entities\\UserOrganizationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T10:12:40.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MapperProfile.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Mappings\\MapperProfile.cs",
+              "RelativeDocumentMoniker": "Application\\Mappings\\MapperProfile.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Mappings\\MapperProfile.cs",
+              "RelativeToolTip": "Application\\Mappings\\MapperProfile.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAowBgAAAAIAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:15:59.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\UserDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\UserDto.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\UserDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\UserDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T11:40:30.975Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "OtpDto.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\OtpDto.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\OtpDto.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\DTOs\\OtpDto.cs",
+              "RelativeToolTip": "Application\\DTOs\\OtpDto.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCIAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T06:36:30.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Application.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Application.csproj",
+              "RelativeDocumentMoniker": "Application\\Application.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Application.csproj",
+              "RelativeToolTip": "Application\\Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T13:01:35.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "OtpRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\OtpRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\OtpRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\OtpRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\OtpRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T07:20:31.982Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Extensions\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Extensions\\DependencyInjection.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Extensions\\DependencyInjection.cs",
+              "RelativeToolTip": "IdentityService\\Extensions\\DependencyInjection.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAcwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:44:00.003Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "OrganizationRole.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\OrganizationRole.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\OrganizationRole.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\OrganizationRole.cs",
+              "RelativeToolTip": "Domain\\Entities\\OrganizationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T10:04:22.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "OrganizationSubscribedEvent.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Events\\OrganizationSubscribedEvent.cs",
+              "RelativeDocumentMoniker": "Application\\Events\\OrganizationSubscribedEvent.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Events\\OrganizationSubscribedEvent.cs",
+              "RelativeToolTip": "Application\\Events\\OrganizationSubscribedEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:34:18.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IEmailRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IEmailRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IEmailRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IEmailRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IEmailRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T06:11:47.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "EmailRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\EmailRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repositories\\EmailRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Repositories\\EmailRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repositories\\EmailRepository.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAABwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T06:11:22.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Infrastructure.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Infrastructure.csproj",
+              "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
+              "ViewState": "AgIAAAQAAADAHYxsfgMjwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-28T05:39:55.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Domain.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T13:01:43.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Common.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Common\\Common.csproj",
+              "RelativeDocumentMoniker": "Common\\Common.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Common\\Common.csproj",
+              "RelativeToolTip": "Common\\Common.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T13:01:41.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IdentityService.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\IdentityService.csproj",
+              "RelativeDocumentMoniker": "IdentityService\\IdentityService.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\IdentityService.csproj",
+              "RelativeToolTip": "IdentityService\\IdentityService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-30T13:17:50.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Permission.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\Permission.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Permission.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\Permission.cs",
+              "RelativeToolTip": "Domain\\Entities\\Permission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T09:53:59.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\EmailService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\EmailService.cs",
+              "RelativeToolTip": "Application\\Services\\EmailService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T06:04:00.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "OtpService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\OtpService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\OtpService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Services\\OtpService.cs",
+              "RelativeToolTip": "Application\\Services\\OtpService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwBYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T06:42:29.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "EmailController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\EmailController.cs",
+              "RelativeDocumentMoniker": "IdentityService\\Controllers\\EmailController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\IdentityService\\Controllers\\EmailController.cs",
+              "RelativeToolTip": "IdentityService\\Controllers\\EmailController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwBYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T14:59:46.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IEmailService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IServices\\IEmailService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IEmailService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IServices\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T06:04:25.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "OrganizationRolePermission.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\OrganizationRolePermission.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\OrganizationRolePermission.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Domain\\Entities\\OrganizationRolePermission.cs",
+              "RelativeToolTip": "Domain\\Entities\\OrganizationRolePermission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T09:59:39.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "IOtpService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IOtpService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IServices\\IOtpService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IOtpService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IServices\\IOtpService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T06:42:16.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IJwtService.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IServices\\IJwtService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IServices\\IJwtService.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IServices\\IJwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T04:47:12.192Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "IOtpRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IOtpRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IOtpRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Application\\Interfaces\\IRepositories\\IOtpRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IOtpRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T07:21:01.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "20250530144107_roles-tables-added.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250530144107_roles-tables-added.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250530144107_roles-tables-added.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250530144107_roles-tables-added.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20250530144107_roles-tables-added.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T14:41:08.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "20250529131821_user-table-update.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250529131821_user-table-update.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250529131821_user-table-update.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250529131821_user-table-update.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20250529131821_user-table-update.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T13:18:21.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "20250529131014_initial-migration.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250529131014_initial-migration.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Migrations\\20250529131014_initial-migration.cs",
+              "ToolTip": "D:\\RetailDock\\services\\IdentityService\\Infrastructure\\Migrations\\20250529131014_initial-migration.cs",
+              "RelativeToolTip": "Infrastructure\\Migrations\\20250529131014_initial-migration.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T13:10:15.217Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

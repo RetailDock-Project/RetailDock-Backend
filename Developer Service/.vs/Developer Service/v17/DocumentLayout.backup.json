@@ -1,0 +1,277 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\RetailDock\\services\\Developer Service\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\services\\organizationservice\\organizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\services\\organizationservice\\organizationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\developer service\\infrastructure\\messaging\\rabbitmqproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\messaging\\rabbitmqproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\developer service\\infrastructure\\messaging\\rabbitmqsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\messaging\\rabbitmqsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|d:\\retaildock\\services\\developer service\\developer service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|solutionrelative:developer service\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|d:\\retaildock\\services\\developer service\\developer service\\extensions\\diregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|solutionrelative:developer service\\extensions\\diregistrations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\interfaces\\irepository\\irabbitmqproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepository\\irabbitmqproducer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\events\\organizationsubscribedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\events\\organizationsubscribedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\developer service\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|d:\\retaildock\\services\\developer service\\developer service\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|solutionrelative:developer service\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|d:\\retaildock\\services\\developer service\\developer service\\controllers\\organizationcontroller\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|solutionrelative:developer service\\controllers\\organizationcontroller\\organizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|d:\\retaildock\\services\\developer service\\infrastructure\\repository\\organizationrepository\\organizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87C8067D-B2F8-43F8-BCFA-009AFF1109B3}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repository\\organizationrepository\\organizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\interfaces\\irepository\\iorganizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepository\\iorganizationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\dtos\\addsubscriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\dtos\\addsubscriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\interfaces\\iservice\\iorganizationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\interfaces\\iservice\\iorganizationservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|d:\\retaildock\\services\\developer service\\developer service\\developerservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D41DBFA6-76BA-4B49-80D7-01ADDC94A744}|Developer Service\\DeveloperService.csproj|solutionrelative:developer service\\developerservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|d:\\retaildock\\services\\developer service\\application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{64BBCEF9-BCED-4556-BCFE-23ACECC4EBF8}|Application\\Application.csproj|solutionrelative:application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRabbitMQProducer.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\Interfaces\\IRepository\\IRabbitMQProducer.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepository\\IRabbitMQProducer.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\Interfaces\\IRepository\\IRabbitMQProducer.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepository\\IRabbitMQProducer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:11:50.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RabbitMQProducer.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Messaging\\RabbitMQProducer.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Messaging\\RabbitMQProducer.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Messaging\\RabbitMQProducer.cs",
+              "RelativeToolTip": "Infrastructure\\Messaging\\RabbitMQProducer.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAswBoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:28:53.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RabbitMQSettings.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "RelativeToolTip": "Infrastructure\\Messaging\\RabbitMQSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:27:15.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\Program.cs",
+              "RelativeDocumentMoniker": "Developer Service\\Program.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\Program.cs",
+              "RelativeToolTip": "Developer Service\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:38:37.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DiRegistrations.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\Extensions\\DiRegistrations.cs",
+              "RelativeDocumentMoniker": "Developer Service\\Extensions\\DiRegistrations.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\Extensions\\DiRegistrations.cs",
+              "RelativeToolTip": "Developer Service\\Extensions\\DiRegistrations.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:45:37.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrganizationService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\Services\\OrganizationService\\OrganizationService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\OrganizationService\\OrganizationService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\Services\\OrganizationService\\OrganizationService.cs",
+              "RelativeToolTip": "Application\\Services\\OrganizationService\\OrganizationService.cs",
+              "ViewState": "AgIAAA8BAAAAAAAAAAAwwGkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:37:29.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrganizationSubscribedEvent.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\Events\\OrganizationSubscribedEvent.cs",
+              "RelativeDocumentMoniker": "Application\\Events\\OrganizationSubscribedEvent.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\Events\\OrganizationSubscribedEvent.cs",
+              "RelativeToolTip": "Application\\Events\\OrganizationSubscribedEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:25:53.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Infrastructure.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
+              "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T11:14:27.308Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\appsettings.json",
+              "RelativeDocumentMoniker": "Developer Service\\appsettings.json",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\appsettings.json",
+              "RelativeToolTip": "Developer Service\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-03T12:34:05.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IOrganizationRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\Interfaces\\IRepository\\IOrganizationRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepository\\IOrganizationRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\Interfaces\\IRepository\\IOrganizationRepository.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepository\\IOrganizationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T10:35:55.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrganizationController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\Controllers\\OrganizationController\\OrganizationController.cs",
+              "RelativeDocumentMoniker": "Developer Service\\Controllers\\OrganizationController\\OrganizationController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\Controllers\\OrganizationController\\OrganizationController.cs",
+              "RelativeToolTip": "Developer Service\\Controllers\\OrganizationController\\OrganizationController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T14:09:33.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrganizationRepository.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Repository\\OrganizationRepository\\OrganizationRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Repository\\OrganizationRepository\\OrganizationRepository.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Repository\\OrganizationRepository\\OrganizationRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Repository\\OrganizationRepository\\OrganizationRepository.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAWwC4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T10:35:14.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AddSubscriptionDTO.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\DTOs\\AddSubscriptionDTO.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\AddSubscriptionDTO.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\DTOs\\AddSubscriptionDTO.cs",
+              "RelativeToolTip": "Application\\DTOs\\AddSubscriptionDTO.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T05:20:36.71Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IOrganizationServices.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\Interfaces\\IService\\IOrganizationServices.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IService\\IOrganizationServices.cs",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\Interfaces\\IService\\IOrganizationServices.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IService\\IOrganizationServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T12:36:40.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DeveloperService.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+              "RelativeDocumentMoniker": "Developer Service\\DeveloperService.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+              "RelativeToolTip": "Developer Service\\DeveloperService.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T12:49:34.991Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Application.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\Developer Service\\Application\\Application.csproj",
+              "RelativeDocumentMoniker": "Application\\Application.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\Developer Service\\Application\\Application.csproj",
+              "RelativeToolTip": "Application\\Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T12:21:06.282Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

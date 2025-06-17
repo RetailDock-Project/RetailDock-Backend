@@ -1,0 +1,12 @@
+D:\RetailDock\services\BillingService\EventContract\bin\Debug\net8.0\EventContracts.deps.json
+D:\RetailDock\services\BillingService\EventContract\bin\Debug\net8.0\EventContracts.dll
+D:\RetailDock\services\BillingService\EventContract\bin\Debug\net8.0\EventContracts.pdb
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.AssemblyInfoInputs.cache
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.AssemblyInfo.cs
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.csproj.CoreCompileInputs.cache
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.sourcelink.json
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.dll
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\refint\EventContracts.dll
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.pdb
+D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\ref\EventContracts.dll

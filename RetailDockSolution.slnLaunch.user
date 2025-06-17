@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "..\\..\\RetailDock\\services\\IdentityService\\IdentityService\\IdentityService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\..\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\..\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

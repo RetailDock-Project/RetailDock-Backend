@@ -1,0 +1,12 @@
+D:\RetailDock\services\IdentityService\Common\bin\Debug\net8.0\Common.deps.json
+D:\RetailDock\services\IdentityService\Common\bin\Debug\net8.0\Common.dll
+D:\RetailDock\services\IdentityService\Common\bin\Debug\net8.0\Common.pdb
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.AssemblyInfoInputs.cache
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.AssemblyInfo.cs
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.csproj.CoreCompileInputs.cache
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.sourcelink.json
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.dll
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\refint\Common.dll
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.pdb
+D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\ref\Common.dll
