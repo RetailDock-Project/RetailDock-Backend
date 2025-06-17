@@ -50,7 +50,7 @@
 
 | Layer             | Tech                              |
 |------------------|------------------------------------|
-| **Frontend**      | ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&style=flat-square) + Bootstrap 5 |
+| **Frontend**      | ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&style=flat-square) |
 | **Microservices** | ![.NET Core](https://img.shields.io/badge/-ASP.NET%20Core-512BD4?logo=dotnet&style=flat-square) |
 | **Database**      | ![MySQL](https://img.shields.io/badge/-MySQL-00618A?logo=mysql&style=flat-square) |
 | **ORM**           | ![EF Core](https://img.shields.io/badge/-EF%20Core-512BD4?logo=dotnet&style=flat-square) |
