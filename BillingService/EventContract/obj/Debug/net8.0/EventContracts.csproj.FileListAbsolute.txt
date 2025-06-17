@@ -10,3 +10,15 @@ D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContra
 D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\refint\EventContracts.dll
 D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.pdb
 D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\ref\EventContracts.dll
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\bin\Debug\net8.0\EventContracts.deps.json
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\bin\Debug\net8.0\EventContracts.dll
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\bin\Debug\net8.0\EventContracts.pdb
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.AssemblyInfoInputs.cache
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.AssemblyInfo.cs
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.csproj.CoreCompileInputs.cache
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.sourcelink.json
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.dll
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\refint\EventContracts.dll
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.pdb
+C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\ref\EventContracts.dll

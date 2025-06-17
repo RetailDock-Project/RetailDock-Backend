@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj": {
+    "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\obj\\",
+        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj"
+              "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj"
               }
             }
           }
@@ -107,20 +107,20 @@
         }
       }
     },
-    "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj": {
+    "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\obj\\",
+        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -194,20 +194,20 @@
         }
       }
     },
-    "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-        "outputPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Infrastructure\\obj\\",
+        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -222,11 +222,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj": {
-                "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Application\\Application.csproj"
+              "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Application\\Application.csproj": {
+                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Application\\Application.csproj"
               },
-              "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj"
+              "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\Domain\\Domain.csproj"
               }
             }
           }

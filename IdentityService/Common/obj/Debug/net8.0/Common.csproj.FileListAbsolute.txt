@@ -10,3 +10,15 @@ D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.dll
 D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\refint\Common.dll
 D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\Common.pdb
 D:\RetailDock\services\IdentityService\Common\obj\Debug\net8.0\ref\Common.dll
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\bin\Debug\net8.0\Common.deps.json
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\bin\Debug\net8.0\Common.dll
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\bin\Debug\net8.0\Common.pdb
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.AssemblyInfoInputs.cache
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.AssemblyInfo.cs
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.csproj.CoreCompileInputs.cache
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.sourcelink.json
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.dll
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\refint\Common.dll
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\Common.pdb
+C:\RetailDock\RetailDock-Backend\IdentityService\Common\obj\Debug\net8.0\ref\Common.dll

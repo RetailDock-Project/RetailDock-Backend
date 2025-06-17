@@ -10,3 +10,15 @@ D:\RetailDock\services\BillingService\Domain\obj\Debug\net8.0\Domain.dll
 D:\RetailDock\services\BillingService\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\RetailDock\services\BillingService\Domain\obj\Debug\net8.0\Domain.pdb
 D:\RetailDock\services\BillingService\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\bin\Debug\net8.0\Domain.dll
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\bin\Debug\net8.0\Domain.pdb
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.dll
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\Domain.pdb
+C:\RetailDock\RetailDock-Backend\BillingService\Domain\obj\Debug\net8.0\ref\Domain.dll

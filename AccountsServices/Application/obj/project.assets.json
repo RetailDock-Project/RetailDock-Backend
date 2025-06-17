@@ -1313,23 +1313,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abdul\\.nuget\\packages\\": {},
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Application\\obj\\",
+      "projectPath": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1344,11 +1344,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj": {
-              "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Common\\Common.csproj"
+            "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Common\\Common.csproj": {
+              "projectPath": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Common\\Common.csproj"
             },
-            "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Domain\\Domain.csproj"
+            "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Domain\\Domain.csproj"
             }
           }
         }

@@ -572,8 +572,7 @@
             "nullable": true
           },
           "returnPayment": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/PaymentMode"
           },
           "text": {
             "type": "string",
@@ -647,6 +646,10 @@
             "type": "string",
             "format": "uuid"
           },
+          "unitId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "quantity": {
             "type": "number",
             "format": "double"
@@ -684,7 +687,8 @@
           },
           "dueDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "saleItems": {
             "type": "array",
