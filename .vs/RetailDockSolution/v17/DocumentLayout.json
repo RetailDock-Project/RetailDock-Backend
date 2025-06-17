@@ -4,6 +4,27 @@
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,8 +34,92 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductConsumerService.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
+              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T07:28:10.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T07:26:29.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
+              "ToolTip": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T07:14:28.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "API.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-17T07:10:11.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
+              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T07:04:34.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BillingService.csproj",
+              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
+              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-17T06:55:47.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T06:52:47.811Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
