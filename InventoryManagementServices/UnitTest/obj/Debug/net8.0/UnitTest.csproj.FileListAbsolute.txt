@@ -10,3 +10,15 @@ D:\RetailDock\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\Uni
 D:\RetailDock\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\refint\UnitTest.dll
 D:\RetailDock\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.pdb
 D:\RetailDock\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\ref\UnitTest.dll
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\bin\Debug\net8.0\UnitTest.deps.json
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\bin\Debug\net8.0\UnitTest.dll
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\bin\Debug\net8.0\UnitTest.pdb
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.AssemblyInfoInputs.cache
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.AssemblyInfo.cs
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.csproj.CoreCompileInputs.cache
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.sourcelink.json
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.dll
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\refint\UnitTest.dll
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\UnitTest.pdb
+D:\RetailDock-Backend\services\InventoryManagementServices\UnitTest\obj\Debug\net8.0\ref\UnitTest.dll
