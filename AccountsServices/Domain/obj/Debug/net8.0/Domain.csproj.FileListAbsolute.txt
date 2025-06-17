@@ -11,6 +11,7 @@ D:\RetailDock\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.dll
 D:\RetailDock\services\AccountsServices\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\RetailDock\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.pdb
 D:\RetailDock\services\AccountsServices\Domain\obj\Debug\net8.0\ref\Domain.dll
+<<<<<<< HEAD
 C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\bin\Debug\net8.0\Domain.deps.json
 C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\bin\Debug\net8.0\Domain.dll
 C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\bin\Debug\net8.0\Domain.pdb
@@ -24,3 +25,18 @@ C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\obj\Debug\net8.0\Domain
 C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\obj\Debug\net8.0\Domain.pdb
 C:\RetailDock\RetailDock-Backend\AccountsServices\Domain\obj\Debug\net8.0\ref\Domain.dll
+=======
+D:\RetailDock-Backend\services\AccountsServices\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\RetailDock-Backend\services\AccountsServices\Domain\bin\Debug\net8.0\Domain.dll
+D:\RetailDock-Backend\services\AccountsServices\Domain\bin\Debug\net8.0\Domain.pdb
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.dll
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\Domain.pdb
+D:\RetailDock-Backend\services\AccountsServices\Domain\obj\Debug\net8.0\ref\Domain.dll
+>>>>>>> 7a93f5c5753fd5b531407e80bceb169b7565e8da

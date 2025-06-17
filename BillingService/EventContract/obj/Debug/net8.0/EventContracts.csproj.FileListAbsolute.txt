@@ -10,6 +10,7 @@ D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContra
 D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\refint\EventContracts.dll
 D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.pdb
 D:\RetailDock\services\BillingService\EventContract\obj\Debug\net8.0\ref\EventContracts.dll
+<<<<<<< HEAD
 C:\RetailDock\RetailDock-Backend\BillingService\EventContract\bin\Debug\net8.0\EventContracts.deps.json
 C:\RetailDock\RetailDock-Backend\BillingService\EventContract\bin\Debug\net8.0\EventContracts.dll
 C:\RetailDock\RetailDock-Backend\BillingService\EventContract\bin\Debug\net8.0\EventContracts.pdb
@@ -22,3 +23,17 @@ C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\E
 C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\refint\EventContracts.dll
 C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\EventContracts.pdb
 C:\RetailDock\RetailDock-Backend\BillingService\EventContract\obj\Debug\net8.0\ref\EventContracts.dll
+=======
+D:\RetailDock-Backend\services\BillingService\EventContract\bin\Debug\net8.0\EventContracts.deps.json
+D:\RetailDock-Backend\services\BillingService\EventContract\bin\Debug\net8.0\EventContracts.dll
+D:\RetailDock-Backend\services\BillingService\EventContract\bin\Debug\net8.0\EventContracts.pdb
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.AssemblyInfoInputs.cache
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.AssemblyInfo.cs
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.csproj.CoreCompileInputs.cache
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.sourcelink.json
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.dll
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\refint\EventContracts.dll
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\EventContracts.pdb
+D:\RetailDock-Backend\services\BillingService\EventContract\obj\Debug\net8.0\ref\EventContracts.dll
+>>>>>>> 7a93f5c5753fd5b531407e80bceb169b7565e8da

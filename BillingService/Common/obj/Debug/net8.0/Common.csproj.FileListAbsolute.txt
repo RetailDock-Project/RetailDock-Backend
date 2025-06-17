@@ -14,6 +14,7 @@ D:\RetailDock\services\BillingService\Common\obj\Debug\net8.0\Common.dll
 D:\RetailDock\services\BillingService\Common\obj\Debug\net8.0\refint\Common.dll
 D:\RetailDock\services\BillingService\Common\obj\Debug\net8.0\Common.pdb
 D:\RetailDock\services\BillingService\Common\obj\Debug\net8.0\ref\Common.dll
+<<<<<<< HEAD
 C:\RetailDock\RetailDock-Backend\BillingService\Common\bin\Debug\net8.0\Common.deps.json
 C:\RetailDock\RetailDock-Backend\BillingService\Common\bin\Debug\net8.0\Common.dll
 C:\RetailDock\RetailDock-Backend\BillingService\Common\bin\Debug\net8.0\Common.pdb
@@ -30,3 +31,21 @@ C:\RetailDock\RetailDock-Backend\BillingService\Common\obj\Debug\net8.0\Common.d
 C:\RetailDock\RetailDock-Backend\BillingService\Common\obj\Debug\net8.0\refint\Common.dll
 C:\RetailDock\RetailDock-Backend\BillingService\Common\obj\Debug\net8.0\Common.pdb
 C:\RetailDock\RetailDock-Backend\BillingService\Common\obj\Debug\net8.0\ref\Common.dll
+=======
+D:\RetailDock-Backend\services\BillingService\Common\bin\Debug\net8.0\Common.deps.json
+D:\RetailDock-Backend\services\BillingService\Common\bin\Debug\net8.0\Common.dll
+D:\RetailDock-Backend\services\BillingService\Common\bin\Debug\net8.0\Common.pdb
+D:\RetailDock-Backend\services\BillingService\Common\bin\Debug\net8.0\Domain.dll
+D:\RetailDock-Backend\services\BillingService\Common\bin\Debug\net8.0\Domain.pdb
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.csproj.AssemblyReference.cache
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.AssemblyInfoInputs.cache
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.AssemblyInfo.cs
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.csproj.CoreCompileInputs.cache
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.sourcelink.json
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.csproj.Up2Date
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.dll
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\refint\Common.dll
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\Common.pdb
+D:\RetailDock-Backend\services\BillingService\Common\obj\Debug\net8.0\ref\Common.dll
+>>>>>>> 7a93f5c5753fd5b531407e80bceb169b7565e8da

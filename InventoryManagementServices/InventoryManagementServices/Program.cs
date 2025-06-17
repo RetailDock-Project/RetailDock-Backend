@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Data;
 using API.Services;
+using Grpc.Net.Client;
+using Grpc.Core;
 using Application.Interfaces;
 using Application.Interfaces.IRepository;
 using Application.Interfaces.IServices;
@@ -33,6 +35,12 @@ namespace InventoryManagementServices
             builder.Services.AddSwaggerGen();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+            builder.Services.AddGrpcClient<AccountingGrpc.LedgerService.LedgerServiceClient>(options =>
+            {
+                options.Address = new Uri("https://localhost:5000"); // Update this to correct Inventory Service URL
+            });
+
+
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -57,6 +65,7 @@ namespace InventoryManagementServices
             builder.Services.AddScoped<IInvoiceNumberGenerator, InvoiceNumberGenerator>();
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
             builder.Services.AddScoped<ISupplierService, SupplierService>();
+            builder.Services.AddScoped<LedgerConsumerService>();
 
 
 
