@@ -6,25 +6,25 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj|d:\\retaildock\\services\\billingservice\\billingservice\\services\\productconsumerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock\\services\\inventorymanagementservices\\inventorymanagementservices\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock\\services\\inventorymanagementservices\\inventorymanagementservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock\\services\\inventorymanagementservices\\inventorymanagementservices\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj|d:\\retaildock\\services\\billingservice\\billingservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj|d:\\retaildock\\services\\billingservice\\billingservice\\billingservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj|d:\\retaildock\\services\\billingservice\\billingservice\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [

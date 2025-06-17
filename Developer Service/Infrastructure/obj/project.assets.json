@@ -3140,11 +3140,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock\\services\\Developer Service\\Infrastructure\\obj\\",
+      "outputPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3165,11 +3165,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock\\services\\Developer Service\\Application\\Application.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\Developer Service\\Application\\Application.csproj"
+            "D:\\RetailDock-Backend\\services\\Developer Service\\Application\\Application.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Application\\Application.csproj"
             },
-            "D:\\RetailDock\\services\\Developer Service\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\Developer Service\\Domain\\Domain.csproj"
+            "D:\\RetailDock-Backend\\services\\Developer Service\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Domain\\Domain.csproj"
             }
           }
         }

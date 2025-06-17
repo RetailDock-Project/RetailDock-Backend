@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F048SmZwQNE=",
+  "dgSpecHash": "yNvd3f0KbBA=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\InventoryManagementServices\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\barcodelib\\2.2.5\\barcodelib.2.2.5.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lj15IbgdHWU=",
+  "dgSpecHash": "v+QTFuEyb48=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\AccountsServices\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",

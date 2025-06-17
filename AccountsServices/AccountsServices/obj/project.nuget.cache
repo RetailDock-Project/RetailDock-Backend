@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7Db2igRooM8=",
+  "dgSpecHash": "+V4++CO2s1E=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",

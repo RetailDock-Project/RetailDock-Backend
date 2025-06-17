@@ -5,65 +5,65 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityService", "IdentityService", "{F1DE54C2-72AB-4AC4-AD9A-5377DD4F1211}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\..\RetailDock\services\IdentityService\Application\Application.csproj", "{8853CD64-96CA-4AD4-98F4-CACB28EF4548}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "IdentityService\Application\Application.csproj", "{8853CD64-96CA-4AD4-98F4-CACB28EF4548}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\RetailDock\services\IdentityService\Common\Common.csproj", "{35C88E3F-3964-4680-96D9-CBEA6AE9E96F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "IdentityService\Common\Common.csproj", "{35C88E3F-3964-4680-96D9-CBEA6AE9E96F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\..\RetailDock\services\IdentityService\Domain\Domain.csproj", "{DD271E1A-C44E-4203-A720-1BDD0550D41D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "IdentityService\Domain\Domain.csproj", "{DD271E1A-C44E-4203-A720-1BDD0550D41D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "..\..\RetailDock\services\IdentityService\IdentityService\IdentityService.csproj", "{FDFB68FA-AD0A-46D4-8820-38E63869EBD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "IdentityService\IdentityService\IdentityService.csproj", "{FDFB68FA-AD0A-46D4-8820-38E63869EBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\..\RetailDock\services\IdentityService\Infrastructure\Infrastructure.csproj", "{F9BD51A8-3179-430D-9E44-7FA4F7C0BAF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "IdentityService\Infrastructure\Infrastructure.csproj", "{F9BD51A8-3179-430D-9E44-7FA4F7C0BAF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeveloperService", "DeveloperService", "{087FD5EA-EBE4-4E35-B5DC-B9F180C62734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\..\RetailDock\services\Developer Service\Application\Application.csproj", "{14AF9359-4F88-4936-B7B7-D3E4DD332E24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Developer Service\Application\Application.csproj", "{14AF9359-4F88-4936-B7B7-D3E4DD332E24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\RetailDock\services\Developer Service\Common\Common.csproj", "{361D767E-8B0D-4C96-8A47-9C1F251B54CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Developer Service\Common\Common.csproj", "{361D767E-8B0D-4C96-8A47-9C1F251B54CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperService", "..\..\RetailDock\services\Developer Service\Developer Service\DeveloperService.csproj", "{EF9392EF-373B-49CB-BCFA-3F8C92C2EEB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperService", "Developer Service\Developer Service\DeveloperService.csproj", "{EF9392EF-373B-49CB-BCFA-3F8C92C2EEB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\..\RetailDock\services\Developer Service\Domain\Domain.csproj", "{B396E604-6C31-467E-B00B-4C9001836036}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Developer Service\Domain\Domain.csproj", "{B396E604-6C31-467E-B00B-4C9001836036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\..\RetailDock\services\Developer Service\Infrastructure\Infrastructure.csproj", "{DC434163-7B9E-47A7-B1AB-A754EDB8EDBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Developer Service\Infrastructure\Infrastructure.csproj", "{DC434163-7B9E-47A7-B1AB-A754EDB8EDBB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillingService", "BillingService", "{7DEEC11D-8474-4B47-BC27-3BBA8AE8C279}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\..\RetailDock\services\BillingService\Application\Application.csproj", "{7F9F1BC8-812D-46AD-B435-31776FD11D16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "BillingService\Application\Application.csproj", "{7F9F1BC8-812D-46AD-B435-31776FD11D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingService", "..\..\RetailDock\services\BillingService\BillingService\BillingService.csproj", "{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillingService", "BillingService\BillingService\BillingService.csproj", "{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\RetailDock\services\BillingService\Common\Common.csproj", "{4F5C16F4-E3B5-4B6D-890E-E81B4A509442}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "BillingService\Common\Common.csproj", "{4F5C16F4-E3B5-4B6D-890E-E81B4A509442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\..\RetailDock\services\BillingService\Domain\Domain.csproj", "{BD577E17-8369-4363-AD78-A8EE91B54BF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "BillingService\Domain\Domain.csproj", "{BD577E17-8369-4363-AD78-A8EE91B54BF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventContracts", "..\..\RetailDock\services\BillingService\EventContract\EventContracts.csproj", "{D85D689C-2E7A-4734-A17A-32D94BF4746A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventContracts", "BillingService\EventContract\EventContracts.csproj", "{D85D689C-2E7A-4734-A17A-32D94BF4746A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\..\RetailDock\services\BillingService\Infrastructure\Infrastructure.csproj", "{C9B9E8CA-9207-462C-8F22-62E1EE898530}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "BillingService\Infrastructure\Infrastructure.csproj", "{C9B9E8CA-9207-462C-8F22-62E1EE898530}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryService", "InventoryService", "{49445DED-4730-4DD0-A419-6A17659A86C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\..\RetailDock\services\InventoryManagementServices\Application\Application.csproj", "{54DC0720-95D6-4E0D-86A4-B31F61FF5A7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "InventoryManagementServices\Application\Application.csproj", "{54DC0720-95D6-4E0D-86A4-B31F61FF5A7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\..\RetailDock\services\InventoryManagementServices\Domain\Domain.csproj", "{AAB42787-2439-4D2F-A18B-55BA62ECCB0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "InventoryManagementServices\Domain\Domain.csproj", "{AAB42787-2439-4D2F-A18B-55BA62ECCB0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\..\RetailDock\services\InventoryManagementServices\Infrastructure\Infrastructure.csproj", "{268A8A1A-5D02-40E1-9CB0-C5963174606F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "InventoryManagementServices\Infrastructure\Infrastructure.csproj", "{268A8A1A-5D02-40E1-9CB0-C5963174606F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "..\..\RetailDock\services\InventoryManagementServices\InventoryManagementServices\API.csproj", "{D03F492C-8492-49FE-997A-910B53F6A2A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "InventoryManagementServices\InventoryManagementServices\API.csproj", "{D03F492C-8492-49FE-997A-910B53F6A2A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\..\RetailDock\services\InventoryManagementServices\UnitTest\UnitTest.csproj", "{49B02243-1BA9-4B74-8366-C2138E0C2B3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "InventoryManagementServices\UnitTest\UnitTest.csproj", "{49B02243-1BA9-4B74-8366-C2138E0C2B3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccountsService", "AccountsService", "{6E457365-2209-4AD0-85FB-8BCF0B84293B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsServices", "..\..\RetailDock\services\AccountsServices\AccountsServices\AccountsServices.csproj", "{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsServices", "AccountsServices\AccountsServices\AccountsServices.csproj", "{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\..\RetailDock\services\AccountsServices\Application\Application.csproj", "{F5B3909A-4D82-4021-81F2-02958E54B6A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "AccountsServices\Application\Application.csproj", "{F5B3909A-4D82-4021-81F2-02958E54B6A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\RetailDock\services\AccountsServices\Common\Common.csproj", "{58ACDD98-DFE6-498F-92A5-4FAE510F2BDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "AccountsServices\Common\Common.csproj", "{58ACDD98-DFE6-498F-92A5-4FAE510F2BDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\..\RetailDock\services\AccountsServices\Domain\Domain.csproj", "{F4140B67-3F77-4D94-A3E2-FB2BCD27D428}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "AccountsServices\Domain\Domain.csproj", "{F4140B67-3F77-4D94-A3E2-FB2BCD27D428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\..\RetailDock\services\AccountsServices\Infrastructure\Infrastructure.csproj", "{1627A3F4-D1C7-4EAB-A380-2162949C80F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "AccountsServices\Infrastructure\Infrastructure.csproj", "{1627A3F4-D1C7-4EAB-A380-2162949C80F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DGjc5J9oD54=",
+  "dgSpecHash": "U5hMHdDvd1A=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\BillingService\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

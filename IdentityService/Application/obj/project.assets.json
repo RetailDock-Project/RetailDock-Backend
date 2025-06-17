@@ -646,11 +646,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock\\services\\IdentityService\\Application\\Application.csproj",
+      "projectUniqueName": "D:\\RetailDock-Backend\\services\\IdentityService\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\RetailDock\\services\\IdentityService\\Application\\Application.csproj",
+      "projectPath": "D:\\RetailDock-Backend\\services\\IdentityService\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock\\services\\IdentityService\\Application\\obj\\",
+      "outputPath": "D:\\RetailDock-Backend\\services\\IdentityService\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -671,11 +671,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock\\services\\IdentityService\\Common\\Common.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\IdentityService\\Common\\Common.csproj"
+            "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\Common.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\Common.csproj"
             },
-            "D:\\RetailDock\\services\\IdentityService\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\RetailDock\\services\\IdentityService\\Domain\\Domain.csproj"
+            "D:\\RetailDock-Backend\\services\\IdentityService\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\RetailDock-Backend\\services\\IdentityService\\Domain\\Domain.csproj"
             }
           }
         }

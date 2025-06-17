@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OT4dZpOpT9w=",
+  "dgSpecHash": "YoFFhWRXdbY=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdul\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\abdul\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
