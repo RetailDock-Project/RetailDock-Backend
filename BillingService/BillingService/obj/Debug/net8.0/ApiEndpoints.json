@@ -147,6 +147,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BillingService.Controllers.ProductController",
+    "Method": "GetProducts",
+    "RelativePath": "api/Product/{orgId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orgId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BillingService.Controllers.SaleController",
     "Method": "AddNewSale",
     "RelativePath": "api/Sale/AddNewSale",
