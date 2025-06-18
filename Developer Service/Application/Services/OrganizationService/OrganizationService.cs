@@ -23,11 +23,14 @@ namespace Application.Services.OrganizationService
         private readonly IMapper _mapper;
         private readonly ILogger<OrganizationService> _logger;
         private readonly IRabbitMQProducer _producer;
+        private readonly IOrganizationNotifierGrpcService _notifierGrpc;
 
 
-        public OrganizationService(IOrganizationRepository organizationRepository, ILogger<OrganizationService> logger, IRabbitMQProducer producer)
+
+        public OrganizationService(IOrganizationRepository organizationRepository, ILogger<OrganizationService> logger, IRabbitMQProducer producer, IOrganizationNotifierGrpcService notifierGrpc)
         {
             _organizationRepository = organizationRepository;
+            _notifierGrpc = notifierGrpc;
 
             _logger = logger;
             _producer = producer;
@@ -99,7 +102,9 @@ namespace Application.Services.OrganizationService
                 var result = await _organizationRepository.AddCompanyWithSubscriptionAsync(newOrganization, newSubscription);
                 var organizationSubscribeEvent = new OrganizationSubscribedEvent {OrganizationId= newOrganization.OrganizationId,UserId= UserId };
                 _producer.Publish(organizationSubscribeEvent);
-                
+                await _notifierGrpc.NotifyOrganizationCreated(newOrganization.OrganizationId, UserId);
+
+
 
                 if (!result)
                 {

@@ -10,17 +10,24 @@ namespace Application.Dto
     {
         public Guid? Id { get; set; }
         public string Name { get; set; }
+        public Guid LedgerId { get; set; }
+        public decimal? OpeningBalance { get; set; } 
+        public bool? IsDebit { get; set; }           
 
-        public string? PhoneNumber { get; set; }
-        public string? Email { get; set; }
-
+        public string? ContactName { get; set; }
+        public string? ContactNumber { get; set; }
         public string? Address { get; set; }
         public string? City { get; set; }
         public string? State { get; set; }
         public string? Country { get; set; }
         public string? Pincode { get; set; }
-
         public string? GSTNumber { get; set; }
+        public string? BankName { get; set; }
+        public string? AccountNumber { get; set; }
+        public string? IFSCCode { get; set; }
+        public string? UPIId { get; set; }
+        public string? Email { get; set; }
+
 
     }
 }

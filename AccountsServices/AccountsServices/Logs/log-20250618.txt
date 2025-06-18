@@ -95,3 +95,14 @@
 2025-06-18 11:13:08.995 +05:30 [INF] Executing endpoint 'gRPC - /LedgerService/GetPurchaseLedgers'
 2025-06-18 11:13:11.274 +05:30 [INF] Executed endpoint 'gRPC - /LedgerService/GetPurchaseLedgers'
 2025-06-18 11:13:11.276 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7117/LedgerService/GetPurchaseLedgers - 200 null application/grpc 2287.4001ms
+2025-06-18 16:53:05.105 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/favicon.ico - null null
+2025-06-18 16:53:06.047 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/favicon.ico - 404 0 null 976.7106ms
+2025-06-18 16:53:06.192 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7117/favicon.ico, Response status code: 404
+2025-06-18 17:30:48.623 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/index.html - null null
+2025-06-18 17:30:48.922 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/index.html - 200 null text/html;charset=utf-8 305.1932ms
+2025-06-18 17:30:49.046 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_vs/browserLink - null null
+2025-06-18 17:30:49.046 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 17:30:49.081 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 35.8396ms
+2025-06-18 17:30:49.135 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_vs/browserLink - 200 null text/javascript; charset=UTF-8 89.9891ms
+2025-06-18 17:30:49.343 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - null null
+2025-06-18 17:30:49.553 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 209.3873ms

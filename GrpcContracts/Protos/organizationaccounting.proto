@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "OrganizationAccounting";
+
+package organization;
+
+service OrganizationNotifier {
+  rpc NotifyOrganizationCreated (OrganizationCreatedRequest) returns (OrganizationCreatedResponse);
+}
+
+message OrganizationCreatedRequest {
+  string organizationId = 1;
+  string userId = 2;
+}
+
+message OrganizationCreatedResponse {
+  bool success = 1;
+  string message = 2;
+}
