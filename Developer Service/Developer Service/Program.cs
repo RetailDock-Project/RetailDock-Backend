@@ -1,7 +1,11 @@
+using Application.Interfaces.IRepository;
 using Developer_Service.Extensions;
 using Infrastructure.Messaging;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using OrganizationAccounting;
+using Grpc.Net.ClientFactory;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -14,6 +18,12 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .MinimumLevel.Information()
     .CreateLogger();
+builder.Services.AddGrpcClient<OrganizationAccounting.OrganizationNotifier.OrganizationNotifierClient>(options =>
+{
+    options.Address = new Uri(builder.Configuration["GrpcSettings:AccountingServiceUrl"]);
+});
+builder.Services.AddScoped<IOrganizationNotifierGrpcService, OrganizationGrpcClient>();
+
 
 builder.Host.UseSerilog();
 builder.Services.AddApplicationServices();
