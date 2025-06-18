@@ -369,28 +369,6 @@
         }
       }
     },
-    "/api/Ledger/get/ledgers/purchase": {
-      "get": {
-        "tags": [
-          "Ledger"
-        ],
-        "parameters": [
-          {
-            "name": "OrganizationId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Ledger/get/ledgers/debtors": {
       "get": {
         "tags": [

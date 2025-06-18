@@ -271,22 +271,6 @@
   },
   {
     "ContainingType": "AccountsServices.Controllers.LedgerController",
-    "Method": "GetledgersUnderPurchase",
-    "RelativePath": "api/Ledger/get/ledgers/purchase",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "OrganizationId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AccountsServices.Controllers.LedgerController",
     "Method": "GetledgersUnderSalkes",
     "RelativePath": "api/Ledger/get/ledgers/sales",
     "HttpMethod": "GET",
