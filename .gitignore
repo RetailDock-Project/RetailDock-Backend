@@ -3,9 +3,10 @@
 *.suo
 *.user
 
-# Build
+# Build output
 bin/
 obj/
+*.csproj.FileListAbsolute.txt
 
 # Logs and temp files
 *.log
