@@ -58,12 +58,12 @@ namespace AccountsServices.Controllers
             var result = await _ledgerServices.GetSalesAcoountLedgerts(OrganizationId);
             return StatusCode(result.StatusCode, result);
         }
-        [HttpGet("get/ledgers/purchase")]
-        public async Task<IActionResult> GetledgersUnderPurchase(Guid OrganizationId)
-        {
-            var result = await _ledgerServices.GetPurchaseAccountLedgerts(OrganizationId);
-            return StatusCode(result.StatusCode, result);
-        }
+        //[HttpGet("get/ledgers/purchase")]
+        //public async Task<IActionResult> GetledgersUnderPurchase(Guid OrganizationId)
+        //{
+        //    var result = await _ledgerServices.GetPurchaseAccountLedgerts(OrganizationId);
+        //    return StatusCode(result.StatusCode, result);
+        //}
         [HttpGet("get/ledgers/debtors")]
         public async Task<IActionResult> GetDebtors(Guid OrganizationId)
         {
