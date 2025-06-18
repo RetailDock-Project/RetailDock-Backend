@@ -3,23 +3,23 @@
     "Name": "New Profile",
     "Projects": [
       {
-        "Path": "..\\..\\RetailDock\\services\\IdentityService\\IdentityService\\IdentityService.csproj",
+        "Path": "IdentityService\\IdentityService\\IdentityService.csproj",
         "Action": "Start"
       },
       {
-        "Path": "..\\..\\RetailDock\\services\\Developer Service\\Developer Service\\DeveloperService.csproj",
+        "Path": "Developer Service\\Developer Service\\DeveloperService.csproj",
         "Action": "Start"
       },
       {
-        "Path": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
-        "Action": "Start"
+        "Path": "BillingService\\BillingService\\BillingService.csproj",
+        "Action": "StartWithoutDebugging"
       },
       {
-        "Path": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-        "Action": "Start"
+        "Path": "InventoryManagementServices\\InventoryManagementServices\\API.csproj",
+        "Action": "StartWithoutDebugging"
       },
       {
-        "Path": "..\\..\\RetailDock\\services\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+        "Path": "AccountsServices\\AccountsServices\\AccountsServices.csproj",
         "Action": "Start"
       }
     ]

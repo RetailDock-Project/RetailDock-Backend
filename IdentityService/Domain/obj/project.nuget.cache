@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y7G9NTw6MTw=",
+  "dgSpecHash": "zDRCsKtjHug=",
   "success": true,
-  "projectFilePath": "C:\\RetailDock\\RetailDock-Backend\\IdentityService\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\IdentityService\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

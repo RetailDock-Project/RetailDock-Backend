@@ -30,7 +30,7 @@ var app = builder.Build();
 
 
 
-//app.MapGrpcService<LedgergRPCService>();
+app.MapGrpcService<LedgergRPCService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

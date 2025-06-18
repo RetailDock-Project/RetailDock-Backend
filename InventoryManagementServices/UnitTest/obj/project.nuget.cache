@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9VhZlbJIF0E=",
+  "dgSpecHash": "WmgoDbVM4D0=",
   "success": true,
-  "projectFilePath": "C:\\RetailDock\\RetailDock-Backend\\InventoryManagementServices\\UnitTest\\UnitTest.csproj",
+  "projectFilePath": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\UnitTest\\UnitTest.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

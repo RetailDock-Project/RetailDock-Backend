@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\RetailDock\\RetailDock-Backend\\BillingService\\BillingService\\BillingService.csproj": {}
+    "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj": {}
   },
   "projects": {
-    "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\obj\\",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Common\\Common.csproj": {
-                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Common\\Common.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj"
               }
             }
           }
@@ -87,20 +87,20 @@
         }
       }
     },
-    "C:\\RetailDock\\RetailDock-Backend\\BillingService\\BillingService\\BillingService.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\BillingService\\BillingService.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj",
         "projectName": "BillingService",
-        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\BillingService\\BillingService.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\BillingService\\obj\\",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -115,11 +115,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj": {
-                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj"
               },
-              "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Infrastructure\\Infrastructure.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -204,20 +204,20 @@
         }
       }
     },
-    "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Common\\Common.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Common\\obj\\",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -232,8 +232,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj"
               }
             }
           }
@@ -279,20 +279,20 @@
         }
       }
     },
-    "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\obj\\",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -344,20 +344,20 @@
         }
       }
     },
-    "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\RetailDock-Backend\\services\\BillingService\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\BillingService\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Infrastructure\\obj\\",
+        "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\BillingService\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -372,11 +372,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj": {
-                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Application\\Application.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Application\\Application.csproj"
               },
-              "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\Domain\\Domain.csproj"
+              "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\RetailDock-Backend\\services\\BillingService\\Domain\\Domain.csproj"
               }
             }
           }

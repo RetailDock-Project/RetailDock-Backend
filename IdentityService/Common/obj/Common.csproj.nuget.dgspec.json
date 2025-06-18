@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\RetailDock\\RetailDock-Backend\\IdentityService\\Common\\Common.csproj": {}
+    "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\Common.csproj": {}
   },
   "projects": {
-    "C:\\RetailDock\\RetailDock-Backend\\IdentityService\\Common\\Common.csproj": {
+    "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\IdentityService\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "C:\\RetailDock\\RetailDock-Backend\\IdentityService\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\RetailDock\\RetailDock-Backend\\IdentityService\\Common\\obj\\",
+        "projectPath": "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
+        "outputPath": "D:\\RetailDock-Backend\\services\\IdentityService\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
