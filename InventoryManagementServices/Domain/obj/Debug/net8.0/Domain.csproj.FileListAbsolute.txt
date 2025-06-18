@@ -11,6 +11,21 @@ D:\RetailDock\services\InventoryManagementServices\Domain\obj\Debug\net8.0\Domai
 D:\RetailDock\services\InventoryManagementServices\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\RetailDock\services\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.pdb
 D:\RetailDock\services\InventoryManagementServices\Domain\obj\Debug\net8.0\ref\Domain.dll
+<<<<<<< HEAD
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\bin\Debug\net8.0\Domain.dll
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\bin\Debug\net8.0\Domain.pdb
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.dll
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.pdb
+C:\RetailDock\RetailDock-Backend\InventoryManagementServices\Domain\obj\Debug\net8.0\ref\Domain.dll
+=======
 D:\RetailDock-Backend\services\InventoryManagementServices\Domain\bin\Debug\net8.0\Domain.deps.json
 D:\RetailDock-Backend\services\InventoryManagementServices\Domain\bin\Debug\net8.0\Domain.dll
 D:\RetailDock-Backend\services\InventoryManagementServices\Domain\bin\Debug\net8.0\Domain.pdb
@@ -24,3 +39,4 @@ D:\RetailDock-Backend\services\InventoryManagementServices\Domain\obj\Debug\net8
 D:\RetailDock-Backend\services\InventoryManagementServices\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\RetailDock-Backend\services\InventoryManagementServices\Domain\obj\Debug\net8.0\Domain.pdb
 D:\RetailDock-Backend\services\InventoryManagementServices\Domain\obj\Debug\net8.0\ref\Domain.dll
+>>>>>>> 7a93f5c5753fd5b531407e80bceb169b7565e8da

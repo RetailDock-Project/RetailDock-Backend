@@ -1,70 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\RetailDock-Backend\\services\\",
+  "WorkspaceRootPath": "C:\\RetailDock\\RetailDock-Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock-backend\\services\\inventorymanagementservices\\inventorymanagementservices\\controllers\\ledgercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|solutionrelative:inventorymanagementservices\\inventorymanagementservices\\controllers\\ledgercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F5B3909A-4D82-4021-81F2-02958E54B6A9}|AccountsServices\\Application\\Application.csproj|c:\\retaildock\\retaildock-backend\\accountsservices\\application\\services\\accountsservice\\ledgerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5B3909A-4D82-4021-81F2-02958E54B6A9}|AccountsServices\\Application\\Application.csproj|solutionrelative:accountsservices\\application\\services\\accountsservice\\ledgerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock-backend\\services\\inventorymanagementservices\\inventorymanagementservices\\services\\ledgerconsumerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|solutionrelative:inventorymanagementservices\\inventorymanagementservices\\services\\ledgerconsumerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|c:\\retaildock\\retaildock-backend\\accountsservices\\accountsservices\\protos\\ledger.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|solutionrelative:accountsservices\\accountsservices\\protos\\ledger.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock-backend\\services\\inventorymanagementservices\\inventorymanagementservices\\protos\\ledger.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|solutionrelative:inventorymanagementservices\\inventorymanagementservices\\protos\\ledger.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|c:\\retaildock\\retaildock-backend\\accountsservices\\accountsservices\\service\\ledgergrpcservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|solutionrelative:accountsservices\\accountsservices\\service\\ledgergrpcservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock-backend\\services\\inventorymanagementservices\\inventorymanagementservices\\protos\\product.proto||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|solutionrelative:inventorymanagementservices\\inventorymanagementservices\\protos\\product.proto||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|c:\\retaildock\\retaildock-backend\\accountsservices\\accountsservices\\controllers\\ledgercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|solutionrelative:accountsservices\\accountsservices\\controllers\\ledgercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock-backend\\services\\inventorymanagementservices\\inventorymanagementservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|solutionrelative:inventorymanagementservices\\inventorymanagementservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|c:\\retaildock\\retaildock-backend\\accountsservices\\accountsservices\\accountsservices.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|solutionrelative:accountsservices\\accountsservices\\accountsservices.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|d:\\retaildock-backend\\services\\inventorymanagementservices\\inventorymanagementservices\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D03F492C-8492-49FE-997A-910B53F6A2A8}|InventoryManagementServices\\InventoryManagementServices\\API.csproj|solutionrelative:inventorymanagementservices\\inventorymanagementservices\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|d:\\retaildock-backend\\services\\billingservice\\billingservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|solutionrelative:billingservice\\billingservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|d:\\retaildock-backend\\services\\billingservice\\billingservice\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|solutionrelative:billingservice\\billingservice\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|d:\\retaildock-backend\\services\\billingservice\\billingservice\\services\\productconsumerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|solutionrelative:billingservice\\billingservice\\services\\productconsumerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|d:\\retaildock-backend\\services\\billingservice\\billingservice\\billingservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{96A4BAE1-75D3-4C4E-8ADA-5FDD52DE89B4}|BillingService\\BillingService\\BillingService.csproj|solutionrelative:billingservice\\billingservice\\billingservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|c:\\retaildock\\retaildock-backend\\accountsservices\\accountsservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33F63A24-1EA6-4B2C-851D-68C0C5EB513A}|AccountsServices\\AccountsServices\\AccountsServices.csproj|solutionrelative:accountsservices\\accountsservices\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,230 +34,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LedgerController.cs",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs",
-              "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs*",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs*",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:17:27.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs*",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Program.cs*",
-              "ViewState": "AgIAABkAAAAAAAAAAAAzwDIAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:23:04.492Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "API.csproj",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAswBgAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T14:21:54.32Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Program.cs",
+              "RelativeDocumentMoniker": "AccountsServices\\AccountsServices\\Program.cs",
+              "ToolTip": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Program.cs",
+              "RelativeToolTip": "AccountsServices\\AccountsServices\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T13:55:15.819Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "product.proto",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Protos\\product.proto",
-              "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Protos\\product.proto",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Protos\\product.proto",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Protos\\product.proto",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-06-17T14:20:17.548Z",
+              "Title": "LedgerController.cs",
+              "DocumentMoniker": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Controllers\\LedgerController.cs",
+              "RelativeDocumentMoniker": "AccountsServices\\AccountsServices\\Controllers\\LedgerController.cs",
+              "ToolTip": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Controllers\\LedgerController.cs*",
+              "RelativeToolTip": "AccountsServices\\AccountsServices\\Controllers\\LedgerController.cs*",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAmwDwAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T15:01:13.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LedgerServices.cs",
+              "DocumentMoniker": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Application\\Services\\AccountsService\\LedgerServices.cs",
+              "RelativeDocumentMoniker": "AccountsServices\\Application\\Services\\AccountsService\\LedgerServices.cs",
+              "ToolTip": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\Application\\Services\\AccountsService\\LedgerServices.cs",
+              "RelativeToolTip": "AccountsServices\\Application\\Services\\AccountsService\\LedgerServices.cs",
+              "ViewState": "AgIAAB0BAAAAAAAAAAAAwEgBAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T15:00:33.93Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LedgerConsumerService.cs",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs",
-              "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs*",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs*",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwB8AAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:19:21.11Z",
+              "Title": "ledger.proto",
+              "DocumentMoniker": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Protos\\ledger.proto",
+              "RelativeDocumentMoniker": "AccountsServices\\AccountsServices\\Protos\\ledger.proto",
+              "ToolTip": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Protos\\ledger.proto",
+              "RelativeToolTip": "AccountsServices\\AccountsServices\\Protos\\ledger.proto",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
+              "WhenOpened": "2025-06-17T14:48:09.341Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ledger.proto",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Protos\\ledger.proto",
-              "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Protos\\ledger.proto",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Protos\\ledger.proto",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Protos\\ledger.proto",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-06-17T14:18:09.064Z",
+              "Title": "LedgergRPCServices.cs",
+              "DocumentMoniker": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Service\\LedgergRPCServices.cs",
+              "RelativeDocumentMoniker": "AccountsServices\\AccountsServices\\Service\\LedgergRPCServices.cs",
+              "ToolTip": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\Service\\LedgergRPCServices.cs*",
+              "RelativeToolTip": "AccountsServices\\AccountsServices\\Service\\LedgergRPCServices.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T14:37:33.776Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductConsumerService.cs",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "RelativeDocumentMoniker": "BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "RelativeToolTip": "BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T13:54:39.569Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\Program.cs",
-              "RelativeDocumentMoniker": "BillingService\\BillingService\\Program.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\Program.cs",
-              "RelativeToolTip": "BillingService\\BillingService\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T13:47:26.104Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T13:40:56.513Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BillingService.csproj",
-              "DocumentMoniker": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj",
-              "RelativeDocumentMoniker": "BillingService\\BillingService\\BillingService.csproj",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\BillingService\\BillingService\\BillingService.csproj",
-              "RelativeToolTip": "BillingService\\BillingService\\BillingService.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAANAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "AccountsServices",
+              "DocumentMoniker": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+              "RelativeDocumentMoniker": "AccountsServices\\AccountsServices\\AccountsServices.csproj",
+              "ToolTip": "C:\\RetailDock\\RetailDock-Backend\\AccountsServices\\AccountsServices\\AccountsServices.csproj",
+              "RelativeToolTip": "AccountsServices\\AccountsServices\\AccountsServices.csproj",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T13:37:09.822Z",
+              "WhenOpened": "2025-06-17T14:35:28.046Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ProductConsumerService.cs",
-              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Services\\ProductConsumerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T07:28:10.905Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T07:26:29.929Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "ToolTip": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAIBJwD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T07:14:28.785Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "API.csproj",
-              "DocumentMoniker": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "ToolTip": "D:\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\InventoryManagementServices\\InventoryManagementServices\\API.csproj",
-              "ViewState": "AgIAABMAAAAAAAAAAABBwCUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T07:10:11.402Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
-              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Program.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAIBJwAQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T07:04:34.93Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "BillingService.csproj",
-              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
-              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\BillingService.csproj",
-              "ViewState": "AgIAAAQAAAAAAAAAAABBwCQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T06:55:47.178Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "ToolTip": "D:\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "..\\..\\RetailDock\\services\\BillingService\\BillingService\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAABRwBkAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T06:52:47.811Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": ".gitignore",
-              "DocumentMoniker": "D:\\RetailDock\\.gitignore",
-              "RelativeDocumentMoniker": "..\\..\\RetailDock\\.gitignore",
-              "ToolTip": "D:\\RetailDock\\.gitignore",
-              "RelativeToolTip": "..\\..\\RetailDock\\.gitignore",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABwAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-06-17T05:31:01.373Z"
             }
           ]
         }

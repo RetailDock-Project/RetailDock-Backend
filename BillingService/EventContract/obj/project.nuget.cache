@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ept2L6oWbm8=",
+  "dgSpecHash": "C78CBcwuf1g=",
   "success": true,
-  "projectFilePath": "D:\\RetailDock-Backend\\services\\BillingService\\EventContract\\EventContracts.csproj",
+  "projectFilePath": "C:\\RetailDock\\RetailDock-Backend\\BillingService\\EventContract\\EventContracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

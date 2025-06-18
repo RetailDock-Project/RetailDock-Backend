@@ -3134,23 +3134,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\abdul\\.nuget\\packages\\": {},
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\abdul\\.nuget\\packages\\",
-      "outputPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Infrastructure\\obj\\",
+      "projectPath": "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Infrastructure\\Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\abdul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3165,11 +3165,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\RetailDock-Backend\\services\\Developer Service\\Application\\Application.csproj": {
-              "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Application\\Application.csproj"
+            "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Application\\Application.csproj": {
+              "projectPath": "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Application\\Application.csproj"
             },
-            "D:\\RetailDock-Backend\\services\\Developer Service\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\RetailDock-Backend\\services\\Developer Service\\Domain\\Domain.csproj"
+            "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\RetailDock\\RetailDock-Backend\\Developer Service\\Domain\\Domain.csproj"
             }
           }
         }

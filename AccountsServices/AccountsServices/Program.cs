@@ -1,5 +1,6 @@
 using System.Data;
 using AccountsService.Extensions;
+using AccountsServices.Service;
 using Infrastructure.DapperContext;
 using Serilog;
 
@@ -22,9 +23,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddGrpc();
 
 
 var app = builder.Build();
+
+
+
+//app.MapGrpcService<LedgergRPCService>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

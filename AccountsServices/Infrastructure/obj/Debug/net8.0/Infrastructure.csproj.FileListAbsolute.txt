@@ -18,6 +18,28 @@ D:\RetailDock\services\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastr
 D:\RetailDock\services\AccountsServices\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 D:\RetailDock\services\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 D:\RetailDock\services\AccountsServices\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+<<<<<<< HEAD
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Application.dll
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Common.dll
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Domain.dll
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Application.pdb
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Common.pdb
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\bin\Debug\net8.0\Domain.pdb
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+C:\RetailDock\RetailDock-Backend\AccountsServices\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+=======
 D:\RetailDock-Backend\services\AccountsServices\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
 D:\RetailDock-Backend\services\AccountsServices\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
 D:\RetailDock-Backend\services\AccountsServices\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
@@ -38,3 +60,4 @@ D:\RetailDock-Backend\services\AccountsServices\Infrastructure\obj\Debug\net8.0\
 D:\RetailDock-Backend\services\AccountsServices\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
 D:\RetailDock-Backend\services\AccountsServices\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
 D:\RetailDock-Backend\services\AccountsServices\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+>>>>>>> 7a93f5c5753fd5b531407e80bceb169b7565e8da
