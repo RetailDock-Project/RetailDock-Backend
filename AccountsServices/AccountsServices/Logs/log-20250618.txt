@@ -1,0 +1,21 @@
+2025-06-18 09:50:30.726 +05:30 [INF] Now listening on: https://localhost:7117
+2025-06-18 09:50:30.770 +05:30 [INF] Now listening on: http://localhost:5019
+2025-06-18 09:50:30.873 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-18 09:50:30.875 +05:30 [INF] Hosting environment: Development
+2025-06-18 09:50:30.876 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\AccountsServices\AccountsServices
+2025-06-18 09:50:31.193 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/index.html - null null
+2025-06-18 09:50:31.438 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/index.html - null null
+2025-06-18 09:50:31.444 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/index.html - 200 null text/html;charset=utf-8 252.4133ms
+2025-06-18 09:50:31.507 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 09:50:31.517 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_vs/browserLink - null null
+2025-06-18 09:50:31.518 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/index.html - 200 null text/html;charset=utf-8 80.4341ms
+2025-06-18 09:50:31.719 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 211.3971ms
+2025-06-18 09:50:31.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 09:50:31.767 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_vs/browserLink - 200 null text/javascript; charset=UTF-8 249.8156ms
+2025-06-18 09:50:31.815 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_vs/browserLink - null null
+2025-06-18 09:50:31.843 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 103.9857ms
+2025-06-18 09:50:31.948 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_vs/browserLink - 200 null text/javascript; charset=UTF-8 133.1921ms
+2025-06-18 09:50:32.610 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - null null
+2025-06-18 09:50:32.646 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.9889ms
+2025-06-18 09:50:33.130 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - null null
+2025-06-18 09:50:33.145 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.5779ms
