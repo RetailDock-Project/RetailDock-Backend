@@ -37,7 +37,7 @@ namespace InventoryManagementServices
 
             builder.Services.AddGrpcClient<AccountingGrpc.LedgerService.LedgerServiceClient>(options =>
             {
-                options.Address = new Uri("https://localhost:5000"); // Update this to correct Inventory Service URL
+                options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
             });
 
 
