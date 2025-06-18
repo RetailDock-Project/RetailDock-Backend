@@ -82,9 +82,9 @@
               "Title": "LedgerController.cs",
               "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs",
               "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs*",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs*",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA8AAAAAAAAAA==",
+              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs",
+              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Controllers\\LedgerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T15:17:27.375Z",
               "EditorCaption": ""
@@ -95,12 +95,11 @@
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
               "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Program.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs*",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Program.cs*",
+              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Program.cs",
+              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Program.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAzwDIAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:23:04.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:23:04.492Z"
             },
             {
               "$type": "Document",
@@ -112,8 +111,7 @@
               "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\API.csproj",
               "ViewState": "AgIAAAMAAAAAAAAAAAAswBgAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T14:21:54.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:21:54.32Z"
             },
             {
               "$type": "Document",
@@ -125,8 +123,7 @@
               "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Protos\\product.proto",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-06-17T14:20:17.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:20:17.548Z"
             },
             {
               "$type": "Document",
@@ -134,12 +131,11 @@
               "Title": "LedgerConsumerService.cs",
               "DocumentMoniker": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs",
               "RelativeDocumentMoniker": "InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs",
-              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs*",
-              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs*",
+              "ToolTip": "D:\\RetailDock-Backend\\services\\InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs",
+              "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Services\\LedgerConsumerService.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwB8AAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:19:21.11Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:19:21.11Z"
             },
             {
               "$type": "Document",
@@ -151,8 +147,7 @@
               "RelativeToolTip": "InventoryManagementServices\\InventoryManagementServices\\Protos\\ledger.proto",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003853|",
-              "WhenOpened": "2025-06-17T14:18:09.064Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:18:09.064Z"
             },
             {
               "$type": "Document",
@@ -200,8 +195,7 @@
               "RelativeToolTip": "BillingService\\BillingService\\BillingService.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-17T13:37:09.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T13:37:09.822Z"
             },
             {
               "$type": "Document",
