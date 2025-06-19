@@ -29,7 +29,7 @@ builder.Services.AddGrpc();
 var app = builder.Build();
 
 
-
+app.MapGrpcService<AccountsGroupgRPCService>();
 app.MapGrpcService<LedgergRPCService>();
 
 // Configure the HTTP request pipeline.
