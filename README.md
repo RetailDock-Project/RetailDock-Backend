@@ -1,6 +1,6 @@
 # 🛍️ RetailDock
 
-> **RetailDock** is a scalable, SaaS-based microservice architecture platform built for **modern retail businesses** to manage billing, inventory, accounting, multi-branch stores, and real-time operations using **gRPC** and **RabbitMQ**.
+> **RetailDock** is a scalable, SaaS-based microservice architecture platform built for **modern retail businesses** to manage billing, inventory, accounting, and real-time operations using **gRPC** and **RabbitMQ**.
 
 ---
 
