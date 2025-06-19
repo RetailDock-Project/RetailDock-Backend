@@ -1,14 +1,49 @@
+# ========== IDE and Editor ==========
+
 # Visual Studio
 .vs/
 *.suo
 *.user
+*.userosscache
+*.sln.docstates
 
-# Build output
+# Visual Studio Code
+.vscode/
+
+# Rider / JetBrains
+.idea/
+
+# ========== Build and Output ==========
+
 bin/
 obj/
+artifacts/
+out/
 *.csproj.FileListAbsolute.txt
 
-# Logs and temp files
+# ========== NuGet ==========
+
+*.nupkg
+packages/
+
+# ========== Logs, Cache, and Temp Files ==========
+
 *.log
 *.cache
 *.db
+
+# ========== Test Results ==========
+
+TestResults/
+*.coverage
+*.testresults
+
+
+# ========== OS Files ==========
+
+.DS_Store
+Thumbs.db
+
+# ========== Git Merge Conflicts (safety) ==========
+
+*.orig
