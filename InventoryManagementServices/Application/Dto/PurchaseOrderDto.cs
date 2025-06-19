@@ -24,7 +24,10 @@ namespace Application.Dto
     }
     public class PurchaseOrderDto
     {
+        public Guid PurchaseOrderId { get; set; }
         public string SupplierName { get; set; }
+        public string PurchaseOrderNumber { get; set; }
+
         public DateTime OrderDate { get; set; }
         public decimal GrossTotalAmount { get; set; }
         public string OrderStatus { get; set; }

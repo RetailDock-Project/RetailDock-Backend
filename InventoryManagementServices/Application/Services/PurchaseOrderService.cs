@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Dto;
 using Application.Helpers;
 using Application.Interfaces;
+using Application.Interfaces.IServices;
 using AutoMapper;
 using Domain.Entities;
 
@@ -24,19 +25,24 @@ namespace Application.Services
     {
         private readonly IPurchaseOrderRepository _repo;
         private readonly IMapper _mapper;
+        private readonly IInvoiceNumberGenerator invoiceNumberGenerator;
 
-        public PurchaseOrderService(IPurchaseOrderRepository repo, IMapper mapper)
+        public PurchaseOrderService(IPurchaseOrderRepository repo, IMapper mapper, IInvoiceNumberGenerator _invoiceNumberGenerator)
         {
             _repo = repo;
             _mapper = mapper;
+            invoiceNumberGenerator = _invoiceNumberGenerator;
         }
         public async Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId, AddPurchaseOrderDto dto)
         {
             try
             {
+                var lastPurchaseOrderNumber = await _repo.GetLastPurchaseOrderNumber(orgnaizationId);
+                var newPoNumber = await invoiceNumberGenerator.GenerateInvoiceNumber(lastPurchaseOrderNumber, "PO");
                 var order = new PurchaseOrder
                 {
                     OrganizationId = orgnaizationId,
+                    PurchaseOrderNumber= newPoNumber,
                     PurchaseOrderId = Guid.NewGuid(),
                     SupplierId = dto.SupplierId,
                     CreatedBy = dto.CreatedBy,
