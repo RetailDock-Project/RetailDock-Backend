@@ -1,0 +1,25 @@
+
+
+syntax = "proto3";
+
+option csharp_namespace = "stockUpdate";
+
+package inventory;
+
+service StockService {
+  rpc updateProductStock (updateStockRequest) returns (updateStockResponse);
+}
+
+
+  message updateStockRequest{
+	  string productId=1;
+	  string organisationId=2;
+	  string userId=3;
+	  int32 quantity=4;
+	  bool increase=5;
+
+  }
+  message updateStockResponse{
+	  bool success=1;
+	  string message=2;
+  }
