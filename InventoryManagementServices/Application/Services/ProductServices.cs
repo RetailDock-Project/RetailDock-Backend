@@ -31,7 +31,8 @@ namespace Application.Services
 
         Task<byte[]> ExportProductsAsExcelAsync(Guid organizationId);
         Task<Responses<ProductStatisticsDto>> GetProductStatistics(Guid organizationId);
-    }
+
+        Task<Responses<object>> UpdateProductStock(ProductStockUpdateDto updateData);    }
 
     public class Productservices:IProductServices
     {
@@ -497,6 +498,34 @@ namespace Application.Services
                 {
                     StatusCode = 500,
                     Message = "Error while retrieving product statistics"
+                };
+            }
+        }
+
+
+        public async Task<Responses<object>> UpdateProductStock(ProductStockUpdateDto updateData)
+        {
+            try {
+
+                var result = await _repository.ProductStockUpdate(updateData);
+                if (!result) {
+                    return new Responses<object>
+                    {
+                        StatusCode = 404,
+                        Message = "Product not found",
+                    };
+                }
+                return new Responses<object>
+                {
+                    StatusCode = 200,
+                    Message = "Product Updated",
+                };
+            } catch (Exception ex) {
+
+                return new Responses<object>
+                {
+                    StatusCode = 500,
+                    Message = "Error in  Updating product",
                 };
             }
         }

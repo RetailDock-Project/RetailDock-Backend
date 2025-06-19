@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "AccountsS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcContracts", "Developer Service\GrpcContracts\GrpcContracts.csproj", "{C6D96524-5CB2-4E7C-B719-6F530C993A4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryGrpcContract", "InventoryGrpcContract\InventoryGrpcContract.csproj", "{6A3E8C8A-DBC1-4736-9B49-C0599301F73B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,10 @@ Global
 		{C6D96524-5CB2-4E7C-B719-6F530C993A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6D96524-5CB2-4E7C-B719-6F530C993A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6D96524-5CB2-4E7C-B719-6F530C993A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A3E8C8A-DBC1-4736-9B49-C0599301F73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A3E8C8A-DBC1-4736-9B49-C0599301F73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A3E8C8A-DBC1-4736-9B49-C0599301F73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A3E8C8A-DBC1-4736-9B49-C0599301F73B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,5 +219,6 @@ Global
 		{F4140B67-3F77-4D94-A3E2-FB2BCD27D428} = {6E457365-2209-4AD0-85FB-8BCF0B84293B}
 		{1627A3F4-D1C7-4EAB-A380-2162949C80F4} = {6E457365-2209-4AD0-85FB-8BCF0B84293B}
 		{C6D96524-5CB2-4E7C-B719-6F530C993A4A} = {087FD5EA-EBE4-4E35-B5DC-B9F180C62734}
+		{6A3E8C8A-DBC1-4736-9B49-C0599301F73B} = {49445DED-4730-4DD0-A419-6A17659A86C0}
 	EndGlobalSection
 EndGlobal
