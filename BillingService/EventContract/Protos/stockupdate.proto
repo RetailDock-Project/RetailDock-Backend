@@ -9,7 +9,7 @@ package inventory;
 service StockService {
   rpc updateProductStock (updateStockRequest) returns (updateStockResponse);
 }
-
+	
 
   message updateStockRequest{
 	  string productId=1;
