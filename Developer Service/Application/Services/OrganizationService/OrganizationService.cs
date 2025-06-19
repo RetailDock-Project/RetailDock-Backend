@@ -102,6 +102,22 @@ namespace Application.Services.OrganizationService
                 var result = await _organizationRepository.AddCompanyWithSubscriptionAsync(newOrganization, newSubscription);
                 var organizationSubscribeEvent = new OrganizationSubscribedEvent {OrganizationId= newOrganization.OrganizationId,UserId= UserId };
                 _producer.Publish(organizationSubscribeEvent);
+
+
+
+                Console.WriteLine("notifying accounts");
+                Console.WriteLine("\n");
+                Console.WriteLine("notifying accounts");
+                Console.WriteLine("notifying accounts");
+                Console.WriteLine("notifying accounts");
+                Console.WriteLine("notifying accounts");
+                Console.WriteLine("notifying accounts");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+
                 await _notifierGrpc.NotifyOrganizationCreated(newOrganization.OrganizationId, UserId);
 
 
