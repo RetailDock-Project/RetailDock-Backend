@@ -11,3 +11,454 @@
 2025-06-19 11:25:30.405 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 71.2236ms
 2025-06-19 11:25:30.488 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
 2025-06-19 11:25:30.504 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.2942ms
+2025-06-19 12:01:02.778 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 12:01:02.818 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 12:01:02.888 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 12:01:02.890 +05:30 [INF] Hosting environment: Development
+2025-06-19 12:01:02.891 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 12:01:03.103 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:01:03.225 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 122.1733ms
+2025-06-19 12:01:03.325 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:01:03.325 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:01:03.330 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 5.5646ms
+2025-06-19 12:01:03.353 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.0093ms
+2025-06-19 12:01:03.923 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:01:03.932 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.8131ms
+2025-06-19 12:01:38.627 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:01:38.637 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 10.2194ms
+2025-06-19 12:01:38.658 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:01:38.658 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:01:38.664 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 5.9926ms
+2025-06-19 12:01:38.666 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 8.2769ms
+2025-06-19 12:01:38.743 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:01:38.752 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 8.981ms
+2025-06-19 12:08:27.729 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda372-5f65-45c0-813c-96ebc726ab38 - application/json 203
+2025-06-19 12:08:27.795 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 12:08:27.929 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 12:08:37.590 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 9647.3117ms
+2025-06-19 12:08:37.595 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 12:08:37.601 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Threading.Tasks.ValueTask.ValueTaskSourceAsTask.<>c.<.cctor>b__4_0(Object state)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.Impl.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at Infrastructure.Messaging.RabbitMQProducer..ctor(IOptions`1 options) in D:\RetailDock-Backend\services\Developer Service\Infrastructure\Messaging\RabbitMQProducer.cs:line 32
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScopeCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(ServiceIdentifier serviceIdentifier, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-06-19 12:08:37.658 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda372-5f65-45c0-813c-96ebc726ab38 - 500 null text/plain; charset=utf-8 9931.4997ms
+2025-06-19 12:33:53.747 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 12:33:53.778 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 12:33:53.857 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 12:33:53.859 +05:30 [INF] Hosting environment: Development
+2025-06-19 12:33:53.861 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 12:33:59.458 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:33:59.646 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 193.4292ms
+2025-06-19 12:33:59.755 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:33:59.758 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:33:59.764 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 8.5432ms
+2025-06-19 12:33:59.815 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.3251ms
+2025-06-19 12:34:00.084 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:34:00.099 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 15.402ms
+2025-06-19 12:34:28.862 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:34:28.874 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 12.4219ms
+2025-06-19 12:34:28.920 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:34:28.920 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:34:28.942 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 24.0665ms
+2025-06-19 12:34:28.960 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 40.0067ms
+2025-06-19 12:34:29.023 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:34:29.034 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.9353ms
+2025-06-19 12:38:26.008 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda372-5f65-45c0-813c-96ebc726ab38 - application/json 199
+2025-06-19 12:38:26.148 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 12:38:26.269 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 12:38:30.581 +05:30 [INF] Executed DbCommand (122ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 12:38:30.942 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 12:38:32.941 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 6665.7958ms
+2025-06-19 12:38:32.943 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 12:38:33.079 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08dda372-5f65-45c0-813c-96ebc726ab38 - 400 null application/json; charset=utf-8 7081.3465ms
+2025-06-19 12:45:59.389 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 12:45:59.414 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 12:45:59.483 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 12:45:59.485 +05:30 [INF] Hosting environment: Development
+2025-06-19 12:45:59.486 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 12:45:59.911 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:46:00.044 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 133.0254ms
+2025-06-19 12:46:00.065 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:46:00.072 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:46:00.077 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 11.1903ms
+2025-06-19 12:46:00.098 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.5655ms
+2025-06-19 12:46:00.230 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:46:00.244 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.6215ms
+2025-06-19 12:47:08.708 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 12:47:08.756 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 12:47:09.125 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 12:47:09.127 +05:30 [INF] Hosting environment: Development
+2025-06-19 12:47:09.129 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 12:47:09.663 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:47:09.912 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 262.8484ms
+2025-06-19 12:47:09.997 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:47:10.001 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:47:10.011 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 14.7259ms
+2025-06-19 12:47:10.064 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 63.2641ms
+2025-06-19 12:47:10.326 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:47:10.361 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.464ms
+2025-06-19 12:48:09.002 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 12:48:09.046 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 12:48:09.164 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 12:48:09.167 +05:30 [INF] Hosting environment: Development
+2025-06-19 12:48:09.170 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 12:48:09.761 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 12:48:10.128 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 377.9178ms
+2025-06-19 12:48:10.164 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:48:10.181 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 16.3585ms
+2025-06-19 12:48:10.239 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 12:48:10.291 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.4463ms
+2025-06-19 12:48:10.576 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 12:48:10.595 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.4784ms
+2025-06-19 12:49:02.861 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 199
+2025-06-19 12:49:02.883 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 12:49:02.937 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 12:49:08.166 +05:30 [INF] Executed DbCommand (100ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 12:49:08.894 +05:30 [INF] Executed DbCommand (89ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-19 12:49:09.768 +05:30 [INF] Start processing HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 12:49:09.775 +05:30 [INF] Sending HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 12:49:09.925 +05:30 [INF] Received HTTP response headers after 145.4483ms - 200
+2025-06-19 12:49:09.927 +05:30 [INF] End processing HTTP request after 165.6808ms - 200
+2025-06-19 12:49:09.942 +05:30 [INF] Call failed with gRPC error status. Status code: '"Unimplemented"', Message: 'Service is unimplemented.'.
+2025-06-19 12:49:10.318 +05:30 [ERR] Status(StatusCode="Unimplemented", Detail="Service is unimplemented.")
+2025-06-19 12:49:10.337 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 12:49:10.356 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 7413.0857ms
+2025-06-19 12:49:10.360 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 12:49:10.376 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 500 null application/json; charset=utf-8 7515.053ms
+2025-06-19 13:09:35.805 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:09:35.862 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:09:35.993 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:09:35.994 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:09:35.996 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:09:38.889 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:09:39.344 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 471.712ms
+2025-06-19 13:09:39.542 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:09:39.570 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:09:39.628 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 97.4006ms
+2025-06-19 13:09:39.855 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 284.8623ms
+2025-06-19 13:09:40.071 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:09:40.148 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 77.8308ms
+2025-06-19 13:12:34.398 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:12:34.529 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:12:34.775 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:12:34.779 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:12:34.781 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:12:35.813 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:12:36.466 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 688.9851ms
+2025-06-19 13:12:36.795 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:12:36.812 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:12:36.818 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 23.046ms
+2025-06-19 13:12:36.917 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 105.1148ms
+2025-06-19 13:12:37.275 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:12:37.301 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.6036ms
+2025-06-19 13:13:27.446 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 199
+2025-06-19 13:13:27.469 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:13:27.507 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:13:31.385 +05:30 [INF] Executed DbCommand (108ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:13:31.473 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 13:13:31.492 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 3972.204ms
+2025-06-19 13:13:31.495 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:13:31.504 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 400 null application/json; charset=utf-8 4059.2596ms
+2025-06-19 13:18:32.175 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 199
+2025-06-19 13:18:32.235 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:18:32.255 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:18:33.663 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:18:34.495 +05:30 [INF] Executed DbCommand (69ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-19 13:18:34.856 +05:30 [INF] Start processing HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:18:34.874 +05:30 [INF] Sending HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:18:35.147 +05:30 [INF] Received HTTP response headers after 268.2862ms - 200
+2025-06-19 13:18:35.149 +05:30 [INF] End processing HTTP request after 297.2503ms - 200
+2025-06-19 13:18:35.166 +05:30 [INF] Call failed with gRPC error status. Status code: '"Unimplemented"', Message: 'Service is unimplemented.'.
+2025-06-19 13:18:35.577 +05:30 [ERR] Status(StatusCode="Unimplemented", Detail="Service is unimplemented.")
+2025-06-19 13:18:35.585 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 13:18:35.587 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 3329.3614ms
+2025-06-19 13:18:35.589 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:18:35.591 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 500 null application/json; charset=utf-8 3421.7677ms
+2025-06-19 13:19:50.430 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 199
+2025-06-19 13:19:50.445 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:19:50.447 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:20:15.373 +05:30 [INF] Executed DbCommand (330ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:21:57.758 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:21:57.865 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:21:58.661 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:21:58.670 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:21:58.673 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:21:58.751 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:21:59.258 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 540.4339ms
+2025-06-19 13:21:59.376 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:21:59.376 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:21:59.402 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 26.5587ms
+2025-06-19 13:21:59.463 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.0437ms
+2025-06-19 13:21:59.856 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:21:59.907 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 51.3525ms
+2025-06-19 13:22:50.201 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 202
+2025-06-19 13:22:50.214 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:22:50.248 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:23:00.849 +05:30 [INF] Executed DbCommand (120ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:23:15.817 +05:30 [INF] Executed DbCommand (79ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-19 13:23:32.617 +05:30 [INF] Start processing HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:23:32.624 +05:30 [INF] Sending HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:23:32.698 +05:30 [INF] Received HTTP response headers after 70.9181ms - 200
+2025-06-19 13:23:32.701 +05:30 [INF] End processing HTTP request after 87.2447ms - 200
+2025-06-19 13:23:32.710 +05:30 [INF] Call failed with gRPC error status. Status code: '"Unimplemented"', Message: 'Service is unimplemented.'.
+2025-06-19 13:23:32.827 +05:30 [ERR] Status(StatusCode="Unimplemented", Detail="Service is unimplemented.")
+2025-06-19 13:23:32.843 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 13:23:32.859 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 42604.5188ms
+2025-06-19 13:23:32.862 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:23:32.873 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 500 null application/json; charset=utf-8 42671.3822ms
+2025-06-19 13:25:28.442 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:25:28.544 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:25:28.787 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:25:28.797 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:25:28.799 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:25:29.751 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:25:30.270 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 530.3804ms
+2025-06-19 13:25:30.311 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:25:30.309 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:25:30.374 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 64.8786ms
+2025-06-19 13:25:30.919 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 608.7952ms
+2025-06-19 13:25:31.008 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:25:31.052 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.012ms
+2025-06-19 13:26:14.490 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 202
+2025-06-19 13:26:14.509 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:26:14.582 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:26:26.266 +05:30 [INF] Executed DbCommand (109ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:28:26.164 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:28:26.417 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:28:26.651 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:28:26.655 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:28:26.656 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:28:26.973 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:28:27.378 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 421.9086ms
+2025-06-19 13:28:27.522 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:28:27.528 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:28:27.539 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 17.0939ms
+2025-06-19 13:28:27.680 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 152.6841ms
+2025-06-19 13:28:28.489 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:28:28.539 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.1572ms
+2025-06-19 13:29:40.587 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 195
+2025-06-19 13:29:40.603 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:29:40.663 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:29:52.662 +05:30 [INF] Executed DbCommand (275ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:29:58.093 +05:30 [INF] Executed DbCommand (72ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-19 13:30:21.780 +05:30 [INF] Start processing HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:30:21.785 +05:30 [INF] Sending HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:30:21.856 +05:30 [INF] Received HTTP response headers after 67.4901ms - 200
+2025-06-19 13:30:21.857 +05:30 [INF] End processing HTTP request after 81.9576ms - 200
+2025-06-19 13:30:21.865 +05:30 [INF] Call failed with gRPC error status. Status code: '"Unimplemented"', Message: 'Service is unimplemented.'.
+2025-06-19 13:30:21.952 +05:30 [ERR] Status(StatusCode="Unimplemented", Detail="Service is unimplemented.")
+2025-06-19 13:30:21.960 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 13:30:21.970 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 41301.3249ms
+2025-06-19 13:30:21.972 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:30:21.981 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 500 null application/json; charset=utf-8 41394.6415ms
+2025-06-19 13:37:03.629 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:37:03.661 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:37:03.729 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:37:03.730 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:37:03.730 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:37:04.468 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:37:04.634 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 165.4033ms
+2025-06-19 13:37:04.697 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:37:04.697 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:37:04.706 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 8.5737ms
+2025-06-19 13:37:04.759 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.564ms
+2025-06-19 13:37:04.905 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:37:04.920 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.7275ms
+2025-06-19 13:42:22.971 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:42:23.021 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:42:23.145 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:42:23.148 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:42:23.150 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:42:23.379 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:42:23.589 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 211.0449ms
+2025-06-19 13:42:23.725 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:42:23.726 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:42:23.741 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 15.2592ms
+2025-06-19 13:42:23.780 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.9413ms
+2025-06-19 13:42:24.580 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:42:24.605 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.3661ms
+2025-06-19 13:43:25.849 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:43:25.892 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:43:26.037 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:43:26.038 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:43:26.040 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:43:27.476 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:43:28.008 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 553.2459ms
+2025-06-19 13:43:28.030 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:43:28.059 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:43:28.113 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 83.6947ms
+2025-06-19 13:43:28.274 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 215.827ms
+2025-06-19 13:43:28.574 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:43:28.602 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.0714ms
+2025-06-19 13:44:03.059 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 199
+2025-06-19 13:44:03.069 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:44:03.103 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:44:16.665 +05:30 [INF] Executed DbCommand (283ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:44:49.874 +05:30 [INF] Start processing HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:44:49.879 +05:30 [INF] Sending HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:44:49.947 +05:30 [INF] Received HTTP response headers after 64.7419ms - 200
+2025-06-19 13:44:49.949 +05:30 [INF] End processing HTTP request after 78.5843ms - 200
+2025-06-19 13:44:49.960 +05:30 [INF] Call failed with gRPC error status. Status code: '"Unimplemented"', Message: 'Service is unimplemented.'.
+2025-06-19 13:44:50.071 +05:30 [ERR] Status(StatusCode="Unimplemented", Detail="Service is unimplemented.")
+2025-06-19 13:44:50.079 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 13:44:50.088 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 46979.8922ms
+2025-06-19 13:44:50.090 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:44:50.099 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 500 null application/json; charset=utf-8 47040.4977ms
+2025-06-19 13:51:52.365 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:51:52.545 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:51:52.846 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:51:52.867 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:51:52.903 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:51:53.251 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:51:53.605 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 372.0136ms
+2025-06-19 13:51:53.673 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:51:53.682 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:51:53.686 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 12.3705ms
+2025-06-19 13:51:53.743 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.5921ms
+2025-06-19 13:51:54.234 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:51:54.257 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.2458ms
+2025-06-19 13:52:57.190 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 192
+2025-06-19 13:52:57.205 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:52:57.275 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:56:43.317 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-19 13:56:43.909 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-19 13:56:44.730 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 13:56:44.733 +05:30 [INF] Hosting environment: Development
+2025-06-19 13:56:44.734 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-19 13:56:46.171 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-19 13:56:46.816 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 659.4741ms
+2025-06-19 13:56:46.927 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 13:56:46.926 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-19 13:56:46.972 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 45.4716ms
+2025-06-19 13:56:47.130 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 204.3114ms
+2025-06-19 13:56:47.242 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-19 13:56:47.282 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 40.1151ms
+2025-06-19 13:57:13.130 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - application/json 192
+2025-06-19 13:57:13.157 +05:30 [INF] Executing endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:57:13.260 +05:30 [INF] Route matched with {action = "AddSubscription", controller = "Organization"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddSubscription(Application.DTOs.AddSubscriptionDTO, System.Guid) on controller Developer_Service.Controllers.OrganizationController.OrganizationController (DeveloperService).
+2025-06-19 13:58:13.883 +05:30 [INF] Executed DbCommand (112ms) [Parameters=[@__userId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `OrganizationDetail` AS `o`
+    WHERE `o`.`UserId` = @__userId_0)
+2025-06-19 13:58:40.713 +05:30 [INF] Start processing HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:58:40.720 +05:30 [INF] Sending HTTP request POST https://localhost:7117/accountsgroup.AccountsGroupService/CreateDefaultGroups
+2025-06-19 13:58:45.141 +05:30 [INF] Received HTTP response headers after 4416.193ms - 200
+2025-06-19 13:58:45.145 +05:30 [INF] End processing HTTP request after 4438.7423ms - 200
+2025-06-19 13:58:52.330 +05:30 [INF] Executed DbCommand (102ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 255), @p2='?' (DbType = DateTime), @p3='?' (DbType = Date), @p4='?' (DbType = Date), @p5='?' (Size = 15), @p6='?' (DbType = Boolean), @p7='?' (Size = 100), @p8='?' (Size = 4000), @p9='?' (Size = 10), @p10='?' (DbType = DateTime), @p11='?' (DbType = Guid), @p12='?' (DbType = Guid), @p13='?' (DbType = Decimal), @p14='?' (DbType = DateTime), @p15='?' (DbType = DateTime), @p16='?' (DbType = Guid), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `OrganizationDetail` (`OrganizationId`, `Address`, `CreatedAt`, `FinancialYearEnd`, `FinancialYearStart`, `GSTNumber`, `IsActive`, `LicenceNumber`, `OrganizationName`, `PANNumber`, `UpdatedAt`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+INSERT INTO `Subscription` (`SubscriptionId`, `Amount`, `CreatedAt`, `ExpiryDate`, `OrganizationId`, `SubscriptionName`, `TransactionId`, `UpdatedAt`)
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-06-19 13:59:15.504 +05:30 [INF] Executing ObjectResult, writing value of type 'Common.ApiResponse.ApiResponseDTO`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 13:59:20.610 +05:30 [INF] Executed action Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService) in 127340.7452ms
+2025-06-19 13:59:20.613 +05:30 [INF] Executed endpoint 'Developer_Service.Controllers.OrganizationController.OrganizationController.AddSubscription (DeveloperService)'
+2025-06-19 13:59:20.626 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7009/api/Organization/subscription/add?userId=08ddaf00-c779-4217-8db3-57932c88a7b5 - 200 null application/json; charset=utf-8 127496.2613ms

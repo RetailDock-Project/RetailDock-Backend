@@ -1,3 +1,4 @@
+
 ﻿using Application.Interfaces.IServices;
 using Application.Services.AccountsService;
 using GroupGrpc; 
@@ -22,6 +23,8 @@ namespace AccountsServices.Service
             {
                 var organizationId = Guid.Parse(request.OrganizationId);
                 var createdBy = Guid.Parse(request.CreatedBy);
+
+
 
                 var result = await _accountsGroupService.CreateDefaultGroups(organizationId, createdBy);
 
