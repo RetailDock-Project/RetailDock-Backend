@@ -7,6 +7,12 @@
 *.userosscache
 *.sln.docstates
 
+# Ignore Serilog log files
+**/Logs/log-*.txt
+*.log
+Logs/
+
+
 # Visual Studio Code
 .vscode/
 
