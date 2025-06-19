@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GroupGrpc";
+
+package accountsgroup;
+
+service AccountsGroupService {
+  rpc CreateDefaultGroups (CreateDefaultGroupsRequest) returns (ApiResponse);
+}
+
+message CreateDefaultGroupsRequest {
+  string organizationId = 1;
+  string createdBy = 2;
+}
+
+message ApiResponse {
+  int32 statusCode = 1;
+  string message = 2;
+  bool data = 3;
+}
