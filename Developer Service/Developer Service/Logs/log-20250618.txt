@@ -24,3 +24,16 @@
 2025-06-18 10:50:35.411 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 287.3871ms
 2025-06-18 10:50:36.100 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
 2025-06-18 10:50:36.221 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 121.1502ms
+2025-06-18 18:26:57.768 +05:30 [INF] Now listening on: https://localhost:7009
+2025-06-18 18:26:57.817 +05:30 [INF] Now listening on: http://localhost:5062
+2025-06-18 18:26:57.905 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-18 18:26:57.908 +05:30 [INF] Hosting environment: Development
+2025-06-18 18:26:57.910 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\Developer Service\Developer Service
+2025-06-18 18:26:58.773 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/index.html - null null
+2025-06-18 18:26:59.108 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/index.html - 200 null text/html;charset=utf-8 335.4852ms
+2025-06-18 18:26:59.324 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-18 18:26:59.330 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/_vs/browserLink - null null
+2025-06-18 18:26:59.352 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 27.9609ms
+2025-06-18 18:26:59.409 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/_vs/browserLink - 200 null text/javascript; charset=UTF-8 79.2613ms
+2025-06-18 18:26:59.649 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - null null
+2025-06-18 18:26:59.678 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7009/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.9572ms
