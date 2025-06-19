@@ -1,0 +1,13 @@
+2025-06-19 12:01:35.446 +05:30 [INF] Now listening on: https://localhost:7117
+2025-06-19 12:01:35.476 +05:30 [INF] Now listening on: http://localhost:5019
+2025-06-19 12:01:35.565 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 12:01:35.567 +05:30 [INF] Hosting environment: Development
+2025-06-19 12:01:35.568 +05:30 [INF] Content root path: D:\RetailDock-Backend\services\AccountsServices\AccountsServices
+2025-06-19 12:01:35.821 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/index.html - null null
+2025-06-19 12:01:35.936 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/index.html - 200 null text/html;charset=utf-8 118.6292ms
+2025-06-19 12:01:35.966 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-19 12:01:35.970 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/_vs/browserLink - null null
+2025-06-19 12:01:35.977 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_framework/aspnetcore-browser-refresh.js - 200 13784 application/javascript; charset=utf-8 11.0933ms
+2025-06-19 12:01:36.012 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.8832ms
+2025-06-19 12:01:36.116 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - null null
+2025-06-19 12:01:36.141 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7117/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.1522ms

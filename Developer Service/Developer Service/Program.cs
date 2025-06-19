@@ -3,7 +3,7 @@ using Developer_Service.Extensions;
 using Infrastructure.Messaging;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using OrganizationAccounting;
+using GroupGrpc;
 using Grpc.Net.ClientFactory;
 
 
@@ -18,7 +18,7 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .MinimumLevel.Information()
     .CreateLogger();
-builder.Services.AddGrpcClient<OrganizationAccounting.OrganizationNotifier.OrganizationNotifierClient>(options =>
+builder.Services.AddGrpcClient<GroupGrpc.AccountsGroupService.AccountsGroupServiceClient>(options =>
 {
     options.Address = new Uri(builder.Configuration["GrpcSettings:AccountingServiceUrl"]);
 });
