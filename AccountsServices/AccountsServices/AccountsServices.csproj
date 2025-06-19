@@ -29,6 +29,9 @@
 	<ItemGroup>
   <Protobuf Include="Protos/ledger.proto" GrpcServices="Server" />
 </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos/defaultgrpproto.proto" GrpcServices="Server" />
+	</ItemGroup>
 	
 	
 
