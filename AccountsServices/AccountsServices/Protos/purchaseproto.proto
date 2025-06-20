@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "PurchaseGrpc";
+
+package voucher;
+
+service VoucherGrpcService {
+  rpc AddVoucherEntry (AddVoucherRequest) returns (ApiResponses);
+}
+
+message TransactionDTO {
+  string ledgerId = 1;
+  double  amount = 2;
+  string Narration = 3;
+  string voucherId = 4;
+
+}
+
+message AddVoucherRequest {
+  string organizationId = 1;
+  string createdBy = 2;
+  string voucherTypeId = 3;
+  string voucherDate = 4;
+  string remarks = 5;
+  repeated TransactionDTO transactionsDebit = 6;
+  repeated TransactionDTO transactionsCredit = 7;
+}
+
+message ApiResponses {
+  int32 statusCode = 1;
+  string message = 2;
+  bool data = 3;
+}

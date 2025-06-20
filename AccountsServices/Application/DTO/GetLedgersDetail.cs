@@ -9,9 +9,9 @@ namespace Application.DTO
     
         public class GetLedgerDetailDTO
         {
-        public Guid Id { get; set; }            // L.Id AS Id
-        public string LedgerName { get; set; }  // L.LedgerName
-        public string GroupName { get; set; }   // G.GroupName
+        public Guid Id { get; set; }          
+        public string LedgerName { get; set; }  
+        public string GroupName { get; set; }   
         public Guid OrganizationId { get; set; }
 
 
