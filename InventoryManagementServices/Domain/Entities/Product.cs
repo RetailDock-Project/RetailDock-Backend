@@ -72,5 +72,10 @@ namespace Domain.Entities
         public List<PurchaseItem> PurchaseItemItems { get;set; }
 
         public List<PurchaseReturnItem> PurchaseReturnItems { get; set; }
+
+        public SaleItems SaleItems { get; set; }
+        public SalesReturnItems SalesReturnItems { get; set; }
+
+
     }
 }

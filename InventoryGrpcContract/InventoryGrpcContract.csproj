@@ -22,5 +22,8 @@
 	<ItemGroup>
 		<Protobuf Include="Protos/stockupdate.proto" GrpcServices="Server" />
 	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos/purchaseproto.proto" GrpcServices="Client" />
+	</ItemGroup>
 
 </Project>

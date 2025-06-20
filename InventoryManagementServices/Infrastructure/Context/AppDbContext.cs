@@ -26,6 +26,15 @@ namespace Infrastructure.Context
         public DbSet<PurchaseReturnItem> PurchaseReturnItems { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
 
+        public DbSet<Sales> Sales { get; set; }
+        public DbSet<SaleItems> SaleItems { get; set; }
+        public DbSet<SalesInvoice> SalesInvoices { get; set; }
+        public DbSet<CreditCustomers> CreditCustomers { get; set; }
+        public DbSet<CashCustomers> CashCustomers { get; set; }
+        public DbSet<SalesReturn> SalesReturn { get; set; }
+        public DbSet<SalesReturnItems> SalesReturnItems { get; set; }
+        public DbSet<SalesReturnInvoice> SalesReturnInvoice { get; set; }
+
 
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
@@ -54,11 +63,22 @@ namespace Infrastructure.Context
                 .HasForeignKey(p => p.HsnCodeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.UnitOfMeasures)
-                .WithMany(u=>u.Products)
-                .HasForeignKey(p => p.UnitOfMeasuresId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasOne(p => p.UnitOfMeasures)
+                    .WithMany(u => u.Products)
+                    .HasForeignKey(p => p.UnitOfMeasuresId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(p => p.SaleItems)
+                .WithOne(si => si.Product)
+                .HasForeignKey<SaleItems>(si => si.ProductId);
+
+                entity.HasOne(p => p.SalesReturnItems)
+                .WithOne(sri => sri.Products)
+                .HasForeignKey<SalesReturnItems>(sri => sri.ProductId);
+            });
+                
 
             modelBuilder.Entity<Images>()
                 .HasOne(i => i.Product)
@@ -239,11 +259,39 @@ namespace Infrastructure.Context
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
-            
+
+
+
+
+
+
+            modelBuilder.Entity<SalesReturn>()
+       .HasOne(sr => sr.Sales)
+       .WithOne(s => s.SalesReturn)
+       .HasForeignKey<SalesReturn>(sr => sr.SaleId);
+            modelBuilder.Entity<SalesReturn>().HasMany(sr => sr.SalesReturnItems).WithOne(ri => ri.SalesReturn).HasForeignKey(sr => sr.ReturnId);
+            modelBuilder.Entity<Sales>().HasOne(s => s.Invoices).WithOne(i => i.Sales).HasForeignKey<Sales>(s => s.InvoiceId);
+            modelBuilder.Entity<Sales>().HasOne(s => s.CreditCustomers).WithMany(cr => cr.Sales).HasForeignKey(s => s.DebtorsId);
+            modelBuilder.Entity<Sales>().HasOne(s => s.CashCustomers).WithMany(cs => cs.Sales).HasForeignKey(s => s.CashCustomerId);
+            modelBuilder.Entity<Sales>().HasMany(s => s.SaleItems).WithOne(si => si.Sales).HasForeignKey(s => s.SaleId);
+            modelBuilder.Entity<SalesReturn>().HasOne(sr => sr.ReturnInvoice).WithOne(sri => sri.SalesReturn).HasForeignKey<SalesReturn>(sr => sr.ReturnInvoiceId);
+            modelBuilder.Entity<Sales>()
+       .Property(s => s.PaymentType)
+       .HasConversion<string>();
+
+            // Store GST_Type enum as string
+            modelBuilder.Entity<Sales>()
+                .Property(s => s.GST_Type)
+                .HasConversion<string>();
+            modelBuilder.Entity<SalesReturnInvoice>()
+                .Property(sri => sri.PaymentMode)
+                .HasConversion<string>();
+
+
             //modelBuilder.Entity<PurchaseOrder>(entity=>
 
             //{ 
-            
+
             //    entity.has
             //}) 
 

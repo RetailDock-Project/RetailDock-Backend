@@ -18,6 +18,8 @@ namespace InventoryService.Services
 
         public override async Task<updateStockResponse> updateProductStock(updateStockRequest request, ServerCallContext context)
         {
+            _logger.LogInformation($"Request product id {request.ProductId}");
+
             _logger.LogInformation("Stock update request received");
 
             // Dummy implementation: Increase or Decrease stock
@@ -29,6 +31,9 @@ namespace InventoryService.Services
                     Message = "Product ID is required"
                 };
             }
+
+
+
             var updateData = new ProductStockUpdateDto {
             ProductId=Guid.Parse(request.ProductId),
             OrgId= Guid.Parse(request.OrganisationId),
@@ -36,6 +41,24 @@ namespace InventoryService.Services
             Quantity=request.Quantity,
             Increase=request.Increase,
             };
+
+            Console.WriteLine($"ProductId: {request.ProductId}");
+            Console.WriteLine($"\n");
+
+            Console.WriteLine($"OrgId: {request.OrganisationId}");
+            Console.WriteLine($"\n");
+
+            Console.WriteLine($"UserId: {request.UserId}");
+            Console.WriteLine($"\n");
+
+            Console.WriteLine($"Quantity: {request.Quantity}");
+            Console.WriteLine($"\n");
+
+            Console.WriteLine($"Increase: {request.Increase}");
+            Console.WriteLine($"\n");
+
+
+
             var response = await productService.UpdateProductStock(updateData);
             if (response.StatusCode==200) {
                 return new updateStockResponse
