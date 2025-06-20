@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250620094222_sales-added")]
+    partial class salesadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -722,8 +725,6 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("SaleId");
 
-                    b.HasIndex("UnitId");
-
                     b.ToTable("SaleItems");
                 });
 
@@ -990,8 +991,6 @@ namespace Infrastructure.Migrations
                         .IsUnique();
 
                     b.HasIndex("ReturnId");
-
-                    b.HasIndex("UnitId");
 
                     b.ToTable("SalesReturnItems");
                 });
@@ -1283,17 +1282,9 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.UnitOfMeasures", "UnitOfMeasures")
-                        .WithMany("SaleItems")
-                        .HasForeignKey("UnitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Product");
 
                     b.Navigation("Sales");
-
-                    b.Navigation("UnitOfMeasures");
                 });
 
             modelBuilder.Entity("Domain.Entities.Sales", b =>
@@ -1352,17 +1343,9 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.UnitOfMeasures", "UnitOfMeasures")
-                        .WithMany("SalesReturnItems")
-                        .HasForeignKey("UnitId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Products");
 
                     b.Navigation("SalesReturn");
-
-                    b.Navigation("UnitOfMeasures");
                 });
 
             modelBuilder.Entity("Domain.Entities.CashCustomers", b =>
@@ -1472,10 +1455,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.UnitOfMeasures", b =>
                 {
                     b.Navigation("Products");
-
-                    b.Navigation("SaleItems");
-
-                    b.Navigation("SalesReturnItems");
                 });
 #pragma warning restore 612, 618
         }

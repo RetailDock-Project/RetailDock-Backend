@@ -190,6 +190,7 @@ namespace Application.Services
                     //}
 
 
+
                     await purchaseRepo.AddPurchaseItems(purchaseItems);
                     foreach (var purchaseItem in purchaseItems)
                     {
@@ -197,6 +198,8 @@ namespace Application.Services
                     }
 
                     await purchaseRepo.AddPurchaseInvoice(purchaseInvoice);
+
+
 
                     await unitOfWork.SaveChangesAsync();
 

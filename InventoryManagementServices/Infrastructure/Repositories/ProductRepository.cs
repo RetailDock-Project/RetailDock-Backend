@@ -134,6 +134,8 @@ namespace Infrastructure.Repositories
 
         public async Task<bool> ProductStockUpdate(ProductStockUpdateDto updateData) {
             var product = await _appDbContext.Products.FirstOrDefaultAsync(p => p.Id == updateData.ProductId && p.OrgnaisationId == updateData.OrgId);
+
+
             if (product == null) {
                 return false;
             }
@@ -142,6 +144,7 @@ namespace Infrastructure.Repositories
                 product.Stock += updateData.Quantity;
             }
             product.Stock -= updateData.Quantity;
+            await _appDbContext.SaveChangesAsync();
             return true;
 
         }

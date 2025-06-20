@@ -90,6 +90,9 @@ namespace Application.Dto
         public decimal CostPrice { get; set; }
         public decimal MRP { get; set; }
         public string UnitOfMeasures { get; set; }
+        public int UnitOfMeasuresId { get; set; }
+        public int HsnCode { get; set; }
+
         public string ProductCategory { get; set; }
     }
     public class SearchProductDto

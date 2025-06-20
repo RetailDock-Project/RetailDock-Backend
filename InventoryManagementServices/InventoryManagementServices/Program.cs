@@ -133,7 +133,6 @@ namespace InventoryManagementServices
 
             app.MapControllers();
             app.MapGrpcService<StockGrpcService>();
-            app.MapGet("/", () => "This service only supports gRPC.");
             app.MapGrpcService<ProductGrpcService>();
             app.Run();
         }
