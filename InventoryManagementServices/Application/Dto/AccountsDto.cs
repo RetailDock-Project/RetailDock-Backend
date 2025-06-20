@@ -67,6 +67,5 @@ namespace Application.Dto
         public string LedgerId { get; set; }
         public double Amount { get; set; }
         public string Narration { get; set; }
-        public string VoucherId { get; set; }
     }
 }
