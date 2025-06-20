@@ -27,6 +27,7 @@ namespace Application.Interfaces.IRepository
         Task<Guid?> GetOutputGSTGroupId(Guid organizationId);
         Task<GetLedgerDetailsDTO> GetCOGSLedgerByBame(Guid organizationId);
         Task<GetLedgerDetailsDTO> GetInventryTransactionLedgerByBame(Guid organizationId);
+        Task<List<GetLedgerDetailDTO>> GetCashAndBankLedgers(Guid organizationId);
 
 
     }
