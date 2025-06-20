@@ -534,6 +534,41 @@ namespace Application.Services.AccountsService
                 };
             }
         }
+        public async Task<ApiResponseDTO<List<GetLedgerDetailDTO>>> GetCashAndBankLedgers(Guid organizationId)
+        {
+            try
+            {
+                var data = await _ledgerRepository.GetCashAndBankLedgers(organizationId);
+                if (data.Count>0)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailDTO>>
+                    {
+                        StatusCode = 200,
+                        Message = "Output GST group not found in this organization",
+                        Data= data
+                        
+                    };
+                }
+
+                
+
+                return new ApiResponseDTO<List<GetLedgerDetailDTO>>
+                {
+                    StatusCode = 200,
+                    Message = "No Bank and cash ledger under this organization",
+                  
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error fetching bank and cash ledgers");
+                return new ApiResponseDTO<List<GetLedgerDetailDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "Error fetching bank and cash ledgers"
+                };
+            }
+        }
 
     }
 }

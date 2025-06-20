@@ -344,5 +344,24 @@ namespace Infrastructure.Repository.GroupRepository
             var result = await connection.QueryFirstOrDefaultAsync<GetLedgerDetailsDTO>(sql, new { OrganizationId = organizationId });
             return result;
         }
+        public async Task<List<GetLedgerDetailDTO>> GetCashAndBankLedgers(Guid organizationId)
+        {
+            var sql = @"SELECT 
+    L.Id AS Id,
+    L.LedgerName,
+    G.GroupName,
+    L.OrganizationId
+FROM Ledgers L
+JOIN AccountsGroups G ON L.GroupId = G.Id
+WHERE G.Id IN (
+    '720b45fc-429f-11f0-a0c7-862ccfb05833',  -- Cash in Hand
+    '720c48e9-429f-11f0-a0c7-862ccfb05833'   -- Bank Accounts
+)
+AND L.OrganizationId = @OrganizationId;
+";
+            var connection = _dapperContext.CreateConnection();
+            var result = await connection.QueryAsync<GetLedgerDetailDTO>(sql, new { OrganizationId = organizationId });
+            return result.ToList();
+        }
     }
 }
