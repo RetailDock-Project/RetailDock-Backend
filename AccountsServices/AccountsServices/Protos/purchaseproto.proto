@@ -12,7 +12,7 @@ message TransactionDTO {
   string ledgerId = 1;
   double  amount = 2;
   string Narration = 3;
-  string voucherId = 4;
+ 
 
 }
 
