@@ -29,6 +29,8 @@ namespace Domain.Entities
         public decimal TotalAmount { get; set; } = 0;
         public SalesReturn SalesReturn { get; set; }
 
+        public UnitOfMeasures UnitOfMeasures { get; set; }
+
         public Product Products { get; set; }
     }
 }

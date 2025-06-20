@@ -18,5 +18,7 @@ namespace Domain.Entities
         public bool IsDeleted { get; set; }
 
         public ICollection<Product> Products { get; set; } = new List<Product>();
+        public List<SaleItems> SaleItems { get; set; }
+        public List<SalesReturnItems> SalesReturnItems { get; set; }
     }
 }
