@@ -46,7 +46,8 @@ namespace Application.Mapper
             CreateMap<Product,ProductBillingGetDto>()
                .ForMember(dest=>dest.UnitOfMeasures,opt=>opt.MapFrom(src=>src.UnitOfMeasures.Measurement))
                .ForMember(dest=>dest.TaxRate,opt=>opt.MapFrom(src=>src.HsnCode.GstRate))
-               .ForMember(dest=>dest.ProductCategory,opt=>opt.MapFrom(src=>src.Category.ProductCategoryName));
+               .ForMember(dest=>dest.ProductCategory,opt=>opt.MapFrom(src=>src.Category.ProductCategoryName))
+               .ForMember(dest => dest.HsnCode, opt => opt.MapFrom(src => src.HsnCode.HSNCodeNumber));
 
             CreateMap<Product, SearchProductDto>();
 
