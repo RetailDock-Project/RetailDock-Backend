@@ -137,7 +137,7 @@ namespace Infrastructure.Repositories
 
                 }
 
-                var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.InvoiceId.ToString() });
+                var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.OrganisationId.ToString() });
 
 
                 List<SaleItems> inMemorySale = new List<SaleItems>();
@@ -237,7 +237,7 @@ foreach (var product in inMemorySale)
                 {
                     return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
                 }
-                var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.InvoiceId.ToString() });
+                var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.OrganisationId.ToString() });
 
                 List<SaleItems> inMemorySale = new List<SaleItems>();
                 foreach (var item in sales.SaleItems)

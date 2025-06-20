@@ -24,6 +24,7 @@ namespace Application.Interfaces.IServices
         Task<ApiResponseDTO<List<GetLedgerDetailsDTO>>> GetOutputGSTLedgers(Guid OrganizationId);
         Task<ApiResponseDTO<GetLedgerDetailsDTO>> GetCOGSLedgerDetails(Guid OrganizationId);
         Task<ApiResponseDTO<GetLedgerDetailsDTO>> GetInventryTransactionDetails(Guid OrganizationId);
+        Task<ApiResponseDTO<List<GetLedgerDetailDTO>>> GetCashAndBankLedgers(Guid organizationId);
 
     }
 }
