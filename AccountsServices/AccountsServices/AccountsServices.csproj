@@ -32,6 +32,9 @@
 	<ItemGroup>
 		<Protobuf Include="Protos/defaultgrpproto.proto" GrpcServices="Server" />
 	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\purchaseproto.proto" GrpcServices="Server" />
+	</ItemGroup>
 	
 	
 
