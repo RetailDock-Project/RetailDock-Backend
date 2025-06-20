@@ -295,6 +295,20 @@ namespace Infrastructure.Context
             //    entity.has
             //}) 
 
+            modelBuilder.Entity<SaleItems>(entity =>
+            {
+                entity.HasOne(si => si.UnitOfMeasures)
+                .WithMany(um=>um.SaleItems)
+                .HasForeignKey(si => si.UnitId);
+            });
+
+            modelBuilder.Entity<SalesReturnItems>(entity =>
+            {
+                entity.HasOne(si => si.UnitOfMeasures)
+                .WithMany(um=>um.SalesReturnItems)
+                .HasForeignKey(sri => sri.UnitId);
+            });
+
         }
 
     }
