@@ -58,5 +58,11 @@ namespace Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<string> GetLastPurchaseOrderNumber(Guid organizationId) {
+
+            var lastPo = await _context.PurchaseOrders.Where(po => po.OrganizationId == organizationId).OrderByDescending(po => po.CreatedAt).Select(po => po.PurchaseOrderNumber).FirstOrDefaultAsync();
+            return lastPo;
+        }
     }
 }

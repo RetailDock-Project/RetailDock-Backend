@@ -19,7 +19,11 @@ builder.Services.AddGrpcClient<GrpcContracts.ProductService.ProductServiceClient
 {
     options.Address = new Uri("https://localhost:7163"); // change to Inventory service URL
 });
-builder.Host.UseSerilog();
+builder.Services.AddGrpcClient<stockUpdate.StockService.StockServiceClient>(options =>
+{
+    options.Address = new Uri("https://localhost:7163"); // change to Inventory service URL
+});
+builder.Host.UseSerilog();       
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddControllers();

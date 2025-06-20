@@ -17,7 +17,7 @@ namespace Application.Helpers
                     page.Margin(50);
 
                     
-                    page.Header().Text($"Purchase Order - {order.OrderDate:yyyy-MM-dd}")
+                    page.Header().Text($"Purchase Order - {order.PurchaseOrderNumber}")
                         .FontSize(20)
                         .Bold()
                         .AlignCenter();

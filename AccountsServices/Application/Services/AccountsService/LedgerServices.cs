@@ -544,7 +544,7 @@ namespace Application.Services.AccountsService
                     return new ApiResponseDTO<List<GetLedgerDetailDTO>>
                     {
                         StatusCode = 200,
-                        Message = "Output GST group not found in this organization",
+                        Message = "Cash and bank ledgers fetched successfully",
                         Data= data
                         
                     };

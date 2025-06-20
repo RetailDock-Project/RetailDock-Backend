@@ -14,5 +14,7 @@ namespace Application.Interfaces
         Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid id);
         Task<PurchaseOrder> UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder);
         Task<bool> DeletePurchaseOrderAsync(Guid id);
+
+        Task<string> GetLastPurchaseOrderNumber(Guid organizationId);
     }
 }
