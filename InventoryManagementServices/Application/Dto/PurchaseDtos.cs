@@ -73,6 +73,8 @@ namespace Application.Dto
         //        }
         //    }
         //}
+
+        public VoucherDto Voucher { get; set; } 
     }
 
     public class PurchaseItemDto {

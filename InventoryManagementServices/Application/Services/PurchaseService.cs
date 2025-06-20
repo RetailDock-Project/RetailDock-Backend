@@ -27,14 +27,16 @@ namespace Application.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IInvoiceNumberGenerator invoiceNumberGenerator;
+        private readonly IAccountGrpcService accountGrpcService;
 
 
-        public PurchaseService(IPurchaseRepository _purchaseRepo, ILogger<PurchaseService> _logger, IUnitOfWork _unitOfWork,IMapper _mapper, IInvoiceNumberGenerator _invoiceNumberGenerator) {
+        public PurchaseService(IPurchaseRepository _purchaseRepo, ILogger<PurchaseService> _logger, IUnitOfWork _unitOfWork,IMapper _mapper, IInvoiceNumberGenerator _invoiceNumberGenerator, IAccountGrpcService _accountGrpcService) {
             purchaseRepo = _purchaseRepo;
             logger = _logger;
             unitOfWork = _unitOfWork;
             mapper = _mapper;
              invoiceNumberGenerator= _invoiceNumberGenerator;
+            accountGrpcService=_accountGrpcService;
 
         }
         public async Task<Responses<object>> AddPurchase(PurchaseAddDto newPurchase, Guid orgId, Guid userId)
@@ -179,6 +181,36 @@ namespace Application.Services
 
                 };
 
+                var voucher = mapper.Map<Voucher>(newPurchase.Voucher);
+                if (newPurchase.Voucher.TransactionsDebit != null)
+                {
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = newPurchase.Voucher.TransactionsDebit[0].LedgerId,
+                        Amount = (double)subTotal,
+                        Narration = newPurchase.Voucher.TransactionsDebit[0].Narration,
+                    });
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = newPurchase.Voucher.TransactionsDebit[1].LedgerId,
+                        Amount = (double)taxAmount,
+                        Narration = newPurchase.Voucher.TransactionsDebit[1].Narration,
+                    });
+                    
+                }
+
+                if (newPurchase.Voucher.TransactionsCredit != null)
+                {
+                    voucher.TransactionsCredit.Add(new Transaction
+                    {
+                        LedgerId = newPurchase.Voucher.TransactionsCredit[0].LedgerId,
+                        Amount = (double)subTotal + (double)taxAmount,
+                        Narration = newPurchase.Voucher.TransactionsCredit[0].Narration,
+                    });
+                }
+
+
+
 
                 using var transaction = await unitOfWork.BeginTransactionAsync();
                 try
@@ -199,7 +231,12 @@ namespace Application.Services
 
                     await purchaseRepo.AddPurchaseInvoice(purchaseInvoice);
 
+                    var response=await accountGrpcService.UpdatePurchaseUccounts(voucher);
+                    if (response.StatusCode != 200) {
+                        await transaction.RollbackAsync();
+                        return new Responses<object> { StatusCode = 400, Message = $"Error in adding purchase" };
 
+                    }
 
                     await unitOfWork.SaveChangesAsync();
 

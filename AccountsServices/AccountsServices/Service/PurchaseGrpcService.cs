@@ -28,7 +28,7 @@ namespace AccountsServices.Service
                     Amount= Convert.ToDecimal(x.Amount),
                    
                     Narration=x.Narration,
-                    VoucherId= Guid.Parse(x.VoucherId),
+                   
                     
                     
                 }).ToList(),

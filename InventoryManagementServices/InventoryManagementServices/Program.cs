@@ -19,6 +19,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using QuestPDF.Infrastructure;
 using Serilog;
 using InventoryService.Services;
+using Infrastructure.GrpcClient;
 
 namespace InventoryManagementServices
 {
@@ -40,6 +41,14 @@ namespace InventoryManagementServices
             {
                 options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
             });
+
+            builder.Services.AddGrpcClient<VoucherGrpcService.VoucherGrpcServiceClient>(o =>
+            {
+                o.Address = new Uri("https://localhost:7117"); // URL of gRPC server
+            });
+            builder.Services.AddScoped<IAccountGrpcService, AccountsGrpcClient>();
+
+
 
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
