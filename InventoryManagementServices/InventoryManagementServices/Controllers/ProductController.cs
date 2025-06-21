@@ -23,15 +23,15 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpPut("update/product")]
-        public async Task<IActionResult> UpdateProduct(Guid id,[FromForm] ProductDto productDto)
+        public async Task<IActionResult> UpdateProduct(Guid id, [FromForm] ProductDto productDto)
         {
-            var result = await _services.UpdateProduct(id,productDto);
+            var result = await _services.UpdateProduct(id, productDto);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/product/byid")]
-        public async Task<IActionResult>ProductGetById(Guid productId)
+        public async Task<IActionResult> ProductGetById(Guid productId)
         {
-            var result= await _services.GetProductById(productId);
+            var result = await _services.GetProductById(productId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/product/all")]
@@ -41,9 +41,9 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("Get/Product/Billing/All")]
-        public  async Task<IActionResult>GetAllProductForBilling(Guid orgnaizationId)
+        public async Task<IActionResult> GetAllProductForBilling(Guid orgnaizationId)
         {
-            var result= await _services.GetAllProductsForBilling(orgnaizationId);
+            var result = await _services.GetAllProductsForBilling(orgnaizationId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpPatch("delete/product/byId")]
@@ -59,15 +59,15 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("Search")]
-        public async Task <IActionResult>Serach(Guid organizationId, int? categoryId, string searchTerm)
+        public async Task<IActionResult> Serach(Guid organizationId, int? categoryId, string searchTerm)
         {
-            var result= await _services.SearchProducts(organizationId, categoryId, searchTerm);
+            var result = await _services.SearchProducts(organizationId, categoryId, searchTerm);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/product/bycategory")]
-        public async Task<IActionResult> GetProductsByCategory(int categoryId,Guid organizationId)
+        public async Task<IActionResult> GetProductsByCategory(int categoryId, Guid organizationId)
         {
-            var result = await _services.GetProductByCategory(categoryId,organizationId);
+            var result = await _services.GetProductByCategory(categoryId, organizationId);
             return StatusCode(result.StatusCode, result);
         }
 
@@ -85,17 +85,25 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-               
+
                 return StatusCode(500, new { message = "Export failed" });
             }
         }
 
 
         [HttpGet("Statistics")]
-        public async Task <IActionResult>GetStatistics(Guid organaizationId)
+        public async Task<IActionResult> GetStatistics(Guid organaizationId)
         {
             var response = await _services.GetProductStatistics(organaizationId);
             return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpGet("stock/{productId}/history")]
+        public async Task<IActionResult> GetProductHistory(Guid productId) {
+            var response= await _services.GetProductHistory(productId);
+
+            return StatusCode(response.StatusCode,response);
+
         }
     }
 }

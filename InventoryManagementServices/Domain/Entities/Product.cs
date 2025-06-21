@@ -69,7 +69,7 @@ namespace Domain.Entities
 
         public List<Images> Images { get; set; }
         public List<PurchaseOrderItem> PurchaseOrderItems { get; set; }
-        public List<PurchaseItem> PurchaseItemItems { get;set; }
+        public List<PurchaseItem> PurchaseItems { get;set; }
 
         public List<PurchaseReturnItem> PurchaseReturnItems { get; set; }
 

@@ -13,6 +13,7 @@ namespace Domain.Entities
        public Guid Id {  get; set; }
         public Guid OrganisationId { get; set; }
         [Required]
+        public Guid LedgerId { get; set; }
         public string  CustomerName {get;set;}
         public string? ContactNumber { get;set;}
         public string? Email { get; set; }

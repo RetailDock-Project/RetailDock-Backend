@@ -17,22 +17,22 @@ namespace Infrastructure.GrpcClient
             ledgerClient = _ledgerClient;
         }
 
-        public async Task<Responses<string>> AddSupplierLedger(Supplier newSupplier) {
-
-            try {
+        public async Task<Responses<string>> AddSupplierLedger(Supplier newSupplier, decimal? openingBalance, bool? isDebit)
+        {
+            try
+            {
                 var supplier = new LedgerRequest
                 {
-                    Id = newSupplier.Id.ToString(),
                     OrganizationId = newSupplier.OrganizationId.ToString(),
-                    LedgerId = newSupplier.LedgerId.ToString(),
-                    Name = newSupplier.Name,
+                    LedgerName = newSupplier.Name,
+                    OpeningBalance = openingBalance.HasValue ? openingBalance.Value.ToString("F2") : "0.00",
+                    DrCr = isDebit.HasValue ? (isDebit.Value ? "Dr" : "Cr") : "Dr", // Default to "Dr" if null
+                    CreatedBy = newSupplier.CreatedBy != Guid.Empty ? newSupplier.CreatedBy.ToString() : "",
+                    UpdatedBy = newSupplier.UpdatedBy != Guid.Empty ? newSupplier.UpdatedBy.ToString() : "",
+
                     ContactName = newSupplier.ContactName ?? "",
                     ContactNumber = newSupplier.ContactNumber ?? "",
                     Address = newSupplier.Address ?? "",
-                    City = newSupplier.City ?? "",
-                    State = newSupplier.State ?? "",
-                    Country = newSupplier.Country ?? "",
-                    Pincode = newSupplier.Pincode ?? "",
                     GstNumber = newSupplier.GSTNumber ?? "",
                     BankName = newSupplier.BankName ?? "",
                     AccountNumber = newSupplier.AccountNumber ?? "",
@@ -41,18 +41,21 @@ namespace Infrastructure.GrpcClient
                 };
 
                 var response = await ledgerClient.AddLedgerAsync(supplier);
-                return new Responses<string> { StatusCode = response.StatusCode, Message = "Ledger added", Data = response.LedgerId };
 
-            } catch (Exception ex)
+                return new Responses<string>
+                {
+                    StatusCode = response.StatusCode,
+                    Message = "Ledger added",
+                    Data = response.LedgerId
+                };
+            }
+            catch (Exception ex)
             {
                 throw new Exception("An error occurred while calling accounts gRPC service", ex);
             }
-
-            
-    
-
-
         }
+
+
 
 
 

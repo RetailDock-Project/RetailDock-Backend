@@ -32,7 +32,12 @@ namespace Application.Services
         Task<byte[]> ExportProductsAsExcelAsync(Guid organizationId);
         Task<Responses<ProductStatisticsDto>> GetProductStatistics(Guid organizationId);
 
-        Task<Responses<object>> UpdateProductStock(ProductStockUpdateDto updateData);    }
+        Task<Responses<object>> UpdateProductStock(ProductStockUpdateDto updateData);
+
+        Task<Responses<List<ProductHistoryDTO>>> GetProductHistory(Guid productId);
+
+
+    }
 
     public class Productservices:IProductServices
     {
@@ -527,6 +532,87 @@ namespace Application.Services
                     StatusCode = 500,
                     Message = "Error in  Updating product",
                 };
+            }
+        }
+
+        public async Task<Responses<List<ProductHistoryDTO>>> GetProductHistory(Guid productId) {
+            try
+            {
+
+                if (productId == null || Guid.Empty == productId)
+                {
+                    return new Responses<List<ProductHistoryDTO>>
+                    {
+                        StatusCode = 404,
+                        Message = "Product not found",
+                    };
+                }
+
+                var product = await _repository.GetProductHistory(productId);
+                var history = new List<ProductHistoryDTO>();
+
+                // Sale Items
+                if (product.SaleItems != null)
+                {
+                    history.Add(new ProductHistoryDTO
+                    {
+                        Date = product.SaleItems.Sales.CreatedAt,
+                        Type = "Sale",
+                        Quantity = Convert.ToDecimal(product.SaleItems.Quantity),
+                        ReferenceNumber = product.SaleItems.Sales.Invoices.B2CInvoiceNumber ?? product.SaleItems.Sales.Invoices.B2BInvoiceNumber
+                    });
+                }
+
+                // Sales Return Items
+                if (product.SalesReturnItems != null)
+                {
+                    history.Add(new ProductHistoryDTO
+                    {
+                        Date = product.SalesReturnItems.SalesReturn.ReturnDate,
+                        Type = "Sales Return",
+                        Quantity = Convert.ToDecimal(product.SalesReturnItems.Quantity),
+                        ReferenceNumber = product.SalesReturnItems.SalesReturn.ReturnInvoice.B2CReturnInvoiceNumber ?? product.SalesReturnItems.SalesReturn.ReturnInvoice.B2BReturnInvoiceNumber
+                    });
+                }
+
+                // Purchase Items
+                if (product.PurchaseItems != null && product.PurchaseItems.Any())
+                {
+                    foreach (var pi in product.PurchaseItems)
+                    {
+                        history.Add(new ProductHistoryDTO
+                        {
+                            Date = pi.Purchase.CreatedAt,
+                            Type = "Purchase",
+                            Quantity = Convert.ToDecimal(pi.Quantity),
+                            ReferenceNumber = pi.Purchase.PurchaseInvoice.InvoiceNumber
+                        });
+                    }
+                }
+
+                // Purchase Return Items
+                if (product.PurchaseReturnItems != null && product.PurchaseReturnItems.Any())
+                {
+                    foreach (var pri in product.PurchaseReturnItems)
+                    {
+                        history.Add(new ProductHistoryDTO
+                        {
+                            Date = pri.PurchaseReturn.CreatedAt,
+                            Type = "Purchase Return",
+                            Quantity = Convert.ToDecimal(pri.ReturnedQuantity),
+                            ReferenceNumber = pri.PurchaseReturn.PurchaseReturnInvoice.InvoiceNumber
+                        });
+                    }
+                }
+                return new Responses<List<ProductHistoryDTO>> { StatusCode = 200 ,Message="Product history retrieved successfully",Data= history.OrderByDescending(h => h.Date).ToList() };
+                // Sort history by date
+                
+
+            }
+            catch (Exception ex)
+            {
+                return new Responses<List<ProductHistoryDTO>> { StatusCode = 500, Message = "Error in retrieving Product history retrieved successfully" };
+
             }
         }
     }

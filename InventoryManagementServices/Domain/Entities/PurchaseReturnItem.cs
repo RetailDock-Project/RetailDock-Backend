@@ -13,7 +13,7 @@ namespace Domain.Entities
         public Guid PurchaseReturnId { get; set; }
         public Guid OriginalPurchaseItemId { get; set; }
         public Guid ProductId { get; set; }
-        public int ReturnedQuantity { get; set; }
+        public decimal ReturnedQuantity { get; set; }
         public decimal TotalAmount { get; set; }
         public decimal TaxAmount { get; set; }
 

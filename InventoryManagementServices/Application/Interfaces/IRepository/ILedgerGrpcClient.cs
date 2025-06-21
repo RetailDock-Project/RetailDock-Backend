@@ -9,6 +9,6 @@ namespace Application.Interfaces.IRepository
 {
     public interface ILedgerGrpcClient
     {
-         Task<Responses<string>> AddSupplierLedger(Supplier newSupplier);
+         Task<Responses<string>> AddSupplierLedger(Supplier newSupplier,decimal? openingBalance,bool? isDebit);
     }
 }
