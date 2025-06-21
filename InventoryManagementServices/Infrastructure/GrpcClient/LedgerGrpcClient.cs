@@ -21,6 +21,25 @@ namespace Infrastructure.GrpcClient
         {
             try
             {
+                Console.WriteLine("newSupplier Object:");
+                Console.WriteLine($"Id: {newSupplier.Id}");
+                Console.WriteLine($"OrganizationId: {newSupplier.OrganizationId}");
+                Console.WriteLine($"Name: {newSupplier.Name}");
+                Console.WriteLine($"ContactName: {newSupplier.ContactName}");
+                Console.WriteLine($"ContactNumber: {newSupplier.ContactNumber}");
+                Console.WriteLine($"Address: {newSupplier.Address}");
+                Console.WriteLine($"City: {newSupplier.City}");
+                Console.WriteLine($"State: {newSupplier.State}");
+                Console.WriteLine($"Country: {newSupplier.Country}");
+                Console.WriteLine($"Pincode: {newSupplier.Pincode}");
+                Console.WriteLine($"GSTNumber: {newSupplier.GSTNumber}");
+                Console.WriteLine($"BankName: {newSupplier.BankName}");
+                Console.WriteLine($"AccountNumber: {newSupplier.AccountNumber}");
+                Console.WriteLine($"IFSCCode: {newSupplier.IFSCCode}");
+                Console.WriteLine($"UPIId: {newSupplier.UPIId}");
+                Console.WriteLine($"CreatedBy: {newSupplier.CreatedBy}");
+                Console.WriteLine($"UpdatedBy: {newSupplier.UpdatedBy}");
+
                 var supplier = new LedgerRequest
                 {
                     OrganizationId = newSupplier.OrganizationId.ToString(),
