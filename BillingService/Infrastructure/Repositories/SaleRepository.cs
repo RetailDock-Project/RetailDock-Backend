@@ -23,19 +23,50 @@ namespace Infrastructure.Repositories
         private readonly BillingDbContext context;
         private readonly ILogger<SaleRepository> logger;
 
-        private readonly PurchaseGrpc.VoucherGrpcService.VoucherGrpcServiceClient  accountClient;
-        public SaleRepository(BillingDbContext _context, ILogger<SaleRepository> _logger, PurchaseGrpc.VoucherGrpcService.VoucherGrpcServiceClient _accountClient)
+
+        public SaleRepository(BillingDbContext _context, ILogger<SaleRepository> _logger)
         {
             context = _context;
             logger = _logger;
-            accountClient = _accountClient;
 
-       
+
+
         }
         public async Task SaveChanges()
         {
             await context.SaveChangesAsync();
         }
+
+
+        public async Task<CashCustomers> GetCashCustomers (string phoneNUmber,Guid OrgId)
+        {
+            return await context.CashCustomers.FirstOrDefaultAsync(x=>x.OrganisationId== OrgId && x.ContactNumber==phoneNUmber);
+        }    
+        public async Task<CreditCustomers> GetCreditCustomers (string phoneNUmber,Guid OrgId)
+        {
+            return await context.CreditCustomers.FirstOrDefaultAsync(x=>x.OrganisationId== OrgId && x.ContactNumber==phoneNUmber);
+        }
+        public async Task<Product> GetProductById(Guid productId, Guid orgId)
+
+
+
+        {
+            return await context.Products
+                .Include(p => p.UnitOfMeasures)
+                .Include(p => p.Category)
+                .Include(p => p.HsnCode)
+                .FirstOrDefaultAsync(p => p.Id == productId && !p.IsDeleted && p.OrgnaisationId == orgId);
+        }
+
+
+        public async Task<HsnCode> GetHsnCode(int HsnCodeId)
+
+        {
+
+            return await context.HsnCodes.FirstOrDefaultAsync(hsn => hsn.HsnCodeId == HsnCodeId);
+
+        }
+
         public async Task AddnewB2CSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto)
         {
             try
@@ -130,15 +161,13 @@ namespace Infrastructure.Repositories
             var transaction = await context.Database.BeginTransactionAsync();
             try
             {
-                var creditCustomerId = await context.CreditCustomers.Where(x => x.ContactNumber == sales.MobileNum).Select(x => x.Id).FirstOrDefaultAsync();
-                if (creditCustomerId == null)
+                var creditCustomer = await GetCreditCustomers(sales.MobileNum,allIdsDto.OrganisationId);
+                if (creditCustomer== null)
                 {
 
                     return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
 
                 }
-
-                //var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.OrganisationId.ToString() });
 
 
                 List<SaleItems> inMemorySale = new List<SaleItems>();
@@ -147,23 +176,23 @@ namespace Infrastructure.Repositories
                 foreach (var item in sales.SaleItems)
                 {
 
-                    var filteredProduct = await context.Products.FirstOrDefaultAsync(x => x.Id == item.ProductId && x.OrgnaisationId == allIdsDto.OrganisationId);
+                    var filteredProduct = await GetProductById(item.ProductId, allIdsDto.OrganisationId);
 
                     if (filteredProduct == null)
                     {
                         return new ResponseDto<object> { StatusCode = 404, Message = "product not found," };
                     }
 
-                   if( filteredProduct.Stock < item.Quantity)
+                    if (filteredProduct.Stock < item.Quantity)
                     {
                         return new ResponseDto<object> { StatusCode = 304, Message = "out Of stock" };
                     }
 
-                  filteredProduct.Stock -= item.Quantity;
-             
-                    var hsn = await context.HsnCodes.FirstOrDefaultAsync(hsn => hsn.HsnCodeId == filteredProduct.HsnCodeId);
-                    decimal taxRate = hsn.GstRate;
-                    int hsnCode = hsn.HSNCodeNumber;
+                    filteredProduct.Stock -= item.Quantity;
+
+                  
+                    decimal taxRate = filteredProduct.HsnCode.GstRate;
+                    int hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
                     decimal unitCost = filteredProduct.CostPrice;
                     int unitId = filteredProduct.UnitOfMeasuresId;
 
@@ -200,7 +229,7 @@ namespace Infrastructure.Repositories
 
                 await context.SaleItems.AddRangeAsync(inMemorySale);
                 var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
-                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, DebtorsId = creditCustomerId, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, DueDate = sales.DueDate, Narration = sales.Text, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
+                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, DebtorsId = creditCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, DueDate = sales.DueDate, Narration = sales.Text, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
 
 
                 await context.Sales.AddAsync(newSale);
@@ -215,15 +244,15 @@ namespace Infrastructure.Repositories
                     await AddnewB2BSaleInvoices(inMemorySale, allIdsDto);
                 }
 
-                //var respond=accountClient.AddVoucherEntryAsync(new AddVoucherRequest { CreatedBy= allIdsDto.UserId.ToString(),OrganizationId=allIdsDto.OrganisationId.ToString(),m} )
-                    //var respond = accountClient.  (new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
-                    //if (respond.Success == false)
-                    //{
-                    //    transaction.Rollback();
-                    //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
-                    //}
 
-          
+                //var respond = accountClient.  (new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
+                //if (respond.Success == false)
+                //{
+                //    transaction.Rollback();
+                //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
+                //}
+
+
 
 
                 await transaction.CommitAsync();
@@ -245,9 +274,9 @@ namespace Infrastructure.Repositories
             try
             {
 
-                var cashCustomerId = await context.CashCustomers.Where(x => x.ContactNumber == sales.MobileNum).Select(x => x.Id).FirstOrDefaultAsync();
+                var cashCustomer = await GetCashCustomers(sales.MobileNum,allIdsDto.OrganisationId);
 
-                if (cashCustomerId == null)
+                if (cashCustomer == null)
                 {
                     return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
                 }
@@ -256,7 +285,7 @@ namespace Infrastructure.Repositories
                 List<SaleItems> inMemorySale = new List<SaleItems>();
                 foreach (var item in sales.SaleItems)
                 {
-                    var filteredProduct =await  context.Products.FirstOrDefaultAsync(x => x.Id == item.ProductId&& x.OrgnaisationId==allIdsDto.OrganisationId);
+                    var filteredProduct = await GetProductById(item.ProductId, allIdsDto.OrganisationId);
 
                     if (filteredProduct == null)
                     {
@@ -264,16 +293,12 @@ namespace Infrastructure.Repositories
                     }
 
 
-                    if (filteredProduct.Stock < item.Quantity)
-                    {
-                        return new ResponseDto<object> { StatusCode = 304, Message = "out Of stock" };
-                    }
+
 
                     filteredProduct.Stock -= item.Quantity;
 
-                    var hsn = await context.HsnCodes.FirstOrDefaultAsync(hsn => hsn.HsnCodeId == filteredProduct.HsnCodeId);
-                    decimal taxRate = hsn.GstRate;
-                    int hsnCode=hsn.HSNCodeNumber;
+                    decimal taxRate = filteredProduct.HsnCode.GstRate;
+                    int hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
                     decimal unitCost = filteredProduct.CostPrice;
                     int unitId = filteredProduct.UnitOfMeasuresId;
 
@@ -300,7 +325,7 @@ namespace Infrastructure.Repositories
                         newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, IGST = taxAmount, UnitId = unitId, UnitCost = unitCost };
                     }
 
-                
+
 
                     inMemorySale.Add(newItems);
                     context.Products.Update(filteredProduct);
@@ -309,7 +334,7 @@ namespace Infrastructure.Repositories
 
                 await context.SaleItems.AddRangeAsync(inMemorySale);
                 var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
-                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, CashCustomerId = cashCustomerId, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
+                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, CashCustomerId = cashCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
 
                 await context.Sales.AddAsync(newSale);
 
