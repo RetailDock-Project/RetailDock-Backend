@@ -38,7 +38,6 @@ namespace Application.Dto
 {
     public class VoucherDto
     {
-        public string VoucherTypeId { get; set; }
         public string VoucherDate { get; set; }
         public string? Remarks { get; set; }
         public List<TransactionDto> TransactionsDebit { get; set; }

@@ -8,19 +8,19 @@ namespace API.Controllers
     [ApiController]
     public class LedgerController : ControllerBase
     {
-        private readonly LedgerConsumerService ledgerService;
+        //private readonly LedgerConsumerService ledgerService;
 
-        public LedgerController(LedgerConsumerService _ledgerService)
-        {
-            ledgerService = _ledgerService;
-        }
+        //public LedgerController(LedgerConsumerService _ledgerService)
+        //{
+        //    ledgerService = _ledgerService;
+        //}
 
-        [HttpGet("{orgId}")]
-        public async Task<IActionResult> GetProducts(Guid orgId)
-        {
-            var response = await ledgerService.GetPurchaseLedgers(orgId);
+        //[HttpGet("{orgId}")]
+        //public async Task<IActionResult> GetProducts(Guid orgId)
+        //{
+        //    var response = await ledgerService.GetPurchaseLedgers(orgId);
 
-            return StatusCode(response.StatusCode,response);
-        }
+        //    return StatusCode(response.StatusCode,response);
+        //}
     }
 }

@@ -9,6 +9,6 @@ namespace Application.Interfaces.IRepository
 {
     public interface ILedgerGrpcClient
     {
-        public Task<Responses<object>> AddSupplierLedger(Supplier newSupplier);
+         Task<Responses<string>> AddSupplierLedger(Supplier newSupplier);
     }
 }

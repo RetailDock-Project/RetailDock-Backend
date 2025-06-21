@@ -20,7 +20,6 @@ namespace Infrastructure.Repositories
         }
         public async Task CreateSupplier(Supplier newSupplier) { 
             await context.Suppliers.AddAsync(newSupplier);
-            await context.SaveChangesAsync();
         }
 
         public async Task<Supplier> GetSupplierWithGSTNumber(string gstNumber,Guid orgId)
