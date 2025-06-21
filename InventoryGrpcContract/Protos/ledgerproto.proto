@@ -9,23 +9,22 @@ service LedgerService {
 }
 
 message LedgerRequest {
-  string id = 1;
-  string organizationId = 2;
-  string ledgerId = 3;
-  string name = 4;
-  string contactName = 5;
-  string contactNumber = 6;
-  string address = 7;
-  string city = 8;
-  string state = 9;
-  string country = 10;
-  string pincode = 11;
-  string gstNumber = 12;
-  string bankName = 13;
-  string accountNumber = 14;
-  string ifscCode = 15;
-  string upiId = 16;
+  string organizationId = 1;
+  string ledgerName = 2;
+  string openingBalance = 3;
+  string drCr = 4;
+  string createdBy = 5;
+  string updatedBy = 6;
+  string contactName = 7;
+  string contactNumber = 8;
+  string address = 9;
+  string gstNumber = 10;
+  string bankName = 11;
+  string accountNumber = 12;
+  string ifscCode = 13;
+  string upiId = 14;
 }
+
 
 message LedgerResponse {
   string ledgerId = 1;

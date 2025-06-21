@@ -42,12 +42,13 @@ namespace Application.Services
                 var supplier=mapper.Map<Supplier>(newSupplier);
                 supplier.OrganizationId = orgId;
                 supplier.CreatedBy = userId;
+                
                 using var transaction = await unitOfWork.BeginTransactionAsync();
                 try {
 
 
                     await supplierRepo.CreateSupplier(supplier);
-                    var response=await ledgerGrpcClient.AddSupplierLedger(supplier);
+                    var response=await ledgerGrpcClient.AddSupplierLedger(supplier,newSupplier.OpeningBalance,newSupplier.IsDebit);
                     if (response.StatusCode != 200) {
                         await transaction.RollbackAsync();
                         return new Responses<object> { StatusCode = 500, Message = $"Error in adding ledger" };
