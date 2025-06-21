@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Dto;
+using Application.Interfaces;
 using Application.Interfaces.IRepository;
 using Application.Interfaces.IServices;
 using AutoMapper;
@@ -15,9 +16,15 @@ namespace Application.Services
     {
         private readonly IMapper mapper;
         private readonly ISupplierRepository supplierRepo;
-        public SupplierService(IMapper _mapper,ISupplierRepository _supplierRepo) {
+        private readonly IUnitOfWork unitOfWork;
+        private readonly ILedgerGrpcClient ledgerGrpcClient;
+
+        public SupplierService(IMapper _mapper,ISupplierRepository _supplierRepo,IUnitOfWork _unitOfWork, ILedgerGrpcClient _ledgerGrpcClient
+) {
             mapper = _mapper;
             supplierRepo = _supplierRepo;
+            unitOfWork = _unitOfWork;
+            ledgerGrpcClient = _ledgerGrpcClient;
         }
         public async Task<Responses<object>> CreateSupplier(SupplierDto newSupplier,Guid orgId,Guid userId)
         {
@@ -35,8 +42,31 @@ namespace Application.Services
                 var supplier=mapper.Map<Supplier>(newSupplier);
                 supplier.OrganizationId = orgId;
                 supplier.CreatedBy = userId;
-                await supplierRepo.CreateSupplier(supplier);
-                return new Responses<object> { StatusCode = 200 ,Message="Supplier created"};
+                using var transaction = await unitOfWork.BeginTransactionAsync();
+                try {
+
+
+                    await supplierRepo.CreateSupplier(supplier);
+                    var response=await ledgerGrpcClient.AddSupplierLedger(supplier);
+                    if (response.StatusCode != 200) {
+                        await transaction.RollbackAsync();
+                        return new Responses<object> { StatusCode = 500, Message = $"Error in adding ledger" };
+
+                    }
+                    supplier.LedgerId = Guid.Parse(response.Data);
+                    await unitOfWork.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+                    return new Responses<object> { StatusCode = 200, Message = $"Supplier ledger created" };
+
+                }
+                catch
+                {
+                    await transaction.RollbackAsync();
+                    throw;
+                }
+                
+
             
             } catch (Exception ex) {
                 return new Responses<object> { StatusCode = 500, Message="Error in creating supplier" };
