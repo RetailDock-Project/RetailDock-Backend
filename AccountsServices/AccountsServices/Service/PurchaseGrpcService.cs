@@ -13,31 +13,31 @@ namespace AccountsServices.Service
         private readonly IVoucherService _voucherService;
         public PurchaseGrpcService(IVoucherService voucherService)
         {
-            _voucherService = voucherService;   
+            _voucherService = voucherService;
         }
-        public override async Task<ApiResponses> AddVoucherEntry(AddVoucherRequest addVoucherRequest,ServerCallContext context)
+        public override async Task<ApiResponses> AddVoucherEntry(AddVoucherRequest addVoucherRequest, ServerCallContext context)
         {
-            var addVoucherDTO= new AddVouchersDTO
+            var addVoucherDTO = new AddVouchersDTO
             {
-                VoucherTypeId=Guid.Parse(addVoucherRequest.VoucherTypeId),
-                VoucherDate= DateTime.Parse(addVoucherRequest.VoucherDate),
-                Remarks=addVoucherRequest.Remarks,
-                TransactionsDebit=addVoucherRequest.TransactionsDebit.Select(x=>new TransactionsDTO
+                VoucherTypeId = Guid.Parse(addVoucherRequest.VoucherTypeId),
+                VoucherDate = DateTime.Parse(addVoucherRequest.VoucherDate),
+                Remarks = addVoucherRequest.Remarks,
+                TransactionsDebit = addVoucherRequest.TransactionsDebit.Select(x => new TransactionsDTO
                 {
-                    LedgerId=Guid.Parse(x.LedgerId),
-                    Amount= Convert.ToDecimal(x.Amount),
-                   
-                    Narration=x.Narration,
-                   
-                    
-                    
+                    LedgerId = Guid.Parse(x.LedgerId),
+                    Amount = Convert.ToDecimal(x.Amount),
+
+                    Narration = x.Narration,
+
+
+
                 }).ToList(),
                 TransactionsCredit = addVoucherRequest.TransactionsCredit.Select(x => new TransactionsDTO
                 {
                     LedgerId = Guid.Parse(x.LedgerId),
                     Amount = Convert.ToDecimal(x.Amount),
                     Narration = x.Narration,
-                 
+
                 }).ToList()
             };
 
@@ -50,6 +50,6 @@ namespace AccountsServices.Service
                 Data = response.Data
             };
         }
-        
+
     }
 }

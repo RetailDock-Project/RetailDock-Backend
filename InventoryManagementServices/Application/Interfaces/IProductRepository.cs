@@ -22,5 +22,7 @@ namespace Application.Interfaces
         Task<ProductStatisticsDto> GetProductStatisticsAsync(Guid organizationId);
 
         Task<bool> ProductStockUpdate(ProductStockUpdateDto updateData);
+
+        Task<Product> GetProductHistory(Guid productId);
     }
 }

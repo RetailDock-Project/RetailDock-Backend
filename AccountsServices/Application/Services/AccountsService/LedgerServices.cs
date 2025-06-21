@@ -35,7 +35,16 @@ namespace Application.Services.AccountsService
                         Message = "Ledger name already exists"
                     };
                 }
-                
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(ledgerDTO.GroupId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<string>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+
 
                 var ledgerId = Guid.NewGuid();
 
@@ -52,7 +61,9 @@ namespace Application.Services.AccountsService
                     UpdatedBy = ledgerDTO.UpdateBy,
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
-                    UpdatedAt = DateTime.UtcNow
+                    UpdatedAt = DateTime.UtcNow,
+
+                    Nature = nature,
                 };
 
                 if (ledgerDTO.Details != null)
@@ -69,8 +80,8 @@ namespace Application.Services.AccountsService
                         AccountNumber = ledgerDTO.Details.AccountNumber,
                         IFSCCode = ledgerDTO.Details.IFSCCode,
                         UPIId = ledgerDTO.Details.UPIId,
-                        CreatedBy =  ledgerDTO.CreatedBy,
-                        UpdatedBy =  ledgerDTO.UpdateBy,
+                        CreatedBy = ledgerDTO.CreatedBy,
+                        UpdatedBy = ledgerDTO.UpdateBy,
                         CreatedAt = DateTime.UtcNow,
                         UpdatedAt = DateTime.UtcNow
                     };
@@ -94,7 +105,7 @@ namespace Application.Services.AccountsService
                 };
             }
         }
-      public async  Task <ApiResponseDTO<List<GetLedgerDetailsDTO>>> GetAllLedgers(Guid organizationId)
+        public async Task<ApiResponseDTO<List<GetLedgerDetailsDTO>>> GetAllLedgers(Guid organizationId)
         {
             try
             {
@@ -118,15 +129,15 @@ namespace Application.Services.AccountsService
                 };
             }
             catch (Exception ex)
-            
-                {
+
+            {
                 _logger.LogError(ex.Message, "Error in getting ledgers");
                 return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
                 {
                     StatusCode = 500,
                     Message = "Error in getting ledgers"
                 };
-                }
+            }
 
         }
         public async Task<ApiResponseDTO<GetLedgerDetailsDTO>> GetLedgerById(Guid id, Guid organizationId)
@@ -135,14 +146,14 @@ namespace Application.Services.AccountsService
             {
 
 
-                var ledger = await _ledgerRepository.GetLedgerById(id,organizationId);
-                if (ledger==null)
+                var ledger = await _ledgerRepository.GetLedgerById(id, organizationId);
+                if (ledger == null)
                 {
                     return new ApiResponseDTO<GetLedgerDetailsDTO>
                     {
                         StatusCode = 200,
                         Message = "NO ledgers found this organization or ledgerId",
-                       
+
 
                     };
                 }
@@ -150,7 +161,7 @@ namespace Application.Services.AccountsService
                 {
                     StatusCode = 200,
                     Message = "Ledger Found",
-                    Data=ledger
+                    Data = ledger
                 };
             }
             catch (Exception ex)
@@ -195,7 +206,8 @@ namespace Application.Services.AccountsService
 
             {
                 _logger.LogError(ex.Message, "Error in getting ledgers");
-                return new ApiResponseDTO<List<GetLedgerDetailsDTO>> { 
+                return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                {
                     StatusCode = 500,
                     Message = "Error in getting ledgers"
                 };
@@ -206,6 +218,16 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(updateLedger.GroupId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<bool>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+                updateLedger.Nature = nature;
                 var result = await _ledgerRepository.UpdateLedgerDetails(ledgerId, updateLedger);
                 if (result)
                 {
@@ -225,7 +247,7 @@ namespace Application.Services.AccountsService
 
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message, "Ledger updation failed");
                 return new ApiResponseDTO<bool>
@@ -235,7 +257,7 @@ namespace Application.Services.AccountsService
                 };
             }
         }
-        public async Task<ApiResponseDTO<bool> >DeleteLedger(Guid ledgerId)
+        public async Task<ApiResponseDTO<bool>> DeleteLedger(Guid ledgerId)
         {
             try
             {
@@ -247,7 +269,7 @@ namespace Application.Services.AccountsService
                     {
                         StatusCode = 200,
                         Message = "Ledger Deleted Successfully"
-                        
+
                     };
                 }
                 return new ApiResponseDTO<bool>
@@ -257,7 +279,7 @@ namespace Application.Services.AccountsService
                 };
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message, "Ledger deletion failed");
                 return new ApiResponseDTO<bool>
@@ -267,7 +289,7 @@ namespace Application.Services.AccountsService
                 };
             }
         }
-      
+
 
         public async Task<ApiResponseDTO<List<GetLedgerDetailsDTO>>> GetSalesAcoountLedgerts(Guid organizationId)
         {
@@ -291,7 +313,7 @@ namespace Application.Services.AccountsService
                 };
             }
             catch (Exception ex)
-            { 
+            {
                 _logger.LogError(ex.Message, "Error in fetching ledgers under sales account group");
                 return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
                 {
@@ -539,24 +561,24 @@ namespace Application.Services.AccountsService
             try
             {
                 var data = await _ledgerRepository.GetCashAndBankLedgers(organizationId);
-                if (data.Count>0)
+                if (data.Count > 0)
                 {
                     return new ApiResponseDTO<List<GetLedgerDetailDTO>>
                     {
                         StatusCode = 200,
                         Message = "Cash and bank ledgers fetched successfully",
-                        Data= data
-                        
+                        Data = data
+
                     };
                 }
 
-                
+
 
                 return new ApiResponseDTO<List<GetLedgerDetailDTO>>
                 {
                     StatusCode = 200,
                     Message = "No Bank and cash ledger under this organization",
-                  
+
                 };
             }
             catch (Exception ex)
@@ -569,6 +591,195 @@ namespace Application.Services.AccountsService
                 };
             }
         }
+        public async  Task<ApiResponseDTO<Guid>> CreateDebtorLedger(AddLedgerDTO ledgerDTO, Guid OrganizationId)
+        {
+            try
+            {
+                var isExists = await _ledgerRepository.IsLedgerNameExistsAsync(ledgerDTO.LedgerName, OrganizationId);
+                if (isExists)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 409,
+                        Message = "Ledger name already exists"
+                    };
+                }
+                var debtorId = await _ledgerRepository.GetGroupIdByNameAndOrganizationId(OrganizationId, "Debtors");
+                if (debtorId == null)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(debtorId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
 
+
+                var ledgerId = Guid.NewGuid();
+
+                var ledger = new Ledger
+                {
+                    Id = ledgerId,
+                    LedgerName = ledgerDTO.LedgerName.Trim(),
+                    GroupId = debtorId,
+                    OrganizationId = OrganizationId,
+                    OpeningBalance = ledgerDTO.OpeningBalance,
+                    ClosingBalance = ledgerDTO.OpeningBalance,
+                    DrCr = ledgerDTO.DrCr,
+                    CreatedBy = ledgerDTO.CreatedBy,
+                    UpdatedBy = ledgerDTO.UpdateBy,
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow,
+                   
+
+                    Nature = nature,
+                };
+
+                if (ledgerDTO.Details != null)
+                {
+                    ledger.LedgerDetails = new LedgerDetails
+                    {
+                        Id = Guid.NewGuid(),
+                        LedgerId = ledgerId,
+                        ContactName = ledgerDTO.Details.ContactName,
+                        ContactNumber = ledgerDTO.Details.ContactNumber,
+                        Address = ledgerDTO.Details.Address,
+                        GSTNumber = ledgerDTO.Details.GSTNumber,
+                        BankName = ledgerDTO.Details.BankName,
+                        AccountNumber = ledgerDTO.Details.AccountNumber,
+                        IFSCCode = ledgerDTO.Details.IFSCCode,
+                        UPIId = ledgerDTO.Details.UPIId,
+                        CreatedBy = ledgerDTO.CreatedBy,
+                        UpdatedBy = ledgerDTO.UpdateBy,
+                        CreatedAt = DateTime.UtcNow,
+                       
+                    };
+                }
+
+                var success = await _ledgerRepository.CreateLedgerAsync(ledger);
+
+                return new ApiResponseDTO<Guid>
+                {
+                    StatusCode = success ? 201 : 500,
+                    Message = success ? "Ledger created successfully." : "Ledger creation failed.",
+                    Data=ledgerId,
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error creating ledger");
+                return new ApiResponseDTO<Guid>
+                {
+                    StatusCode = 500,
+                    Message = "Internal server error"
+                };
+
+            }
+
+        }
+        public async Task<ApiResponseDTO<Guid>> CreateCreditorLedger(AddLedgerDTO ledgerDTO, Guid OrganizationId)
+        {
+            try
+            {
+                var isExists = await _ledgerRepository.IsLedgerNameExistsAsync(ledgerDTO.LedgerName, OrganizationId);
+                if (isExists)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 409,
+                        Message = "Ledger name already exists"
+                    };
+                }
+                var creditorId = await _ledgerRepository.GetGroupIdByNameAndOrganizationId(OrganizationId, "Creditor");
+                if (creditorId == null)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(creditorId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+
+
+                var ledgerId = Guid.NewGuid();
+
+                var ledger = new Ledger
+                {
+                    Id = ledgerId,
+                    LedgerName = ledgerDTO.LedgerName.Trim(),
+                    GroupId = creditorId,
+                    OrganizationId = OrganizationId,
+                    OpeningBalance = ledgerDTO.OpeningBalance,
+                    ClosingBalance = ledgerDTO.OpeningBalance,
+                    DrCr = ledgerDTO.DrCr,
+                    CreatedBy = ledgerDTO.CreatedBy,
+                    UpdatedBy = ledgerDTO.UpdateBy,
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow,
+                   
+
+                    Nature = nature,
+                };
+
+                if (ledgerDTO.Details != null)
+                {
+                    ledger.LedgerDetails = new LedgerDetails
+                    {
+                        Id = Guid.NewGuid(),
+                        LedgerId = ledgerId,
+                        ContactName = ledgerDTO.Details.ContactName,
+                        ContactNumber = ledgerDTO.Details.ContactNumber,
+                        Address = ledgerDTO.Details.Address,
+                        GSTNumber = ledgerDTO.Details.GSTNumber,
+                        BankName = ledgerDTO.Details.BankName,
+                        AccountNumber = ledgerDTO.Details.AccountNumber,
+                        IFSCCode = ledgerDTO.Details.IFSCCode,
+                        UPIId = ledgerDTO.Details.UPIId,
+                        CreatedBy = ledgerDTO.CreatedBy,
+                        UpdatedBy = ledgerDTO.UpdateBy,
+                        CreatedAt = DateTime.UtcNow,
+                      
+                    };
+                }
+
+                var success = await _ledgerRepository.CreateLedgerAsync(ledger);
+
+                return new ApiResponseDTO<Guid>
+                {
+                    StatusCode = success ? 201 : 500,
+                    Message = success ? "Ledger created successfully." : "Ledger creation failed.",
+                    Data = ledgerId,
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error creating ledger");
+                return new ApiResponseDTO<Guid>
+                {
+                    StatusCode = 500,
+                    Message = "Internal server error"
+                };
+
+            }
+
+        }
     }
 }

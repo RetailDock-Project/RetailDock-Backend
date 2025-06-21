@@ -17,6 +17,7 @@ namespace Application.DTO
       
         public decimal OpeningBalance { get; set; }
         public string DrCr { get; set; } // "Dr" or "Cr"
+        public string Nature { get; set; }
         public Guid? CreatedBy { get; set; }
         public Guid UpdateBy { get; set; }
         public AddLedgerDetailsDTO? Details { get; set; }

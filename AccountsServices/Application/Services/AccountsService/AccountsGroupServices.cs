@@ -16,11 +16,13 @@ namespace Application.Services.AccountsService
     public class AccountsGroupServices : IAccountsGroupService
     {
         private readonly IAccountsGroupRepository _accountsGroupRepository;
+        private readonly ILedgerRepository _ledgerRepository;
         private readonly ILogger<AccountsGroupServices> _logger;
-        public AccountsGroupServices(IAccountsGroupRepository accountsGroupRepository, ILogger<AccountsGroupServices> logger)
+        public AccountsGroupServices(IAccountsGroupRepository accountsGroupRepository, ILogger<AccountsGroupServices> logger, ILedgerRepository ledgerRepository)
         {
             _accountsGroupRepository = accountsGroupRepository;
             _logger = logger;
+            _ledgerRepository = ledgerRepository;
         }
         public async Task<ApiResponseDTO<object>> CreateParentGroup(Guid OrganizationId, AddParentGroupDTO addParentGroupDTO)
         {
@@ -46,6 +48,16 @@ namespace Application.Services.AccountsService
                         Message = "GroupName cannot be empty or whitespace."
                     };
                 }
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(addParentGroupDTO.AccountsMasterGroupId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<object>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+                addParentGroupDTO.Nature = nature;
                 var result = await _accountsGroupRepository.AddParentGroup(OrganizationId, addParentGroupDTO);
                 if (result)
                 {
@@ -99,6 +111,16 @@ namespace Application.Services.AccountsService
                         Message = "GroupName cannot be empty or whitespace."
                     };
                 }
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(addSubGroupDTO.ParentId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<object>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+                addSubGroupDTO.Nature = nature;
                 var result = await _accountsGroupRepository.AddSubGroup(OrganizationId, addSubGroupDTO);
                 if (result)
                 {
@@ -232,7 +254,7 @@ namespace Application.Services.AccountsService
                 };
             }
         }
-       
+        
 
     }
 }

@@ -135,7 +135,7 @@ namespace Infrastructure.Context
             });
             modelBuilder.Entity<PurchaseItem>()
                 .HasOne(pi=>pi.Product)
-                .WithMany(p=>p.PurchaseItemItems)
+                .WithMany(p=>p.PurchaseItems)
                 .HasForeignKey(pi=>pi.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 

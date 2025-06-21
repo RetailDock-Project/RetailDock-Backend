@@ -147,7 +147,7 @@ namespace Application.Services
                 }
 
                 await _repository.SoftDeleteAsync(id);
-                return new Responses<string> { Message = "Unit deleted (soft)", StatusCode = 200 };
+                return new Responses<string> { Message = "Unit deleted", StatusCode = 200 };
             }
             catch (Exception ex)
             {

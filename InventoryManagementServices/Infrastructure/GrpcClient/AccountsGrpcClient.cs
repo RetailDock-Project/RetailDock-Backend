@@ -64,7 +64,6 @@ namespace Infrastructure.GrpcClient
             
             catch (Exception ex)
             {
-                // Handle other errors
                 throw new Exception("An error occurred while calling accounts gRPC service", ex);
             }
         }

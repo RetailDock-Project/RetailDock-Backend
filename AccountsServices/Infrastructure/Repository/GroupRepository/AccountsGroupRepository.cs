@@ -35,8 +35,8 @@ namespace Infrastructure.Repository.GroupRepository
         public async Task<bool> AddParentGroup(Guid OrganizationId, AddParentGroupDTO addGroupDTO)
         {
             var sql = @"INSERT INTO AccountsGroups(Id, OrganizationId, GroupName,
-                 AccountsMasterGroupId, CreatedBy, UpdatedBy) Values
-              (@Id, @OrganizationId, @GroupName, @AccountsMasterGroupId, @CreatedBy, @UpdatedBy)";
+                 AccountsMasterGroupId, CreatedBy, UpdatedBy, Nature) Values
+              (@Id, @OrganizationId, @GroupName, @AccountsMasterGroupId, @CreatedBy, @UpdatedBy,@Nature)";
             var group = new
             {
                 Id = Guid.NewGuid(),
@@ -45,7 +45,7 @@ namespace Infrastructure.Repository.GroupRepository
                 AccountsMasterGroupId = addGroupDTO.AccountsMasterGroupId,
                 CreatedBy = addGroupDTO.CreatedBy,
                 UpdatedBy = addGroupDTO.UpdatedBy,
-
+                Nature=addGroupDTO.Nature
             };
             try
             {
@@ -63,8 +63,8 @@ namespace Infrastructure.Repository.GroupRepository
         public async Task<bool> AddSubGroup(Guid OrganizationId, AddSubGroupDTO addGroupDTO)
         {
             var sql = @"INSERT INTO AccountsGroups(Id, OrganizationId, GroupName,
-                 ParentId, CreatedBy, UpdatedBy) Values
-              (@Id, @OrganizationId, @GroupName, @ParentId, @CreatedBy, @UpdatedBy)";
+                 ParentId, CreatedBy, UpdatedBy,Nature) Values
+              (@Id, @OrganizationId, @GroupName, @ParentId, @CreatedBy, @UpdatedBy,@Nature)";
             var group = new
             {
                 Id = Guid.NewGuid(),
@@ -73,6 +73,8 @@ namespace Infrastructure.Repository.GroupRepository
                 ParentId = addGroupDTO.ParentId,
                 CreatedBy = addGroupDTO.CreatedBy,
                 UpdatedBy = addGroupDTO.UpdatedBy,
+                Nature=addGroupDTO.Nature
+              
 
             };
 
@@ -114,7 +116,7 @@ namespace Infrastructure.Repository.GroupRepository
             var count = await connection.ExecuteScalarAsync<int>(sql, new { GroupName = groupName, OrganizationId = organizationId });
             return count > 0;
         }
-       
 
+       
     }
 }
