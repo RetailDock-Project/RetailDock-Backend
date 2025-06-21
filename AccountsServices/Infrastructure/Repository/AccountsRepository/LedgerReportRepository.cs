@@ -79,7 +79,6 @@ namespace Infrastructure.Repository.AccountsRepository
             }
         }
     }
-=======
     //public class LedgerReportRepository:ILedgerReportRepository
     //{
     //    private readonly DapperConection _dapperConection;

@@ -129,19 +129,19 @@ namespace Infrastructure.Repositories
 
         public async Task AddNewCashCustomer(CreateCustomerDto customer, Guid orgId, Guid userId)
         {
-            var newCustomer = new CashCustomers { Id = Guid.NewGuid(), CustomerName = customer.Name, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId };
+            var newCustomer = new CashCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId };
 
             await context.CashCustomers.AddAsync(newCustomer);
         }
         public async Task AddNewCrditCustomer(CreateCustomerDto customer, Guid orgId, Guid userId)
         {
-            var newCustomer = new CreditCustomers { Id = Guid.NewGuid(), CustomerName = customer.Name, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place };
+            var newCustomer = new CreditCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place };
 
             await context.CreditCustomers.AddAsync(newCustomer);
         }
         public async Task AddNewB2BCustomers(CreateCustomerDto customer, Guid orgId, Guid userId)
         {
-            var newCustomer = new CreditCustomers {Id=Guid.NewGuid(), CustomerName = customer.Name, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, GstNumber = customer.GstNumber };
+            var newCustomer = new CreditCustomers {Id=Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, GstNumber = customer.GstNumber };
 
             await context.CreditCustomers.AddAsync(newCustomer);
         }

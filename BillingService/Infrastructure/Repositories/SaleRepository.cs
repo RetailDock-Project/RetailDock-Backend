@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop.Infrastructure;
 using MySqlX.XDevAPI.Relational;
 
-using PurchaseGrpc;
+
 
 namespace Infrastructure.Repositories
 {

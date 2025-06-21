@@ -5,7 +5,7 @@ using Application.AutoMapper;
 using BillingService.Extension;
 using Infrastructure.BillingContext;
 using Microsoft.EntityFrameworkCore;
-using BillingService.Services;
+
 using QuestPDF.Infrastructure;
 using Serilog;
 
@@ -15,10 +15,10 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
-builder.Services.AddGrpcClient<GrpcContracts.ProductService.ProductServiceClient>(options =>
-{
-    options.Address = new Uri("https://localhost:7163"); // change to Inventory service URL
-});
+//builder.Services.AddGrpcClient<GrpcContracts.ProductService.ProductServiceClient>(options =>
+//{
+//    options.Address = new Uri("https://localhost:7163"); // change to Inventory service URL
+//});
 //builder.Services.AddGrpcClient<PurchaseGrpc.StockService.StockServiceClient>(options =>
 //{
 //    options.Address = new Uri("https://localhost:7117"); // change to Inventory service URL
@@ -28,7 +28,7 @@ builder.Host.UseSerilog();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddControllers();
 builder.Services.addApplicationService();
-builder.Services.AddScoped<ProductConsumerService>();
+//builder.Services.AddScoped<ProductConsumerService>();
 
 
 // Set license type for QuestPDF
