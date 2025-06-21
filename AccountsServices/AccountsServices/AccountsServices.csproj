@@ -26,15 +26,17 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
-	<ItemGroup>
-  <Protobuf Include="Protos/ledger.proto" GrpcServices="Server" />
-</ItemGroup>
+	
 	<ItemGroup>
 		<Protobuf Include="Protos/defaultgrpproto.proto" GrpcServices="Server" />
 	</ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\purchaseproto.proto" GrpcServices="Server" />
 	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\ledgerproto.proto" GrpcServices="Server" />
+	</ItemGroup>
+	
 	
 	
 
