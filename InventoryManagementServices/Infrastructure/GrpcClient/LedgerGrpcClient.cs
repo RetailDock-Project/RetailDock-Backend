@@ -26,7 +26,7 @@ namespace Infrastructure.GrpcClient
                     OrganizationId = newSupplier.OrganizationId.ToString(),
                     LedgerName = newSupplier.Name,
                     OpeningBalance = openingBalance.HasValue ? openingBalance.Value.ToString("F2") : "0.00",
-                    DrCr = isDebit.HasValue ? (isDebit.Value ? "Dr" : "Cr") : "Dr", // Default to "Dr" if null
+                    DrCr = isDebit.HasValue ? (isDebit.Value ? "Dr" : "Cr") : "Cr", 
                     CreatedBy = newSupplier.CreatedBy != Guid.Empty ? newSupplier.CreatedBy.ToString() : "",
                     UpdatedBy = newSupplier.UpdatedBy != Guid.Empty ? newSupplier.UpdatedBy.ToString() : "",
 
