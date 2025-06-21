@@ -23,9 +23,9 @@ namespace Infrastructure.Repository.GroupRepository
         {
             var sqlLedger = @"
                             INSERT INTO Ledgers 
-                            (Id, LedgerName, GroupId, OrganizationId, OpeningBalance, ClosingBalance, DrCr, IsActive, CreatedAt, UpdatedAt, CreatedBy, UpdatedBy)
+                            (Id, LedgerName, GroupId, OrganizationId, OpeningBalance, ClosingBalance, DrCr, IsActive, CreatedAt, UpdatedAt, CreatedBy, UpdatedBy, Nature)
                             VALUES 
-                            (@Id, @LedgerName, @GroupId, @OrganizationId, @OpeningBalance, @ClosingBalance, @DrCr, @IsActive, @CreatedAt, @UpdatedAt, @CreatedBy, @UpdatedBy)";
+                            (@Id, @LedgerName, @GroupId, @OrganizationId, @OpeningBalance, @ClosingBalance, @DrCr, @IsActive, @CreatedAt, @UpdatedAt, @CreatedBy, @UpdatedBy,@Nature)";
 
             var sqlDetails = @"
                              INSERT INTO LedgerDetails 
@@ -182,7 +182,7 @@ namespace Infrastructure.Repository.GroupRepository
             {
                
                 var existingLedger = await connection.QueryFirstOrDefaultAsync<dynamic>(
-                    "SELECT LedgerName, GroupId, OpeningBalance, DrCr FROM Ledgers WHERE Id = @LedgerId",
+                    "SELECT LedgerName, GroupId, OpeningBalance, DrCr,Nature FROM Ledgers WHERE Id = @LedgerId",
                     new { LedgerId = ledgerId }, transaction);
 
                 if (existingLedger == null)
@@ -208,7 +208,8 @@ namespace Infrastructure.Repository.GroupRepository
                            : updateLedger.DrCr,
 
                     UpdatedBy = updateLedger.UpdateBy,
-                    LedgerId = ledgerId
+                    LedgerId = ledgerId,
+                    Nature= updateLedger.Nature
                 };
 
                 // Step 3: Update
@@ -220,7 +221,8 @@ namespace Infrastructure.Repository.GroupRepository
                 OpeningBalance = @OpeningBalance,
                 DrCr = @DrCr,
                 UpdatedAt = CURRENT_TIMESTAMP,
-                UpdatedBy = @UpdatedBy
+                UpdatedBy = @UpdatedBy,
+                 Nature =@Nature
             WHERE Id = @LedgerId";
 
                 await connection.ExecuteAsync(sqlLedger, updatedLedger, transaction);
@@ -347,21 +349,36 @@ namespace Infrastructure.Repository.GroupRepository
         public async Task<List<GetLedgerDetailDTO>> GetCashAndBankLedgers(Guid organizationId)
         {
             var sql = @"SELECT 
-    L.Id AS Id,
-    L.LedgerName,
-    G.GroupName,
-    L.OrganizationId
-FROM Ledgers L
-JOIN AccountsGroups G ON L.GroupId = G.Id
-WHERE G.Id IN (
-    '720b45fc-429f-11f0-a0c7-862ccfb05833',  -- Cash in Hand
-    '720c48e9-429f-11f0-a0c7-862ccfb05833'   -- Bank Accounts
-)
-AND L.OrganizationId = @OrganizationId;
-";
+                  L.Id AS Id,
+                     L.LedgerName,
+                    G.GroupName,
+                     L.OrganizationId
+                    FROM Ledgers L
+                   JOIN AccountsGroups G ON L.GroupId = G.Id
+                    WHERE G.Id IN (
+                   '720b45fc-429f-11f0-a0c7-862ccfb05833',  -- Cash in Hand
+                   '720c48e9-429f-11f0-a0c7-862ccfb05833'   -- Bank Accounts
+                     )
+                   AND L.OrganizationId = @OrganizationId;";
             var connection = _dapperContext.CreateConnection();
             var result = await connection.QueryAsync<GetLedgerDetailDTO>(sql, new { OrganizationId = organizationId });
             return result.ToList();
         }
+        public async Task<string> GetNatureByGroupIdOrMasterGroupIdAsync(Guid id)
+        {
+            var sql = "SELECT Nature FROM AccountsGroups WHERE Id = @Id OR AccountsMasterGroupId = @Id LIMIT 1;";
+            using var connection = _dapperContext.CreateConnection();
+            var nature = await connection.QueryFirstOrDefaultAsync<string>(sql, new { Id = id });
+            return nature;
+        }
+
+        public async Task<Guid> GetGroupIdByNameAndOrganizationId(Guid organizationId, string groupname)
+        {
+            var sql = @"Select Id from AccountsGroups Where GroupName=@GroupName And OrganizationId=@OrganizationId;";
+            using var connection = _dapperContext.CreateConnection();
+            var GroupId = await connection.QueryFirstOrDefaultAsync<Guid>(sql, new { GroupName = groupname, OrganizationId = organizationId });
+            return GroupId;
+        }
+
     }
 }

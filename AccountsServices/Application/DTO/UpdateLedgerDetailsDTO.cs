@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Application.DTO
@@ -12,7 +13,8 @@ namespace Application.DTO
     
 
         public string? LedgerName { get; set; }
-     
+        [JsonIgnore]
+        public string Nature {  get; set; }
         public Guid GroupId { get; set; }
 
         public decimal OpeningBalance { get; set; }
