@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "LedgerGrpc"; // Change this to your actual C# namespace
+
+package ledger;
+
+service LedgerService {
+  rpc AddLedger (LedgerRequest) returns (LedgerResponse);
+}
+
+message LedgerRequest {
+  string id = 1;
+  string organizationId = 2;
+  string ledgerId = 3;
+  string name = 4;
+  string contactName = 5;
+  string contactNumber = 6;
+  string address = 7;
+  string city = 8;
+  string state = 9;
+  string country = 10;
+  string pincode = 11;
+  string gstNumber = 12;
+  string bankName = 13;
+  string accountNumber = 14;
+  string ifscCode = 15;
+  string upiId = 16;
+}
+
+message LedgerResponse {
+  string ledgerId = 1;
+  int32 statusCode = 2;
+}

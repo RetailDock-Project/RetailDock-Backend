@@ -19,6 +19,7 @@ using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using QuestPDF.Infrastructure;
 using Serilog;
 using InventoryService.Services;
+using Infrastructure.GrpcClient;
 
 namespace InventoryManagementServices
 {
@@ -36,10 +37,22 @@ namespace InventoryManagementServices
             builder.Services.AddSwaggerGen();
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-            builder.Services.AddGrpcClient<AccountingGrpc.LedgerService.LedgerServiceClient>(options =>
+            //builder.Services.AddGrpcClient<AccountingGrpc.LedgerService.LedgerServiceClient>(options =>
+            //{
+            //    options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
+            //});
+            builder.Services.AddGrpcClient<LedgerGrpc.LedgerService.LedgerServiceClient>(options =>
             {
                 options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
             });
+            builder.Services.AddGrpcClient<VoucherGrpcService.VoucherGrpcServiceClient>(o =>
+            {
+                o.Address = new Uri("https://localhost:7117"); // URL of gRPC server
+            });
+            builder.Services.AddScoped<IAccountGrpcService, AccountsGrpcClient>();
+            builder.Services.AddScoped<ILedgerGrpcClient, LedgerGrpcClient>();
+
+
 
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -66,7 +79,7 @@ namespace InventoryManagementServices
             builder.Services.AddScoped<IInvoiceNumberGenerator, InvoiceNumberGenerator>();
             builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
             builder.Services.AddScoped<ISupplierService, SupplierService>();
-            builder.Services.AddScoped<LedgerConsumerService>();
+            //builder.Services.AddScoped<LedgerConsumerService>();
 
 
 

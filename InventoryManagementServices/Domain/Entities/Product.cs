@@ -29,8 +29,8 @@ namespace Domain.Entities
         [ForeignKey("Category")]
         public int ProductCategoryId { get; set; }
 
-        [Range(0, int.MaxValue)]
-        public int Stock { get; set; } = 0;
+
+        public decimal Stock { get; set; } = 0;
 
         [ForeignKey("UnitOfMeasures")]
         public int UnitOfMeasuresId { get; set; }

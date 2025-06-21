@@ -10,6 +10,7 @@ using Infrastructure.DapperContext;
 
 namespace Infrastructure.Repository.AccountsRepository
 {
+<<<<<<< HEAD
     public class LedgerReportRepository:ILedgerReportRepository
     {
         private readonly DapperConection _dapperConection;
@@ -78,4 +79,30 @@ namespace Infrastructure.Repository.AccountsRepository
             }
         }
     }
+=======
+    //public class LedgerReportRepository:ILedgerReportRepository
+    //{
+    //    private readonly DapperConection _dapperConection;
+    //    public LedgerReportRepository(DapperConection adapperConection)
+    //    {
+    //        _dapperConection = adapperConection;    
+    //    }
+    //  public async  Task<LedgerReportDTO> GetLedgerDetailsAsync(Guid organizationId, Guid ledgerId, DateTime? startDate, DateTime? endDate)
+    //    {
+    //        var start = startDate ?? new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
+    //        var end = endDate ?? DateTime.UtcNow;
+
+
+    //        // Get Ledger Info (Name,  Opening, Opening Type)
+    //        var sql = @"SELECT LedgerName, OpeningBalance, DrCr FROM Ledgers WHERE Id = @LedgerId";
+    //        var connection =_dapperConection.CreateConnection();
+    //        var ledgerInfo = await connection.QueryFirstOrDefaultAsync<(string LedgerName, decimal OpeningBalance, string DrCr)>(
+    //             sql, new { LedgerId = ledgerId });
+    //        if (ledgerInfo.LedgerName == null)
+    //        {
+    //            return null;
+    //        }
+    //    }
+    //}
+>>>>>>> 7b9fea0f42e4eb5bcc7cd2b13c899e3ca562dd0f
 }
