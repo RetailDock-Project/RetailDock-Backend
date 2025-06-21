@@ -49,7 +49,7 @@ namespace Application.Services
 
                     await supplierRepo.CreateSupplier(supplier);
                     var response=await ledgerGrpcClient.AddSupplierLedger(supplier,newSupplier.OpeningBalance,newSupplier.IsDebit);
-                    if (response.StatusCode != 200) {
+                    if (response.StatusCode != 201) {
                         await transaction.RollbackAsync();
                         return new Responses<object> { StatusCode = 500, Message = $"Error in adding ledger" };
 
