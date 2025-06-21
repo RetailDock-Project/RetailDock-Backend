@@ -76,6 +76,22 @@ public class LedgerGrpcService : LedgerService.LedgerServiceBase
     {
         try
         {
+            Console.WriteLine("Ledger Request Received:");
+            Console.WriteLine($"LedgerName: {request.LedgerName}");
+            Console.WriteLine($"OpeningBalance: {request.OpeningBalance}");
+            Console.WriteLine($"DrCr: {request.DrCr}");
+            Console.WriteLine($"CreatedBy: {request.CreatedBy}");
+            Console.WriteLine($"UpdatedBy: {request.UpdatedBy}");
+            Console.WriteLine("Contact Details:");
+            Console.WriteLine($"  ContactName: {request.ContactName}");
+            Console.WriteLine($"  ContactNumber: {request.ContactNumber}");
+            Console.WriteLine($"  Address: {request.Address}");
+            Console.WriteLine($"  GSTNumber: {request.GstNumber}");
+            Console.WriteLine($"  BankName: {request.BankName}");
+            Console.WriteLine($"  AccountNumber: {request.AccountNumber}");
+            Console.WriteLine($"  IFSCCode: {request.IfscCode}");
+            Console.WriteLine($"  UPIId: {request.UpiId}");
+
             var orgId = Guid.Parse(request.OrganizationId);
 
             var ledgerDTO = new AddLedgerDTO
@@ -84,7 +100,7 @@ public class LedgerGrpcService : LedgerService.LedgerServiceBase
                 OpeningBalance = Convert.ToDecimal(request.OpeningBalance),
                 DrCr = request.DrCr,
                 CreatedBy = Guid.Parse(request.CreatedBy),
-                UpdateBy = Guid.Parse(request.UpdatedBy),
+                UpdateBy = Guid.Empty,
                 Details = new AddLedgerDetailsDTO
                 {
                     ContactName = request.ContactName,
