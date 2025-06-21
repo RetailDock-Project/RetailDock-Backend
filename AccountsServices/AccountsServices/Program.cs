@@ -30,8 +30,10 @@ var app = builder.Build();
 
 app.MapGrpcService<PurchaseGrpcService>();
 app.MapGrpcService<AccountsGroupgRPCService>();
-app.MapGrpcService<LedgergRPCService>();
-app.MapGrpcService<AccountsGroupgRPCService>();
+//app.MapGrpcService<LedgergRPCService>();
+//app.MapGrpcService<AccountsGroupgRPCService>();
+app.MapGrpcService<LedgerGrpcService>();
+
 
 
 // Configure the HTTP request pipeline.
