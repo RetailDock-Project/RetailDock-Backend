@@ -104,7 +104,7 @@ public class LedgerGrpcService : LedgerService.LedgerServiceBase
             {
                 LedgerId = result.Data != Guid.Empty ? result.Data.ToString() : "",
                 StatusCode = result.StatusCode,
-               
+
             };
         }
         catch (Exception ex)
@@ -114,7 +114,53 @@ public class LedgerGrpcService : LedgerService.LedgerServiceBase
             {
                 LedgerId = "",
                 StatusCode = 500,
-              
+
+            };
+        }
+    }
+    public override async Task<LedgerResponse> AddDebtor(LedgerRequest request, ServerCallContext context)
+    {
+        try
+        {
+            var orgId = Guid.Parse(request.OrganizationId);
+
+            var ledgerDTO = new AddLedgerDTO
+            {
+                LedgerName = request.LedgerName,
+                OpeningBalance = Convert.ToDecimal(request.OpeningBalance),
+                DrCr = request.DrCr,
+                CreatedBy = Guid.Parse(request.CreatedBy),
+                UpdateBy = Guid.Parse(request.UpdatedBy),
+                Details = new AddLedgerDetailsDTO
+                {
+                    ContactName = request.ContactName,
+                    ContactNumber = request.ContactNumber,
+                    Address = request.Address,
+                    GSTNumber = request.GstNumber,
+                    BankName = request.BankName,
+                    AccountNumber = request.AccountNumber,
+                    IFSCCode = request.IfscCode,
+                    UPIId = request.UpiId
+                }
+            };
+
+            var result = await _ledgerService.CreateDebtorLedger(ledgerDTO, orgId);
+
+            return new LedgerResponse
+            {
+                LedgerId = result.Data != Guid.Empty ? result.Data.ToString() : "",
+                StatusCode = result.StatusCode,
+
+            };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "gRPC Error in AddLedger");
+            return new LedgerResponse
+            {
+                LedgerId = "",
+                StatusCode = 500,
+
             };
         }
     }

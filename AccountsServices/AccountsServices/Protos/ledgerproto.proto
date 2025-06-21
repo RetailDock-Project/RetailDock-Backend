@@ -6,6 +6,7 @@ package ledger;
 
 service LedgerService {
   rpc AddLedger (LedgerRequest) returns (LedgerResponse);
+  rpc AddDebtor(LedgerRequest) returns (LedgerResponse);
 }
 
 message LedgerRequest {
