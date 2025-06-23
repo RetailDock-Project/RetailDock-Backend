@@ -53,6 +53,7 @@ namespace Application.Services.AccountsService
                     Id = ledgerId,
                     LedgerName = ledgerDTO.LedgerName.Trim(),
                     GroupId = ledgerDTO.GroupId,
+                    Nature = nature,
                     OrganizationId = organizationId,
                     OpeningBalance = ledgerDTO.OpeningBalance,
                     ClosingBalance = ledgerDTO.OpeningBalance,
@@ -63,7 +64,7 @@ namespace Application.Services.AccountsService
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
 
-                    Nature = nature,
+                  
                 };
 
                 if (ledgerDTO.Details != null)
