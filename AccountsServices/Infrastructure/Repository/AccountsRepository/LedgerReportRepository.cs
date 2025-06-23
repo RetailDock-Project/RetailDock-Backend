@@ -67,17 +67,3 @@
 //                finalBalance = adjustedOpening + txn.TotalCredit - txn.TotalDebit;
 //            }
 
-//            //  Determine final nature
-//            if (finalBalance >= 0)
-//            {
-//                finalType = ledgerInfo.Nature; // retain same nature
-//            }
-//            else
-//            {
-//                finalType = ledgerInfo.Nature?.ToLower() == "dr" ? "Cr" : "Dr"; // flip it
-//                finalBalance = Math.Abs(finalBalance); // make positive
-//            }
-//        }
-//    }
-
-//}

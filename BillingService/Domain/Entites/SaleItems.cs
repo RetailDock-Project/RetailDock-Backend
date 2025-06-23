@@ -33,6 +33,6 @@ namespace Domain.Entites
         public decimal TotalAmount {  get; set; }
 
         public Sales Sales { get; set; }
-    //public List<Product> Products { get; set; }
-}
+    public Product Products { get; set; }
+    }
 }

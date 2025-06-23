@@ -28,14 +28,14 @@ namespace Application.Interfaces.Repository_Interfaces
         Task<CreditCustomers> fetchCreditCustomerSaleDetailsById(Guid customerId,Guid orgId);
         Task<CashCustomers> fetchCashCustomerSaleDetailsById(Guid customerId,Guid orgId);
         Task<List<CreditCustomers>> GetCreditCustomers(Guid orgId); 
-        Task AddNewCashCustomer(CreateCustomerDto customer, Guid orgId, Guid userId);
+        Task AddNewCashCustomer(CreateCustomerDto customer, Guid orgId, Guid userId, string ledgerId);
 
        
 
-           Task AddNewCrditCustomer(CreateCustomerDto customer, Guid orgId, Guid userId);
+           Task AddNewCrditCustomer(CreateCustomerDto customer, Guid orgId, Guid userId,string ledgerId);
 
 
-  Task AddNewB2BCustomers(CreateCustomerDto customer, Guid orgId, Guid userId);
+  Task AddNewB2BCustomers(CreateCustomerDto customer, Guid orgId, Guid userId,string ledgerId);
             
 
         }
