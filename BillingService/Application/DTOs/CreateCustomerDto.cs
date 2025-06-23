@@ -20,23 +20,18 @@ namespace Application.DTOs
         public string? GstNumber { get; set; }
     
         public string? Place { get; set; }
+        public string? Address { get; set; }
 
 
-      public  LedgerAddDto Ledger{ get; set; }
-    }
 
-    public class LedgerAddDto
-    {
+        public string? openingBalance { get; set; } = "";
+       public  string? drCr { get; set; } = "dr";
 
+        public string? contactName { get; set; } = "";
 
-        string openingBalance { get; set; }
-        string drCr { get; set; } = "dr";
-
-        string contactName { get; set; }
-
-        string bankName { get; set; }
-        string accountNumber { get; set; }
-        string ifscCode { get; set; }
-        string upiId { get; set; }
+        public string? bankName { get; set; }="";
+        public string? accountNumber { get; set; }="";
+        public string? ifscCode { get; set; }="";
+        public string? upiId { get; set; }="";
     }
 }

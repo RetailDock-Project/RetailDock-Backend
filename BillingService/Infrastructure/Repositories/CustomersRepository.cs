@@ -127,21 +127,21 @@ namespace Infrastructure.Repositories
         }
 
 
-        public async Task AddNewCashCustomer(CreateCustomerDto customer, Guid orgId, Guid userId)
+        public async Task AddNewCashCustomer(CreateCustomerDto customer, Guid orgId, Guid userId, string ledgerId)
         {
-            var newCustomer = new CashCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId };
+            var newCustomer = new CashCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId,CreatedAt=DateTime.Now,LedgerId=Guid.Parse(ledgerId ) };
 
             await context.CashCustomers.AddAsync(newCustomer);
         }
-        public async Task AddNewCrditCustomer(CreateCustomerDto customer, Guid orgId, Guid userId)
+        public async Task AddNewCrditCustomer(CreateCustomerDto customer, Guid orgId, Guid userId, string ledgerId)
         {
-            var newCustomer = new CreditCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place };
+            var newCustomer = new CreditCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, CreatedAt = DateTime.Now, LedgerId = Guid.Parse(ledgerId) };
 
             await context.CreditCustomers.AddAsync(newCustomer);
         }
-        public async Task AddNewB2BCustomers(CreateCustomerDto customer, Guid orgId, Guid userId)
+        public async Task AddNewB2BCustomers(CreateCustomerDto customer, Guid orgId, Guid userId, string ledgerId)
         {
-            var newCustomer = new CreditCustomers {Id=Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, GstNumber = customer.GstNumber };
+            var newCustomer = new CreditCustomers {Id=Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, GstNumber = customer.GstNumber, CreatedAt = DateTime.Now, LedgerId = Guid.Parse(ledgerId) };
 
             await context.CreditCustomers.AddAsync(newCustomer);
         }

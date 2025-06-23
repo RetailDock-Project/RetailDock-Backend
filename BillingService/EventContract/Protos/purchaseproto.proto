@@ -10,7 +10,7 @@ service VoucherGrpcService {
 }
 
 message TransactionDTO {
-	string ledgrId=1;
+	string ledgerId=1;
    double  amount = 2;
   string Narration = 3;
   

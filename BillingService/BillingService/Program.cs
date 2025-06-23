@@ -5,9 +5,12 @@ using Application.AutoMapper;
 using BillingService.Extension;
 using Infrastructure.BillingContext;
 using Microsoft.EntityFrameworkCore;
-
+using LedgerGrpc;
+using PurchaseGrpc;
 using QuestPDF.Infrastructure;
 using Serilog;
+using Application.Interfaces.Grpc_Interface;
+using Infrastructure.Grpc_Client;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,14 +18,17 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
-//builder.Services.AddGrpcClient<GrpcContracts.ProductService.ProductServiceClient>(options =>
-//{
-//    options.Address = new Uri("https://localhost:7163"); // change to Inventory service URL
-//});
-//builder.Services.AddGrpcClient<PurchaseGrpc.StockService.StockServiceClient>(options =>
-//{
-//    options.Address = new Uri("https://localhost:7117"); // change to Inventory service URL
-//});
+builder.Services.AddGrpcClient<PurchaseGrpc.VoucherGrpcService.VoucherGrpcServiceClient>(o =>
+{
+    o.Address = new Uri("https://localhost:7117"); // URL of gRPC server
+});
+builder.Services.AddGrpcClient<LedgerGrpc.LedgerService.LedgerServiceClient>(options =>
+{
+    options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
+});
+
+builder.Services.AddScoped<IAddLedger, Add_LedgerGrpc>();
+//builder.Services.AddScoped<IAccountGrpc,AccountGrpc_Client>();
 builder.Host.UseSerilog();       
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));

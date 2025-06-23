@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.DTOs;
+using Application.Interfaces.Grpc_Interface;
 using Application.Interfaces.Repository_Interfaces;
 using Application.Interfaces.Service_Interfaces;
 using AutoMapper;
@@ -19,11 +20,13 @@ namespace Application.Services
         private readonly ICustomerRepository customerRepo;
         private readonly IMapper mapper;
         private readonly ILogger<CustomerService> logger;
-        public CustomerService(ICustomerRepository _repo, IMapper _mapper, ILogger<CustomerService> _logger)
+        private readonly IAddLedger _ledger;
+        public CustomerService(ICustomerRepository _repo, IMapper _mapper, ILogger<CustomerService> _logger,IAddLedger ledger)
         {
             customerRepo = _repo;
             mapper = _mapper;
             _logger = logger;
+            _ledger = ledger;
         }
         public async Task<ResponseDto<List<ViewCustomerSalesDto>>> GetAllCustomers(Guid orgId)
         {
@@ -67,15 +70,22 @@ namespace Application.Services
         public async Task<ResponseDto<object>> addCustomer(Guid orgId, Guid userId, CreateCustomerDto customer)
         {
             try
-            { 
-                var saleMode = customer.SaleMode.ToLower();
+            {
+                var response = await _ledger.AddLedgrer(customer, orgId, userId);
+             
+
+                if(response.StatusCode == 201)
+                {
+                    var ledgerId = response.Data;
+
+                    var saleMode = customer.SaleMode.ToLower();
 
                 if (saleMode == "credit")
                 {
                     var existing = await customerRepo.fetchCreditCusomersByMobile(customer.PhoneNumber, orgId);
                     if (existing == null)
                     {
-                        await customerRepo.AddNewCrditCustomer(customer, orgId, userId);
+                        await customerRepo.AddNewCrditCustomer(customer, orgId, userId,ledgerId);
                         await customerRepo.SaveChanges();
                         return new ResponseDto<object> { Message = "New Debtor Added", StatusCode = 201 };
                     }
@@ -87,7 +97,7 @@ namespace Application.Services
                     var existing = await customerRepo.fetchCashCusomersByMobile(customer.PhoneNumber, orgId);
                     if (existing == null)
                     {
-                        await customerRepo.AddNewCashCustomer(customer, orgId, userId);
+                        await customerRepo.AddNewCashCustomer(customer, orgId, userId,ledgerId);
                         await customerRepo.SaveChanges();
                         return new ResponseDto<object> { Message = "New Cash Customer Added", StatusCode = 201 };
                     }
@@ -99,13 +109,16 @@ namespace Application.Services
                     var existing = await customerRepo.fetchCreditCusomersByMobile(customer.PhoneNumber, orgId);
                     if (existing == null)
                     {
-                        await customerRepo.AddNewB2BCustomers(customer, orgId, userId);
+                            await customerRepo.AddNewB2BCustomers(customer, orgId, userId,ledgerId);
                         await customerRepo.SaveChanges();
                         return new ResponseDto<object> { Message = "New B2B Customer Added", StatusCode = 201 };
                     }
 
                     return new ResponseDto<object> { Message = "Customer Already Exists", StatusCode = 200 };
                 }
+                 
+                }
+                return new ResponseDto<object> { Message = "ErrorInLedgorCreation", StatusCode = 400 };
             }
             catch (Exception ex)
             {
