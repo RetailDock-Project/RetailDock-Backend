@@ -28,7 +28,7 @@ builder.Services.AddGrpcClient<LedgerGrpc.LedgerService.LedgerServiceClient>(opt
 });
 
 builder.Services.AddScoped<IAddLedger, Add_LedgerGrpc>();
-//builder.Services.AddScoped<IAccountGrpc,AccountGrpc_Client>();
+builder.Services.AddScoped<IAccountGrpc,AccountGrpc_Client>();
 builder.Host.UseSerilog();       
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
