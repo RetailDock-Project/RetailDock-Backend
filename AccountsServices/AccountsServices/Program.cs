@@ -2,6 +2,7 @@ using System.Data;
 using AccountsService.Extensions;
 using AccountsServices.Service;
 using Infrastructure.DapperContext;
+using PurchaseGrpc;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Services.AddScoped<DapperConection>();
+
 
 builder.Host.UseSerilog(); 
 builder.Services.AddApplicationServices();
