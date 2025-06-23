@@ -1,69 +1,282 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Application.DTOs;
-//using Application.Interfaces.IRepository;
-//using Dapper;
-//using Infrastructure.DapperContext;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Application.DTO;
+using Application.DTOs;
+using Application.Interfaces.IRepository;
+using Dapper;
+using Infrastructure.DapperContext;
 
-//namespace Infrastructure.Repository.AccountsRepository
-//{
+namespace Infrastructure.Repository.AccountsRepository
+{
+    public class LedgerReportRepository : ILedgerReportRepository
+    {
+        private readonly DapperConection _dapperConection;
 
-//    public class LedgerReportRepository:ILedgerReportRepository
-//    {
-//        private readonly DapperConection _dapperConection;
-//        public LedgerReportRepository(DapperConection adapperConection)
-//        {
-//            _dapperConection = adapperConection;
-//        }
-//        public async Task<LedgerReportDTO> GetLedgerDetailsAsync(Guid organizationId, Guid ledgerId, DateTime? startDate, DateTime? endDate)
-//        {
-//            var start = startDate ?? new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
-//            var end = endDate ?? DateTime.UtcNow;
+        public LedgerReportRepository(DapperConection adapperConection)
+        {
+            _dapperConection = adapperConection;
+        }
+
+       
+            public async Task<LedgerDetailsReportDTO> GetLedgerDetailsAsync(Guid organizationId, Guid ledgerId, DateTime? startDate, DateTime? endDate)
+        {
+            var start = startDate ?? new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
+            var end = endDate ?? DateTime.UtcNow;
+
+            var connection = _dapperConection.CreateConnection();
+
+            // Step 1: Get Ledger Info
+            var sql = @"SELECT LedgerName, OpeningBalance, DrCr, Nature FROM Ledgers WHERE Id = @LedgerId";
+            var ledgerInfo = await connection.QueryFirstOrDefaultAsync<(string LedgerName, decimal OpeningBalance, string DrCr, string Nature)>(
+                sql, new { LedgerId = ledgerId });
+
+            if (ledgerInfo.LedgerName == null)
+                return null;
+
+            // Step 2: Get Opening Transactions Before StartDate
+            var openingTxnSql = @"
+        SELECT 
+            IFNULL(SUM(CASE WHEN T.IsDebit = 1 THEN T.Amount ELSE 0 END), 0) AS TotalDebit,
+            IFNULL(SUM(CASE WHEN T.IsDebit = 0 THEN T.Amount ELSE 0 END), 0) AS TotalCredit
+        FROM Transactions T
+        INNER JOIN Vouchers V ON V.Id = T.VoucherId
+        WHERE T.LedgerId = @LedgerId
+          AND V.OrganizationId = @OrgId
+          AND V.VoucherDate < @StartDate;";
+
+            var txn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
+                openingTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start });
+
+            // Step 3: Adjust Opening Balance
+            decimal adjustedOpening = (ledgerInfo.Nature?.ToLower() == ledgerInfo.DrCr?.ToLower())
+                ? ledgerInfo.OpeningBalance
+                : -ledgerInfo.OpeningBalance;
+
+            decimal finalOpeningBalance;
+            string finalOpeningType;
+
+            if (ledgerInfo.Nature?.ToLower() == "dr")
+                finalOpeningBalance = adjustedOpening + txn.TotalDebit - txn.TotalCredit;
+            else
+                finalOpeningBalance = adjustedOpening + txn.TotalCredit - txn.TotalDebit;
+
+            if (finalOpeningBalance >= 0)
+            {
+                finalOpeningType = ledgerInfo.Nature;
+            }
+            else
+            {
+                finalOpeningType = ledgerInfo.Nature?.ToLower() == "dr" ? "Cr" : "Dr";
+                finalOpeningBalance = Math.Abs(finalOpeningBalance);
+            }
+
+            // Step 4: Get Transactions BETWEEN Start and End Date
+            var betweenTxnSql = @"
+        SELECT 
+            IFNULL(SUM(CASE WHEN T.IsDebit = 1 THEN T.Amount ELSE 0 END), 0) AS TotalDebit,
+            IFNULL(SUM(CASE WHEN T.IsDebit = 0 THEN T.Amount ELSE 0 END), 0) AS TotalCredit
+        FROM Transactions T
+        INNER JOIN Vouchers V ON V.Id = T.VoucherId
+        WHERE T.LedgerId = @LedgerId
+          AND V.OrganizationId = @OrgId
+          AND V.VoucherDate BETWEEN @StartDate AND @EndDate;";
+
+            var periodTxn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
+                betweenTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start, EndDate = end });
+
+            // Step 5: Adjust Closing Using Opening Type
+            decimal adjustedClosing = (ledgerInfo.Nature?.ToLower() == finalOpeningType?.ToLower())
+                ? finalOpeningBalance
+                : -finalOpeningBalance;
+
+            decimal closingBalance;
+            string closingType;
+
+            if (ledgerInfo.Nature?.ToLower() == "dr")
+                closingBalance = adjustedClosing + periodTxn.TotalDebit - periodTxn.TotalCredit;
+            else
+                closingBalance = adjustedClosing + periodTxn.TotalCredit - periodTxn.TotalDebit;
+
+            if (closingBalance >= 0)
+            {
+                closingType = ledgerInfo.Nature;
+            }
+            else
+            {
+                closingType = ledgerInfo.Nature?.ToLower() == "dr" ? "Cr" : "Dr";
+                closingBalance = Math.Abs(closingBalance);
+            }
+
+            // Step 6: Get detailed transactions with opposite ledgers
+            var transactionListSql = @"
+    WITH SelectedLedgerEntries AS (
+    SELECT T.*
+    FROM Transactions T
+    INNER JOIN Vouchers V ON V.Id = T.VoucherId
+    WHERE T.LedgerId = @LedgerId
+      AND V.OrganizationId = @OrgId
+      AND V.VoucherDate BETWEEN @StartDate AND @EndDate
+),
+TotalOppositeSide AS (
+    SELECT 
+        OT.VoucherId,
+        SUM(OT.Amount) AS TotalOppAmount
+    FROM Transactions OT
+    INNER JOIN SelectedLedgerEntries T ON OT.VoucherId = T.VoucherId
+    WHERE OT.IsDebit != T.IsDebit
+    GROUP BY OT.VoucherId
+),
+OppositeLedgers AS (
+    SELECT 
+        OT.VoucherId,
+        OT.LedgerId,
+        L.LedgerName AS OppositeLedger,
+        OT.Amount AS OppAmount,
+        OT.IsDebit
+    FROM Transactions OT
+    INNER JOIN Ledgers L ON L.Id = OT.LedgerId
+)
+SELECT 
+    OL.OppositeLedger,
+    ROUND((OL.OppAmount / TOA.TotalOppAmount) * T.Amount, 2) AS Amount,
+    V.VoucherDate,
+    VT.TypeName,
+    V.VoucherNumber,
+    T.IsDebit
+FROM SelectedLedgerEntries T
+INNER JOIN Vouchers V ON T.VoucherId = V.Id
+INNER JOIN VoucherTypes VT ON V.VoucherTypeId = VT.Id
+INNER JOIN TotalOppositeSide TOA ON TOA.VoucherId = T.VoucherId
+INNER JOIN OppositeLedgers OL ON OL.VoucherId = T.VoucherId
+WHERE OL.IsDebit != T.IsDebit;
 
 
-//            //  Info (Name,  Opening, Opening Type)
-//            var sql = @"SELECT LedgerName, OpeningBalance, DrCr , Nature FROM Ledgers WHERE Id = @LedgerId";
-//            var connection = _dapperConection.CreateConnection();
-//            var ledgerInfo = await connection.QueryFirstOrDefaultAsync<(string LedgerName, decimal OpeningBalance, string DrCr,string Nature)>
-//                (sql, new { LedgerId = ledgerId });
 
-//            if (ledgerInfo.LedgerName == null)
-//            {
-//                return null;
-//            }
-//            //  Get all transactions before start date
-//            var openingTxnSql = @"
-//                                SELECT 
-//                                IFNULL(SUM(CASE WHEN T.IsDebit = 1 THEN T.Amount ELSE 0 END), 0) AS TotalDebit,
-//                                IFNULL(SUM(CASE WHEN T.IsDebit = 0 THEN T.Amount ELSE 0 END), 0) AS TotalCredit
-//                                FROM Transactions T
-//                                INNER JOIN Vouchers V ON V.Id = T.VoucherId
-//                                WHERE T.LedgerId = @LedgerId
-//                                AND V.OrganizationId = @OrgId
-//                                AND V.VoucherDate < @StartDate;";
-//            var txn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
-//                      openingTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = startDate });
+";
+
+            var transactions = (await connection.QueryAsync<LedgerReportDTO>(
+                transactionListSql,
+                new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start, EndDate = end }
+            )).ToList();
+            foreach (var item in transactions)
+            {
+                Console.WriteLine(item.Amount);
+            }
+           
+            // Step 7: Return Final DTO
+            return new LedgerDetailsReportDTO
+            {
+                LedgerName = ledgerInfo.LedgerName,
+                OpeningBalance = finalOpeningBalance,
+                
+                ClosingBalance = closingBalance,
+                ClosingType = closingType,
+                PeriodDr = periodTxn.TotalDebit,
+                PeriodCr = periodTxn.TotalCredit,
+                Transactions = transactions,
+                OpeningType= finalOpeningType
+                
+            };
+        }
+
+
+<<<<<<< HEAD
 
 
 
-//            // Adjust opening balance sign
-//            decimal adjustedOpening = (ledgerInfo.Nature?.ToLower() == ledgerInfo.DrCr?.ToLower())
-//                ? ledgerInfo.OpeningBalance
-//                : -ledgerInfo.OpeningBalance;
 
-//            decimal finalBalance = 0;
-//            string finalType = ""; // "Dr" or "Cr"
 
-//            //  Calculate net balance based on nature
-//            if (ledgerInfo.Nature?.ToLower() == "dr")
-//            {
-//                finalBalance = adjustedOpening + txn.TotalDebit - txn.TotalCredit;
-//            }
-//            else if (ledgerInfo.Nature?.ToLower() == "cr")
-//            {
-//                finalBalance = adjustedOpening + txn.TotalCredit - txn.TotalDebit;
-//            }
+        public async Task<List<LedgerSummaryDTO>> GetAllLedgerSummariesAsync(Guid organizationId, DateTime? startDate, DateTime? endDate)
+        {
+            var start = startDate ?? new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
+            var end = endDate ?? DateTime.UtcNow;
 
+            var connection = _dapperConection.CreateConnection();
+
+            var ledgers = (await connection.QueryAsync<(Guid Id, string LedgerName, decimal OpeningBalance, string DrCr, string Nature)>(
+                @"SELECT Id, LedgerName, OpeningBalance, DrCr, Nature 
+          FROM Ledgers 
+          WHERE OrganizationId = @OrgId AND IsActive = 1",
+                new { OrgId = organizationId }
+            )).ToList();
+
+            var result = new List<LedgerSummaryDTO>();
+
+            foreach (var ledger in ledgers)
+            {
+                // 1. Opening Transaction Sum
+                var openingTxn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
+                    @"SELECT 
+                IFNULL(SUM(CASE WHEN T.IsDebit = 1 THEN T.Amount ELSE 0 END), 0) AS TotalDebit,
+                IFNULL(SUM(CASE WHEN T.IsDebit = 0 THEN T.Amount ELSE 0 END), 0) AS TotalCredit
+              FROM Transactions T
+              INNER JOIN Vouchers V ON V.Id = T.VoucherId
+              WHERE T.LedgerId = @LedgerId
+                AND V.OrganizationId = @OrgId
+                AND V.VoucherDate < @StartDate",
+                    new { LedgerId = ledger.Id, OrgId = organizationId, StartDate = start });
+
+                decimal adjustedOpening = (ledger.Nature?.ToLower() == ledger.DrCr?.ToLower())
+                    ? ledger.OpeningBalance
+                    : -ledger.OpeningBalance;
+
+                decimal finalOpeningBalance = (ledger.Nature?.ToLower() == "dr")
+                    ? adjustedOpening + openingTxn.TotalDebit - openingTxn.TotalCredit
+                    : adjustedOpening + openingTxn.TotalCredit - openingTxn.TotalDebit;
+
+                string openingType = (finalOpeningBalance >= 0)
+                    ? ledger.Nature
+                    : (ledger.Nature?.ToLower() == "dr" ? "Cr" : "Dr");
+
+                finalOpeningBalance = Math.Abs(finalOpeningBalance);
+
+                // 2. Period Transactions
+                var periodTxn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
+                    @"SELECT 
+                IFNULL(SUM(CASE WHEN T.IsDebit = 1 THEN T.Amount ELSE 0 END), 0) AS TotalDebit,
+                IFNULL(SUM(CASE WHEN T.IsDebit = 0 THEN T.Amount ELSE 0 END), 0) AS TotalCredit
+              FROM Transactions T
+              INNER JOIN Vouchers V ON V.Id = T.VoucherId
+              WHERE T.LedgerId = @LedgerId
+                AND V.OrganizationId = @OrgId
+                AND V.VoucherDate BETWEEN @StartDate AND @EndDate",
+                    new { LedgerId = ledger.Id, OrgId = organizationId, StartDate = start, EndDate = end });
+
+                // 3. Adjust Closing
+                decimal adjustedClosing = (ledger.Nature?.ToLower() == openingType?.ToLower())
+                    ? finalOpeningBalance
+                    : -finalOpeningBalance;
+
+                decimal finalClosing = (ledger.Nature?.ToLower() == "dr")
+                    ? adjustedClosing + periodTxn.TotalDebit - periodTxn.TotalCredit
+                    : adjustedClosing + periodTxn.TotalCredit - periodTxn.TotalDebit;
+
+                string closingType = (finalClosing >= 0)
+                    ? ledger.Nature
+                    : (ledger.Nature?.ToLower() == "dr" ? "Cr" : "Dr");
+
+                finalClosing = Math.Abs(finalClosing);
+
+                // 4. Add to result list
+                result.Add(new LedgerSummaryDTO
+                {
+                    LedgerId = ledger.Id,
+                    LedgerName = ledger.LedgerName,
+                    OpeningBalance = finalOpeningBalance,
+                    OpeningType = openingType,
+                    PeriodDr = periodTxn.TotalDebit,
+                    PeriodCr = periodTxn.TotalCredit,
+                    ClosingBalance = finalClosing,
+                    ClosingType = closingType
+                });
+            }
+
+            return result;
+        }
+
+    }
+}
+=======
+>>>>>>> ba4c8af2799f5875f2cd23abfbb7449393f37072
