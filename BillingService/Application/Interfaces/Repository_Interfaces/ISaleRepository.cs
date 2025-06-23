@@ -11,6 +11,10 @@ namespace Application.Interfaces.Repository_Interfaces
 {
     public interface ISaleRepository
     {
+        Task<CreditCustomers> GetCreditCustomers(string phoneNUmber, Guid OrgId);
+        Task<CashCustomers> GetCashCustomers(string phoneNUmber, Guid OrgId);
+        Task<Product> GetProductById(Guid productId, Guid orgId);
+        Task<HsnCode> GetHsnCode(int HsnCodeId);
         Task<ResponseDto<object>> AddNewCashSale(SalesAddDto sales,CreateSaleIdsDto allIdsDto);
         Task<ResponseDto<object>>  AddNewCreditSale(SalesAddDto sales,CreateSaleIdsDto allIdsDto);
         Task<List<Sales>>GetSaleDetailsByDate(DateTime fromDate, DateTime toDate,Guid orgId);

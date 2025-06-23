@@ -17,8 +17,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos/product.proto" GrpcServices="Both" />
-		<Protobuf Include="Protos/stockupdate.proto" GrpcServices="Both" />
+		<Protobuf Include="Protos/ledger.proto" GrpcServices="Both" />
+		<Protobuf Include="Protos\purchaseproto.proto" GrpcServices="Both" />
 	</ItemGroup>
 
 </Project>

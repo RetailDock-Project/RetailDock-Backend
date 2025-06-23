@@ -25,7 +25,7 @@ namespace Application.AutoMapper
 
 
 
-            CreateMap<SaleItems, SaleItemsResponseDto>();
+            CreateMap<SaleItems, SaleItemsResponseDto>().ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Products.ProductName));
              
 
         CreateMap<Sales, ViewCustomerSalesDto>()

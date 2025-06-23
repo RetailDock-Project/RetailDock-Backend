@@ -15,6 +15,7 @@ namespace Domain.Entites
         public Guid OrganisationId { get; set; }
         [Required]
         public string CustomerName { get; set; }
+        public Guid LedgerId { get; set; }
         public string? ContactNumber { get; set; }
         public string? Email { get; set; }
         public string? GstNumber { get; set; }
