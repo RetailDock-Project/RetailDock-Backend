@@ -699,7 +699,7 @@ namespace Application.Services.AccountsService
                         Message = "Ledger name already exists"
                     };
                 }
-                var creditorId = await _ledgerRepository.GetGroupIdByNameAndOrganizationId(OrganizationId, "Creditor");
+                var creditorId = await _ledgerRepository.GetGroupIdByNameAndOrganizationId(OrganizationId, "Creditors");
                 if (creditorId == null)
                 {
                     return new ApiResponseDTO<Guid>

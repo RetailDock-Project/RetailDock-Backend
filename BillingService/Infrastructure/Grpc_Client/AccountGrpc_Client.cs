@@ -29,7 +29,7 @@
 //            var request = new AddVoucherRequest { CreatedBy = voucherData.CreatedBy, OrganizationId = voucherData.OrganizationId, Remarks = voucherData.Remarks, VoucherDate = voucherData.VoucherDate, VoucherTypeId = voucherData.VoucherTypeId };
 //            if (voucherData.TransactionsDebit != null)
 //            {
-//                request.TransactionsDebit.AddRange(voucherData.TransactionsDebit.Select(dr => new TransactionDTO { Amount = dr.Amount, LedgerId = dr.LedgerId, Narration = dr.Narration }));
+//                request.TransactionsDebit.AddRange(voucherData.TransactionsDebit.Select(dr => new TransactionDTO{ Amount = dr.Amount, LedgerId = dr.LedgerId, Narration = dr.Narration }));
 
 //            }
 //            if (voucherData.TransactionsCredit != null)

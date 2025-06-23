@@ -29,5 +29,6 @@ message LedgerRequest {
 
 message LedgerResponse {
   string ledgerId = 1;
-  int32 statusCode = 2;
+int32 statusCode = 2;
+
 }

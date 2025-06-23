@@ -23,6 +23,14 @@ namespace Infrastructure.GrpcClient
         {
             try
             {
+                Console.WriteLine("voucherData Object:");
+                Console.WriteLine($"OrganizationId: {voucherData.OrganizationId}");
+                Console.WriteLine($"CreatedBy: {voucherData.CreatedBy}");
+                Console.WriteLine($"VoucherTypeId: {voucherData.VoucherTypeId}");
+                Console.WriteLine($"VoucherDate: {voucherData.VoucherDate}");
+                Console.WriteLine($"Remarks: {voucherData.Remarks}");
+
+
                 var request = new AddVoucherRequest
                 {
                     OrganizationId = voucherData.OrganizationId,
@@ -31,7 +39,7 @@ namespace Infrastructure.GrpcClient
                     VoucherDate = voucherData.VoucherDate,
                     Remarks = voucherData.Remarks
                 };
-
+     
                 if (voucherData.TransactionsDebit != null)
                 {
                     request.TransactionsDebit.AddRange(voucherData.TransactionsDebit.Select(t => new TransactionDTO

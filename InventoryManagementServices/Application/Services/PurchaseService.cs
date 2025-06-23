@@ -182,7 +182,10 @@ namespace Application.Services
                 };
 
                 var voucher = mapper.Map<Voucher>(newPurchase.Voucher);
-                voucher.VoucherTypeId = "fbgdh";
+                voucher.VoucherTypeId = "a5bf213f-421a-11f0-a0c7-862ccfb05833";
+                voucher.OrganizationId = orgId.ToString();
+                voucher.CreatedBy = userId.ToString();
+
                 if (newPurchase.Voucher.TransactionsDebit != null)
                 {
                     voucher.TransactionsDebit.Add(new Transaction

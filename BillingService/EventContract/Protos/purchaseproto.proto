@@ -10,8 +10,10 @@ service VoucherGrpcService {
 }
 
 message TransactionDTO {
+	string ledgrId=1;
    double  amount = 2;
   string Narration = 3;
+  
 }
 
 message AddVoucherRequest {

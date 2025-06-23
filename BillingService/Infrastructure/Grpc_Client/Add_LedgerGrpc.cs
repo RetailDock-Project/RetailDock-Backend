@@ -1,43 +1,36 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Application.DTOs;
-//using Application.Interfaces.Grpc_Interface;
-//using Common.ResponseDto;
-//using Domain.Entites;
-//using Led
-
-//namespace Infrastructure.Grpc_Client
-//{
-//    public class Add_LedgerGrpc : IAddLedger
-//    {
-
-//        private readonly IAddLedger _ledger;
-//        public Add_LedgerGrpc(IAddLedger ledger)
-//        {
-//            _ledger = ledger;
-//        }
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Application.DTOs;
+using Application.Interfaces.Grpc_Interface;
+using Common.ResponseDto;
+using Domain.Entites;
+using LedgerGrpc;
 
 
+namespace Infrastructure.Grpc_Client
+{
+    public class Add_LedgerGrpc : IAddLedger
+    {
 
-//        public async Task<ResponseDto<object>> updateSaleAccounts(CreateCustomerDto voucherData)
-//        {
-//            var request = new Ledg { CreatedBy = voucherData.CreatedBy, OrganizationId = voucherData.OrganizationId, Remarks = voucherData.Remarks, VoucherDate = voucherData.VoucherDate, VoucherTypeId = voucherData.VoucherTypeId };
-//            if (voucherData.TransactionsDebit != null)
-//            {
-//                request.TransactionsDebit.AddRange(voucherData.TransactionsDebit.Select(dr => new TransactionDTO { Amount = dr.Amount, LedgerId = dr.LedgerId, Narration = dr.Narration }));
+        private readonly LedgerGrpc.LedgerService.LedgerServiceClient  _ledger;
+        public Add_LedgerGrpc( LedgerGrpc.LedgerService.LedgerServiceClient ledger)
+        {
+            _ledger = ledger;
+        }
 
-//            }
-//            if (voucherData.TransactionsCredit != null)
-//            {
-//                request.TransactionsCredit.AddRange(voucherData.TransactionsCredit.Select(cr => new TransactionDTO { Amount = cr.Amount, LedgerId = cr.LedgerId, Narration = cr.Narration }));
-//            }
 
-//            var response = AccountGrpcClient.AddVoucherEntry(request);
 
-//            return new ResponseDto<object> { Message = response.Message, StatusCode = response.StatusCode };
-//        }
-//    }
-//}
+        public async Task<ResponseDto<object>> AddDebtorLeger(CreateCustomerDto customerData,Guid orgId)
+        {
+            var request = new LedgerRequest { OrganizationId = orgId.ToString(),AccountNumber=customerData.accountNumber,Address=customerData.Address,BankName=customerData.bankName,ContactName=customerData.contactName,City=customerData.Place,ContactNumber=customerData.PhoneNumber,Country=customerData.Country,GstNumber=customerData.GstNumber,Id=customer.};
+           
+
+            var response = _ledger.AddLedger(request);
+
+            return new ResponseDto<object> { Data =response.LedgerId, StatusCode = response.StatusCode };
+        }
+    }
+}

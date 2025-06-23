@@ -125,6 +125,9 @@ namespace Application.Mapper
             CreateMap<SupplierDto, Supplier>().ReverseMap();
 
             CreateMap<VoucherDto, Voucher>();
+            CreateMap<TransactionDto, Transaction>();
+
+
 
             //CreateMap<Purchase, PurchaseItemDetailsDto>()
             //    .ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Purchase.PurchaseItems.))
