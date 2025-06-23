@@ -15,7 +15,7 @@ namespace AccountsService.Extensions
             services .AddScoped<ILedgerRepository, LedgerRepository>();
             services.AddScoped<ILedgerServices, LedgerServices>();
             services.AddScoped<IAccountsRepository, VoucherRepository>();
-            services.AddScoped<IVoucherService,VoucherService>();
+            services.AddScoped<IVoucherService, VoucherService>();
             return services;
         }
 
