@@ -36,6 +36,8 @@ namespace Application.Services.AccountsService
 
                 }
                 var allTransactions = new List<TransactionsDTO>();
+               
+
                 if (addVoucherDTO.TransactionsDebit != null)
                 {
                     foreach (var item in addVoucherDTO.TransactionsDebit)
@@ -53,6 +55,51 @@ namespace Application.Services.AccountsService
                         allTransactions.Add(item);
                     }
                 }
+
+                // Group all transactions by LedgerId and IsDebit
+                var groupedTransactions = allTransactions
+                    .GroupBy(x => new { x.LedgerId, x.IsDebit })
+                    .ToList();
+
+                // Check for duplicate entries on the same side (Dr or Cr)
+                var duplicateLedgers = groupedTransactions
+                    .Where(g => g.Count() > 1)
+                    .Select(g => g.Key.LedgerId)
+                    .Distinct()
+                    .ToList();
+
+                if (duplicateLedgers.Any())
+                {
+                    return new ApiResponseDTO<bool>
+                    {
+                        StatusCode = 400,
+                        Message = "A ledger is repeated more than once on the same side (Debit or Credit). Please correct the entry."
+                    };
+                }
+
+                //  Check for same ledger used on both sides
+                var debitLedgerIds = groupedTransactions
+                    .Where(g => g.Key.IsDebit)
+                    .Select(g => g.Key.LedgerId)
+                    .ToHashSet();
+
+                var creditLedgerIds = groupedTransactions
+                    .Where(g => !g.Key.IsDebit)
+                    .Select(g => g.Key.LedgerId)
+                    .ToHashSet();
+
+                var commonLedgers = debitLedgerIds.Intersect(creditLedgerIds).ToList();
+
+                if (commonLedgers.Any())
+                {
+                    return new ApiResponseDTO<bool>
+                    {
+                        StatusCode = 400,
+                        Message = "A ledger cannot be used in both Debit and Credit sides. Please correct the entry."
+                    };
+                }
+
+
                 var debitSum = allTransactions.Where(x => x.IsDebit).Sum(x => x.Amount);
                 var creditSum = allTransactions.Where(x => !x.IsDebit).Sum(x => x.Amount);
                 if (debitSum != creditSum)
