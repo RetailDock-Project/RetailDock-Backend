@@ -20,6 +20,7 @@ using QuestPDF.Infrastructure;
 using Serilog;
 using InventoryService.Services;
 using Infrastructure.GrpcClient;
+using PurchaseGrpc;
 
 namespace InventoryManagementServices
 {
@@ -45,12 +46,13 @@ namespace InventoryManagementServices
             {
                 options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
             });
-            builder.Services.AddGrpcClient<VoucherGrpcService.VoucherGrpcServiceClient>(o =>
+            builder.Services.AddGrpcClient<PurchaseGrpc.VoucherGrpcService.VoucherGrpcServiceClient>(o =>
             {
                 o.Address = new Uri("https://localhost:7117"); // URL of gRPC server
             });
             builder.Services.AddScoped<IAccountGrpcService, AccountsGrpcClient>();
             builder.Services.AddScoped<ILedgerGrpcClient, LedgerGrpcClient>();
+
 
 
 

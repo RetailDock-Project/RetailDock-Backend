@@ -2,6 +2,7 @@ using System.Data;
 using AccountsService.Extensions;
 using AccountsServices.Service;
 using Infrastructure.DapperContext;
+using PurchaseGrpc;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Services.AddScoped<DapperConection>();
 
+
 builder.Host.UseSerilog(); 
 builder.Services.AddApplicationServices();
 
@@ -28,7 +30,7 @@ builder.Services.AddGrpc();
 
 var app = builder.Build();
 
-app.MapGrpcService<PurchaseGrpcService>();
+app.MapGrpcService<VoucherGrpcServices>();
 app.MapGrpcService<AccountsGroupgRPCService>();
 //app.MapGrpcService<LedgergRPCService>();
 //app.MapGrpcService<AccountsGroupgRPCService>();

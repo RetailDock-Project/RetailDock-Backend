@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Dto;
 using Application.Interfaces.IRepository;
 using Domain.Entities;
+using PurchaseGrpc;
 
 namespace Infrastructure.GrpcClient
 {
@@ -60,7 +61,7 @@ namespace Infrastructure.GrpcClient
                     }));
                 }
 
-                var response = await _grpcClient.AddVoucherEntryAsync(request);
+                var response =  await _grpcClient.AddVoucherEntryAsync(request);
 
                 return new Responses<object>
                 {
