@@ -1,6 +1,9 @@
 
 syntax = "proto3";
 
+option csharp_namespace = "PurchaseGrpc";
+
+
 service VoucherGrpcService {
   rpc AddVoucherEntry (AddVoucherRequest) returns (ApiResponses);
 }

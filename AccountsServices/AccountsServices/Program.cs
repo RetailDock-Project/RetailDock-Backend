@@ -30,7 +30,7 @@ builder.Services.AddGrpc();
 
 var app = builder.Build();
 
-app.MapGrpcService<PurchaseGrpcService>();
+app.MapGrpcService<VoucherGrpcServices>();
 app.MapGrpcService<AccountsGroupgRPCService>();
 //app.MapGrpcService<LedgergRPCService>();
 //app.MapGrpcService<AccountsGroupgRPCService>();

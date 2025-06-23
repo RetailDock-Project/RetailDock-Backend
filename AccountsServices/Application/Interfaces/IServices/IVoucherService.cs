@@ -10,7 +10,7 @@ namespace Application.Interfaces.IServices
 {
     public interface IVoucherService
     {
-        Task<ApiResponseDTO<bool>> AddVoucherEntrys(Guid organizationId, Guid CreatedBy,AddVouchersDTO addVoucherDTO);
+        Task<ApiResponseDTO<bool>> AddVoucherEntrys(Guid organizationId, Guid CreatedBy, AddVouchersDTO addVoucherDTO);
     
     }
    

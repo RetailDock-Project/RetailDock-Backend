@@ -8,10 +8,10 @@ using PurchaseGrpc;
 
 namespace AccountsServices.Service
 {
-    public class PurchaseGrpcService : VoucherGrpcService.VoucherGrpcServiceBase
+    public class VoucherGrpcServices : VoucherGrpcService.VoucherGrpcServiceBase
     {
         private readonly IVoucherService _voucherService;
-        public PurchaseGrpcService(IVoucherService voucherService)
+        public VoucherGrpcServices(IVoucherService voucherService)
         {
             _voucherService = voucherService;
         }
