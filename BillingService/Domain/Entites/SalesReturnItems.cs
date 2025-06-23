@@ -28,6 +28,6 @@ namespace Domain.Entites
 
         public decimal TotalAmount { get; set; } = 0;
         public SalesReturn SalesReturn { get; set; }
-        //public Products Products {  get; set; }
+        public Product Products {  get; set; }
     }
 }

@@ -13,14 +13,25 @@ namespace Application.DTOs
         public string SaleMode { get; set; } 
 
         [Required]
-        public string Name {  get; set; }   
+        public string CompanyName {  get; set; }   
         public string? Email { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
         public string? GstNumber { get; set; }
     
         public string? Place { get; set; }
+        public string? Address { get; set; }
 
 
+
+        public string? openingBalance { get; set; } = "";
+       public  string? drCr { get; set; } = "dr";
+
+        public string? contactName { get; set; } = "";
+
+        public string? bankName { get; set; }="";
+        public string? accountNumber { get; set; }="";
+        public string? ifscCode { get; set; }="";
+        public string? upiId { get; set; }="";
     }
 }
