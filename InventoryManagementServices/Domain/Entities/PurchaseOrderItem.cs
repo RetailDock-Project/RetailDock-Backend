@@ -12,6 +12,9 @@ namespace Domain.Entities
         public Guid PurchaseOrderId { get; set; }
         public Guid ProductId { get; set; }
         public decimal Quantity {  get; set; }
+
+        public decimal ReceivedQuantity { get; set; }
+
         public decimal RatePerPiece {  get; set; }
         public decimal TotalAmount {  get; set; }
         public PurchaseOrder PurchaseOrder { get; set; }

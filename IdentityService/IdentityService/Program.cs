@@ -1,6 +1,7 @@
 using Application.Mappings;
 using IdentityService.Extensions;
 using IdentityService.Middlewares;
+using IdentityService.Services;
 using Infrastructure.Data;
 using Infrastructure.Messaging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,7 +21,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpContextAccessor();
-
+builder.Services.AddGrpc(options =>
+{
+    options.EnableDetailedErrors = true;
+});
 
 
 builder.Services.AddSwaggerGen(c =>
@@ -115,6 +119,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(key),
         };
     });
+builder.Services.AddScoped<UserGrpcService>();
 
 builder.Services.AddHostedService<OrganizationSubscribedConsumer>();
 builder.Services.Configure<RabbitMQSettings>(builder.Configuration.GetSection("RabbitMQSettings"));

@@ -42,4 +42,10 @@ namespace Application.DTOs
             ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.")]
         public string Password { get; set; }
     }
+
+    public class UserDto
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+    }
 }

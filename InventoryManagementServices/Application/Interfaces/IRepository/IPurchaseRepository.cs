@@ -15,7 +15,7 @@ namespace Application.Interfaces.IRepository
         Task AddPurchaseInvoice(PurchaseInvoice newPurchaseInv);
         Task AddPurchase(Purchase purchase);
         Task UpdateStocksAndUnitPrice(PurchaseItem purchaseItem, Guid userId);
-        Task<List<Purchase>> GetAllPurchase(Guid organaizationId);
+        Task<List<Purchase>> GetAllPurchase(Guid organizationId, DateTime? fromDate, DateTime? toDate);
         Task<Purchase>GetPurchaseById(Guid purchaseId);
 
 

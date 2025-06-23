@@ -34,12 +34,12 @@ namespace API.Controllers
             var result = await _service.GetOrderByIdAsync(id);
             return StatusCode(result.StatusCode, result);
         }
-        [HttpPut("{id}/status")]
-        public async Task<IActionResult> UpdateStatus(Guid id, [FromBody] UpdateOrderStatusDto dto)
-        {
-            var result = await _service.UpdateOrderStatusAsync(id, dto);
-            return StatusCode(result.StatusCode, result);
-        }
+        //[HttpPut("{id}/status")]
+        //public async Task<IActionResult> UpdateStatus(Guid id, [FromBody] UpdateOrderStatusDto dto)
+        //{
+        //    var result = await _service.UpdateOrderStatusAsync(id, dto);
+        //    return StatusCode(result.StatusCode, result);
+        //}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(Guid id)
         {
