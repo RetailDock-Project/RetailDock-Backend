@@ -14,6 +14,8 @@ namespace Application.Mappings
         public MapperProfile() {
 
             CreateMap<RoleAddDto, Role>();
+            CreateMap<User, UserDto>();
+
             CreateMap<AddUserDto, User>();
             CreateMap<Role, RoleDto>().ReverseMap();
             CreateMap<OrganizationRole, GetOrgRoleDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Role.Name)).ReverseMap();

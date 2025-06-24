@@ -29,9 +29,9 @@ namespace API.Controllers
 
         //[HttpPost]
         [HttpGet("all/organaizationId")]
-        public async Task <IActionResult>GetAllPurchases(Guid organaizationId)
+        public async Task <IActionResult>GetAllPurchases(Guid organaizationId, DateTime? fromDate, DateTime? toDate)
         {
-            var responses= await purchaseService.GetAllPurchases(organaizationId);
+            var responses= await purchaseService.GetAllPurchases(organaizationId,fromDate,toDate);
             return StatusCode(responses.StatusCode, responses);
         }
         [HttpGet("get/{purchaseId}")]
@@ -63,9 +63,9 @@ namespace API.Controllers
         }
 
         [HttpGet("{organizationId}/export")]
-        public async Task<IActionResult> ExportPurchases(Guid organizationId)
+        public async Task<IActionResult> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate)
         {
-            var result = await purchaseService.ExportPurchases(organizationId);
+            var result = await purchaseService.ExportPurchases(organizationId, fromDate, toDate);
 
          
 

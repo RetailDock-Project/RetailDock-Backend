@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories
                 .Where(x=>x.OrganizationId == orgnaizationId)
                 .ToListAsync();
         }
-        public async Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid id)
+        public async Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid? id)
         {
             return await _context.PurchaseOrders
                                 .Include(p => p.Supplier)

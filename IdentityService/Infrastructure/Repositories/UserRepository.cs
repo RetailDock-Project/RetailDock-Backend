@@ -18,6 +18,17 @@ namespace Infrastructure.Repositories
         public UserRepository(IdentityDbContext _context) {
             context = _context;
         }
+
+
+
+        public async Task<User> GetUserById(Guid userId) {
+            return await context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            
+
+        }
+
+
+
         public async Task<bool> UpdateUserOrganization(Guid userId,Guid orgId) {
             var user=await context.Users.FirstOrDefaultAsync(x=>x.Id== userId);
 

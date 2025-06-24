@@ -15,5 +15,6 @@ namespace Application.Interfaces.IRepositories
         Task AddUserOrgRole(UserOrganizationRole newUserRole);
         //Task<User> GetUsersByOrgId(string orgId);
         Task<List<OrganizationUserDto>> GetUsersByOrgId(Guid orgId);
+        Task<User> GetUserById(Guid userId);
     }
 }

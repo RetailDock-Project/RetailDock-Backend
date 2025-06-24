@@ -43,37 +43,6 @@ namespace Application.Dto
         [MinLength(1, ErrorMessage = "At least one purchase item is required.")]
         public List<PurchaseItemDto> purchaseItems { get; set; }
 
-        //[Required(ErrorMessage = "Purchase items are required.")]
-        //public string PurchaseItemsJson { get; set; } = "[]"; // Change to string
-
-        //[JsonIgnore]
-        //public List<PurchaseItemDto> PurchaseItems
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            if (string.IsNullOrWhiteSpace(PurchaseItemsJson))
-        //                return new List<PurchaseItemDto>();
-
-        //            var options = new JsonSerializerOptions
-        //            {
-        //                PropertyNameCaseInsensitive = true,
-        //                NumberHandling = JsonNumberHandling.AllowReadingFromString
-        //            };
-
-        //            var result = JsonSerializer.Deserialize<List<PurchaseItemDto>>(PurchaseItemsJson, options);
-        //            return result ?? new List<PurchaseItemDto>();
-        //        }
-        //        catch (JsonException ex)
-        //        {
-        //            Console.WriteLine($"JSON deserialization error: {ex.Message}");
-        //            Console.WriteLine($"Problematic JSON: {PurchaseItemsJson}");
-        //            return new List<PurchaseItemDto>();
-        //        }
-        //    }
-        //}
-
         public VoucherDto Voucher { get; set; } 
     }
 
@@ -102,9 +71,11 @@ namespace Application.Dto
         public DateTime Purchasedate { get; set; }
         public decimal TotalAmount { get; set; }
     
+        public string? PurchaseOrderNumber { get; set; } = null;
         public string? SupplierInvoiceNumber { get; set; }
 
         public string PurchaseInvoiceNumber { get; set; }
+
 
     }
     public class GetPurchaseDetailsDto
@@ -112,10 +83,15 @@ namespace Application.Dto
         public Guid PurchaseId { get; set; }
 
         public DateTime Purchasedate { get; set; }
+        public string? PurchaseOrderNumber { get; set; } = null;
         public string? SupplierInvoiceNumber { get; set; }
+
+        public string PurchaseInvoiceNumber { get; set; }
         public SupplierDto SupplierDetails { get; set; }
 
         public Guid CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
+
         public List <PurchaseItemDetailsDto> Items { get; set; }
 
     }
@@ -126,7 +102,11 @@ namespace Application.Dto
         public int Quantity { get; set; }
         public decimal TaxAmount { get; set; }
         public decimal TotalAmount { get; set; }
-       
+        public decimal? CGST { get; set; }
+        public decimal? IGST { get; set; }
+        public decimal? UGST { get; set; }
+        public decimal? SGST { get; set; }
+
 
     }
 }
