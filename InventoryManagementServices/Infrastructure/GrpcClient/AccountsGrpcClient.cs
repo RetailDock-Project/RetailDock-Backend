@@ -61,6 +61,26 @@ namespace Infrastructure.GrpcClient
                     }));
                 }
 
+
+
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+
+                Console.WriteLine(request.TransactionsCredit.Count);
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+
+                Console.WriteLine(request.TransactionsDebit.Count);
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+
                 var response =  await _grpcClient.AddVoucherEntryAsync(request);
 
                 return new Responses<object>

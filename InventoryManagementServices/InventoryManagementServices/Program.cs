@@ -21,6 +21,7 @@ using Serilog;
 using InventoryService.Services;
 using Infrastructure.GrpcClient;
 using PurchaseGrpc;
+using UserGrpc;
 
 namespace InventoryManagementServices
 {
@@ -50,8 +51,15 @@ namespace InventoryManagementServices
             {
                 o.Address = new Uri("https://localhost:7117"); // URL of gRPC server
             });
+
+            builder.Services.AddGrpcClient<UserGrpc.UserService.UserServiceClient>(options =>
+            {
+                options.Address = new Uri("https://localhost:5001"); // gRPC Server URL
+            });
             builder.Services.AddScoped<IAccountGrpcService, AccountsGrpcClient>();
             builder.Services.AddScoped<ILedgerGrpcClient, LedgerGrpcClient>();
+            builder.Services.AddScoped<IUserGrpcClient, UserGrpcClient>();
+
 
 
 

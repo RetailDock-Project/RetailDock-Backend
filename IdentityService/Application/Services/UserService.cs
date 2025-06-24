@@ -51,9 +51,20 @@ namespace Application.Services
         public async Task<ResponseDto<List<OrganizationUserDto>>> GetUsersByOrgId(Guid orgId) {
             var result = await userRepo.GetUsersByOrgId(orgId);
             if (result == null || !result.Any()) {
-                return new ResponseDto<List<OrganizationUserDto>> { StatusCode = 200 ,Message="No users found under organization"};
+                return new ResponseDto<List<OrganizationUserDto>> { StatusCode = 404 ,Message="No users found under organization"};
             }
             return new ResponseDto<List<OrganizationUserDto>> { StatusCode = 200 ,Message=$"Users under organization-{orgId} retrieved",Data=result};
+        }
+
+        public async Task<ResponseDto<UserDto>> GetUsersById(Guid userId)
+        {
+            var result = await userRepo.GetUserById(userId);
+            var user=mapper.Map<UserDto>(result);
+            if (result == null)
+            {
+                return new ResponseDto<UserDto> { StatusCode = 404, Message = "No user found" };
+            }
+            return new ResponseDto<UserDto> { StatusCode = 200, Message = $"User retrieved", Data = user };
         }
     }
 }

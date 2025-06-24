@@ -28,5 +28,8 @@
 	<ItemGroup>
 		<Protobuf Include="Protos/ledgerproto.proto" GrpcServices="Client" />
 	</ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos/userproto.proto" GrpcServices="Client" />
+	</ItemGroup>
 
 </Project>
