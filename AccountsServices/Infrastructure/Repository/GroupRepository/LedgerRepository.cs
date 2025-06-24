@@ -8,15 +8,18 @@ using Application.Interfaces.IRepository;
 using Dapper;
 using Domain.Entities;
 using Infrastructure.DapperContext;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Repository.GroupRepository
 {
     public class LedgerRepository : ILedgerRepository
     {
         private readonly DapperConection _dapperContext;
-        public LedgerRepository(DapperConection dapperContext)
+        private readonly ILogger<LedgerRepository> _logger;
+        public LedgerRepository(DapperConection dapperContext, ILogger<LedgerRepository> logger )
         {
             _dapperContext = dapperContext;
+            _logger = logger;
         }
        
         public async Task<bool> CreateLedgerAsync(Ledger ledger)
@@ -379,6 +382,8 @@ namespace Infrastructure.Repository.GroupRepository
             var GroupId = await connection.QueryFirstOrDefaultAsync<Guid>(sql, new { GroupName = groupname, OrganizationId = organizationId });
             return GroupId;
         }
+      
+
 
     }
 }
