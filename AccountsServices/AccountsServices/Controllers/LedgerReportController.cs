@@ -28,5 +28,19 @@ namespace AccountsServices.Controllers
             return StatusCode(result.StatusCode, result);
 
         }
+        [HttpGet("all/ledger/report/bygroup")]
+        public async Task<IActionResult> GetAllLedgerReportsByGroupId(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate)
+        {
+            var result = await _services.GetLedgerSummaryByGroupAsync(groupId,organizationId,startDate,endDate);
+            return StatusCode(result.StatusCode, result);
+
+        }
+        [HttpGet("all/ledgerandgroup/report/bygroupid")]
+        public async Task<IActionResult> GetAllLedgersAndGroupReportsByGroupId(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate)
+        {
+            var result = await _services.GetGroupLedgerSummaryAsync(groupId, organizationId, startDate, endDate);
+            return StatusCode(result.StatusCode, result);
+
+        }
     }
 }

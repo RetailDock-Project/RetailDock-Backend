@@ -27,5 +27,7 @@ namespace Application.DTOs
            public string ClosingType { get; set; } // "Dr" or "Cr"
            public List<LedgerReportDTO> Transactions { get; set; }
         }
-    }
+    
+
+}
 
