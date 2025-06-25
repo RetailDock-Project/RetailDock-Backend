@@ -9,6 +9,8 @@ using Application.Interfaces.IRepository;
 using Application.Interfaces.IServices;
 using Common;
 using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application.Services.AccountsService
 {
@@ -83,5 +85,70 @@ namespace Application.Services.AccountsService
                 };
             }
         }
+    public async Task <ApiResponseDTO<List<LedgerSummaryDTO>>> GetLedgerSummaryByGroupAsync(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate)
+        {
+            try
+            {
+
+
+                var data = await _ledgerReportRepository.GetLedgerSummaryByGroupHierarchyAsync(groupId, organizationId, startDate, endDate);
+                if (data != null)
+                {
+                    return new ApiResponseDTO<List<LedgerSummaryDTO>>
+                    {
+                        StatusCode = 200,
+                        Message = "Ledgers Fetched Succusfully",
+                        Data = data
+                    };
+                }
+                return new ApiResponseDTO<List<LedgerSummaryDTO>>
+                {
+                    StatusCode = 200,
+                    Message = "No ledger found this group or organization"
+                };
+            }
+            catch(Exception ex)
+            {
+
+                _logger
+                    .LogError(ex.Message, "Error in getting Ledgers");
+                return new ApiResponseDTO<List<LedgerSummaryDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "Error in getting Ledgers"
+                };
+            }
+        }
+        public async Task<ApiResponseDTO<GroupWithLedgersSummaryDTO>> GetGroupLedgerSummaryAsync(Guid groupId, Guid organizationId, DateTime? start, DateTime? end)
+        {
+            try
+            {
+                var result = await _ledgerReportRepository.GetGroupAndLedgerSummaryAsync(groupId, organizationId, start, end);
+                if(result != null)
+                {
+                    return new ApiResponseDTO<GroupWithLedgersSummaryDTO>
+                    {
+                        StatusCode = 200,
+                        Message = "Ledgers and group Fetched Succusfully",
+                        Data = result
+                    };
+                }
+                return new ApiResponseDTO<GroupWithLedgersSummaryDTO>
+                {
+                    StatusCode = 200,
+                    Message = "No ledger found this group or organization"
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Service error");
+                return new ApiResponseDTO<GroupWithLedgersSummaryDTO>
+                {
+                    StatusCode = 500,
+                    Message = "Error in getting Ledgers"
+                };
+            }
+        }
+
     }
 }

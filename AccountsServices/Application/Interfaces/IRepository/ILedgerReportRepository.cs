@@ -12,5 +12,8 @@ namespace Application.Interfaces.IRepository
     {
         Task<LedgerDetailsReportDTO> GetLedgerDetailsAsync(Guid organizationId, Guid ledgerId, DateTime? startDate, DateTime? endDate);
         Task<List<LedgerSummaryDTO>> GetAllLedgerSummariesAsync(Guid organizationId, DateTime? startDate, DateTime? endDate);
+        Task<List<LedgerSummaryDTO>> GetLedgerSummaryByGroupHierarchyAsync(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate);
+        Task<GroupWithLedgersSummaryDTO> GetGroupAndLedgerSummaryAsync(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate);
+  
     }
 }
