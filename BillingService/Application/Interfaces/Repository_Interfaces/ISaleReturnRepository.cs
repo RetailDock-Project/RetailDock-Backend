@@ -13,6 +13,7 @@ namespace Application.Interfaces.Repository_Interfaces
     {
         Task SaveChanges();
         Task<Sales> fetchSalesByInvoice(string invoiceNum,Guid orgId);
+        Task<SaleItems> soldProductItems(Guid saleId, Guid productId);
         Task addNewB2BSalesReturn(AddSalesReturnDto salesReturn, Guid saleId, Guid orgId, Guid userId,GST_Type gst_type);
         Task addNewB2CSalesReturn(AddSalesReturnDto salesReturn, Guid saleId, Guid orgId, Guid userId,GST_Type gst_type);
         Task<List<SalesReturn>> fetchAllSalesReturn(Guid orgId);

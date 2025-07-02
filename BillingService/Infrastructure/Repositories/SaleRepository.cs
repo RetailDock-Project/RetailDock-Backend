@@ -95,7 +95,7 @@ namespace Infrastructure.Repositories
                     TaxableAmount = taxable,
                     DiscountAmount = totalDiscount,
 
-                    TotalAmount = totalAmt
+                    TotalAmount = totalAmt,CreatedAt=DateTime.Now
                 };
 
                 await context.SalesInvoices.AddAsync(newInvoice);
@@ -138,8 +138,9 @@ namespace Infrastructure.Repositories
 
                     TaxableAmount = taxable,
                     DiscountAmount = totalDiscount,
-
-                    TotalAmount = totalAmt
+                    
+                    TotalAmount = totalAmt,
+                    CreatedAt=DateTime.Now
                 };
 
                 await context.SalesInvoices.AddAsync(newInvoice);

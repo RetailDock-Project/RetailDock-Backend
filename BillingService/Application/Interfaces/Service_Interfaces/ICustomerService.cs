@@ -12,7 +12,8 @@ namespace Application.Interfaces.Service_Interfaces
     public interface ICustomerService
     {
         Task<ResponseDto<List<ViewCustomerSalesDto>>> GetAllCustomers(Guid orgId);
-        Task<ResponseDto<object>> addCustomer(Guid orgId, Guid userId, CreateCustomerDto customer);
+ Task<ResponseDto<object>> addCreditCustomer(Guid orgId, Guid userId, CreateCustomerDto customer);
+  Task<ResponseDto<object>> addCashCustomer(Guid orgId, Guid userId, CreateCashCustomerDto customer);
         Task<ResponseDto<ViewCustomerDto>> viewCustomerByMobile(string phoneNum,Guid orgId);
         Task<ResponseDto<ViewCustomerDto>> viewCustomerById(Guid customerId,Guid orgId);
         Task<ResponseDto<List<ViewCustomerSalesDto>>> viewCustomerSalesDetails(Guid customerId,Guid orgId);

@@ -146,7 +146,7 @@ public class LedgerGrpcService : LedgerService.LedgerServiceBase
                 OpeningBalance = Convert.ToDecimal(request.OpeningBalance),
                 DrCr = request.DrCr,
                 CreatedBy = Guid.Parse(request.CreatedBy),
-                UpdateBy = Guid.Parse(request.UpdatedBy),
+                UpdateBy = Guid.Empty,
                 Details = new AddLedgerDetailsDTO
                 {
                     ContactName = request.ContactName,

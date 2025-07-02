@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.Repository_Interfaces
 {
-    internal interface IUnitOfWorkRepository
+    public interface IUnitOfWorkRepository
     {
+        Task _BiginTransaction();
+        Task _CommitTransaction();
+        Task _RolBackTransaction();
+        Task _SaveChnages();
     }
 }
