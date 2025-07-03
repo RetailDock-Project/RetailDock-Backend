@@ -22,70 +22,92 @@ namespace Infrastructure.Repositories
             mapper = _mapper;
         }
 
-        public async Task<List<Role>> GetAllRoles(Guid orgId) { 
-        return await context.Roles.Where(role=>role.OrganizationId==orgId && !role.IsDeleted).ToListAsync();
+        public async Task<List<OrganizationRole>> GetAllRoles(Guid orgId) { 
+        return await context.OrganizationRoles.Where(role=>role.OrganizationId==orgId && !role.IsDeleted).ToListAsync();
         }
 
-        public async Task AddRole(Role role)
+        //public async Task AddRole(Role role)
+        //{
+        //        await context.Roles.AddAsync(rol
+        //        await context.SaveChangesAsync();
+        //}
+
+        public async Task AddRoleWithPermissionsAsync(OrganizationRole role)
         {
-                await context.Roles.AddAsync(role);
-                await context.SaveChangesAsync();
+            await context.OrganizationRoles.AddAsync(role);
+            await context.SaveChangesAsync();
         }
 
-        public async Task UpdateRole(Role updatedRole)
+        public async Task<OrganizationRole> GetRoleWithPermissionsAsync(Guid roleId, Guid orgId)
         {
-            var role = await context.Roles.FindAsync(updatedRole.Id);
-            if (role != null)
-            {
-                role.Name = updatedRole.Name;
-                context.Roles.Update(role);
-                await context.SaveChangesAsync();
-            }
+            return await context.OrganizationRoles
+                .Include(r => r.OrganizationRolePermissions)
+                .FirstOrDefaultAsync(r => r.Id == roleId && r.OrganizationId == orgId);
         }
 
-        public async Task SoftDeleteRole(int id)
+        public async Task UpdateRoleWithPermissionsAsync(OrganizationRole role)
         {
-            var role = await context.Roles.FindAsync(id);
-            if (role != null)
-            {
-                role.IsDeleted = true;
-                context.Roles.Update(role);
-                await context.SaveChangesAsync();
-            }
+            context.OrganizationRoles.Update(role);
+            await context.SaveChangesAsync();
         }
 
 
-        public async Task AddOrganizationRoles(List<OrganizationRole> orgRoles) {
+
+
+        //public async Task UpdateRole(Role updatedRole)
+        //{
+        //    var role = await context.Roles.FindAsync(updatedRole.Id);
+        //    if (role != null)
+        //    {
+        //        role.Name = updatedRole.Name;
+        //        context.Roles.Update(role);
+        //        await context.SaveChangesAsync();
+        //    }
+        //}
+
+        //public async Task SoftDeleteRole(int id)
+        //{
+        //    var role = await context.Roles.FindAsync(id);
+        //    if (role != null)
+        //    {
+        //        role.IsDeleted = true;
+        //        context.Roles.Update(role);
+        //        await context.SaveChangesAsync();
+        //    }
+        //}
+
+
+        //public async Task AddOrganizationRoles(List<OrganizationRole> orgRoles) {
 
             
-            foreach (OrganizationRole orgRole in orgRoles) 
-            {
-                await context.OrganizationRoles.AddAsync(orgRole);
-                await context.SaveChangesAsync();
+        //    foreach (OrganizationRole orgRole in orgRoles) 
+        //    {
+        //        await context.OrganizationRoles.AddAsync(orgRole);
+        //        await context.SaveChangesAsync();
 
-            }
+        //    }
 
-        }
+        //}
 
         public async Task<List<OrganizationRole>> GetOrganizationRoles(Guid organizationId) {
-            return await context.OrganizationRoles.Include(x=>x.Role).Where(x => x.OrganizationId == organizationId).ToListAsync();
+            return await context.OrganizationRoles.Where(x => x.OrganizationId == organizationId).ToListAsync();
         }
 
-        public async Task AddOrgRolePermission(OrganizationRolePermission orgRolePermission) {
-            await context.OrganizationRolePermissions.AddAsync(orgRolePermission);
-            await context.SaveChangesAsync();
+        //public async Task AddOrgRolePermission(OrganizationRolePermission orgRolePermission) {
+        //    await context.OrganizationRolePermissions.AddAsync(orgRolePermission);
+        //    await context.SaveChangesAsync();
 
-        }
+        //}
 
         public async Task<List<OrganizationRolePermission>> GetOrgRolePermissions(Guid organizationRoleId) {
             return await context.OrganizationRolePermissions.Include(x=>x.Permission).Where(x => x.OrganizationRoleId == organizationRoleId).ToListAsync();
         }
 
-        public async Task UpdateOrganizationRolePermissions(OrganizationRolePermission updatePermission) {
-            var data=await context.OrganizationRolePermissions.FirstOrDefaultAsync(x => x.OrganizationRoleId == updatePermission.OrganizationRoleId);
-            data.PermissionId= updatePermission.PermissionId;
-            await context.SaveChangesAsync();
-        }
+        //public async Task UpdateOrganizationRolePermissions(OrganizationRolePermission updatePermission) {
+        //    var data=await context.OrganizationRolePermissions.FirstOrDefaultAsync(x => x.OrganizationRoleId == updatePermission.OrganizationRoleId);
+        //    data.PermissionId= updatePermission.PermissionId;
+        //    await context.SaveChangesAsync();
+        //}
         public async Task AssignUserOrganizationRole(UserOrganizationRole newOrgUser) {
             await context.UserOrganizationRoles.AddAsync(newOrgUser);
             await context.SaveChangesAsync();
@@ -107,7 +129,7 @@ namespace Infrastructure.Repositories
         public async Task<object> checkAlreadyAddedRole(List<OrgRoleDto> orgRoles) {
             foreach (OrgRoleDto i in orgRoles) {
 
-                var exist=await context.OrganizationRoles.FirstOrDefaultAsync(x => x.RoleId == i.RoleId && x.OrganizationId == i.OrganizationId);
+                var exist=await context.OrganizationRoles.FirstOrDefaultAsync(x => x.Id == i.OrgRoleId && x.OrganizationId == i.OrganizationId);
                 if (exist != null) {
                 return exist;
                 }

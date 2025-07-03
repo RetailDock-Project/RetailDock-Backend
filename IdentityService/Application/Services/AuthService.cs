@@ -46,7 +46,7 @@ namespace Application.Services
             user.PasswordHash=hashedPassword;
             user.EmailVerificationToken=Guid.NewGuid().ToString();
             await userRepository.Register(user);
-            var verificationLink = $"https://localhost:7117/api/Email/confirm?email={user.Email}&token={user.EmailVerificationToken}";
+            var verificationLink = $"https://localhost:7118/api/Email/confirm?email={user.Email}&token={user.EmailVerificationToken}";
 
             string body = $@"
                             <html>

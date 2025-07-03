@@ -31,7 +31,6 @@ namespace Application.Services
             Console.WriteLine("updated user added");
             var newRole = new OrgRoleDto
             {
-                RoleId = 4,
                 OrganizationId = organizationId,
             };
             var mappedOrgRole = mapper.Map<OrganizationRole>(newRole);

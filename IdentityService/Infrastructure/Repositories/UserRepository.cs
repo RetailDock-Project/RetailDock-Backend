@@ -61,19 +61,18 @@ namespace Infrastructure.Repositories
             //var res = await context.Users.Include(u => u.userOrganizationRole).ThenInclude(uor => uor.OrganizationRole).ThenInclude(or => or.Role).Where(u => u.OrganisationId.ToString() == orgId).Select(u => new OrganizationUserDto { Name = u.Name, Email = u.Email, Roles = u.userOrganizationRole.Where(x => x.OrganizationRole.OrganizationId.ToString() == orgId).ToList() }).ToListAsync();
 
             var res = await context.Users
-    .Include(u => u.userOrganizationRole)
+    .Include(u => u.UserOrganizationRole)
         .ThenInclude(uor => uor.OrganizationRole)
-            .ThenInclude(or => or.Role)
     .Where(u => u.OrganisationId == orgId)
     .Select(u => new OrganizationUserDto
     {
         Id = u.Id,
         Name = u.Name,
         Email = u.Email,
-        Roles = u.userOrganizationRole
-                    .Where(x => x.OrganizationRole.OrganizationId == orgId)
-                    .Select(x => x.OrganizationRole.Role.Name)
-                    .ToList(),
+        Role = u.UserOrganizationRole.OrganizationRole.Name,
+                    //.Where(x => x.OrganizationRole.OrganizationId == orgId)
+                    //.Select(x => x.OrganizationRole.Role.Name)
+                    //.ToList(),
         Created=u.CreatedAt
     })
     .ToListAsync();
