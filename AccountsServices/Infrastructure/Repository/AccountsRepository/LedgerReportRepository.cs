@@ -190,8 +190,6 @@ WHERE OL.IsDebit != T.IsDebit;
 
 
 
-
-
         public async Task<List<LedgerSummaryDTO>> GetAllLedgerSummariesAsync(Guid organizationId, DateTime? startDate, DateTime? endDate)
         {
             var start = startDate ?? new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);

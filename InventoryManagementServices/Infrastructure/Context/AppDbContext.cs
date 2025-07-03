@@ -283,6 +283,7 @@ namespace Infrastructure.Context
             modelBuilder.Entity<Sales>()
                 .Property(s => s.GST_Type)
                 .HasConversion<string>();
+
             modelBuilder.Entity<SalesReturnInvoice>()
                 .Property(sri => sri.PaymentMode)
                 .HasConversion<string>();

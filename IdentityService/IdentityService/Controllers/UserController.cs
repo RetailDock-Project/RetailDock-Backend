@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.IServices;
+﻿using Application.DTOs;
+using Application.Interfaces.IServices;
 using IdentityService.Controllers.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,5 +20,21 @@ namespace IdentityService.Controllers
             return StatusCode(response.StatusCode, response);
             
         }
+
+        [HttpPut("update-user-role")]
+        public async Task<IActionResult> UpdateUserOrganizationRole([FromBody] UpdateUserRoleDto dto)
+        {
+            var response = await userService.UpdateUserOrganizationRoleAsync(dto);
+            return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpDelete("soft-delete/{userId}")]
+        public async Task<IActionResult> SoftDeleteUser(Guid userId)
+        {
+            var response = await userService.SoftDeleteUserAsync(userId, OrgId);
+            return StatusCode(response.StatusCode, response);
+        }
+
+
     }
 }

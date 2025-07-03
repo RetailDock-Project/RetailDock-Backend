@@ -20,6 +20,7 @@ namespace AccountsService.Extensions
             services.AddScoped<ILedgerReportRepository, LedgerReportRepository>();
             services.AddScoped<ILedgerReportServices,LedgerReportService>();
 
+
             return services;
         }
 
