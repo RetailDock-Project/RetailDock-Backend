@@ -186,11 +186,6 @@ WHERE OL.IsDebit != T.IsDebit;
         }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8f678933a6562d5fdceaf9da092ae77abba5a7bb
-
 
 
 

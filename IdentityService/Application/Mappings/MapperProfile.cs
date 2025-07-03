@@ -13,11 +13,11 @@ namespace Application.Mappings
     {
         public MapperProfile() {
 
-            CreateMap<RoleDto, Role>();
+            //CreateMap<RoleDto, Role>();
             CreateMap<User, UserDto>();
 
             CreateMap<AddUserDto, User>();
-            CreateMap<Role, RoleDto>().ReverseMap();
+            //CreateMap<Role, RoleDto>().ReverseMap();
             CreateMap<OrganizationRole, GetOrgRoleDto>().ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name)).ReverseMap();
             CreateMap<OrganizationRole, OrgRoleDto>().ReverseMap();
             CreateMap<OrgRolePermissionDto, OrganizationRolePermission>().ReverseMap();

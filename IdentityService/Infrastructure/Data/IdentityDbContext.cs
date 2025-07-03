@@ -13,7 +13,6 @@ namespace Infrastructure.Data
         public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        //public DbSet<Role> Roles { get; set; }
         public DbSet<OrganizationRole> OrganizationRoles { get; set; }
         public DbSet<OrganizationRolePermission> OrganizationRolePermissions { get; set; }
         public DbSet<Permission> Permissions { get; set; }
@@ -22,6 +21,7 @@ namespace Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
 
             // Permission
             modelBuilder.Entity<Permission>(entity =>
@@ -46,14 +46,6 @@ namespace Infrastructure.Data
 
                 entity.Property(e => e.OrganizationId)
                     .IsRequired();
-
-                //entity.HasOne(e => e.Role)
-                //    .WithMany(r => r.OrganizationRoles)
-                //    .HasForeignKey(e => e.RoleId);
-
-                //entity.HasMany(e => e.OrganizationRolePermissions)
-                //    .WithOne(e => e.OrganizationRole)
-                //    .HasForeignKey(e => e.OrganizationRoleId);
 
                 entity.HasMany(e => e.UserOrganizationRoles)
                     .WithOne(e => e.OrganizationRole)
@@ -86,16 +78,21 @@ namespace Infrastructure.Data
                 entity.Property(e => e.UserId).IsRequired();
                 entity.Property(e => e.OrganizationRoleId).IsRequired();
 
+                // ✅ One-to-one: User → UserOrganizationRole
                 entity.HasOne(e => e.User)
-                    .WithOne(u=>u.UserOrganizationRole).HasForeignKey<UserOrganizationRole>(x=>x.UserId); // Add navigation in User class if needed
+                    .WithOne(u => u.UserOrganizationRole)
+                    .HasForeignKey<UserOrganizationRole>(x => x.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
-                  entity.HasIndex(uor => new { uor.UserId, uor.OrganizationRoleId })
-    .IsUnique();
+                // ✅ Unique constraint on UserId to enforce 1-to-1 at DB level
+                entity.HasIndex(uor => uor.UserId).IsUnique();
 
+                // ✅ Relationship to OrganizationRole (many-to-one is fine here)
                 entity.HasOne(e => e.OrganizationRole)
                     .WithMany(or => or.UserOrganizationRoles)
                     .HasForeignKey(e => e.OrganizationRoleId);
             });
+
         }
 
 
