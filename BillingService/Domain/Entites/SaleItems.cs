@@ -34,5 +34,6 @@ namespace Domain.Entites
 
         public Sales Sales { get; set; }
     public Product Products { get; set; }
+        public UnitOfMeasures UnitOfMeasures { get; set; }
     }
 }

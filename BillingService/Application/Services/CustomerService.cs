@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,24 +22,24 @@ namespace Application.Services
         private readonly IMapper mapper;
         private readonly ILogger<CustomerService> logger;
         private readonly IAddLedger _ledger;
-        public CustomerService(ICustomerRepository _repo, IMapper _mapper, ILogger<CustomerService> _logger,IAddLedger ledger)
+        public CustomerService(ICustomerRepository _repo, IMapper _mapper, ILogger<CustomerService> _logger, IAddLedger ledger)
         {
             customerRepo = _repo;
             mapper = _mapper;
-            _logger = logger;
+            logger = _logger;
             _ledger = ledger;
         }
         public async Task<ResponseDto<List<ViewCustomerSalesDto>>> GetAllCustomers(Guid orgId)
         {
             try
             {
-              var customers=await   customerRepo.GetAllCustomers(orgId);
-                if(customers == null)
+                var customers = await customerRepo.GetAllCustomers(orgId);
+                if (customers == null)
                 {
-                    return new ResponseDto<List<ViewCustomerSalesDto>> {Message="no customers found",StatusCode=404};
+                    return new ResponseDto<List<ViewCustomerSalesDto>> { Message = "no customers found", StatusCode = 404 };
                 }
-                var mapped=mapper.Map<List<ViewCustomerSalesDto>>(customers);
-                return new ResponseDto<List<ViewCustomerSalesDto>> {Data=mapped, Message = "customers fetched succeesfully", StatusCode = 200 };
+                var mapped = mapper.Map<List<ViewCustomerSalesDto>>(customers);
+                return new ResponseDto<List<ViewCustomerSalesDto>> { Data = mapped, Message = "customers fetched succeesfully", StatusCode = 200 };
             }
             catch (Exception ex)
             {
@@ -47,18 +48,18 @@ namespace Application.Services
             }
 
         }
-    
+
         public async Task<ResponseDto<List<ViewCustomerDto>>> GetAllCreditCustomers(Guid orgId)
         {
             try
             {
-              var customers=await   customerRepo.GetCreditCustomers(orgId);
-                if(customers == null)
+                var customers = await customerRepo.GetCreditCustomers(orgId);
+                if (customers == null)
                 {
-                    return new ResponseDto<List<ViewCustomerDto>> {Message="no cerdit customers found",StatusCode=404};
+                    return new ResponseDto<List<ViewCustomerDto>> { Message = "no cerdit customers found", StatusCode = 404 };
                 }
-                var mapped=mapper.Map<List<ViewCustomerDto>>(customers);
-                return new ResponseDto<List<ViewCustomerDto>> {Data=mapped, Message = "credit customers fetched succeesfully", StatusCode = 200 };
+                var mapped = mapper.Map<List<ViewCustomerDto>>(customers);
+                return new ResponseDto<List<ViewCustomerDto>> { Data = mapped, Message = "credit customers fetched succeesfully", StatusCode = 200 };
             }
             catch (Exception ex)
             {
@@ -67,73 +68,83 @@ namespace Application.Services
             }
 
         }
-        public async Task<ResponseDto<object>> addCustomer(Guid orgId, Guid userId, CreateCustomerDto customer)
+        public async Task<ResponseDto<object>> addCashCustomer(Guid orgId, Guid userId, CreateCashCustomerDto customer)
         {
             try
             {
-                var response = await _ledger.AddLedgrer(customer, orgId, userId);
-             
 
-                if(response.StatusCode == 201)
+                var existing = await customerRepo.fetchCashCusomersByMobile(customer.PhoneNumber, orgId);
+                if (existing == null)
+                {
+                    await customerRepo.AddNewCashCustomer(customer, orgId, userId);
+                    await customerRepo.SaveChanges();
+                    return new ResponseDto<object> { Message = "New Cash Customer Added", StatusCode = 201 };
+                }
+
+                return new ResponseDto<object> { Message = "Customer Already Exists", StatusCode = 200 };
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error occurred while adding customer for OrgId: {OrgId}, UserId: {UserId}", orgId, userId);
+
+                return new ResponseDto<object>
+                {
+                    Message = $"Internal Server Error", // for prod
+                                                       // Message = ex.Message, // for dev
+                    StatusCode = 500
+                };
+            }
+        }
+        public async Task<ResponseDto<object>> addCreditCustomer(Guid orgId, Guid userId, CreateCustomerDto customer)
+        {
+            try
+            {
+                var response = await _ledger.AddDebtor(customer, orgId, userId);
+                logger.LogInformation("Response from accountServiceLedgerCreation: {@Response}", response);
+
+                if (response.StatusCode == 201|| response.StatusCode == 200 )
                 {
                     var ledgerId = response.Data;
 
-                    var saleMode = customer.SaleMode.ToLower();
-
-                if (saleMode == "credit")
-                {
                     var existing = await customerRepo.fetchCreditCusomersByMobile(customer.PhoneNumber, orgId);
+
+
                     if (existing == null)
                     {
-                        await customerRepo.AddNewCrditCustomer(customer, orgId, userId,ledgerId);
+                        await customerRepo.AddNewCrditCustomer(customer, orgId, userId, ledgerId);
                         await customerRepo.SaveChanges();
                         return new ResponseDto<object> { Message = "New Debtor Added", StatusCode = 201 };
                     }
 
                     return new ResponseDto<object> { Message = "Customer Already Exists", StatusCode = 200 };
-                }
-                else if (saleMode == "cash")
-                {
-                    var existing = await customerRepo.fetchCashCusomersByMobile(customer.PhoneNumber, orgId);
-                    if (existing == null)
-                    {
-                        await customerRepo.AddNewCashCustomer(customer, orgId, userId,ledgerId);
-                        await customerRepo.SaveChanges();
-                        return new ResponseDto<object> { Message = "New Cash Customer Added", StatusCode = 201 };
-                    }
 
-                    return new ResponseDto<object> { Message = "Customer Already Exists", StatusCode = 200 };
-                }
-                else
-                {
-                    var existing = await customerRepo.fetchCreditCusomersByMobile(customer.PhoneNumber, orgId);
-                    if (existing == null)
-                    {
-                            await customerRepo.AddNewB2BCustomers(customer, orgId, userId,ledgerId);
-                        await customerRepo.SaveChanges();
-                        return new ResponseDto<object> { Message = "New B2B Customer Added", StatusCode = 201 };
-                    }
 
-                    return new ResponseDto<object> { Message = "Customer Already Exists", StatusCode = 200 };
+
                 }
-                 
-                }
-                return new ResponseDto<object> { Message = "ErrorInLedgorCreation", StatusCode = 400 };
+                logger.LogWarning("Ledger creation failed. StatusCode from _ledger.AddLedgrer: {StatusCode}", response.StatusCode);
+
+                return new ResponseDto<object> { Message = "Error in Ledger Creation", StatusCode = 400 };
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error From Adding new customer");
-                return new ResponseDto<object> { Message = "Internal Server Error", StatusCode = 500 };
+                logger.LogError(ex, "Error occurred while adding customer for OrgId: {OrgId}, UserId: {UserId}", orgId, userId);
+
+                return new ResponseDto<object>
+                {
+                    Message = "Internal Server Error", // for prod
+                                                       // Message = ex.Message, // for dev
+                    StatusCode = 500
+                };
             }
         }
 
-
-        public async  Task<ResponseDto<List<ViewCustomerSalesDto>>> fetchCreditCustomerSaleDetailsByDate(DateTime fromDate, DateTime? toDate,Guid orgId)
+        public async Task<ResponseDto<List<ViewCustomerSalesDto>>> fetchCreditCustomerSaleDetailsByDate(DateTime fromDate, DateTime? toDate, Guid orgId)
         {
             try
             {
-                var tillDate=toDate??DateTime.Now;
-               var creditCustomer=await customerRepo.fetchCreditCustomerSaleDetailsByDate(fromDate, tillDate,orgId);
+                var tillDate = toDate ?? DateTime.Now;
+                var creditCustomer = await customerRepo.fetchCreditCustomerSaleDetailsByDate(fromDate, tillDate, orgId);
                 if (creditCustomer == null)
                 {
 
@@ -144,14 +155,14 @@ namespace Application.Services
                         StatusCode = 404
                     };
                 }
-                    var mapped = mapper.Map<List<ViewCustomerSalesDto>>(creditCustomer);
-                    return new ResponseDto<List<ViewCustomerSalesDto>>
-                    {
-                        Data = mapped,
-                        Message = "Sales fetched successfully",
-                        StatusCode = 200
-                    };
-                }
+                var mapped = mapper.Map<List<ViewCustomerSalesDto>>(creditCustomer);
+                return new ResponseDto<List<ViewCustomerSalesDto>>
+                {
+                    Data = mapped,
+                    Message = "Sales fetched successfully",
+                    StatusCode = 200
+                };
+            }
             catch (Exception ex)
             {
                 logger.LogError(ex, "Error from fetching all sales details by date");
@@ -162,17 +173,17 @@ namespace Application.Services
                 };
             }
         }
-           
-        public async Task<ResponseDto<List<ViewCustomerSalesDto>>> viewCustomerSalesDetails(Guid customerId,Guid orgId)
+
+        public async Task<ResponseDto<List<ViewCustomerSalesDto>>> viewCustomerSalesDetails(Guid customerId, Guid orgId)
         {
             try
             {
-                var cashCustomer = await customerRepo.fetchCashCustomersById(customerId,orgId);
-                var creditCustomer = await customerRepo.fetchCreditCustomersById(customerId,orgId);
+                var cashCustomer = await customerRepo.fetchCashCustomersById(customerId, orgId);
+                var creditCustomer = await customerRepo.fetchCreditCustomersById(customerId, orgId);
                 if (creditCustomer != null)
                 {
                     {
-                        var creditCustomerSales = await customerRepo.fetchCreditCustomerSaleDetailsById(customerId,orgId);
+                        var creditCustomerSales = await customerRepo.fetchCreditCustomerSaleDetailsById(customerId, orgId);
                         if (creditCustomerSales != null)
                         {
                             var salesDetails = mapper.Map<List<ViewCustomerSalesDto>>(creditCustomerSales);
@@ -185,7 +196,7 @@ namespace Application.Services
                 if (cashCustomer != null)
                 {
 
-                    var cashCustomerSales = await customerRepo.fetchCashCustomerSaleDetailsById(customerId,orgId);
+                    var cashCustomerSales = await customerRepo.fetchCashCustomerSaleDetailsById(customerId, orgId);
 
                     if (cashCustomerSales != null)
                     {
@@ -203,12 +214,12 @@ namespace Application.Services
                 return new ResponseDto<List<ViewCustomerSalesDto>> { Message = "internal Server Error ", StatusCode = 500 };
             }
         }
-        public async Task<ResponseDto<ViewCustomerDto>> viewCustomerByMobile(string phoneNum,Guid orgId)
+        public async Task<ResponseDto<ViewCustomerDto>> viewCustomerByMobile(string phoneNum, Guid orgId)
         {
             try
             {
-                var cashCustomer = await customerRepo.fetchCashCusomersByMobile(phoneNum,orgId);
-                var creditCustomer = await customerRepo.fetchCreditCusomersByMobile(phoneNum,orgId);
+                var cashCustomer = await customerRepo.fetchCashCusomersByMobile(phoneNum, orgId);
+                var creditCustomer = await customerRepo.fetchCreditCusomersByMobile(phoneNum, orgId);
                 if (creditCustomer != null)
                 {
                     var customer = mapper.Map<ViewCustomerDto>(creditCustomer);
@@ -228,12 +239,12 @@ namespace Application.Services
                 return new ResponseDto<ViewCustomerDto> { Message = "internal Server Error ", StatusCode = 500 };
             }
         }
-        public async Task<ResponseDto<ViewCustomerDto>> viewCustomerById(Guid customerId,Guid orgId)
+        public async Task<ResponseDto<ViewCustomerDto>> viewCustomerById(Guid customerId, Guid orgId)
         {
             try
             {
-                var cashCustomer = await customerRepo.fetchCashCustomersById(customerId,orgId);
-                var creditCustomer = await customerRepo.fetchCreditCustomersById(customerId,orgId);
+                var cashCustomer = await customerRepo.fetchCashCustomersById(customerId, orgId);
+                var creditCustomer = await customerRepo.fetchCreditCustomersById(customerId, orgId);
                 if (creditCustomer != null)
                 {
                     var customer = mapper.Map<ViewCustomerDto>(creditCustomer);

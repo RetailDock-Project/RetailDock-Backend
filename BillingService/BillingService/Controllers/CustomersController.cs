@@ -52,10 +52,16 @@ namespace BillingService.Controllers
             var result = await customerService.fetchCreditCustomerSaleDetailsByDate(fromDate,toDate, orgId);
             return StatusCode(result.StatusCode, result);
         }
-        [HttpPost("addNewCustomer")]
-        public async Task<IActionResult> addNewCustomer(Guid orgId, Guid userId, CreateCustomerDto customer)
+        [HttpPost("addNewCreditCustomer")]
+        public async Task<IActionResult> addNewCreditCustomer(Guid orgId, Guid userId, CreateCustomerDto customer)
         {
-            var result = await customerService.addCustomer( orgId, userId,  customer);
+            var result = await customerService.addCreditCustomer( orgId, userId,  customer);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpPost("addNewCashCustomer")]
+        public async Task<IActionResult> addNewCashCustomer(Guid orgId, Guid userId, CreateCashCustomerDto customer)
+        {
+            var result = await customerService.addCashCustomer( orgId, userId,  customer);
             return StatusCode(result.StatusCode, result);
         }
 

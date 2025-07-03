@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Dto;
 using Application.DTOs;
+using Application.Interfaces.Grpc_Interface;
 using Application.Interfaces.Repository_Interfaces;
 using Application.Interfaces.Service_Interfaces;
 using AutoMapper;
@@ -18,16 +20,21 @@ namespace Application.Services
         private readonly IMapper mapper;
         private readonly ISaleReturnRepository saleReturnRepo;
         private readonly ILogger<SalesReturnViewDto> logger;
-        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger)
+        private readonly IAccountGrpc accountGrpc;
+        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger,IAccountGrpc _accountGrpc)
         {
             mapper = _mapper;
             saleReturnRepo = _saleReturnRepo;
             logger= _logger;
+            accountGrpc = _accountGrpc;
+
         }
         public async Task<ResponseDto<object>> AddSalesReturn(AddSalesReturnDto salesReturn, Guid orgId, Guid userId)
         {
             try
             {
+
+
                 var sale= await saleReturnRepo.fetchSalesByInvoice(salesReturn.SaleInvoiceNumber,orgId);
        
 
@@ -35,7 +42,40 @@ namespace Application.Services
                 {
                     return new ResponseDto<object> { Message = "NoSale found", StatusCode = 404 };
 
+
                 }
+                decimal taxableAmount =0;
+                decimal taxAmount = 0;
+
+                foreach (var returnProduct in salesReturn.ReturnItems)
+                {
+                    var _saleItem = await saleReturnRepo.soldProductItems(sale.Id, returnProduct.ProductId);
+
+                     taxableAmount += _saleItem.UnitPrice * returnProduct.Quantity;
+                    decimal taxRate=_saleItem.TaxRate;
+                    taxAmount += (_saleItem.UnitPrice * returnProduct.Quantity) * (taxRate / 100);
+                }
+                    var voucher= new Voucher { CreatedBy=userId.ToString(),OrganizationId=orgId.ToString(),Remarks=salesReturn.Voucher.Remarks,VoucherDate=DateTime.Now.ToString(),VoucherTypeId= "d2c28912-421a-11f0-a0c7-862ccfb05833" };
+
+                voucher.TransactionsCredit.AddRange(salesReturn.Voucher.TransactionsCredit.Select(cr=>new Transaction { Amount=((double)taxableAmount+(double)taxAmount),LedgerId=cr.LedgerId,Narration="salesReturn"}));
+                if(salesReturn.Voucher.TransactionsDebit !=null && salesReturn.Voucher.TransactionsDebit.Count > 2)
+                {
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = salesReturn.Voucher.TransactionsDebit[0].LedgerId,
+                        Amount = (double)taxableAmount,
+                        Narration = $"SaleReturn - Taxable "
+                    });
+
+                    // Credit for tax amount
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = salesReturn.Voucher.TransactionsDebit[1].LedgerId,
+                        Amount = (double)taxAmount,
+                        Narration = $"SaleReturn - Tax"
+                    });
+                }
+                var addLedger = await accountGrpc.updateSaleAccounts(voucher);
                 Guid saleId =sale.Id;
                 GST_Type gst_Type = sale.GST_Type;
                 if (sale.SalesType == "B2B")

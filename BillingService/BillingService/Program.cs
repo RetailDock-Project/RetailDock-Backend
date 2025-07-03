@@ -27,8 +27,7 @@ builder.Services.AddGrpcClient<LedgerGrpc.LedgerService.LedgerServiceClient>(opt
     options.Address = new Uri("https://localhost:7117"); // Update this to correct Inventory Service URL
 });
 
-builder.Services.AddScoped<IAddLedger, Add_LedgerGrpc>();
-//builder.Services.AddScoped<IAccountGrpc,AccountGrpc_Client>();
+
 builder.Host.UseSerilog();       
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
