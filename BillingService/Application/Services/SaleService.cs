@@ -49,10 +49,7 @@ namespace Application.Services
                     var filteredProduct = await saleRepo.GetProductById(product.ProductId, orgId);
 
 
-                    if (filteredProduct.Stock < product.Quantity)
-                    {
-                        return new ResponseDto<object> { StatusCode = 304, Message = "out Of stock" };
-                    }
+                
                     if (product.UnitPrice > filteredProduct.MRP  )
                     {
                         return new ResponseDto<object> { StatusCode = 304, Message = "moreThan marketPrice" };

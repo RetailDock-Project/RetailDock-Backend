@@ -46,6 +46,7 @@ namespace Application.Services
                 }
                 decimal taxableAmount =0;
                 decimal taxAmount = 0;
+
                 foreach (var returnProduct in salesReturn.ReturnItems)
                 {
                     var _saleItem = await saleReturnRepo.soldProductItems(sale.Id, returnProduct.ProductId);
