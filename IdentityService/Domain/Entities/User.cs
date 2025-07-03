@@ -39,6 +39,8 @@ namespace Domain.Entities
 
         public DateTime? RefreshTokenExpiry { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public UserOrganizationRole UserOrganizationRole { get; set; }
     }
 }

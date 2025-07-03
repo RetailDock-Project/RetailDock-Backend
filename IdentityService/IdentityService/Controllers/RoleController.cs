@@ -112,11 +112,13 @@ namespace IdentityService.Controllers
 
         //user role assignment
 
-        [HttpPost("user-organization-roles/userId")]
-        public async Task<IActionResult> AssignUserOrganizationRole(UserOrgRole newOrgUser) {
-            var response = await roleService.AssignUserOrganizationRole(newOrgUser);
-            return StatusCode(response.StatusCode, response);
-        }
+        //[HttpPost("user-organization-roles/userId")]
+        //public async Task<IActionResult> AssignUserOrganizationRole(UserOrgRole newOrgUser) {
+        //    var response = await roleService.AssignUserOrganizationRole(newOrgUser);
+        //    return StatusCode(response.StatusCode, response);
+        //}
+
+       
 
         //get permissions list
         [HttpGet("permissions")]
@@ -131,5 +133,8 @@ namespace IdentityService.Controllers
             var response= await roleService.AddPermission(newPermission);
             return StatusCode(response.StatusCode, response);
         }
+
+       
+
     }
 }

@@ -80,5 +80,25 @@ namespace Infrastructure.Repositories
 
             return res;
         }
+
+        public async Task<UserOrganizationRole> GetUserOrganizationRoleAsync(Guid userId)
+        {
+            return await context.UserOrganizationRoles
+                .FirstOrDefaultAsync(uor => uor.UserId == userId);
+        }
+
+        public async Task UpdateUserOrganizationRoleAsync(UserOrganizationRole userOrgRole)
+        {
+            context.UserOrganizationRoles.Update(userOrgRole);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+        }
+
+
     }
 }
