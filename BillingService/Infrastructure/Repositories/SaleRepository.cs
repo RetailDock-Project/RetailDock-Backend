@@ -95,7 +95,7 @@ namespace Infrastructure.Repositories
                     TaxableAmount = taxable,
                     DiscountAmount = totalDiscount,
 
-                    TotalAmount = totalAmt
+                    TotalAmount = totalAmt,CreatedAt=DateTime.Now
                 };
 
                 await context.SalesInvoices.AddAsync(newInvoice);
@@ -138,8 +138,9 @@ namespace Infrastructure.Repositories
 
                     TaxableAmount = taxable,
                     DiscountAmount = totalDiscount,
-
-                    TotalAmount = totalAmt
+                    
+                    TotalAmount = totalAmt,
+                    CreatedAt=DateTime.Now
                 };
 
                 await context.SalesInvoices.AddAsync(newInvoice);
@@ -183,18 +184,13 @@ namespace Infrastructure.Repositories
                         return new ResponseDto<object> { StatusCode = 404, Message = "product not found," };
                     }
 
-                    if (filteredProduct.Stock < item.Quantity)
-                    {
-                        return new ResponseDto<object> { StatusCode = 304, Message = "out Of stock" };
-                    }
-
                     filteredProduct.Stock -= item.Quantity;
 
                   
                     decimal taxRate = filteredProduct.HsnCode.GstRate;
                     int hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
                     decimal unitCost = filteredProduct.CostPrice;
-                    int unitId = filteredProduct.UnitOfMeasuresId;
+                    int unitId = item.unitId;
 
                     decimal taxableAmount = item.Quantity * item.UnitPrice;
 

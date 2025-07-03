@@ -7,16 +7,20 @@ using Application.DTOs;
 using Application.Interfaces.IRepository;
 using Dapper;
 using Infrastructure.DapperContext;
+using Infrastructure.Repository.GroupRepository;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Repository.AccountsRepository
 {
     public class LedgerReportRepository : ILedgerReportRepository
     {
         private readonly DapperConection _dapperConection;
+        ILogger<LedgerRepository> _logger;
 
-        public LedgerReportRepository(DapperConection adapperConection)
+        public LedgerReportRepository(DapperConection adapperConection, ILogger<LedgerRepository> logger)
         {
             _dapperConection = adapperConection;
+            _logger = logger;
         }
 
        
@@ -182,6 +186,10 @@ WHERE OL.IsDebit != T.IsDebit;
         }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f678933a6562d5fdceaf9da092ae77abba5a7bb
 
 
 
@@ -274,7 +282,67 @@ WHERE OL.IsDebit != T.IsDebit;
 
             return result;
         }
+        public async Task<List<LedgerSummaryDTO>> GetLedgerSummaryByGroupHierarchyAsync(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate)
+        {
+            var connection = _dapperConection.CreateConnection();
 
+            var result = await connection.QueryAsync<LedgerSummaryDTO>(
+                "CALL GetLedgerSummaryByGroupHierarchy(@p_GroupId, @p_OrganizationId, @p_StartDate, @p_EndDate)",
+                new
+                {
+                    p_GroupId = groupId,
+                    p_OrganizationId = organizationId,
+                    p_StartDate = startDate,
+                    p_EndDate = endDate
+                }
+            );
+
+            return result.ToList();
+        }
+        public async Task<GroupWithLedgersSummaryDTO> GetGroupAndLedgerSummaryAsync(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate)
+        {
+            using var connection = _dapperConection.CreateConnection();
+            connection.Open();
+            using var transaction = connection.BeginTransaction();
+
+            try
+            {
+                var groupSummaries = (await connection.QueryAsync<GroupLedgerSummaryDTO>(
+                    "CALL GetGroupHierarchySummary(@p_GroupId, @p_OrganizationId, @p_StartDate, @p_EndDate)",
+                    new
+                    {
+                        p_GroupId = groupId,
+                        p_OrganizationId = organizationId,
+                        p_StartDate = startDate,
+                        p_EndDate = endDate
+                    }, transaction)).ToList();
+
+                var ledgerSummaries = (await connection.QueryAsync<DirectLedgerSummaryDTO>(
+                    "CALL GetLedgerSummariesByGroup(@p_GroupId, @p_OrganizationId, @p_StartDate, @p_EndDate)",
+                    new
+                    {
+                        p_GroupId = groupId,
+                        p_OrganizationId = organizationId,
+                        p_StartDate = startDate,
+                        p_EndDate = endDate
+                    }, transaction)).ToList();
+
+                transaction.Commit();
+
+                return new GroupWithLedgersSummaryDTO
+                {
+                    GroupSummaries = groupSummaries,
+                    DirectLedgerSummaries = ledgerSummaries
+
+                };
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                _logger.LogError(ex.Message, "Error executing group and ledger summaries");
+                throw;
+            }
+        }
     }
 }
 

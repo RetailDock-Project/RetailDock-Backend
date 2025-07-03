@@ -6,8 +6,8 @@ package ledger;
 
 service LedgerService {
   rpc AddLedger (LedgerRequest) returns (LedgerResponse);
+  rpc AddDebtor(LedgerRequest) returns (LedgerResponse);
 }
-
 
 message LedgerRequest {
   string organizationId = 1;
@@ -26,10 +26,7 @@ message LedgerRequest {
   string upiId = 14;
 }
 
-
-
 message LedgerResponse {
   string ledgerId = 1;
-int32 statusCode = 2;
-
+  int32 statusCode = 2;
 }

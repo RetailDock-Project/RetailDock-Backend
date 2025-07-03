@@ -12,6 +12,6 @@ namespace Application.Interfaces.Grpc_Interface
     public  interface IAddLedger
     {
 
-        Task<ResponseDto<string>> AddLedgrer(CreateCustomerDto customerData, Guid orgId,Guid userId);
+        Task<ResponseDto<string>> AddDebtor(CreateCustomerDto customerData, Guid orgId,Guid userId);
     }
 }

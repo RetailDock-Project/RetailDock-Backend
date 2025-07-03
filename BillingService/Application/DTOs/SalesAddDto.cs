@@ -17,8 +17,9 @@ namespace Application.DTOs
         public SalesMode SalesMode { get; set; }=SalesMode.B2C;
         public GST_Type GST_Type { get; set; } = GST_Type.SGST;
         public DateTime? DueDate { get; set; }
-        public VoucherDto SaleVoucher { get; set; }
         public List<SaleItemsAddDto> SaleItems { get; set; }
+        public VoucherDto SaleVoucher { get; set; }
+        
 
     }
 

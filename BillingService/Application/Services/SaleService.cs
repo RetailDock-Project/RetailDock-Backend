@@ -24,35 +24,41 @@ namespace Application.Services
         private readonly ILogger<SaleService> logger;
         private readonly IMapper mapper;
         private readonly IAccountGrpc accountGrpc;
-        public SaleService(ISaleRepository _saleRepo, ILogger<SaleService> _logger, IMapper _mapper, IAccountGrpc _accountGrpc)
+        private readonly IUnitOfWorkRepository _unitOfWorkRepo;
+        public SaleService(ISaleRepository _saleRepo, ILogger<SaleService> _logger, IMapper _mapper, IAccountGrpc _accountGrpc, IUnitOfWorkRepository unitOfWorkRepo)
         {
-            ILogger<SaleService> logger = _logger;
+            logger = _logger;
             saleRepo = _saleRepo;
             mapper = _mapper;
             accountGrpc = _accountGrpc;
-
-        }
+            _unitOfWorkRepo = unitOfWorkRepo;
+        } 
 
         public async Task<ResponseDto<object>> AddNewSale(SalesAddDto sales, Guid orgId, Guid userId)
         {
             try
             {
-                var voucher = new Voucher { CreatedBy = userId.ToString(), OrganizationId = orgId.ToString(), Remarks = sales.SaleVoucher.Remarks, VoucherTypeId = "a5bea1e0-421a-11f0-a0c7-862ccfb05833", VoucherDate = DateTime.Now.ToString() };
+                var voucher = new Voucher { CreatedBy = userId.ToString(), OrganizationId = orgId.ToString(), Remarks = sales.SaleVoucher.Remarks, VoucherTypeId = "a5bea1e0-421a-11f0-a0c7-862ccfb05833", VoucherDate = DateTime.Now.ToString() ,TransactionsDebit = new List<Transaction>(),
+                    TransactionsCredit = new List<Transaction>()
+                };
                 decimal taxAmount = 0;
                 decimal taxableAmount = 0;
+                decimal costOfGoodsSold= 0;
                 foreach (var product in sales.SaleItems)
                 {
                     var filteredProduct = await saleRepo.GetProductById(product.ProductId, orgId);
 
 
-                    if (filteredProduct.Stock < product.Quantity)
+                
+                    if (product.UnitPrice > filteredProduct.MRP  )
                     {
-                        return new ResponseDto<object> { StatusCode = 304, Message = "out Of stock" };
+                        return new ResponseDto<object> { StatusCode = 304, Message = "moreThan marketPrice" };
                     }
 
                     decimal taxRate = filteredProduct.HsnCode.GstRate;
                     taxableAmount += product.Quantity * product.UnitPrice;
-                    taxAmount += (taxableAmount - product.DiscountAmount) * (taxRate / 100);
+                    taxAmount += ((product.Quantity * product.UnitPrice) - product.DiscountAmount) * (taxRate / 100);
+                    costOfGoodsSold += product.Quantity * filteredProduct.CostPrice;
 
 
                 }
@@ -72,7 +78,7 @@ namespace Application.Services
                 {
                     result = await saleRepo.AddNewCreditSale(sales, allIds);
 
-
+                    logger.LogInformation("new cr sale added:{@Result}", result);
                     // check for any error response from repository
                     if (result.StatusCode != 201)
                     {
@@ -80,11 +86,15 @@ namespace Application.Services
                     }
 
                     var creditCustomer = await saleRepo.GetCreditCustomers(sales.MobileNum, orgId);
+                    if (creditCustomer == null)
+                    {
+                        return new ResponseDto<object> { StatusCode = 404, Message = "no customer found" };
+                    }
                     if (sales.SaleVoucher.TransactionsDebit != null)
                     {
-                        voucher.TransactionsDebit.AddRange(sales.SaleVoucher.TransactionsDebit.Select(dr => new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = creditCustomer.LedgerId.ToString(), Narration = $"CashSaleDoneTo{creditCustomer.CustomerName}" }));
+                        voucher.TransactionsDebit.Add(new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = creditCustomer.LedgerId.ToString(), Narration = $"CashSaleDoneTo{creditCustomer.CustomerName}" });
 
-
+                        voucher.TransactionsDebit.Add(new Transaction { Amount = (double)costOfGoodsSold, LedgerId = sales.SaleVoucher.TransactionsDebit[0].LedgerId, Narration = sales.SaleVoucher.TransactionsDebit[0].Narration ?? $"Sale - costOfGoodsSold" });
                     }
 
 
@@ -96,15 +106,22 @@ namespace Application.Services
                 {
                     result = await saleRepo.AddNewCashSale(sales, allIds);
 
+                    logger.LogInformation("new cash sale added:{@Result}", result);
+
                     if (result.StatusCode != 201)
                     {
                         return result;
                     }
                     var cashCustomer = await saleRepo.GetCashCustomers(sales.MobileNum, orgId);
-                    if (sales.SaleVoucher.TransactionsDebit != null)
+                    if (cashCustomer == null)
                     {
-                        voucher.TransactionsDebit.AddRange(sales.SaleVoucher.TransactionsDebit.Select(dr => new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = cashCustomer.LedgerId.ToString(), Narration = $"CashSaleDoneTo{cashCustomer.CustomerName}" }));
+                        return new ResponseDto<object> { StatusCode = 404, Message = "no customer found" };
+                    }
+                    if (sales.SaleVoucher.TransactionsDebit != null && sales.SaleVoucher.TransactionsDebit.Count>=2)
+                    {
+                        voucher.TransactionsDebit.Add( new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = cashCustomer.LedgerId.ToString(), Narration = $"CashSaleDoneTo{cashCustomer.CustomerName}" });
 
+                        voucher.TransactionsDebit.Add( new Transaction { Amount = (double)costOfGoodsSold, LedgerId = sales.SaleVoucher.TransactionsDebit[0].LedgerId, Narration = sales.SaleVoucher.TransactionsDebit[0].Narration ?? $"Sale - costOfGoodsSold" });
 
                     }
 
@@ -112,14 +129,14 @@ namespace Application.Services
 
                 }
 
-                if (sales.SaleVoucher.TransactionsCredit != null && sales.SaleVoucher.TransactionsCredit.Count >= 2)
+                if (sales.SaleVoucher.TransactionsCredit != null && sales.SaleVoucher.TransactionsCredit.Count >= 3)
                 {
                     // Credit for taxable amount (e.g., goods value)
                     voucher.TransactionsCredit.Add(new Transaction
                     {
                         LedgerId = sales.SaleVoucher.TransactionsCredit[0].LedgerId,
                         Amount = (double)taxableAmount,
-                        Narration = $"Sale - Taxable "
+                        Narration = sales.SaleVoucher.TransactionsCredit[0].Narration ?? $"Sale - saleAmount"
                     });
 
                     // Credit for tax amount
@@ -127,11 +144,19 @@ namespace Application.Services
                     {
                         LedgerId = sales.SaleVoucher.TransactionsCredit[1].LedgerId,
                         Amount = (double)taxAmount,
-                        Narration = $"Sale - Tax"
+                        Narration = sales.SaleVoucher.TransactionsCredit[1].Narration?? "Sale - OuputTax"
                     });
+                    voucher.TransactionsCredit.Add(new Transaction
+                    {
+                        LedgerId = sales.SaleVoucher.TransactionsCredit[2].LedgerId,
+                        Amount = (double)costOfGoodsSold,
+                        Narration =  sales.SaleVoucher.TransactionsCredit[2].Narration ?? "Sale - costOfGoddsSold "
+                    });
+
                 }
 
-                var response = await accountGrpc.updateSaleAccounts(voucher);
+                var response =await accountGrpc.updateSaleAccounts(voucher);
+                logger.LogInformation("logging from new sale voucher:{@Response}", response);
 
                 if (response.StatusCode == 200)
                 {

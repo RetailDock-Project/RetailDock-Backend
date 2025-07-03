@@ -67,7 +67,7 @@ public class VoucherGrpcService : PurchaseGrpc.VoucherGrpcService.VoucherGrpcSer
                 Guid.Parse(request.CreatedBy),
                 addVoucherDTO);
 
-            return new ApiResponses
+            return  new ApiResponses
             {
                 StatusCode = result.StatusCode,
                 Message = result.Message,
