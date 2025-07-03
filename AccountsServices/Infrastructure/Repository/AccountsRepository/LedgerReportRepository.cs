@@ -182,7 +182,6 @@ WHERE OL.IsDebit != T.IsDebit;
         }
 
 
-<<<<<<< HEAD
 
 
 
@@ -278,5 +277,4 @@ WHERE OL.IsDebit != T.IsDebit;
 
     }
 }
-=======
->>>>>>> ba4c8af2799f5875f2cd23abfbb7449393f37072
+

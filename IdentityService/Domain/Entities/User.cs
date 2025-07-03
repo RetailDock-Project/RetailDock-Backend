@@ -28,7 +28,7 @@ namespace Domain.Entities
 
         public DateTime CreatedAt { get; set; }= DateTime.UtcNow;
 
-        public Guid? OrganisationId { get; set; }
+        public Guid? OrganisationId { get; set; }=null;
 
         public string? EmailVerificationToken { get; set; }
         public bool IsEmailConfirmed { get; set;} = false;
@@ -39,6 +39,6 @@ namespace Domain.Entities
 
         public DateTime? RefreshTokenExpiry { get; set; }
 
-        public List<UserOrganizationRole> userOrganizationRole { get; set; }
+        public UserOrganizationRole UserOrganizationRole { get; set; }
     }
 }

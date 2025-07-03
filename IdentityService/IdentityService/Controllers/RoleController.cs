@@ -24,31 +24,61 @@ namespace IdentityService.Controllers
 
 
 
+        //[HttpPost("add")]
+        //public async Task<IActionResult> AddRole(RoleAddDto newRole) {
+        //    var response=await roleService.AddRole(newRole,OrgId,UserId);
+        //    return StatusCode(response.StatusCode, response);
+        //}
+
         [HttpPost("add")]
-        public async Task<IActionResult> AddRole(RoleAddDto newRole) {
-            var response=await roleService.AddRole(newRole,OrgId);
+        public async Task<IActionResult> AddRoleWithPermissions([FromBody] RoleDto newRole)
+        {
+            var response = await roleService.AddRoleWithPermissionsAsync(newRole, OrgId);
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpPatch("update")]
-        public async Task<IActionResult> UpdateRole(RoleDto updatedRole)
+
+
+        //[HttpPatch("update")]
+        //public async Task<IActionResult> UpdateRole(RoleDto updatedRole)
+        //{
+        //    var response = await roleService.UpdateRole(updatedRole);
+        //    return StatusCode(response.StatusCode, response);
+        //}
+
+
+        [HttpPut("update/{roleId}")]
+        public async Task<IActionResult> UpdateRole(Guid roleId, [FromBody] RoleDto updatedRole)
         {
-            var response = await roleService.UpdateRole(updatedRole);
+            var response = await roleService.UpdateRoleWithPermissionsAsync(roleId, updatedRole, OrgId);
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpDelete("soft-delete/{id}")]
-        public async Task<IActionResult> SoftDeleteRole(int id)
+
+
+
+
+        //[HttpDelete("soft-delete/{id}")]
+        //public async Task<IActionResult> SoftDeleteRole(int id)
+        //{
+        //    var response = await roleService.SoftDeleteRole(id);
+        //    return StatusCode(response.StatusCode, response);
+        //}
+
+        [HttpDelete("soft-delete/{roleId}")]
+        public async Task<IActionResult> SoftDeleteRole(Guid roleId)
         {
-            var response = await roleService.SoftDeleteRole(id);
+            var response = await roleService.SoftDeleteRoleAsync(roleId, OrgId);
             return StatusCode(response.StatusCode, response);
         }
-        //add roles of org
-        [HttpPost("organization-roles")]
-        public async Task<IActionResult> AddOrganizationRoles(List<OrgRoleDto> orgRoles) {
-            var response = await roleService.AddOrganizationRoles(orgRoles);
-            return StatusCode(response.StatusCode, response);
-        }
+
+
+        ////add roles of org
+        //[HttpPost("organization-roles")]
+        //public async Task<IActionResult> AddOrganizationRoles(List<OrgRoleDto> orgRoles) {
+        //    var response = await roleService.AddOrganizationRoles(orgRoles);
+        //    return StatusCode(response.StatusCode, response);
+        //}
 
         //get roles org
         [HttpGet("organization-roles/{organizationId}")]
@@ -59,11 +89,11 @@ namespace IdentityService.Controllers
 
         //add org role permission
 
-        [HttpPost("organization-role-permissions")]
-        public async Task<IActionResult> AddOrgRolePermission(OrgRolePermissionAddDto orgRolePermission) {
-            var response=await roleService.AddOrgRolePermission(orgRolePermission);
-            return StatusCode(response.StatusCode,response);
-        }
+        //[HttpPost("organization-role-permissions")]
+        //public async Task<IActionResult> AddOrgRolePermission(OrgRolePermissionAddDto orgRolePermission) {
+        //    var response=await roleService.AddOrgRolePermission(orgRolePermission);
+        //    return StatusCode(response.StatusCode,response);
+        //}
 
         //get org role permissions
 
@@ -73,12 +103,12 @@ namespace IdentityService.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
-        //update org role permissions
-        [HttpPut("organization-role-permissions/organizationRoleId")]
-        public async Task<IActionResult> UpdateOrganizationRolePermissions(OrgRolePermissionAddDto updateData) { 
-            var response=await roleService.UpdateOrganizationRolePermissions(updateData);
-            return StatusCode(response.StatusCode, response);
-        }
+        ////update org role permissions
+        //[HttpPut("organization-role-permissions/organizationRoleId")]
+        //public async Task<IActionResult> UpdateOrganizationRolePermissions(OrgRolePermissionAddDto updateData) { 
+        //    var response=await roleService.UpdateOrganizationRolePermissions(updateData);
+        //    return StatusCode(response.StatusCode, response);
+        //}
 
         //user role assignment
 

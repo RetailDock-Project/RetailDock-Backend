@@ -13,7 +13,7 @@ namespace Infrastructure.Data
         public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        //public DbSet<Role> Roles { get; set; }
         public DbSet<OrganizationRole> OrganizationRoles { get; set; }
         public DbSet<OrganizationRolePermission> OrganizationRolePermissions { get; set; }
         public DbSet<Permission> Permissions { get; set; }
@@ -21,19 +21,7 @@ namespace Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Role
-            modelBuilder.Entity<Role>(entity =>
-            {
-                entity.HasKey(e => e.Id);
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(100);
-
-                entity.HasMany(e => e.OrganizationRoles)
-                    .WithOne(e => e.Role)
-                    .HasForeignKey(e => e.RoleId);
-            });
 
             // Permission
             modelBuilder.Entity<Permission>(entity =>
@@ -54,16 +42,18 @@ namespace Infrastructure.Data
             {
                 entity.HasKey(e => e.Id);
 
+                entity.HasQueryFilter(r => !r.IsDeleted);
+
                 entity.Property(e => e.OrganizationId)
                     .IsRequired();
 
-                entity.HasOne(e => e.Role)
-                    .WithMany(r => r.OrganizationRoles)
-                    .HasForeignKey(e => e.RoleId);
+                //entity.HasOne(e => e.Role)
+                //    .WithMany(r => r.OrganizationRoles)
+                //    .HasForeignKey(e => e.RoleId);
 
-                entity.HasMany(e => e.OrganizationRolePermissions)
-                    .WithOne(e => e.OrganizationRole)
-                    .HasForeignKey(e => e.OrganizationRoleId);
+                //entity.HasMany(e => e.OrganizationRolePermissions)
+                //    .WithOne(e => e.OrganizationRole)
+                //    .HasForeignKey(e => e.OrganizationRoleId);
 
                 entity.HasMany(e => e.UserOrganizationRoles)
                     .WithOne(e => e.OrganizationRole)
@@ -74,6 +64,7 @@ namespace Infrastructure.Data
             modelBuilder.Entity<OrganizationRolePermission>(entity =>
             {
                 entity.HasKey(e => e.Id);
+                entity.HasQueryFilter(p => !p.IsDeleted);
 
                 entity.Property(e => e.OrganizationRoleId).IsRequired();
                 entity.Property(e => e.PermissionId).IsRequired();
@@ -96,8 +87,10 @@ namespace Infrastructure.Data
                 entity.Property(e => e.OrganizationRoleId).IsRequired();
 
                 entity.HasOne(e => e.User)
-                    .WithMany(u=>u.userOrganizationRole).HasForeignKey(x=>x.UserId); // Add navigation in User class if needed
+                    .WithOne(u=>u.UserOrganizationRole).HasForeignKey<UserOrganizationRole>(x=>x.UserId); // Add navigation in User class if needed
 
+                  entity.HasIndex(uor => new { uor.UserId, uor.OrganizationRoleId })
+    .IsUnique();
 
                 entity.HasOne(e => e.OrganizationRole)
                     .WithMany(or => or.UserOrganizationRoles)

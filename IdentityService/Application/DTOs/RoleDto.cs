@@ -7,20 +7,21 @@ using Domain.Entities;
 
 namespace Application.DTOs
 {
-    public class RoleAddDto
+    public class RoleDto
     {
         public string Name { get; set; }
+        public List<int> PermissionIds { get; set; }
     }
 
-    public class RoleDto {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+    //public class RoleDto {
+    //    public int Id { get; set; }
+    //    public string Name { get; set; }
+    //}
 
     public class OrgRoleDto {
         public Guid? Id { get; set; }
         public Guid OrganizationId { get; set; }
-        public int RoleId { get; set; }
+        public Guid OrgRoleId { get; set; }
     }
 
     public class GetOrgRoleDto

@@ -11,7 +11,7 @@ namespace Domain.Entities
         public Guid Id { get; set; } 
         public Guid OrganizationRoleId { get; set; }
         public int PermissionId { get; set; }
-
+        public bool IsDeleted { get; set; } = false;
         public OrganizationRole OrganizationRole { get; set; }
         public Permission Permission { get; set; }
 

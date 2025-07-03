@@ -22,24 +22,122 @@ namespace Application.Services
         }
 
 
-        public async Task<ResponseDto<object>> AddRole(RoleAddDto newRole,Guid orgId) {
-            var role = mapper.Map<Role>(newRole);
-            role.OrganizationId = orgId;
-            await roleRepository.AddRole(role);
-            return new ResponseDto<object> { StatusCode = 200, Message = "Role added successfully" };
+        //public async Task<ResponseDto<object>> AddRole(RoleAddDto newRole,Guid orgId) {
+        //    var role = mapper.Map<OrganizationRole>(newRole);
+        //    role.OrganizationId = orgId;
+        //    //await roleRepository.AddRole(role);
+        //    return new ResponseDto<object> { StatusCode = 200, Message = "Role added successfully" };
 
-        }
+        //}
 
-        public async Task<ResponseDto<object>> UpdateRole(RoleDto updatedRole)
+
+
+        public async Task<ResponseDto<object>> AddRoleWithPermissionsAsync(RoleDto newRole, Guid orgId)
         {
-            var role = mapper.Map<Role>(updatedRole);
-            await roleRepository.UpdateRole(role);
-            return new ResponseDto<object> { StatusCode = 200, Message = "Role updated successfully" };
+            var role = new OrganizationRole
+            {
+                Id = Guid.NewGuid(),
+                Name = newRole.Name,
+                OrganizationId = orgId
+            };
+
+            // Map permission IDs to OrganizationRolePermission
+            role.OrganizationRolePermissions = newRole.PermissionIds.Select(permissionId => new OrganizationRolePermission
+            {
+                Id = Guid.NewGuid(),
+                PermissionId = permissionId,
+                OrganizationRoleId = role.Id // Set manually since not saved yet
+            }).ToList();
+
+            await roleRepository.AddRoleWithPermissionsAsync(role);
+
+            return new ResponseDto<object>
+            {
+                StatusCode = 201,
+                Message = "Role with permissions added successfully"
+            };
         }
+
+
+
+        public async Task<ResponseDto<object>> SoftDeleteRoleAsync(Guid roleId, Guid orgId)
+        {
+            var role = await roleRepository.GetRoleWithPermissionsAsync(roleId, orgId);
+            if (role == null || role.IsDeleted)
+            {
+                return new ResponseDto<object>
+                {
+                    StatusCode = 404,
+                    Message = "Role not found"
+                };
+            }
+
+            role.IsDeleted = true;
+
+            foreach (var permission in role.OrganizationRolePermissions)
+            {
+                permission.IsDeleted = true;
+            }
+
+            await roleRepository.UpdateRoleWithPermissionsAsync(role);
+
+            return new ResponseDto<object>
+            {
+                StatusCode = 200,
+                Message = "Role and its permissions soft deleted successfully"
+            };
+        }
+
+
+        //public async Task<ResponseDto<object>> UpdateRole(RoleDto updatedRole)
+        //{
+        //    var role = mapper.Map<Role>(updatedRole);
+        //    //await roleRepository.UpdateRole(role);
+        //    return new ResponseDto<object> { StatusCode = 200, Message = "Role updated successfully" };
+        //}
+
+        public async Task<ResponseDto<object>> UpdateRoleWithPermissionsAsync(Guid roleId, RoleDto updatedRole, Guid orgId)
+        {
+            var role = await roleRepository.GetRoleWithPermissionsAsync(roleId, orgId);
+            if (role == null)
+            {
+                return new ResponseDto<object>
+                {
+                    StatusCode = 404,
+                    Message = "Role not found"
+                };
+            }
+
+            // Update role name
+            role.Name = updatedRole.Name;
+
+            // Remove existing permissions
+            role.OrganizationRolePermissions.Clear();
+
+            // Add new permissions
+            foreach (var permissionId in updatedRole.PermissionIds)
+            {
+                role.OrganizationRolePermissions.Add(new OrganizationRolePermission
+                {
+                    Id = Guid.NewGuid(),
+                    OrganizationRoleId = roleId,
+                    PermissionId = permissionId
+                });
+            }
+
+            await roleRepository.UpdateRoleWithPermissionsAsync(role);
+
+            return new ResponseDto<object>
+            {
+                StatusCode = 200,
+                Message = "Role updated successfully"
+            };
+        }
+
 
         public async Task<ResponseDto<object>> SoftDeleteRole(int id)
         {
-            await roleRepository.SoftDeleteRole(id);
+            //await roleRepository.SoftDeleteRole(id);
             return new ResponseDto<object> { StatusCode = 200, Message = "Role deleted successfully" };
         }
 
@@ -53,15 +151,15 @@ namespace Application.Services
 
         }
 
-        public async Task<ResponseDto<object>> AddOrganizationRoles(List<OrgRoleDto> orgRoles) {
-            var roles = mapper.Map<List<OrganizationRole>>(orgRoles);
-            var alreadyAddedRole = await roleRepository.checkAlreadyAddedRole(orgRoles);
-            if (alreadyAddedRole != null) {
-                return new ResponseDto<object> { StatusCode = 200, Message = "one organization role already exist" };
-            }
-            await roleRepository.AddOrganizationRoles(roles);
-            return new ResponseDto<object> { StatusCode = 200 ,Message="Organization roles added"};
-        }
+        //public async Task<ResponseDto<object>> AddOrganizationRoles(List<OrgRoleDto> orgRoles) {
+        //    var roles = mapper.Map<List<OrganizationRole>>(orgRoles);
+        //    var alreadyAddedRole = await roleRepository.checkAlreadyAddedRole(orgRoles);
+        //    if (alreadyAddedRole != null) {
+        //        return new ResponseDto<object> { StatusCode = 200, Message = "one organization role already exist" };
+        //    }
+        //    await roleRepository.AddOrganizationRoles(roles);
+        //    return new ResponseDto<object> { StatusCode = 200 ,Message="Organization roles added"};
+        //}
 
         public async Task<ResponseDto<List<GetOrgRoleDto>>> GetOrganizationRoles(Guid organizationId) { 
         var orgRoles=await roleRepository.GetOrganizationRoles(organizationId);
@@ -69,17 +167,17 @@ namespace Application.Services
             return new ResponseDto<List<GetOrgRoleDto>> { StatusCode = 200, Message = "Organization roles retrieved",Data=result };
         }
 
-        public async Task<ResponseDto<object>> AddOrgRolePermission(OrgRolePermissionAddDto orgRolePermission) {
+        //public async Task<ResponseDto<object>> AddOrgRolePermission(OrgRolePermissionAddDto orgRolePermission) {
 
-            //var alreadyAddedPermission = await roleRepository.checkPermissionAlreadyAdded(orgRolePermission);
-            foreach (int permissionId in orgRolePermission.PermissionIds) {
-                var permission = new OrgRolePermissionDto { OrganizationRoleId = orgRolePermission.OrganizationRoleId, PermissionId = permissionId };
-                var data= mapper.Map<OrganizationRolePermission>(permission);
-            await roleRepository.AddOrgRolePermission(data);
-            }
-            return new ResponseDto<object> { StatusCode = 200, Message = "Organization role permissions added" };
+        //    //var alreadyAddedPermission = await roleRepository.checkPermissionAlreadyAdded(orgRolePermission);
+        //    foreach (int permissionId in orgRolePermission.PermissionIds) {
+        //        var permission = new OrgRolePermissionDto { OrganizationRoleId = orgRolePermission.OrganizationRoleId, PermissionId = permissionId };
+        //        var data= mapper.Map<OrganizationRolePermission>(permission);
+        //    await roleRepository.AddOrgRolePermission(data);
+        //    }
+        //    return new ResponseDto<object> { StatusCode = 200, Message = "Organization role permissions added" };
 
-        }
+        //}
 
         public async Task<ResponseDto<List<GetOrgRolePermissionDto>>> GetOrgRolePermissions(Guid organizationRoleId) { 
             var data=await roleRepository.GetOrgRolePermissions(organizationRoleId);
@@ -88,15 +186,15 @@ namespace Application.Services
 
         }
 
-        public async Task<ResponseDto<object>> UpdateOrganizationRolePermissions(OrgRolePermissionAddDto updatedPermissions) {
-            foreach (int permissionId in updatedPermissions.PermissionIds)
-            {
-                var permission = new OrgRolePermissionDto { OrganizationRoleId = updatedPermissions.OrganizationRoleId, PermissionId = permissionId };
-                var data = mapper.Map<OrganizationRolePermission>(permission);
-                await roleRepository.UpdateOrganizationRolePermissions(data);
-            }
-            return new ResponseDto<object> { StatusCode = 200, Message = "Organization role permissions updated" };
-        }
+        //public async Task<ResponseDto<object>> UpdateOrganizationRolePermissions(OrgRolePermissionAddDto updatedPermissions) {
+        //    foreach (int permissionId in updatedPermissions.PermissionIds)
+        //    {
+        //        var permission = new OrgRolePermissionDto { OrganizationRoleId = updatedPermissions.OrganizationRoleId, PermissionId = permissionId };
+        //        var data = mapper.Map<OrganizationRolePermission>(permission);
+        //        await roleRepository.UpdateOrganizationRolePermissions(data);
+        //    }
+        //    return new ResponseDto<object> { StatusCode = 200, Message = "Organization role permissions updated" };
+        //}
 
         public async Task<ResponseDto<object>> AssignUserOrganizationRole(UserOrgRole newOrgUser) {
             var data=mapper.Map<UserOrganizationRole>(newOrgUser);
@@ -109,7 +207,7 @@ namespace Application.Services
             var data = await roleRepository.GetPermissions();
             var res=mapper.Map<List<PermissionDto>>(data);
             
-            return new ResponseDto<List<PermissionDto>> { StatusCode = 200, Message = "Organization role permissions retrieved", Data = res };
+            return new ResponseDto<List<PermissionDto>> { StatusCode = 200, Message = "Permissions retrieved", Data = res };
 
         }
 
