@@ -38,13 +38,17 @@ namespace Infrastructure.Repositories
         }
 
 
-        public async Task<CashCustomers> GetCashCustomers (string phoneNUmber,Guid OrgId)
+        public async Task<CashCustomers> GetCashCustomers(string phoneNUmber, Guid OrgId)
         {
-            return await context.CashCustomers.FirstOrDefaultAsync(x=>x.OrganisationId== OrgId && x.ContactNumber==phoneNUmber);
-        }    
-        public async Task<CreditCustomers> GetCreditCustomers (string phoneNUmber,Guid OrgId)
+            return await context.CashCustomers.FirstOrDefaultAsync(x => x.OrganisationId == OrgId && x.ContactNumber == phoneNUmber);
+        }
+        public async Task<CreditCustomers> GetCreditCustomers(string phoneNUmber, Guid OrgId)
         {
-            return await context.CreditCustomers.FirstOrDefaultAsync(x=>x.OrganisationId== OrgId && x.ContactNumber==phoneNUmber);
+            return await context.CreditCustomers.FirstOrDefaultAsync(x => x.OrganisationId == OrgId && x.ContactNumber == phoneNUmber);
+        }
+        public async Task<List<Sales>> GetDebtorsSales(Guid debtorId,Guid orgId)
+        {
+            return await context.Sales.Include(s=>s.Invoices).Include(s=>s.SaleItems).Where(s => s.DebtorsId == debtorId).ToListAsync();
         }
         public async Task<Product> GetProductById(Guid productId, Guid orgId)
 
@@ -67,7 +71,7 @@ namespace Infrastructure.Repositories
 
         }
 
-        public async Task AddnewB2CSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto)
+        public async Task AddnewB2CSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto, DateTime dueDate, decimal recievedAmount)
         {
             try
             {
@@ -86,6 +90,8 @@ namespace Infrastructure.Repositories
                 {
                     Id = allIdsDto.InvoiceId,
                     B2CInvoiceNumber = invoiceNumber,
+                    DueDate = dueDate,
+                    RecievedAmount = recievedAmount,
 
                     OrganisationId = allIdsDto.OrganisationId,
                     TotalCGST = totalCGST,
@@ -95,7 +101,8 @@ namespace Infrastructure.Repositories
                     TaxableAmount = taxable,
                     DiscountAmount = totalDiscount,
 
-                    TotalAmount = totalAmt,CreatedAt=DateTime.Now
+                    TotalAmount = totalAmt,
+                    CreatedAt = DateTime.UtcNow
                 };
 
                 await context.SalesInvoices.AddAsync(newInvoice);
@@ -110,7 +117,7 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
-        public async Task AddnewB2BSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto)
+        public async Task AddnewB2BSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto, DateTime dueDate, decimal recievedAmount)
         {
             try
             {
@@ -135,12 +142,14 @@ namespace Infrastructure.Repositories
                     TotalIGST = totalIGST,
                     TotalUGST = totalUGST,
                     OrganisationId = allIdsDto.OrganisationId,
+                    RecievedAmount = recievedAmount,
+                    DueDate = dueDate,
 
                     TaxableAmount = taxable,
                     DiscountAmount = totalDiscount,
-                    
+
                     TotalAmount = totalAmt,
-                    CreatedAt=DateTime.Now
+                    CreatedAt = DateTime.UtcNow
                 };
 
                 await context.SalesInvoices.AddAsync(newInvoice);
@@ -162,14 +171,15 @@ namespace Infrastructure.Repositories
             var transaction = await context.Database.BeginTransactionAsync();
             try
             {
-                var creditCustomer = await GetCreditCustomers(sales.MobileNum,allIdsDto.OrganisationId);
-                if (creditCustomer== null)
+                var creditCustomer = await GetCreditCustomers(sales.MobileNum, allIdsDto.OrganisationId);
+                if (creditCustomer == null)
                 {
 
                     return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
 
                 }
 
+                DateTime dueDate = sales.DueDate ?? DateTime.UtcNow.AddDays(30);
 
                 List<SaleItems> inMemorySale = new List<SaleItems>();
 
@@ -186,11 +196,11 @@ namespace Infrastructure.Repositories
 
                     filteredProduct.Stock -= item.Quantity;
 
-                  
+
                     decimal taxRate = filteredProduct.HsnCode.GstRate;
                     int hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
                     decimal unitCost = filteredProduct.CostPrice;
-                    int unitId = item.unitId;
+                    int unitId = filteredProduct.UnitOfMeasuresId;
 
                     decimal taxableAmount = item.Quantity * item.UnitPrice;
 
@@ -225,7 +235,7 @@ namespace Infrastructure.Repositories
 
                 await context.SaleItems.AddRangeAsync(inMemorySale);
                 var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
-                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, DebtorsId = creditCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, DueDate = sales.DueDate, Narration = sales.Text, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
+                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, DebtorsId = creditCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, Narration = sales.Text, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost ,SalesType=sales.SalesMode.ToString()};
 
 
                 await context.Sales.AddAsync(newSale);
@@ -233,11 +243,11 @@ namespace Infrastructure.Repositories
 
                 if (sales.SalesMode == SalesMode.B2C)
                 {
-                    await AddnewB2CSaleInvoices(inMemorySale, allIdsDto);
+                    await AddnewB2CSaleInvoices(inMemorySale, allIdsDto, dueDate, 0);
                 }
                 if (sales.SalesMode == SalesMode.B2B)
                 {
-                    await AddnewB2BSaleInvoices(inMemorySale, allIdsDto);
+                    await AddnewB2BSaleInvoices(inMemorySale, allIdsDto, dueDate, 0);
                 }
 
 
@@ -270,14 +280,14 @@ namespace Infrastructure.Repositories
             try
             {
 
-                var cashCustomer = await GetCashCustomers(sales.MobileNum,allIdsDto.OrganisationId);
+                var cashCustomer = await GetCashCustomers(sales.MobileNum, allIdsDto.OrganisationId);
 
                 if (cashCustomer == null)
                 {
                     return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
                 }
                 //var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.OrganisationId.ToString() });
-
+                DateTime dueDate = DateTime.Now;
                 List<SaleItems> inMemorySale = new List<SaleItems>();
                 foreach (var item in sales.SaleItems)
                 {
@@ -334,18 +344,18 @@ namespace Infrastructure.Repositories
 
                 await context.Sales.AddAsync(newSale);
 
-                await AddnewB2CSaleInvoices(inMemorySale, allIdsDto);
+                await AddnewB2CSaleInvoices(inMemorySale, allIdsDto, dueDate, inMemorySale.Sum(x => x.TotalAmount));
 
-                foreach (var product in inMemorySale)
-                {
-                    //var respond = stockclient.updateProductStock(new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
-                    //if (respond.Success == false)
-                    //{
-                    //    transaction.Rollback();
-                    //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
-                    //}
+                //foreach (var product in inMemorySale)
+                //{ 
+                //var respond = stockclient.updateProductStock(new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
+                //if (respond.Success == false)
+                //{
+                //    transaction.Rollback();
+                //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
+                //}
+                //}
 
-                }
 
 
 
@@ -450,9 +460,63 @@ namespace Infrastructure.Repositories
         }
 
 
+
+        public async Task CashReceived(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId)
+        {
+            DateTime currentDate = DateTime.UtcNow;
+
+            var sales = await GetDebtorsSales(debtorsId, orgId);
+
+            // Get only pending invoices
+            var pendingInvoices = sales
+                .Where(s => s.Invoices.DueDate <= currentDate && s.Invoices.RecievedAmount <= s.Invoices.TotalAmount && s.OrganisationId==orgId)
+                .OrderBy(s => s.CreatedAt)
+                .Select(s => s.Invoices)
+                .ToList();
+
+            foreach (var invoice in pendingInvoices)
+            {
+                decimal remainingDue = invoice.TotalAmount - invoice.RecievedAmount;
+
+                // Step 1: Apply from balance
+                if (currentBalance >= remainingDue)
+                {
+                    invoice.RecievedAmount += remainingDue;
+                    currentBalance -= remainingDue;
+
+                    continue;
+                }
+                else
+                {
+                    invoice.RecievedAmount += currentBalance;
+                    remainingDue -= currentBalance;
+                    currentBalance = 0;
+                }
+
+             
+                if (receivedAmount >= remainingDue)
+                {
+                    invoice.RecievedAmount += remainingDue;
+                    receivedAmount -= remainingDue;
+ 
+                }
+                else
+                {
+                    invoice.RecievedAmount += receivedAmount;
+                    receivedAmount = 0;
+
+                    break;
+                }
+            }
+
+        }
+
+        // Save to DB (make sure your repo context is tracking these)
+       
+
         public async Task<string> GenerateB2CInvoiceNumber(Guid orgId)
         {
-            DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
+            DateOnly currentDate = DateOnly.FromDateTime(DateTime.UtcNow);
             int year = currentDate.Year;
             string prefix = year.ToString();
 

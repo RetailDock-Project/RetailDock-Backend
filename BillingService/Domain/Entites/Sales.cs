@@ -21,7 +21,7 @@ namespace Domain.Entites
         public Guid OrganisationId { get; set; }
         public Guid? CashCustomerId { get; set; }
         public Guid? DebtorsId { get; set; }
-        public DateTime? DueDate { get; set; }
+
         public decimal TotalUnitCost { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
