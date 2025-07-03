@@ -20,11 +20,12 @@ namespace Infrastructure.Repositories
     {
         private readonly BillingDbContext context;
 
-
-        public SaleReturnRepository(BillingDbContext _context)
+        private readonly ILogger<SaleReturnRepository> logger;
+        public SaleReturnRepository(BillingDbContext _context, ILogger<SaleReturnRepository> _logger)
         {
             context = _context;
-
+            logger = _logger;
+            
         }
         public async Task SaveChanges()
         {
@@ -126,7 +127,10 @@ namespace Infrastructure.Repositories
 
 
             var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => (x.Invoices.B2CInvoiceNumber == invoiceNum || x.Invoices.B2BInvoiceNumber == invoiceNum) && x.OrganisationId == orgId);
-
+            if(sales== null)
+            {
+                return null;
+            }
             return sales;
 
         }
@@ -181,15 +185,15 @@ namespace Infrastructure.Repositories
 
                         if (gst_Type == GST_Type.SGST)
                         {
-                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST };
+                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST,UnitId=_saleItem.UnitId };
                         }
                         if (gst_Type == GST_Type.UGST)
                         {
-                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST };
+                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST,UnitId = _saleItem.UnitId };
                         }
                         if (gst_Type == GST_Type.IGST)
                         {
-                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount };
+                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId };
 
                         }
                         context.Products.Update(product);
@@ -250,17 +254,28 @@ namespace Infrastructure.Repositories
 
                         SalesReturnItems returnItems = new SalesReturnItems();
                         decimal totalAmount = taxableAmount + taxAmount;
+                        logger.LogInformation("UnitId: {UnitId}  for sale Items", _saleItem.UnitId);
+
+                        var unitExists = await context.UnitOfMeasures.AnyAsync(u => u.Id == _saleItem.UnitId);
+                        if (!unitExists)
+                        {
+                            logger.LogInformation("UnitId: {UnitId} does not exist in UnitOfMeasures table", _saleItem.UnitId);
+                            throw new Exception($"Invalid UnitId: {_saleItem.UnitId}");
+                        }
+
+
+                        logger.LogInformation("unitIdFromSoldProduct:{@UnitId}", _saleItem.UnitId);
                         if (gst_Type == GST_Type.SGST)
                         {
-                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST };
+                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST, UnitId =_saleItem.UnitId };
                         }
                         if (gst_Type == GST_Type.UGST)
                         {
-                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST };
+                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST, UnitId = _saleItem.UnitId };
                         }
                         if (gst_Type == GST_Type.IGST)
                         {
-                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount };
+                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId };
                         }
 
                         inMemoryReturnSaleItems.Add(returnItems);
@@ -281,6 +296,7 @@ namespace Infrastructure.Repositories
                 catch (Exception ex)
                 {
                     await transaction.RollbackAsync();
+                    logger.LogError(ex.Message,"error from sale Return repo exceprion");
 
                     throw new Exception("Error while adding new sales return", ex);
                 }

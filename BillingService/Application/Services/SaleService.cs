@@ -24,20 +24,35 @@ namespace Application.Services
         private readonly ILogger<SaleService> logger;
         private readonly IMapper mapper;
         private readonly IAccountGrpc accountGrpc;
-        private readonly IUnitOfWorkRepository _unitOfWorkRepo;
+        private readonly IUnitOfWorkRepository _unitOfWork;
         public SaleService(ISaleRepository _saleRepo, ILogger<SaleService> _logger, IMapper _mapper, IAccountGrpc _accountGrpc, IUnitOfWorkRepository unitOfWorkRepo)
         {
             logger = _logger;
             saleRepo = _saleRepo;
             mapper = _mapper;
             accountGrpc = _accountGrpc;
-            _unitOfWorkRepo = unitOfWorkRepo;
+            _unitOfWork = unitOfWorkRepo;
         } 
-
+        
+        public async Task<ResponseDto<object>> CashReceivedFromDebtor(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId)
+        {
+            try
+            {
+         
+                await saleRepo.CashReceived(debtorsId, receivedAmount, currentBalance, orgId);
+                await saleRepo.SaveChanges();
+                return new ResponseDto<object> { Message = "updated sale Invoice amount", StatusCode = 200 };
+            }catch (Exception ex)
+            {
+                logger.LogError(ex, "error updating sale Invoice recievedAmount");
+                return new ResponseDto<object> { Message = "internal Server Error ", StatusCode = 500 };
+            }
+        }
         public async Task<ResponseDto<object>> AddNewSale(SalesAddDto sales, Guid orgId, Guid userId)
         {
             try
             {
+                await _unitOfWork._BiginTransaction();
                 var voucher = new Voucher { CreatedBy = userId.ToString(), OrganizationId = orgId.ToString(), Remarks = sales.SaleVoucher.Remarks, VoucherTypeId = "a5bea1e0-421a-11f0-a0c7-862ccfb05833", VoucherDate = DateTime.Now.ToString() ,TransactionsDebit = new List<Transaction>(),
                     TransactionsCredit = new List<Transaction>()
                 };
@@ -52,6 +67,7 @@ namespace Application.Services
                 
                     if (product.UnitPrice > filteredProduct.MRP  )
                     {
+                        await _unitOfWork._RolBackTransaction();
                         return new ResponseDto<object> { StatusCode = 304, Message = "moreThan marketPrice" };
                     }
 
@@ -115,6 +131,7 @@ namespace Application.Services
                     var cashCustomer = await saleRepo.GetCashCustomers(sales.MobileNum, orgId);
                     if (cashCustomer == null)
                     {
+                        
                         return new ResponseDto<object> { StatusCode = 404, Message = "no customer found" };
                     }
                     if (sales.SaleVoucher.TransactionsDebit != null && sales.SaleVoucher.TransactionsDebit.Count>=2)
@@ -157,22 +174,57 @@ namespace Application.Services
 
                 var response =await accountGrpc.updateSaleAccounts(voucher);
                 logger.LogInformation("logging from new sale voucher:{@Response}", response);
-
-                if (response.StatusCode == 200)
+                if (response.StatusCode != 200)
                 {
-
-                    await saleRepo.SaveChanges();
+                    await _unitOfWork._RolBackTransaction();
+                   
                     return result;
                 }
+                if (response.StatusCode == 200)
+                {
+                    await _unitOfWork._CommitTransaction();
+                    await saleRepo.SaveChanges();
+                    return result;
+                }       
+             
                 return result;
+
             }
             catch (Exception ex)
             {
+                await _unitOfWork._RolBackTransaction();
                 logger.LogError(ex, "Error while adding new sale");
                 return new ResponseDto<object> { StatusCode = 500, Message = "Internal Server Error" };
             }
         }
+       public async Task<ResponseDto<List<SalesResponseDto>>>  GetDebtorsSalesDetails(Guid debtorId, Guid orgId)
+        {
+            try
+            {
+                var sale=await saleRepo.GetDebtorsSales(debtorId, orgId);
+                if (sale == null)
+                {
+                    return new ResponseDto<List<SalesResponseDto>>
+                    {
 
+                        Message = "no sales is found between that date",
+                        StatusCode = 404
+                    };
+                }
+                var mapped = mapper.Map<List<SalesResponseDto>>(sale);
+                return new ResponseDto<List<SalesResponseDto>>
+                {
+                    Data = mapped,
+                    Message = "Sales fetched successfully",
+                    StatusCode = 200
+                };
+            }
+            catch( Exception ex)
+            {
+                logger.LogError(ex, "error from fetching sales details By DebtorId");
+                return new ResponseDto<List<SalesResponseDto>> { Message = "internal Server Error ", StatusCode = 500 };
+            }
+        }
         public async Task<ResponseDto<List<SalesResponseDto>>> GetSalesByDate(DateTime fromDate, DateTime? toDate, Guid orgId)
         {
             try
