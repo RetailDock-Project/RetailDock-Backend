@@ -20,5 +20,11 @@ namespace AccountsServices.Controllers
             var result= await _voucherService.AddVoucherEntrys(organizationId,CreatedBy,addVoucherDTO);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet("get/voucher/report")]
+        public async Task<IActionResult> GetVoucherTransactionReports(Guid voucherTypeId, Guid organizationId, DateTime? fromDate, DateTime? toDate)
+        {
+            var result = await _voucherService.GetTransactionsByVoucherTypeAsync(voucherTypeId, organizationId, fromDate, toDate);
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }

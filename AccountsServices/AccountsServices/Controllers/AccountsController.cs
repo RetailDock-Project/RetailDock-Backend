@@ -8,10 +8,10 @@ namespace AccountsServices.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountsController : ControllerBase
     {
         private readonly IAccountsGroupService _accountsGroupService;
-        public AccountController(IAccountsGroupService accountsGroupService)
+        public AccountsController(IAccountsGroupService accountsGroupService)
         {
             _accountsGroupService = accountsGroupService;
         }

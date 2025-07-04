@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Infrastructure.Repository.AccountsRepository
 {
-    public class VoucherRepository:IAccountsRepository
+    public class VoucherRepository:IVoucherRepository
     {
         private readonly DapperConection _dapperConection;
         public VoucherRepository(DapperConection dapperConection)
@@ -84,6 +84,20 @@ namespace Infrastructure.Repository.AccountsRepository
 
 
             }
+        }
+       public async Task<List<GetVoucherTransactionByVoucherTypeId>> GetTransactionsByVoucherTypeAsync(Guid voucherTypeId, Guid organizationId, DateTime? fromDate, DateTime? toDate)
+        {
+            var sql = "CALL GetTransactionsByVoucherType(@p_VoucherTypeId, @p_OrganizationId, @p_FromDate, @p_ToDate);";
+             var connection = _dapperConection.CreateConnection();
+            var result = await connection.QueryAsync<GetVoucherTransactionByVoucherTypeId>(sql, new
+            {
+                p_VoucherTypeId = voucherTypeId,
+                p_OrganizationId = organizationId,
+                p_FromDate = fromDate,
+                p_ToDate = toDate
+            });
+
+            return result.ToList();
         }
     }
 }

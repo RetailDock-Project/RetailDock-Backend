@@ -124,7 +124,7 @@ namespace Application.Services.AccountsService
             try
             {
                 var result = await _ledgerReportRepository.GetGroupAndLedgerSummaryAsync(groupId, organizationId, start, end);
-                if(result != null)
+                if (result != null)
                 {
                     return new ApiResponseDTO<GroupWithLedgersSummaryDTO>
                     {
