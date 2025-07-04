@@ -17,6 +17,7 @@ namespace Application.Dto
         public string Reason { get; set; }
         public string Notes { get; set; }
 
+        public VoucherDto Voucher { get; set; }
         public List<PurchaseReturnItemDto> Items { get; set; }
     }
 
@@ -68,6 +69,11 @@ namespace Application.Dto
         public int ReturnedQuantity { get; set; }
         public string Reason { get; set; }
         public decimal TotalAmount { get; set; }
-       
+        public decimal? CGST { get; set; }
+        public decimal? IGST { get; set; }
+        public decimal? UGST { get; set; }
+        public decimal? SGST { get; set; }
+
+
     }
 }

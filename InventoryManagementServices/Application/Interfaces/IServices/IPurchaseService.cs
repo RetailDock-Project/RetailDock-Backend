@@ -11,12 +11,12 @@ namespace Application.Interfaces.IServices
     public interface IPurchaseService
     {
         Task<Responses<object>> AddPurchase(PurchaseAddDto newPurchase, Guid OrgId,Guid userId);
-        Task<Responses<List<GetPurchaseDto>>> GetAllPurchases(Guid organaizationId);
+        Task<Responses<List<GetPurchaseDto>>> GetAllPurchases(Guid organaizationId, DateTime? fromDate, DateTime? toDate);
         Task<Responses<GetPurchaseDetailsDto>> GetPurchaseDetails(Guid purchaseId);
         Task<Responses<object>> AddPurchaseReturn(PurchaseReturnDto newPurchaseReturn, Guid userId,Guid orgId);
 
         Task <Responses<List<GetPurchaseReturnDto>>> GetAllPurchaseReturn(Guid organaizationId);
         Task<Responses<GetPurchaseReturnDetailsDto>> GetPurchaseReturn(Guid PurchaseReturnId);
-        Task<Responses<object>> ExportPurchases(Guid organizationId);
+        Task<Responses<object>> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate);
     }
 }

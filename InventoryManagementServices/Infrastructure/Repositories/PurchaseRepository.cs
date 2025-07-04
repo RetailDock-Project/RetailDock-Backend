@@ -63,16 +63,26 @@ namespace Infrastructure.Repositories
                 product.UpdatedAt = DateTime.UtcNow;
             }
         }
-       public async Task<List<Purchase>> GetAllPurchase(Guid organaizationId)
+        public async Task<List<Purchase>> GetAllPurchase(Guid organizationId, DateTime? fromDate, DateTime? toDate)
         {
-            return await context.Purchases
-               
-                .Include(p=>p.PurchaseInvoice)
-                .Where(x=>x.OrganizationId== organaizationId)
-                .ToListAsync();
+            var query =context.Purchases
+                .Include(p => p.PurchaseInvoice)
+                .Where(p => p.OrganizationId == organizationId);
 
+            if (fromDate.HasValue)
+            {
+                query = query.Where(p => p.CreatedAt >= fromDate.Value.Date);
+            }
+
+            if (toDate.HasValue)
+            {
+                query = query.Where(p => p.CreatedAt <= toDate.Value.Date);
+            }
+
+            return await query.OrderByDescending(p => p.CreatedAt).ToListAsync();
         }
-       public async Task<Purchase> GetPurchaseById(Guid purchaseId)
+
+        public async Task<Purchase> GetPurchaseById(Guid purchaseId)
         {
             Console.WriteLine($"Searching for purchaseId: {purchaseId}");
             Console.WriteLine($"Searching for purchaseId: {purchaseId}");

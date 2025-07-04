@@ -27,14 +27,18 @@ namespace Application.Services
         private readonly IUnitOfWork unitOfWork;
         private readonly IMapper mapper;
         private readonly IInvoiceNumberGenerator invoiceNumberGenerator;
+        private readonly IAccountGrpcService accountGrpcService;
+        private readonly IPurchaseOrderRepository purchaseOrderRepo;
 
 
-        public PurchaseService(IPurchaseRepository _purchaseRepo, ILogger<PurchaseService> _logger, IUnitOfWork _unitOfWork,IMapper _mapper, IInvoiceNumberGenerator _invoiceNumberGenerator) {
+        public PurchaseService(IPurchaseRepository _purchaseRepo, ILogger<PurchaseService> _logger, IUnitOfWork _unitOfWork,IMapper _mapper, IInvoiceNumberGenerator _invoiceNumberGenerator, IAccountGrpcService _accountGrpcService, IPurchaseOrderRepository _purchaseOrderRepo) {
             purchaseRepo = _purchaseRepo;
             logger = _logger;
             unitOfWork = _unitOfWork;
             mapper = _mapper;
              invoiceNumberGenerator= _invoiceNumberGenerator;
+            accountGrpcService=_accountGrpcService;
+            purchaseOrderRepo = _purchaseOrderRepo;
 
         }
         public async Task<Responses<object>> AddPurchase(PurchaseAddDto newPurchase, Guid orgId, Guid userId)
@@ -54,7 +58,10 @@ namespace Application.Services
                 var purchaseItems = new List<PurchaseItem>();
                 var purchaseId = Guid.NewGuid();
                 var document = new Document();
+                decimal taxableAmount = 0m;
                 decimal taxAmount = 0m;
+                 decimal purchaseQty= 0m;
+                decimal purchaseOrderQty = 0m;
 
 
                 //if (newPurchase.SupplierInvoice != null)
@@ -81,11 +88,25 @@ namespace Application.Services
                     else if (newPurchase.PurchaseOrderId != null) {
 
                         var purchaseOrderProductDetail = await purchaseRepo.GetProductPurchaseOrder(product.ProductId, newPurchase.PurchaseOrderId);
-                        if (purchaseOrderProductDetail.Quantity < product.Quantity) { 
-                            return new Responses<object> { StatusCode = 400, Message = $"product with id-{product.ProductId} quantity is greater than purchase order quantity" };
+                        if (purchaseOrderProductDetail == null)
+                        {
+                            return new Responses<object>
+                            {
+                                StatusCode = 404,
+                                Message = $"Purchase order item for product id-{product.ProductId} not found"
+                            };
                         }
+
+                        if ((purchaseOrderProductDetail.Quantity - purchaseOrderProductDetail.ReceivedQuantity) < product.Quantity)
+                        {
+                            return new Responses<object> { StatusCode = 400, Message = $"product with id-{product.ProductId} quantity is greater than remaining purchase order quantity" };
+                        }
+
+                        //purchaseOrderQty += purchaseOrderProductDetail.Quantity - purchaseOrderProductDetail.ReceivedQuantity;
+                        purchaseOrderProductDetail.ReceivedQuantity += product.Quantity;
+                        //purchaseQty += product.Quantity;
                     }
-                    
+
 
                     var gstRate = item.HsnCode.GstRate;
 
@@ -93,7 +114,6 @@ namespace Application.Services
                     Console.WriteLine("this is gst rate");
                     Console.WriteLine(gstRate);
                     var itemAmount = product.Quantity * product.RatePerPiece;
-
                     var itemDiscount = (product.Discount / 100) * itemAmount;
                     var itemTotal = itemAmount - itemDiscount;
                     var productTax = 0m;
@@ -127,7 +147,7 @@ namespace Application.Services
 
 
                     taxAmount += productTax;
-
+                    taxableAmount += itemTotal;
                     purchaseItems.Add(new PurchaseItem
                     {
                         PurchaseId = purchaseId,
@@ -143,7 +163,7 @@ namespace Application.Services
                         TotalAmount = itemTotal + productTax
                     });
                 }
-                var subTotal = newPurchase.purchaseItems.Sum(x => x.RatePerPiece * x.Quantity);
+                //var subTotal = newPurchase.purchaseItems.Sum(x => x.RatePerPiece * x.Quantity);
 
 
 
@@ -154,9 +174,9 @@ namespace Application.Services
                 var purchaseInvoice = new PurchaseInvoice { 
                     Id=Guid.NewGuid(),
                     InvoiceNumber = invoicenumber,
-                    SubTotal = subTotal,
+                    SubTotal = taxableAmount,
                     TaxAmount = taxAmount,
-                    TotalAmount = subTotal + taxAmount,
+                    TotalAmount = taxableAmount + taxAmount,
                     GstType = newPurchase.GstType,
                     IGST = purchaseItems.Sum(x => x.IGST),
                     CGST = purchaseItems.Sum(x => x.CGST),
@@ -179,6 +199,51 @@ namespace Application.Services
 
                 };
 
+                var voucher = mapper.Map<Voucher>(newPurchase.Voucher);
+                voucher.VoucherTypeId = "a5bf213f-421a-11f0-a0c7-862ccfb05833";
+                voucher.OrganizationId = orgId.ToString();
+                voucher.CreatedBy = userId.ToString();
+
+                voucher.TransactionsDebit = new List<Transaction>();
+                voucher.TransactionsCredit = new List<Transaction>();
+
+                // ✅ Now safely add
+                if (newPurchase.Voucher.TransactionsDebit?.Count >= 2)
+                {
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = newPurchase.Voucher.TransactionsDebit[0].LedgerId,
+                        Amount = (double)taxableAmount,
+                        Narration = newPurchase.Voucher.TransactionsDebit[0].Narration
+                    });
+
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = newPurchase.Voucher.TransactionsDebit[1].LedgerId,
+                        Amount = (double)taxAmount,
+                        Narration = newPurchase.Voucher.TransactionsDebit[1].Narration
+                    });
+                }
+
+                if (newPurchase.Voucher.TransactionsCredit?.Count >= 1)
+                {
+                    voucher.TransactionsCredit.Add(new Transaction
+                    {
+                        LedgerId = newPurchase.Voucher.TransactionsCredit[0].LedgerId,
+                        Amount = (double)taxableAmount + (double)taxAmount,
+                        Narration = newPurchase.Voucher.TransactionsCredit[0].Narration
+                    });
+                }
+
+                var jsonData = JsonSerializer.Serialize(voucher, new JsonSerializerOptions
+                {
+                    WriteIndented = true // makes it look pretty
+                });
+                Console.WriteLine(jsonData);
+
+                
+
+
 
                 using var transaction = await unitOfWork.BeginTransactionAsync();
                 try
@@ -189,6 +254,20 @@ namespace Application.Services
 
                     //}
 
+                    if (newPurchase.PurchaseOrderId != null)
+                    {
+                        var purchaseOrder = await purchaseOrderRepo.GetPurchaseOrderByIdAsync(newPurchase.PurchaseOrderId);
+
+                        decimal totalQty = purchaseOrder.PurchaseOrderItems.Sum(poi => poi.Quantity);
+                        decimal receivedQty = purchaseOrder.PurchaseOrderItems.Sum(poi => poi.ReceivedQuantity);
+
+                        if (totalQty == receivedQty)
+                            purchaseOrder.OrderStatus = "Complete";
+                        else if (receivedQty > 0)
+                            purchaseOrder.OrderStatus = "Partial";
+                        else
+                            purchaseOrder.OrderStatus = "Pending";
+                    }
 
                     await purchaseRepo.AddPurchaseItems(purchaseItems);
                     foreach (var purchaseItem in purchaseItems)
@@ -197,6 +276,13 @@ namespace Application.Services
                     }
 
                     await purchaseRepo.AddPurchaseInvoice(purchaseInvoice);
+
+                    var response=await accountGrpcService.UpdatePurchaseUccounts(voucher);
+                    if (response.StatusCode != 200) {
+                        await transaction.RollbackAsync();
+                        return new Responses<object> { StatusCode = 400, Message = $"Error in adding purchase" };
+
+                    }
 
                     await unitOfWork.SaveChangesAsync();
 
@@ -222,11 +308,11 @@ namespace Application.Services
 
 
         }
-        public async Task<Responses<List<GetPurchaseDto>>> GetAllPurchases(Guid organaizationId)
+        public async Task<Responses<List<GetPurchaseDto>>> GetAllPurchases(Guid organaizationId, DateTime? fromDate, DateTime? toDate)
         {
             try
             {
-                var purchases = await purchaseRepo.GetAllPurchase(organaizationId);
+                var purchases = await purchaseRepo.GetAllPurchase(organaizationId, fromDate, toDate);
                 if (purchases.Count == 0)
                 {
                     return new Responses<List<GetPurchaseDto>>
@@ -448,7 +534,7 @@ namespace Application.Services
 
                     purchaseReturn.Items.Add(returnItem);
 
-                    returnInvoice.SubTotal += returnItemAmount;
+                    returnInvoice.SubTotal += taxableAmount;
                     returnInvoice.TaxAmount += productTax;
                     returnInvoice.TotalAmount = returnInvoice.SubTotal + returnInvoice.TaxAmount;
 
@@ -458,6 +544,43 @@ namespace Application.Services
                 returnInvoice.UGST = purchaseReturn.Items.Sum(x => x.UGST);
                 returnInvoice.SGST = purchaseReturn.Items.Sum(x => x.SGST);
 
+
+                var voucher = mapper.Map<Voucher>(newPurchaseReturn.Voucher);
+                voucher.VoucherTypeId = "d2c2b36e-421a-11f0-a0c7-862ccfb05833";
+                voucher.OrganizationId = orgId.ToString();
+                voucher.CreatedBy = userId.ToString();
+
+                voucher.TransactionsDebit = new List<Transaction>();
+                voucher.TransactionsCredit = new List<Transaction>();
+
+                // ✅ Now safely add
+                if (newPurchaseReturn.Voucher.TransactionsDebit?.Count >= 1)
+                {
+                    voucher.TransactionsCredit.Add(new Transaction
+                    {
+                        LedgerId = newPurchaseReturn.Voucher.TransactionsCredit[0].LedgerId,
+                        Amount = (double)returnInvoice.SubTotal + (double)returnInvoice.TaxAmount,
+                        Narration = newPurchaseReturn.Voucher.TransactionsCredit[0].Narration
+                    });
+                    
+                }
+
+                if (newPurchaseReturn.Voucher.TransactionsCredit?.Count >= 2)
+                {
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = newPurchaseReturn.Voucher.TransactionsDebit[0].LedgerId,
+                        Amount = (double)returnInvoice.SubTotal,
+                        Narration = newPurchaseReturn.Voucher.TransactionsDebit[0].Narration
+                    });
+
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = newPurchaseReturn.Voucher.TransactionsDebit[1].LedgerId,
+                        Amount = (double)returnInvoice.TaxAmount,
+                        Narration = newPurchaseReturn.Voucher.TransactionsDebit[1].Narration
+                    });
+                }
 
 
                 using var transaction = await unitOfWork.BeginTransactionAsync();
@@ -471,7 +594,13 @@ namespace Application.Services
 
                     await purchaseRepo.CreatePurchaseReturnInvoice(returnInvoice);
                     await purchaseRepo.CreatePurchaseReturn(purchaseReturn);
+                    var response = await accountGrpcService.UpdatePurchaseUccounts(voucher);
+                    if (response.StatusCode != 200)
+                    {
+                        await transaction.RollbackAsync();
+                        return new Responses<object> { StatusCode = 400, Message = $"Error in adding purchase return" };
 
+                    }
                     await unitOfWork.SaveChangesAsync();
 
                     await transaction.CommitAsync();
@@ -574,11 +703,11 @@ namespace Application.Services
 
 
 
-        public async Task<Responses<object>> ExportPurchases(Guid organizationId)
+        public async Task<Responses<object>> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate)
         {
             try
             {
-                var purchases = await purchaseRepo.GetAllPurchase(organizationId); // Get data
+                var purchases = await purchaseRepo.GetAllPurchase(organizationId, fromDate, toDate); // Get data
                 var result = mapper.Map<List<GetPurchaseDto>>(purchases); // Map if needed
 
                 using var package = new ExcelPackage();

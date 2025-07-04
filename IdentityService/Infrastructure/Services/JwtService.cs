@@ -29,10 +29,10 @@ namespace Infrastructure.Services
 
         public async Task<string> GenerateToken(User user)
         {
-                    var roles = await context.UserOrganizationRoles.Include(uor=>uor.OrganizationRole).ThenInclude(or=>or.Role)
+                    var role = await context.UserOrganizationRoles.Include(uor=>uor.OrganizationRole)
             .Where(uor => uor.UserId == user.Id && uor.OrganizationRole.OrganizationId == user.OrganisationId)
-            .Select(uor => uor.OrganizationRole.Role.Name)
-            .ToListAsync();
+            .Select(uor => uor.OrganizationRole.Name)
+            .FirstOrDefaultAsync();
 
             //        var roles = await context.UserOrganizationRoles
             //.AsNoTracking()
@@ -40,26 +40,33 @@ namespace Infrastructure.Services
             //    .ThenInclude(or => or.Role)
             //.Where(uor => uor.UserId == user.Id && uor.OrganizationRole.OrganizationId == user.OrganisationId)
             //.ToListAsync();
-            foreach (var r in roles)
-            {
-                Console.WriteLine($"Role: {r}");
+          
 
-            }
+            //var permissions = await context.OrganizationRolePermissions
+            //.Where(orp => orp.OrganizationRole.OrganizationId == user.OrganisationId && role==orp.OrganizationRole.Name))
+            //.Select(orp => orp.Permission.Name)
+            //.Distinct()
+            //.ToListAsync();
 
             var permissions = await context.OrganizationRolePermissions
-            .Where(orp => orp.OrganizationRole.OrganizationId == user.OrganisationId && roles.Contains(orp.OrganizationRole.Role.Name))
-            .Select(orp => orp.Permission.Name)
-            .Distinct()
-            .ToListAsync();
+    .Include(orp => orp.OrganizationRole)
+    .Include(orp => orp.Permission)
+    .Where(orp =>
+        orp.OrganizationRole.OrganizationId == user.OrganisationId &&
+        orp.OrganizationRole.Name == role)
+    .Select(orp => orp.Permission.Name)
+    .Distinct()
+    .ToListAsync();
 
 
             var claims = new List<Claim>
             {
                 new Claim("user_id", user.Id.ToString()),
                 new Claim("org_id", user.OrganisationId.ToString()),
-                new Claim("permissions", string.Join(",", permissions))
+                new Claim("permissions", string.Join(",", permissions)),
+                new Claim(ClaimTypes.Role, role)
+
             };
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

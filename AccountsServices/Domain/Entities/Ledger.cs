@@ -21,6 +21,7 @@ namespace Domain.Entities
         public Guid? CreatedBy { get; set; }
         public Guid? UpdatedBy { get; set; }
         public LedgerDetails? LedgerDetails { get; set; }
+        public string Nature {  get; set; }
 
     }
     public class LedgerDetails

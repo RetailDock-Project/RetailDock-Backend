@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Dto;
 using Application.DTOs;
+using Application.Interfaces.Grpc_Interface;
 using Application.Interfaces.Repository_Interfaces;
 using Application.Interfaces.Service_Interfaces;
 using AutoMapper;
@@ -18,24 +20,99 @@ namespace Application.Services
         private readonly IMapper mapper;
         private readonly ISaleReturnRepository saleReturnRepo;
         private readonly ILogger<SalesReturnViewDto> logger;
-        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger)
+        private readonly IAccountGrpc accountGrpc;
+        private readonly IUnitOfWorkRepository unitOfWork;
+        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger,IAccountGrpc _accountGrpc, IUnitOfWorkRepository _unitOfWork)
         {
             mapper = _mapper;
             saleReturnRepo = _saleReturnRepo;
-            logger= _logger;
+            logger = _logger;
+            accountGrpc = _accountGrpc;
+            unitOfWork = _unitOfWork;
         }
         public async Task<ResponseDto<object>> AddSalesReturn(AddSalesReturnDto salesReturn, Guid orgId, Guid userId)
         {
             try
             {
+                await unitOfWork._BiginTransaction();
+
                 var sale= await saleReturnRepo.fetchSalesByInvoice(salesReturn.SaleInvoiceNumber,orgId);
-       
+
 
                 if (sale == null)
                 {
                     return new ResponseDto<object> { Message = "NoSale found", StatusCode = 404 };
 
+
                 }
+                decimal taxableAmount =0;
+                decimal taxAmount = 0;
+                decimal costOfGoodsSold = 0;
+             Guid debtorId=sale.CreditCustomers?.LedgerId?? sale.CashCustomers.LedgerId;
+
+                string DebtorName= sale.CreditCustomers?.CustomerName ?? sale.CashCustomers.CustomerName;
+
+
+
+                foreach (var returnProduct in salesReturn.ReturnItems)
+                {
+                    var _saleItem = await saleReturnRepo.soldProductItems(sale.Id, returnProduct.ProductId);
+                    if (_saleItem == null)
+                    {
+                        
+                    return   new ResponseDto<object> { Message = "NoProduct found in That sale", StatusCode = 404 };
+                        
+                    }
+
+                     taxableAmount += _saleItem.UnitPrice * returnProduct.Quantity;
+
+                    costOfGoodsSold += _saleItem.UnitCost * returnProduct.Quantity;
+                    
+                    decimal taxRate=_saleItem.TaxRate;
+
+                    taxAmount += (_saleItem.UnitPrice * returnProduct.Quantity) * (taxRate / 100);
+                }
+                    var voucher= new Voucher { CreatedBy=userId.ToString(),OrganizationId=orgId.ToString(),Remarks=salesReturn.Voucher.Remarks,VoucherDate=DateTime.Now.ToString(),VoucherTypeId= "d2c28912-421a-11f0-a0c7-862ccfb05833" ,TransactionsCredit=new List<Transaction>(),TransactionsDebit=new List<Transaction>()};
+
+
+
+                if (salesReturn.Voucher.TransactionsDebit != null && salesReturn.Voucher.TransactionsDebit.Count >= 3)
+                {
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = salesReturn.Voucher.TransactionsDebit[0].LedgerId,
+                        Amount = (double)taxableAmount,
+                        Narration = salesReturn.Voucher.TransactionsDebit[0].Narration ?? $"SaleReturn - sales "
+                    });
+
+                    // Credit for tax amount
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = salesReturn.Voucher.TransactionsDebit[1].LedgerId,
+                        Amount = (double)taxAmount,
+                        Narration = salesReturn.Voucher.TransactionsDebit[1].Narration ?? $"SaleReturn - Tax"
+                    });   
+                    voucher.TransactionsDebit.Add(new Transaction
+                    {
+                        LedgerId = salesReturn.Voucher.TransactionsDebit[2].LedgerId,
+                        Amount = (double)costOfGoodsSold,
+                        Narration = salesReturn.Voucher.TransactionsDebit[2].Narration ?? $"SaleReturn - inventoryA/c"
+                    });
+                }
+              
+
+                if (salesReturn.Voucher.TransactionsCredit!= null)
+                {
+                    voucher.TransactionsCredit.Add(new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = debtorId.ToString(), Narration = $"{DebtorName} Debtor from saleReturn" });
+
+
+                        voucher.TransactionsCredit.Add(new Transaction { Amount = (double)costOfGoodsSold, LedgerId = salesReturn.Voucher.TransactionsCredit[0].LedgerId, Narration = salesReturn.Voucher.TransactionsCredit[0].Narration ?? $"SaleReturn - costOfGoodsSold" });
+
+                }
+            
+
+             
+             
                 Guid saleId =sale.Id;
                 GST_Type gst_Type = sale.GST_Type;
                 if (sale.SalesType == "B2B")
@@ -49,13 +126,33 @@ namespace Application.Services
 
                 }
 
-                await saleReturnRepo.SaveChanges();
-                return new ResponseDto<object> { Message = "New sales return is created", StatusCode = 201 }; 
+                var addLedger = await accountGrpc.updateSaleAccounts(voucher);
+                logger.LogInformation("Response from adding saleReturn:{@Response}", addLedger);
 
+                if (addLedger.StatusCode != 200)
+                {
+                    await unitOfWork._RolBackTransaction();
+             
+
+                    return new ResponseDto<object> { Message = "Error in AccountingService", StatusCode = 200 };
+
+                }
+                if (addLedger.StatusCode == 200)
+                {
+                    await unitOfWork._CommitTransaction();
+                    await saleReturnRepo.SaveChanges();
+
+           return  new ResponseDto<object> { Message = "New sales return is created", StatusCode = 201 };
+                   
+                }
+       
+                return new ResponseDto<object> { Message = "error from saleReturn ", StatusCode = 400 };
             }
             catch (Exception ex)
             {
-                return new ResponseDto<object> { Message = ex.Message, StatusCode = 500 };
+                await unitOfWork._RolBackTransaction();
+                logger.LogError(ex, "error from addind new salesReturn  ");
+                return new ResponseDto<object> { Message ="internal Server Error", StatusCode = 500 };
             }
 
         }

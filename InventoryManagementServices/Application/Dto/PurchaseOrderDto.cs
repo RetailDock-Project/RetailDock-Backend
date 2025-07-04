@@ -24,19 +24,25 @@ namespace Application.Dto
     }
     public class PurchaseOrderDto
     {
-        public string SupplierName { get; set; }
+        public Guid PurchaseOrderId { get; set; }
+        public string PurchaseOrderNumber { get; set; }
+        public SupplierShortDto Supplier { get; set; }
         public DateTime OrderDate { get; set; }
         public decimal GrossTotalAmount { get; set; }
-        public string OrderStatus { get; set; }
+        public string OrderStatus { get; set; } = "Pending";
         public Guid CreatedBy { get; set; }
         public List<PurchaseOrderItemDto> Items { get; set; }
     }
     public class PurchaseOrderItemDto
     {
+        public Guid PurchaseOrderItemId { get; set; }
+
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public decimal RatePerPiece { get; set; }
         public decimal TotalAmount { get; set; }
+        public decimal ReceivedQuantity { get; set; }
+
     }
     public class UpdateOrderStatusDto
     {

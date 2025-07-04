@@ -29,8 +29,8 @@ namespace Domain.Entities
         [ForeignKey("Category")]
         public int ProductCategoryId { get; set; }
 
-        [Range(0, int.MaxValue)]
-        public int Stock { get; set; } = 0;
+
+        public decimal Stock { get; set; } = 0;
 
         [ForeignKey("UnitOfMeasures")]
         public int UnitOfMeasuresId { get; set; }
@@ -54,13 +54,13 @@ namespace Domain.Entities
 
         public bool IsDeleted { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? UpdatedAt { get; set; }
 
         public Guid CreatedBy { get; set; }
 
-        public Guid? UpdatedBy { get; set; }
+        public Guid? UpdatedBy { get; set; } = null;
 
         public ProductCategory Category { get; set; }
         public HsnCode HsnCode { get; set; }
@@ -69,8 +69,13 @@ namespace Domain.Entities
 
         public List<Images> Images { get; set; }
         public List<PurchaseOrderItem> PurchaseOrderItems { get; set; }
-        public List<PurchaseItem> PurchaseItemItems { get;set; }
+        public List<PurchaseItem> PurchaseItems { get;set; }
 
         public List<PurchaseReturnItem> PurchaseReturnItems { get; set; }
+
+        public SaleItems SaleItems { get; set; }
+        public SalesReturnItems SalesReturnItems { get; set; }
+
+
     }
 }

@@ -58,12 +58,12 @@ namespace AccountsServices.Controllers
             var result = await _ledgerServices.GetSalesAcoountLedgerts(OrganizationId);
             return StatusCode(result.StatusCode, result);
         }
-        //[HttpGet("get/ledgers/purchase")]
-        //public async Task<IActionResult> GetledgersUnderPurchase(Guid OrganizationId)
-        //{
-        //    var result = await _ledgerServices.GetPurchaseAccountLedgerts(OrganizationId);
-        //    return StatusCode(result.StatusCode, result);
-        //}
+        [HttpGet("get/ledgers/purchase")]
+        public async Task<IActionResult> GetledgersUnderPurchase(Guid OrganizationId)
+        {
+            var result = await _ledgerServices.GetPurchaseAccountLedgerts(OrganizationId);
+            return StatusCode(result.StatusCode, result);
+        }
         [HttpGet("get/ledgers/debtors")]
         public async Task<IActionResult> GetDebtors(Guid OrganizationId)
         {
@@ -92,6 +92,12 @@ namespace AccountsServices.Controllers
         public async Task<IActionResult> GetInventryTransactionLedgerByName(Guid OrganizationId)
         {
             var result = await _ledgerServices.GetInventryTransactionDetails(OrganizationId);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet("get/bankandcash/ledgers")]
+        public async Task<IActionResult> GetCashAndBankLedgers(Guid OrganizationId)
+        {
+            var result = await _ledgerServices.GetCashAndBankLedgers(OrganizationId);
             return StatusCode(result.StatusCode, result);
         }
     }

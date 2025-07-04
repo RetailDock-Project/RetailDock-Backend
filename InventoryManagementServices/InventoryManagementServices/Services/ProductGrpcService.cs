@@ -43,6 +43,8 @@ namespace API.Services
                     SellingPrice = (double)product.SellingPrice,
                     Mrp = (double)product.MRP,
                     UnitOfMeasures = product.UnitOfMeasures,
+                    UnitOfMeasuresId=product.UnitOfMeasuresId,
+                    HsnCode=product.HsnCode,
                     ProductCode = product.ProductCode
                 });
 

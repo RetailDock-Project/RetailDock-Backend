@@ -46,7 +46,8 @@ namespace Application.Mapper
             CreateMap<Product,ProductBillingGetDto>()
                .ForMember(dest=>dest.UnitOfMeasures,opt=>opt.MapFrom(src=>src.UnitOfMeasures.Measurement))
                .ForMember(dest=>dest.TaxRate,opt=>opt.MapFrom(src=>src.HsnCode.GstRate))
-               .ForMember(dest=>dest.ProductCategory,opt=>opt.MapFrom(src=>src.Category.ProductCategoryName));
+               .ForMember(dest=>dest.ProductCategory,opt=>opt.MapFrom(src=>src.Category.ProductCategoryName))
+               .ForMember(dest => dest.HsnCode, opt => opt.MapFrom(src => src.HsnCode.HSNCodeNumber));
 
             CreateMap<Product, SearchProductDto>();
 
@@ -64,7 +65,6 @@ namespace Application.Mapper
             CreateMap<Product, GetLowStockDTO>();
             CreateMap<AddPurchaseOrderDto, PurchaseOrder>()
               .ForMember(dest => dest.OrderDate, opt => opt.MapFrom(src => DateTime.UtcNow))
-              .ForMember(dest => dest.OrderStatus, opt => opt.MapFrom(src => "Pending"))
               .ForMember(dest => dest.PurchaseOrderItems, opt => opt.MapFrom(src => src.Items));
 
             CreateMap<AddPurchaseOrderItemDto, PurchaseOrderItem>()
@@ -72,7 +72,7 @@ namespace Application.Mapper
 
             CreateMap<PurchaseOrder, PurchaseOrderDto>()
                 .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.PurchaseOrderItems))
-                .ForMember(dest=>dest.SupplierName,opt=>opt.MapFrom(src=>src.Supplier.Name));
+                .ForMember(dest=>dest.Supplier,opt=>opt.MapFrom(src=>src.Supplier));
 
             CreateMap<PurchaseOrderItem, PurchaseOrderItemDto>()
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
@@ -83,16 +83,19 @@ namespace Application.Mapper
 
                 .ForMember(dest => dest.PurchaseInvoiceNumber, opt => opt.MapFrom(src => src.PurchaseInvoice.InvoiceNumber));
 
-                ;
-
 
             CreateMap<Purchase, GetPurchaseDetailsDto>()
                 .ForMember(dest => dest.PurchaseId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest=>dest.Items,opt=>opt.MapFrom(src=>src.PurchaseItems))
-                .ForMember(dest=>dest.SupplierDetails,opt=>opt.MapFrom(src=>src.Supplier));
+                .ForMember(dest=>dest.SupplierDetails,opt=>opt.MapFrom(src=>src.Supplier))
+                .ForMember(dest => dest.PurchaseInvoiceNumber, opt => opt.MapFrom(src => src.PurchaseInvoice.InvoiceNumber))
+                .ForMember(dest => dest.PurchaseOrderNumber, opt => opt.MapFrom(src => src.PurchaseOrder.PurchaseOrderNumber));
 
             CreateMap<PurchaseItem, PurchaseItemDetailsDto>()
-                .ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Product.ProductName));
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+
+
 
             //CreateMap<PurchaseReturnInvoice, GetPurchaseReturnDto>();
             CreateMap<PurchaseReturn, GetPurchaseReturnDto>()
@@ -123,7 +126,12 @@ namespace Application.Mapper
             CreateMap<PurchaseReturnItemDto, PurchaseReturnItem>();
             CreateMap<SupplierDto, Supplier>().ReverseMap();
 
+            CreateMap<VoucherDto, Voucher>()
+                .ForMember(dest => dest.TransactionsDebit, opt => opt.Ignore())
+                .ForMember(dest => dest.TransactionsCredit, opt => opt.Ignore());
+            CreateMap<TransactionDto, Transaction>();
 
+            CreateMap<Supplier, SupplierShortDto>();
 
             //CreateMap<Purchase, PurchaseItemDetailsDto>()
             //    .ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Purchase.PurchaseItems.))

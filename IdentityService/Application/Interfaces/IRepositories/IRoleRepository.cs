@@ -11,15 +11,18 @@ namespace Application.Interfaces.IRepositories
 {
     public interface IRoleRepository
     {
-        Task AddRole(Role newRole);
-        Task UpdateRole(Role role);
-        Task SoftDeleteRole(int id);
-        Task<List<Role>> GetAllRoles(Guid orgId);
-        Task AddOrganizationRoles(List<OrganizationRole> orgRoles);
+        //Task AddRole(Role newRole);
+        Task AddRoleWithPermissionsAsync(OrganizationRole role);
+        //Task UpdateRole(Role role);
+        //Task SoftDeleteRole(int id);
+        Task UpdateRoleWithPermissionsAsync(OrganizationRole role);
+        Task<OrganizationRole> GetRoleWithPermissionsAsync(Guid roleId, Guid orgId);
+        Task<List<OrganizationRole>> GetAllRoles(Guid orgId);
+        //Task AddOrganizationRoles(List<OrganizationRole> orgRoles);
         Task<List<OrganizationRole>> GetOrganizationRoles(Guid organizationId);
-        Task AddOrgRolePermission(OrganizationRolePermission orgRolePermission);
+        //Task AddOrgRolePermission(OrganizationRolePermission orgRolePermission);
         Task<List<OrganizationRolePermission>> GetOrgRolePermissions(Guid organizationRoleId);
-        Task UpdateOrganizationRolePermissions(OrganizationRolePermission updatedPermission);
+        //Task UpdateOrganizationRolePermissions(OrganizationRolePermission updatedPermission);
         Task AssignUserOrganizationRole(UserOrganizationRole newOrgUser);
         Task<List<Permission>> GetPermissions();
         Task AddPermission(Permission newPermission);

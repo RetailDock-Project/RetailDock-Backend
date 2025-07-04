@@ -26,9 +26,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Application\Application.csproj" />
+		<ProjectReference Include="..\EventContract\EventContracts.csproj" />
 		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Protobuf Include="Protos/product.proto" GrpcServices="Client" />
 	</ItemGroup>
 </Project>

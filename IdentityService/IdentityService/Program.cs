@@ -1,6 +1,7 @@
 using Application.Mappings;
 using IdentityService.Extensions;
 using IdentityService.Middlewares;
+using IdentityService.Services;
 using Infrastructure.Data;
 using Infrastructure.Messaging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -14,13 +15,24 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options => {
+    options.AddPolicy("Allow",policy => {
+        policy.WithOrigins("http://localhost:5173")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddHttpContextAccessor();
-
+builder.Services.AddGrpc(options =>
+{
+    options.EnableDetailedErrors = true;
+});
 
 
 builder.Services.AddSwaggerGen(c =>
@@ -115,6 +127,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(key),
         };
     });
+builder.Services.AddScoped<UserGrpcService>();
 
 builder.Services.AddHostedService<OrganizationSubscribedConsumer>();
 builder.Services.Configure<RabbitMQSettings>(builder.Configuration.GetSection("RabbitMQSettings"));
@@ -137,9 +150,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("Allow");
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();

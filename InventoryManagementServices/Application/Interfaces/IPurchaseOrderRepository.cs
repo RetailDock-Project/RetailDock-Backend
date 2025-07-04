@@ -11,8 +11,10 @@ namespace Application.Interfaces
     {
         Task<PurchaseOrder> AddPurchaseOrderAsync(PurchaseOrder purchaseOrder);
         Task<List<PurchaseOrder>> GetAllPurchaseOrdersAsync(Guid orgnaizationId);
-        Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid id);
+        Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid? id);
         Task<PurchaseOrder> UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder);
         Task<bool> DeletePurchaseOrderAsync(Guid id);
+
+        Task<string> GetLastPurchaseOrderNumber(Guid organizationId);
     }
 }

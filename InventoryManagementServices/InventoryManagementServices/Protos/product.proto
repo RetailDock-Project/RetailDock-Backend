@@ -22,7 +22,9 @@ message Product {
   double sellingPrice = 7;
   double mrp = 8;
   string unitOfMeasures = 9;
-  string productCode = 10;
+  int32 unitOfMeasuresId=10;
+  int32 hsnCode=11;
+  string productCode = 12;
 }
 
 message ProductListResponse {

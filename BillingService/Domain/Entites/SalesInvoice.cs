@@ -17,7 +17,8 @@ namespace Domain.Entites
         public string? B2BInvoiceNumber { get; set; }     
         public string? B2CInvoiceNumber { get; set; }
         public Guid OrganisationId { get; set; }
-
+        public DateTime? DueDate { get; set; }
+        public decimal RecievedAmount { get; set; }
         public decimal TaxableAmount { get; set; } = 0;
 
         public decimal DiscountAmount { get; set; } = 0;

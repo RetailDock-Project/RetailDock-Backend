@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Application.Dto;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
@@ -14,81 +15,92 @@ namespace Application.Helpers
             {
                 container.Page(page =>
                 {
-                    page.Margin(50);
+                    page.Size(PageSizes.A4);
+                    page.Margin(1, Unit.Centimetre);
+                    page.DefaultTextStyle(x => x.FontSize(11));
 
-                    
-                    page.Header().Text($"Purchase Order - {order.OrderDate:yyyy-MM-dd}")
-                        .FontSize(20)
-                        .Bold()
-                        .AlignCenter();
-
-                   
-                    page.Content().Element(content =>
+                    // Header with basic info
+                    page.Header().Column(column =>
                     {
-                        content.Column(column =>
+                        column.Item().Text($"Purchase Order #{order.PurchaseOrderNumber}")
+                            .FontSize(16)
+                            .Bold();
+
+                        column.Item().Text(text =>
                         {
-                            column.Spacing(10);
-
-                          
-                            column.Item().Text($"Supplier Name: {order.SupplierName}");
-                            column.Item().Text($"Created By: {order.CreatedBy}");
-
-                            column.Item().LineHorizontal(1).LineColor(Colors.Grey.Lighten2);
-
-                           
-                            column.Item().Table(table =>
-                            {
-                                table.ColumnsDefinition(columns =>
-                                {
-                                    columns.RelativeColumn(4); 
-                                    columns.RelativeColumn(2); 
-                                    columns.RelativeColumn(2); 
-                                    columns.RelativeColumn(2); 
-                                });
-
-                                
-                                table.Header(header =>
-                                {
-                                    header.Cell().Element(CellStyle).Text("Product Name").Bold();
-                                    header.Cell().Element(CellStyle).AlignRight().Text("Qty").Bold();
-                                    header.Cell().Element(CellStyle).AlignRight().Text("Rate").Bold();
-                                    header.Cell().Element(CellStyle).AlignRight().Text("Total").Bold();
-                                });
-
-                               
-                                foreach (var item in order.Items)
-                                {
-                                    table.Cell().Element(CellStyle).Text(item.ProductName);
-                                    table.Cell().Element(CellStyle).AlignRight().Text(item.Quantity.ToString());
-                                    table.Cell().Element(CellStyle).AlignRight().Text(item.RatePerPiece.ToString("C"));
-                                    table.Cell().Element(CellStyle).AlignRight().Text(item.TotalAmount.ToString("C"));
-                                }
-
-                                static IContainer CellStyle(IContainer container)
-                                {
-                                    return container
-                                        .PaddingVertical(5)
-                                        .BorderBottom(1)
-                                        .BorderColor(Colors.Grey.Lighten3);
-                                }
-                            });
-
-                           
-                            column.Item().Element(e =>
-                                e.AlignRight().PaddingTop(15).Text(text =>
-                                {
-                                    text.Span($"Gross Total: {order.GrossTotalAmount:C}")
-                                        .FontSize(14)
-                                        .Bold();
-                                })
-                            );
+                            text.Span("Date: ").SemiBold();
+                            text.Span($"{DateTime.Now:yyyy-MM-dd}");
                         });
                     });
 
-                   
+                    // Main content
+                    page.Content().PaddingVertical(10).Column(column =>
+                    {
+                        // Supplier information
+                        column.Item().PaddingBottom(10).Column(col =>
+                        {
+                            col.Item().Text("Supplier").FontSize(12).Bold();
+                            col.Item().Text(order.Supplier.Name);
+                            col.Item().Text(order.Supplier.ContactNumber);
+                            col.Item().Text(order.Supplier.Address);
+
+                            col.Item().Text(order.Supplier.City);
+                            col.Item().Text(order.Supplier.Pincode);
+
+                            col.Item().Text(order.Supplier.GSTNumber);
+
+                        });
+
+
+                        // Created by
+                        column.Item().PaddingBottom(15).Text(text =>
+                        {
+                            text.Span("Created by: ").SemiBold();
+                            text.Span(order.CreatedBy.ToString());
+                        });
+
+                        // Products table
+                        column.Item().Table(table =>
+                        {
+                            // Define columns
+                            table.ColumnsDefinition(columns =>
+                            {
+                                columns.RelativeColumn(3);  // Product
+                                columns.ConstantColumn(60); // Qty
+                                columns.ConstantColumn(80); // Unit Price
+                                columns.ConstantColumn(80); // Total
+                            });
+
+                            // Header row
+                            table.Header(header =>
+                            {
+                                header.Cell().Text("Product").Bold();
+                                header.Cell().AlignRight().Text("Qty").Bold();
+                                header.Cell().AlignRight().Text("Price").Bold();
+                                header.Cell().AlignRight().Text("Total").Bold();
+                            });
+
+                            // Product rows
+                            foreach (var item in order.Items)
+                            {
+                                table.Cell().Text(item.ProductName);
+                                table.Cell().AlignRight().Text(item.Quantity.ToString());
+                                table.Cell().AlignRight().Text(item.RatePerPiece.ToString("C"));
+                                table.Cell().AlignRight().Text(item.TotalAmount.ToString("C"));
+                            }
+
+                            // Total row
+                            table.Footer(footer =>
+                            {
+                                footer.Cell().ColumnSpan(3).Text("Total").Bold();
+                                footer.Cell().AlignRight().Text(order.GrossTotalAmount.ToString("C")).Bold();
+                            });
+                        });
+                    });
+
+                    // Simple footer
                     page.Footer().AlignCenter().Text(x =>
                     {
-                        x.DefaultTextStyle(ts => ts.FontSize(10));
                         x.Span("Generated on ");
                         x.Span($"{DateTime.Now:yyyy-MM-dd HH:mm}");
                     });

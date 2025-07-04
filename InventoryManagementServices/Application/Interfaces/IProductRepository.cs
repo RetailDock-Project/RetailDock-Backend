@@ -20,5 +20,9 @@ namespace Application.Interfaces
         Task<List<Product>> GetProductByCategory(int CategoryId,Guid OrganizationId);
         Task<List<Product>> SearchProducts(Guid organizationId, int? categoryId, string searchTerm);
         Task<ProductStatisticsDto> GetProductStatisticsAsync(Guid organizationId);
+
+        Task<bool> ProductStockUpdate(ProductStockUpdateDto updateData);
+
+        Task<Product> GetProductHistory(Guid productId);
     }
 }

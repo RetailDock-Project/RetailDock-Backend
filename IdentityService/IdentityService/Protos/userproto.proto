@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserGrpc";
+
+package user;
+
+// The service definition
+service UserService {
+  rpc GetUserDetail (GetUserDetailRequest) returns (GetUserDetailResponse);
+}
+
+// Request message
+message GetUserDetailRequest {
+  string userId = 1; // Guid as string
+}
+
+// Response wrapper
+message GetUserDetailResponse {
+  int32 statusCode = 1;
+  string message = 2;
+  UserData data = 3;
+}
+
+// Nested user data
+message UserData {
+  string name = 1;
+  string email = 2;
+}

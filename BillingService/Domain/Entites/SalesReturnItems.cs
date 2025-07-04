@@ -9,14 +9,13 @@ namespace Domain.Entites
 {
     public  class SalesReturnItems
     {
-       [Key]
-       public Guid Id { get; set; }  
-      public Guid ReturnId { get; set; }
-       public Guid  ProductId { get; set; }
+        public Guid Id { get; set; }
+        public Guid ReturnId { get; set; }
+        public Guid ProductId { get; set; }
         public int UnitId { get; set; }
         public decimal UnitCost { get; set; }
         public decimal Quantity { get; set; } = 0;
-        public int HSNCodeNumber { get;set; }
+        public int HSNCodeNumber { get; set; }
         public decimal UnitPrice { get; set; } = 0;
         public decimal TaxableAmount { get; set; } = 0;
 
@@ -28,6 +27,9 @@ namespace Domain.Entites
 
         public decimal TotalAmount { get; set; } = 0;
         public SalesReturn SalesReturn { get; set; }
-        //public Products Products {  get; set; }
+
+        public UnitOfMeasures UnitOfMeasures { get; set; }
+
+        public Product Products { get; set; }
     }
 }

@@ -90,6 +90,9 @@ namespace Application.Dto
         public decimal CostPrice { get; set; }
         public decimal MRP { get; set; }
         public string UnitOfMeasures { get; set; }
+        public int UnitOfMeasuresId { get; set; }
+        public int HsnCode { get; set; }
+
         public string ProductCategory { get; set; }
     }
     public class SearchProductDto
@@ -127,5 +130,18 @@ namespace Application.Dto
         public int LowStockItems { get; set; }
         public decimal InventoryValue { get; set; }
     }
+
+
+
+
+    public class ProductHistoryDTO
+    {
+        public DateTime Date { get; set; }
+        public string Type { get; set; } // "Sale", "Purchase", "Sales Return", "Purchase Return"
+        public decimal Quantity { get; set; }
+        public string ReferenceNumber { get; set; } // e.g., Invoice number
     }
+
+
+}
 

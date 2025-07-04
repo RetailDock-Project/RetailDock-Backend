@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories
                 .Where(x=>x.OrganizationId == orgnaizationId)
                 .ToListAsync();
         }
-        public async Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid id)
+        public async Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid? id)
         {
             return await _context.PurchaseOrders
                                 .Include(p => p.Supplier)
@@ -57,6 +57,12 @@ namespace Infrastructure.Repositories
             _context.PurchaseOrders.Remove(order);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<string> GetLastPurchaseOrderNumber(Guid organizationId) {
+
+            var lastPo = await _context.PurchaseOrders.Where(po => po.OrganizationId == organizationId).OrderByDescending(po => po.CreatedAt).Select(po => po.PurchaseOrderNumber).FirstOrDefaultAsync();
+            return lastPo;
         }
     }
 }

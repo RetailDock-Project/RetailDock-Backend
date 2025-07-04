@@ -16,6 +16,8 @@ namespace Application.Interfaces.Service_Interfaces
         Task<ResponseDto<SalesResponseDto>> GetSalesDetailsById(Guid saleId,Guid orgId);
         Task<ResponseDto<SalesResponseDto>> GetSalesDetailsByInvoice(string invoiceNumber,Guid orgId);
         Task<ResponseDto<List<SalesResponseDto>>> GetSalesByDate(DateTime fromDate,DateTime? toDate,Guid orgId);
+        Task<ResponseDto<object>> CashReceivedFromDebtor(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId);
+       Task<ResponseDto<List<SalesResponseDto>>> GetDebtorsSalesDetails(Guid debtorId, Guid orgId);
 
     }
 }

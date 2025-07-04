@@ -22,6 +22,79 @@ namespace Infrastructure.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Entities.CashCustomers", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ContactNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("LedgerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CashCustomers");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CreditCustomers", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ContactNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("GstNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("LedgerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Place")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CreditCustomers");
+                });
+
             modelBuilder.Entity("Domain.Entities.Document", b =>
                 {
                     b.Property<Guid>("Id")
@@ -130,10 +203,8 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -174,8 +245,8 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("SellingPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Stock")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<int>("UnitOfMeasuresId")
                         .HasColumnType("int");
@@ -183,9 +254,8 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("UpdatedBy")
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -243,6 +313,9 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PurchaseInvoiceId")
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("PurchaseOrderId")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime>("Purchasedate")
                         .HasColumnType("datetime(6)");
 
@@ -255,13 +328,15 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("UpdatedBy")
+                    b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PurchaseInvoiceId")
                         .IsUnique();
+
+                    b.HasIndex("PurchaseOrderId");
 
                     b.HasIndex("SupplierId");
 
@@ -348,8 +423,8 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PurchaseId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<decimal>("RatePerPiece")
                         .HasColumnType("decimal(65,30)");
@@ -381,6 +456,9 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("char(36)");
 
@@ -396,6 +474,10 @@ namespace Infrastructure.Migrations
 
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("PurchaseOrderNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<Guid>("SupplierId")
                         .HasColumnType("char(36)");
@@ -419,10 +501,13 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PurchaseOrderId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<decimal>("RatePerPiece")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("ReceivedQuantity")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<decimal>("TotalAmount")
@@ -562,8 +647,8 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("PurchaseReturnId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("ReturnedQuantity")
-                        .HasColumnType("int");
+                    b.Property<decimal>("ReturnedQuantity")
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<decimal?>("SGST")
                         .HasColumnType("decimal(65,30)");
@@ -588,16 +673,363 @@ namespace Infrastructure.Migrations
                     b.ToTable("PurchaseReturnItems");
                 });
 
+            modelBuilder.Entity("Domain.Entities.SaleItems", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("CGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("HSNCodeNumber")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("IGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("SGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<Guid>("SaleId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("TaxRate")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TaxableAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("UGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("UnitCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("UnitId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.HasIndex("SaleId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("SaleItems");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Sales", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("CashCustomerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("DebtorsId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("GST_Type")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Narration")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("PaymentType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("SalesType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("TotalUnitCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CashCustomerId");
+
+                    b.HasIndex("DebtorsId");
+
+                    b.HasIndex("InvoiceId")
+                        .IsUnique();
+
+                    b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesInvoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("B2BInvoiceNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("B2CInvoiceNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("DiscountAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("RecievedAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TaxableAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalCGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalIGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalSGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalUGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SalesInvoices");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturn", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("ReturnDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("ReturnInvoiceId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("SaleId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("TotalUnitCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReturnInvoiceId")
+                        .IsUnique();
+
+                    b.HasIndex("SaleId")
+                        .IsUnique();
+
+                    b.ToTable("SalesReturn");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturnInvoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("B2BReturnInvoiceNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("B2CReturnInvoiceNumber")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("OrganisationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("PaymentMode")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("TaxableAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalCGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalIGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalSGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalUGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("UpdatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SalesReturnInvoice");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturnItems", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("CGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("HSNCodeNumber")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("IGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<Guid>("ReturnId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<decimal>("SGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TaxRate")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TaxableAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("UGST")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<decimal>("UnitCost")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("UnitId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
+
+                    b.HasIndex("ReturnId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("SalesReturnItems");
+                });
+
             modelBuilder.Entity("Domain.Entities.Supplier", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Address")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("BankName")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("City")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ContactName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ContactNumber")
                         .HasColumnType("longtext");
 
                     b.Property<string>("Country")
@@ -609,14 +1041,17 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("GSTNumber")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("GSTNumber")
+                    b.Property<string>("IFSCCode")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
+
+                    b.Property<Guid>("LedgerId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -625,17 +1060,20 @@ namespace Infrastructure.Migrations
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Pincode")
                         .HasColumnType("longtext");
 
                     b.Property<string>("State")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UPIId")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UpdatedBy")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -712,6 +1150,10 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Domain.Entities.PurchaseOrder", "PurchaseOrder")
+                        .WithMany("Purchases")
+                        .HasForeignKey("PurchaseOrderId");
+
                     b.HasOne("Domain.Entities.Supplier", "Supplier")
                         .WithMany("Purchases")
                         .HasForeignKey("SupplierId")
@@ -720,13 +1162,15 @@ namespace Infrastructure.Migrations
 
                     b.Navigation("PurchaseInvoice");
 
+                    b.Navigation("PurchaseOrder");
+
                     b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("Domain.Entities.PurchaseItem", b =>
                 {
                     b.HasOne("Domain.Entities.Product", "Product")
-                        .WithMany("PurchaseItemItems")
+                        .WithMany("PurchaseItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -837,6 +1281,112 @@ namespace Infrastructure.Migrations
                     b.Navigation("PurchaseReturn");
                 });
 
+            modelBuilder.Entity("Domain.Entities.SaleItems", b =>
+                {
+                    b.HasOne("Domain.Entities.Product", "Product")
+                        .WithOne("SaleItems")
+                        .HasForeignKey("Domain.Entities.SaleItems", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Sales", "Sales")
+                        .WithMany("SaleItems")
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.UnitOfMeasures", "UnitOfMeasures")
+                        .WithMany("SaleItems")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Sales");
+
+                    b.Navigation("UnitOfMeasures");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Sales", b =>
+                {
+                    b.HasOne("Domain.Entities.CashCustomers", "CashCustomers")
+                        .WithMany("Sales")
+                        .HasForeignKey("CashCustomerId");
+
+                    b.HasOne("Domain.Entities.CreditCustomers", "CreditCustomers")
+                        .WithMany("Sales")
+                        .HasForeignKey("DebtorsId");
+
+                    b.HasOne("Domain.Entities.SalesInvoice", "Invoices")
+                        .WithOne("Sales")
+                        .HasForeignKey("Domain.Entities.Sales", "InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CashCustomers");
+
+                    b.Navigation("CreditCustomers");
+
+                    b.Navigation("Invoices");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturn", b =>
+                {
+                    b.HasOne("Domain.Entities.SalesReturnInvoice", "ReturnInvoice")
+                        .WithOne("SalesReturn")
+                        .HasForeignKey("Domain.Entities.SalesReturn", "ReturnInvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Sales", "Sales")
+                        .WithOne("SalesReturn")
+                        .HasForeignKey("Domain.Entities.SalesReturn", "SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ReturnInvoice");
+
+                    b.Navigation("Sales");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturnItems", b =>
+                {
+                    b.HasOne("Domain.Entities.Product", "Products")
+                        .WithOne("SalesReturnItems")
+                        .HasForeignKey("Domain.Entities.SalesReturnItems", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.SalesReturn", "SalesReturn")
+                        .WithMany("SalesReturnItems")
+                        .HasForeignKey("ReturnId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.UnitOfMeasures", "UnitOfMeasures")
+                        .WithMany("SalesReturnItems")
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
+
+                    b.Navigation("SalesReturn");
+
+                    b.Navigation("UnitOfMeasures");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CashCustomers", b =>
+                {
+                    b.Navigation("Sales");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CreditCustomers", b =>
+                {
+                    b.Navigation("Sales");
+                });
+
             modelBuilder.Entity("Domain.Entities.HsnCode", b =>
                 {
                     b.Navigation("Products");
@@ -846,11 +1396,17 @@ namespace Infrastructure.Migrations
                 {
                     b.Navigation("Images");
 
-                    b.Navigation("PurchaseItemItems");
+                    b.Navigation("PurchaseItems");
 
                     b.Navigation("PurchaseOrderItems");
 
                     b.Navigation("PurchaseReturnItems");
+
+                    b.Navigation("SaleItems")
+                        .IsRequired();
+
+                    b.Navigation("SalesReturnItems")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.ProductCategory", b =>
@@ -876,6 +1432,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.PurchaseOrder", b =>
                 {
                     b.Navigation("PurchaseOrderItems");
+
+                    b.Navigation("Purchases");
                 });
 
             modelBuilder.Entity("Domain.Entities.PurchaseReturn", b =>
@@ -886,6 +1444,31 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.PurchaseReturnInvoice", b =>
                 {
                     b.Navigation("PurchaseReturn")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Sales", b =>
+                {
+                    b.Navigation("SaleItems");
+
+                    b.Navigation("SalesReturn")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesInvoice", b =>
+                {
+                    b.Navigation("Sales")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturn", b =>
+                {
+                    b.Navigation("SalesReturnItems");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SalesReturnInvoice", b =>
+                {
+                    b.Navigation("SalesReturn")
                         .IsRequired();
                 });
 
@@ -901,6 +1484,10 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.UnitOfMeasures", b =>
                 {
                     b.Navigation("Products");
+
+                    b.Navigation("SaleItems");
+
+                    b.Navigation("SalesReturnItems");
                 });
 #pragma warning restore 612, 618
         }

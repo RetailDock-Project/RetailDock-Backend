@@ -131,5 +131,26 @@ namespace Infrastructure.Repositories
                
             };
         }
+
+        public async Task<bool> ProductStockUpdate(ProductStockUpdateDto updateData) {
+            var product = await _appDbContext.Products.FirstOrDefaultAsync(p => p.Id == updateData.ProductId && p.OrgnaisationId == updateData.OrgId);
+
+
+            if (product == null) {
+                return false;
+            }
+            product.LastStockUpdate = DateTime.UtcNow;
+            if (updateData.Increase) {
+                product.Stock += updateData.Quantity;
+            }
+            product.Stock -= updateData.Quantity;
+            await _appDbContext.SaveChangesAsync();
+            return true;
+
+        }
+
+        public async Task<Product> GetProductHistory(Guid productId) {
+            return await _appDbContext.Products.Include(p => p.SaleItems).ThenInclude(si=>si.Sales).ThenInclude(s=>s.Invoices).Include(p => p.SalesReturnItems).ThenInclude(sri=>sri.SalesReturn).ThenInclude(sr => sr.ReturnInvoice).Include(p=>p.PurchaseItems).ThenInclude(pi=>pi.Purchase).ThenInclude(p=>p.PurchaseInvoice).Include(p=>p.PurchaseReturnItems).ThenInclude(pri=>pri.PurchaseReturn).ThenInclude(pr=>pr.PurchaseReturnInvoice).FirstOrDefaultAsync(p=>p.Id==productId && !p.IsDeleted);
+        }
     }
     }

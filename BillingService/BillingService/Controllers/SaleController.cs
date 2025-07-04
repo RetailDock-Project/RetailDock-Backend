@@ -26,6 +26,21 @@ namespace BillingService.Controllers
             var result = await saleService.GetAllSalesDetails(orgId);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpPatch("cashRecievedFromDebtor")]
+
+        public async Task<IActionResult> CashReceivedFromDebtor(Guid debtorId, decimal recievedAmount, decimal currentBalance, Guid orgId)
+        {
+            
+            var result = await saleService.CashReceivedFromDebtor(debtorId, recievedAmount,currentBalance, orgId);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet("GetDebtorSaleDetails")]
+
+        public async Task<IActionResult>  GetDebtorsSalesDetails(Guid debtorId, Guid orgId)
+        {
+            var result = await saleService.GetDebtorsSalesDetails(debtorId,orgId);
+            return StatusCode(result.StatusCode, result);
+        }
         [HttpGet("GetAllSaleById")]
 
         public async Task<IActionResult> GetSalesById(Guid orgId, Guid saleId)

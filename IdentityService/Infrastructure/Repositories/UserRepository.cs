@@ -18,6 +18,17 @@ namespace Infrastructure.Repositories
         public UserRepository(IdentityDbContext _context) {
             context = _context;
         }
+
+
+
+        public async Task<User> GetUserById(Guid userId) {
+            return await context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            
+
+        }
+
+
+
         public async Task<bool> UpdateUserOrganization(Guid userId,Guid orgId) {
             var user=await context.Users.FirstOrDefaultAsync(x=>x.Id== userId);
 
@@ -50,19 +61,18 @@ namespace Infrastructure.Repositories
             //var res = await context.Users.Include(u => u.userOrganizationRole).ThenInclude(uor => uor.OrganizationRole).ThenInclude(or => or.Role).Where(u => u.OrganisationId.ToString() == orgId).Select(u => new OrganizationUserDto { Name = u.Name, Email = u.Email, Roles = u.userOrganizationRole.Where(x => x.OrganizationRole.OrganizationId.ToString() == orgId).ToList() }).ToListAsync();
 
             var res = await context.Users
-    .Include(u => u.userOrganizationRole)
+    .Include(u => u.UserOrganizationRole)
         .ThenInclude(uor => uor.OrganizationRole)
-            .ThenInclude(or => or.Role)
     .Where(u => u.OrganisationId == orgId)
     .Select(u => new OrganizationUserDto
     {
         Id = u.Id,
         Name = u.Name,
         Email = u.Email,
-        Roles = u.userOrganizationRole
-                    .Where(x => x.OrganizationRole.OrganizationId == orgId)
-                    .Select(x => x.OrganizationRole.Role.Name)
-                    .ToList(),
+        Role = u.UserOrganizationRole.OrganizationRole.Name,
+                    //.Where(x => x.OrganizationRole.OrganizationId == orgId)
+                    //.Select(x => x.OrganizationRole.Role.Name)
+                    //.ToList(),
         Created=u.CreatedAt
     })
     .ToListAsync();
@@ -70,5 +80,25 @@ namespace Infrastructure.Repositories
 
             return res;
         }
+
+        public async Task<UserOrganizationRole> GetUserOrganizationRoleAsync(Guid userId)
+        {
+            return await context.UserOrganizationRoles
+                .FirstOrDefaultAsync(uor => uor.UserId == userId);
+        }
+
+        public async Task UpdateUserOrganizationRoleAsync(UserOrganizationRole userOrgRole)
+        {
+            context.UserOrganizationRoles.Update(userOrgRole);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+        }
+
+
     }
 }

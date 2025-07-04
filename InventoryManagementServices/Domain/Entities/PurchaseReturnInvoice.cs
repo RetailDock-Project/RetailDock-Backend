@@ -30,7 +30,7 @@ namespace Domain.Entities
         public GstTypes GstType { get; set; }
 
         public DateTime ReturnDate { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public PurchaseInvoice PurchaseInvoice { get; set; }
         public PurchaseReturn PurchaseReturn { get; set; }

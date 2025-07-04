@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Application.DTO
@@ -17,6 +18,7 @@ namespace Application.DTO
       
         public decimal OpeningBalance { get; set; }
         public string DrCr { get; set; } // "Dr" or "Cr"
+       
         public Guid? CreatedBy { get; set; }
         public Guid UpdateBy { get; set; }
         public AddLedgerDetailsDTO? Details { get; set; }

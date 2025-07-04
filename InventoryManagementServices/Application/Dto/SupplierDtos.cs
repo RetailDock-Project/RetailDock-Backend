@@ -10,7 +10,6 @@ namespace Application.Dto
     {
         public Guid? Id { get; set; }
         public string Name { get; set; }
-        public Guid LedgerId { get; set; }
         public decimal? OpeningBalance { get; set; } 
         public bool? IsDebit { get; set; }           
 
@@ -30,4 +29,16 @@ namespace Application.Dto
 
 
     }
+
+    public class SupplierShortDto
+    {
+        public string Name { get; set; }
+        public string? ContactNumber { get; set; }
+        public string? Address { get; set; }
+        public string? City { get; set; }
+        public string? State { get; set; }
+        public string? Pincode { get; set; }
+        public string? GSTNumber { get; set; }
+    }
+
 }

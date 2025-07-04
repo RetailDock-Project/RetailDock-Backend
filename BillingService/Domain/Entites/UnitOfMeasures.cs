@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Entites
+{
+
+    public class UnitOfMeasures
+    {
+        [Key]
+        public int Id { get; set; }
+        public Guid? OrgnaisationId { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Measurement { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public ICollection<Product> Products { get; set; } = new List<Product>();
+        public List<SaleItems> SaleItems { get; set; }
+        public List<SalesReturnItems> SalesReturnItems { get; set; }
+    }
+}

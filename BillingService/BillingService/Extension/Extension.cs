@@ -1,6 +1,8 @@
-﻿using Application.Interfaces.Repository_Interfaces;
+﻿using Application.Interfaces.Grpc_Interface;
+using Application.Interfaces.Repository_Interfaces;
 using Application.Interfaces.Service_Interfaces;
 using Application.Services;
+using Infrastructure.Grpc_Client;
 using Infrastructure.Repositories;
 
 namespace BillingService.Extension
@@ -15,8 +17,12 @@ namespace BillingService.Extension
             services.AddScoped<ISaleRepository, SaleRepository>();
             services.AddScoped<ISaleReturnRepository, SaleReturnRepository>();
             services.AddScoped<ISaleReturnService, SalesReturnService>();
+            services.AddScoped<IAddLedger, Add_LedgerGrpc>();
+            services.AddScoped<IAccountGrpc, AccountGrpc_Client>();
+            services.AddScoped<IUnitOfWorkRepository, UnitOfWorkRepository>();
 
-                return services;
+
+            return services;
         }
     }
 }
