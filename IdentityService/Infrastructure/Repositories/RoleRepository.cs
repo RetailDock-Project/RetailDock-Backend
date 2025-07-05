@@ -142,5 +142,8 @@ namespace Infrastructure.Repositories
                 var exist = await context.OrganizationRolePermissions.FirstOrDefaultAsync(x => x.PermissionId == permissionId && x.OrganizationRoleId == orgRolePermission.OrganizationRoleId);
             }
         }
+
+        
+
     }
 }

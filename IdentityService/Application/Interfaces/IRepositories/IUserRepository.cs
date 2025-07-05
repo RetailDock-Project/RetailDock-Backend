@@ -19,5 +19,9 @@ namespace Application.Interfaces.IRepositories
         Task<UserOrganizationRole> GetUserOrganizationRoleAsync(Guid userId);
         Task UpdateUserOrganizationRoleAsync(UserOrganizationRole userOrgRole);
         Task UpdateUserAsync(User user);
+        Task<List<OrganizationUserDto>> GetFilteredUsersByOrgId(
+     Guid orgId, string? search, Guid? roleId, Guid? userId);
+
+        Task<UserStatsDto> GetUserStatsByOrgId(Guid orgId);
     }
 }
