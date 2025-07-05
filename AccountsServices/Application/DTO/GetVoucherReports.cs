@@ -15,4 +15,10 @@ namespace Application.DTO
         public bool IsDebit { get; set; }
         public string Narration { get; set; }
     }
+     public class GetAllVoucherTypeDTO
+    {
+       public Guid Id { get; set; }
+        public string TypeName { get; set; }
+        public string DisplayName {  get; set; }
+    }
 }

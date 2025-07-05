@@ -99,5 +99,12 @@ namespace Infrastructure.Repository.AccountsRepository
 
             return result.ToList();
         }
+        public async Task<List<GetAllVoucherTypeDTO>> GetAllVoucherTypes()
+        {
+            var sql = "SELECT Id,TypeName,DisplayName FROM VoucherTypes where IsItemwise=false";
+            var connection = _dapperConection.CreateConnection();
+            var result = await connection.QueryAsync<GetAllVoucherTypeDTO>(sql);
+            return result.ToList();
+        }
     }
 }

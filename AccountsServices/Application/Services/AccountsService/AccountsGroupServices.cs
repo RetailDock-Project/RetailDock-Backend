@@ -29,6 +29,14 @@ namespace Application.Services.AccountsService
             try
 
             {
+                if(OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<object>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var IsExisting = await _accountsGroupRepository.IsGroupNameExists(OrganizationId, addParentGroupDTO.GroupName);
                 if (IsExisting)
                 {
@@ -92,6 +100,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<object>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var IsExisting = await _accountsGroupRepository.IsGroupNameExists(OrganizationId, addSubGroupDTO.GroupName);
                 if (IsExisting)
                 {
@@ -156,6 +172,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetSubGroupsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var result = await _accountsGroupRepository.GetSubGroups(organizationId);
                 if (result.Count > 0)
                 {
@@ -191,6 +215,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetParentGroupsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var result = await _accountsGroupRepository.GetParentGroups(organizationId);
                 if (result.Count > 0)
                 {
@@ -225,6 +257,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<bool>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var result = await _accountsGroupRepository.createGroupDefault(organizationId, createdBy);
                 if (!result)
                 {

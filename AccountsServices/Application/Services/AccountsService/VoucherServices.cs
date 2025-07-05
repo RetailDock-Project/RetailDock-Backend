@@ -25,6 +25,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<bool>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 if (addVoucherDTO == null)
                 {
                     return new ApiResponseDTO<bool>
@@ -156,6 +164,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetVoucherTransactionByVoucherTypeId>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var data = await _VoucherRepository.GetTransactionsByVoucherTypeAsync(voucherTypeId, organizationId, fromDate, toDate);
                 if (data.Count> 0)
                 {
@@ -184,6 +200,37 @@ namespace Application.Services.AccountsService
                 {
                     StatusCode = 500,
                     Message = "Error in Voucher Report"
+                };
+            }
+        }
+        public async Task<ApiResponseDTO<List<GetAllVoucherTypeDTO>>> GetAllVoucherTypes()
+        {
+            try
+            {
+                var data = await _VoucherRepository.GetAllVoucherTypes();
+                if (data.Count> 0)
+                {
+                    return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                    {
+                        StatusCode = 200,
+                        Message = "All voucher type fetched Succussfully",
+                        Data = data
+                        
+                    };
+                }
+                return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                {
+                    StatusCode = 200,
+                    Message = "No data Found"
+                };
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error in Get All Voucher Types");
+                return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "GetAllVoucherTypeDTO"
                 };
             }
         }

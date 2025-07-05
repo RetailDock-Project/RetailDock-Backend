@@ -14,5 +14,5 @@ namespace Application.Interfaces.IServices
         Task<ApiResponseDTO<BalanceSheetResponseDto>> GetBalanceSheetSummaryAsync(Guid organizationId, DateTime? fromDate, DateTime? toDate);
         
 
-        }
+    }
 }

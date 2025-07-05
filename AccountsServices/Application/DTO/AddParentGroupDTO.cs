@@ -20,12 +20,12 @@ namespace Application.DTO
         public string GroupName { get; set; }
         [Required]
         public Guid AccountsMasterGroupId { get; set; }
-        
-        
-       
+
+
+        [JsonIgnore]
        
         public Guid CreatedBy { get; set; }
-        public Guid UpdatedBy { get; set; }
+        
         [JsonIgnore]
         public string Nature {  get; set; }
 

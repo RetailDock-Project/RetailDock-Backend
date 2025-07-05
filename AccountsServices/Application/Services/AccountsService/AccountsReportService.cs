@@ -25,6 +25,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<PLAccountSummaryDto>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
 
                 var (gross, pl) = await _accountsReportRepository.GetPLRawDataAsync(organizationId, fromDate, toDate);
@@ -66,6 +74,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<BalanceSheetResponseDto>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var (gross, pl) = await _accountsReportRepository.GetPLRawDataAsync(organizationId, fromDate, toDate);
                 if (gross == null || pl == null)
                 {
@@ -90,7 +106,7 @@ namespace Application.Services.AccountsService
                 {
                     Items = data.Items,
                     TotalAssets = data.TotalAssets,
-                    TotalLiabilities = data.TotalLiabilities,
+                    TotalLiabilities = data.TotalLiabilities+ (gross.GrossProfit ?? 0) + (pl.NetIndirectIncome ?? 0) - (pl.NetIndirectExpense ?? 0),
                     NetProfit = (gross.GrossProfit ?? 0) + (pl.NetIndirectIncome ?? 0) - (pl.NetIndirectExpense ?? 0),
                 };
 
