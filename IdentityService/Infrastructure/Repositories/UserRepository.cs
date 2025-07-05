@@ -43,6 +43,11 @@ namespace Infrastructure.Repositories
         public async Task AddOrganizationRole(OrganizationRole newOrgRole) {
 
             await context.OrganizationRoles.AddAsync(newOrgRole);
+            var permissions=await context.Permissions.ToListAsync();
+            foreach (var permission in permissions) {
+                await context.OrganizationRolePermissions.AddAsync(new OrganizationRolePermission { OrganizationRoleId = newOrgRole.Id, PermissionId = permission.Id });
+
+            }
             await context.SaveChangesAsync();
             Console.WriteLine("updated orgrole");
 
@@ -55,10 +60,6 @@ namespace Infrastructure.Repositories
         }
 
         public async Task<List<OrganizationUserDto>> GetUsersByOrgId(Guid orgId) {
-            //var res=await context.Users.Include(u => u.userOrganizationRole).ThenInclude(uor => uor.OrganizationRole).ThenInclude(or => or.Role).Where(u=>u.OrganisationId.ToString()==orgId && u.userOrganizationRole.OrganizationRole.RoleId!=4).ToListAsync();
-            //return res;
-
-            //var res = await context.Users.Include(u => u.userOrganizationRole).ThenInclude(uor => uor.OrganizationRole).ThenInclude(or => or.Role).Where(u => u.OrganisationId.ToString() == orgId).Select(u => new OrganizationUserDto { Name = u.Name, Email = u.Email, Roles = u.userOrganizationRole.Where(x => x.OrganizationRole.OrganizationId.ToString() == orgId).ToList() }).ToListAsync();
 
             var res = await context.Users
     .Include(u => u.UserOrganizationRole)
@@ -70,9 +71,6 @@ namespace Infrastructure.Repositories
         Name = u.Name,
         Email = u.Email,
         Role = u.UserOrganizationRole.OrganizationRole.Name,
-                    //.Where(x => x.OrganizationRole.OrganizationId == orgId)
-                    //.Select(x => x.OrganizationRole.Role.Name)
-                    //.ToList(),
         Created=u.CreatedAt
     })
     .ToListAsync();
@@ -97,6 +95,61 @@ namespace Infrastructure.Repositories
         {
             context.Users.Update(user);
             await context.SaveChangesAsync();
+        }
+
+
+        public async Task<List<OrganizationUserDto>> GetFilteredUsersByOrgId(
+    Guid orgId, string? search, Guid? roleId, Guid? userId)
+        {
+            var query = context.Users
+                .Include(u => u.UserOrganizationRole)
+                    .ThenInclude(uor => uor.OrganizationRole)
+                .Where(u => u.OrganisationId == orgId)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(u =>
+                    u.Name.Contains(search) || u.Email.Contains(search));
+            }
+
+            if (roleId.HasValue)
+            {
+                query = query.Where(u => u.UserOrganizationRole.OrganizationRoleId == roleId.Value);
+            }
+
+            if (userId.HasValue)
+            {
+                query = query.Where(u => u.Id == userId.Value);
+            }
+
+            var users = await query.Select(u => new OrganizationUserDto
+            {
+                Id = u.Id,
+                Name = u.Name,
+                Email = u.Email,
+                Role = u.UserOrganizationRole.OrganizationRole.Name,
+                Created = u.CreatedAt
+            }).ToListAsync();
+
+            return users;
+        }
+
+
+        public async Task<UserStatsDto> GetUserStatsByOrgId(Guid orgId)
+        {
+            var users = context.Users.Where(u => u.OrganisationId == orgId);
+
+            var totalUsers = await users.CountAsync();
+            var activeUsers = await users.CountAsync(u => !u.IsDeleted);
+            var inactiveUsers = totalUsers - activeUsers;
+
+            return new UserStatsDto
+            {
+                TotalUsers = totalUsers,
+                ActiveUsers = activeUsers,
+                InactiveUsers = inactiveUsers
+            };
         }
 
 

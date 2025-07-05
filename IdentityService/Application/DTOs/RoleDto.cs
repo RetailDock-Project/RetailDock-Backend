@@ -27,7 +27,6 @@ namespace Application.DTOs
     public class GetOrgRoleDto
     {
         public Guid? Id { get; set; }
-        public int RoleId { get; set; }
         public string Name { get; set; }
     }
 

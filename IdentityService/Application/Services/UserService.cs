@@ -29,20 +29,20 @@ namespace Application.Services
         {
             var user = await userRepo.UpdateUserOrganization(userId, organizationId);
             Console.WriteLine("updated user added");
-            var newRole = new OrgRoleDto
-            {
-                OrganizationId = organizationId,
-            };
-            var mappedOrgRole = mapper.Map<OrganizationRole>(newRole);
+            var mappedOrgRole = new OrganizationRole {CreatedBy=userId,Name="Admin",OrganizationId=organizationId };
             Guid orgRoleId = Guid.NewGuid();
             mappedOrgRole.Id = orgRoleId;
             await userRepo.AddOrganizationRole(mappedOrgRole);
-            var userOrgRole = new UserOrgRole {
-                OrganizationRoleId = orgRoleId,
+
+
+            var userOrgRole = new UserOrganizationRole
+            {
                 UserId = userId,
+                OrganizationRoleId = orgRoleId,
+                OrganizationId = organizationId
             };
-            var mappedUserOrgRole = mapper.Map<UserOrganizationRole>(userOrgRole);
-            await userRepo.AddUserOrgRole(mappedUserOrgRole);
+
+            await userRepo.AddUserOrgRole(userOrgRole);
 
         }
 
@@ -115,6 +115,70 @@ namespace Application.Services
                 Message = "User soft deleted successfully"
             };
         }
+
+        public async Task<ResponseDto<List<OrganizationUserDto>>> GetFilteredUsersByOrgId(
+    Guid orgId, string? search, Guid? roleId, Guid? userId)
+        {
+            if (orgId == Guid.Empty)
+            {
+                return new ResponseDto<List<OrganizationUserDto>>
+                {
+                    StatusCode = 400,
+                    Message = "Organization id required"
+                };
+            }
+
+            var result = await userRepo.GetFilteredUsersByOrgId(orgId, search, roleId, userId);
+
+            if (result == null || !result.Any())
+            {
+                return new ResponseDto<List<OrganizationUserDto>>
+                {
+                    StatusCode = 404,
+                    Message = "No users found with given search or filter"
+                };
+            }
+
+            return new ResponseDto<List<OrganizationUserDto>>
+            {
+                StatusCode = 200,
+                Message = $"Filtered users under organization-{orgId} retrieved",
+                Data = result
+            };
+        }
+
+
+        public async Task<ResponseDto<UserStatsDto>> GetUserStatsByOrgId(Guid orgId)
+        {
+
+            if (orgId == Guid.Empty)
+            {
+                return new ResponseDto<UserStatsDto>
+                {
+                    StatusCode = 400,
+                    Message = "Organization id required"
+                };
+            }
+            var stats = await userRepo.GetUserStatsByOrgId(orgId);
+
+            if (stats == null)
+            {
+                return new ResponseDto<UserStatsDto>
+                {
+                    StatusCode = 404,
+                    Message = "No users found for the organization"
+                };
+            }
+
+            return new ResponseDto<UserStatsDto>
+            {
+                StatusCode = 200,
+                Message = $"User stats for organization {orgId} retrieved",
+                Data = stats
+            };
+        }
+
+
 
 
     }
