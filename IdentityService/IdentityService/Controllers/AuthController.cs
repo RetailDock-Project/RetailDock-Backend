@@ -45,11 +45,7 @@ namespace IdentityService.Controllers
             if (user == null)
                 return NotFound("User not found.");
 
-            foreach (var r in Roles)
-            {
-                Console.WriteLine($"Role: {r}");
-
-            }
+            
 
             var result = new
             {
@@ -57,7 +53,7 @@ namespace IdentityService.Controllers
                 user.Name,
                 user.Email,
                 OrganisationId = OrgId,
-                roles = Roles,
+                role = Role,
                 permissions = Permissions
             };
 

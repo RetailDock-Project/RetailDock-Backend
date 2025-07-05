@@ -40,13 +40,27 @@ namespace Application.Services
             }
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
             var user = mapper.Map<User>(newUser);
-            if (orgId != null || orgId!=Guid.Empty) {
+            user.Id=Guid.NewGuid();
+            if (orgId != Guid.Empty)
+            {
                 user.OrganisationId = orgId;
             }
+
+            if (newUser.OrgRoleId != null && newUser.OrgRoleId != Guid.Empty)
+            {
+                user.UserOrganizationRole = new UserOrganizationRole
+                {
+                    Id = Guid.NewGuid(),
+                    OrganizationRoleId = newUser.OrgRoleId,
+                    UserId = user.Id,
+                    OrganizationId = orgId
+                };
+            }
+
             user.PasswordHash=hashedPassword;
             user.EmailVerificationToken=Guid.NewGuid().ToString();
             await userRepository.Register(user);
-            var verificationLink = $"https://localhost:7117/api/Email/confirm?email={user.Email}&token={user.EmailVerificationToken}";
+            var verificationLink = $"https://localhost:7118/api/Email/confirm?email={user.Email}&token={user.EmailVerificationToken}";
 
             string body = $@"
                             <html>

@@ -13,10 +13,12 @@ namespace Application.Interfaces.Repository_Interfaces
     {
         Task<CreditCustomers> GetCreditCustomers(string phoneNUmber, Guid OrgId);
         Task<CashCustomers> GetCashCustomers(string phoneNUmber, Guid OrgId);
+        Task<List<Sales>> GetDebtorsSales(Guid debtorId, Guid orgId);
         Task<Product> GetProductById(Guid productId, Guid orgId);
         Task<HsnCode> GetHsnCode(int HsnCodeId);
         Task<ResponseDto<object>> AddNewCashSale(SalesAddDto sales,CreateSaleIdsDto allIdsDto);
         Task<ResponseDto<object>>  AddNewCreditSale(SalesAddDto sales,CreateSaleIdsDto allIdsDto);
+        Task CashReceived(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId);
         Task<List<Sales>>GetSaleDetailsByDate(DateTime fromDate, DateTime toDate,Guid orgId);
         Task<List<Sales>> GetAllSalesDetails(Guid orgId);
         Task<Sales> GetSalesDetailsById(Guid saleId,Guid orgId);

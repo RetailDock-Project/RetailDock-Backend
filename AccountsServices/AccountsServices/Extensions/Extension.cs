@@ -22,6 +22,7 @@ namespace AccountsService.Extensions
             services.AddScoped<IAccountsReportRepository, AccountsReportRepository>();
             services.AddScoped<IAccountsReportService, AccountsReportService>();
 
+
             return services;
         }
 

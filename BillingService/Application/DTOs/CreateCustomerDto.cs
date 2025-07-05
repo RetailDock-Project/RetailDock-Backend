@@ -9,8 +9,8 @@ namespace Application.DTOs
 {
     public class CreateCustomerDto
     {
-        [Required]
-        public string SaleMode { get; set; } 
+
+ 
 
         [Required]
         public string CompanyName {  get; set; }   
@@ -24,8 +24,8 @@ namespace Application.DTOs
 
 
 
-        public string? openingBalance { get; set; } = "";
-       public  string? drCr { get; set; } = "dr";
+        public string? openingBalance { get; set; } = "0";
+       public  string? drCr { get; set; } = "Dr";
 
         public string? contactName { get; set; } = "";
 

@@ -3,17 +3,16 @@ syntax = "proto3";
 
 option csharp_namespace = "PurchaseGrpc";
 
-package voucher;
 
 service VoucherGrpcService {
   rpc AddVoucherEntry (AddVoucherRequest) returns (ApiResponses);
 }
 
 message TransactionDTO {
-	string ledgerId=1;
-   double  amount = 2;
+  string ledgerId = 1;
+  double  amount = 2;
   string Narration = 3;
-  
+
 }
 
 message AddVoucherRequest {

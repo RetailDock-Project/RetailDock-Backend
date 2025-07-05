@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Dto;
 using Domain.Entites;
 
 namespace Application.DTOs
@@ -16,6 +17,7 @@ namespace Application.DTOs
 
   
         public List<SalesReturnItemsAddDto> ReturnItems { get; set; }
+        public VoucherDto Voucher { get; set; }
 
     }
 }
