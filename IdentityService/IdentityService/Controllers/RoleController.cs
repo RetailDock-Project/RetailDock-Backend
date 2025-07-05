@@ -81,9 +81,9 @@ namespace IdentityService.Controllers
         //}
 
         //get roles org
-        [HttpGet("organization-roles/{organizationId}")]
-        public async Task<IActionResult> GetOrganizationRoles(Guid organizationId) { 
-            var response=await roleService.GetOrganizationRoles(organizationId);
+        [HttpGet("organization-roles")]
+        public async Task<IActionResult> GetOrganizationRoles() { 
+            var response=await roleService.GetOrganizationRoles(OrgId);
             return StatusCode(response.StatusCode, response);
         }
 

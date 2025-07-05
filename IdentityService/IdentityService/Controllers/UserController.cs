@@ -35,6 +35,24 @@ namespace IdentityService.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
+        [HttpGet("filtered-users")]
+        public async Task<IActionResult> GetFilteredUsersByOrgId(
+            [FromQuery] string? search,
+            [FromQuery] Guid? roleId,
+            [FromQuery] Guid? userId)
+        {
+            var response = await userService.GetFilteredUsersByOrgId(OrgId, search, roleId, userId);
+            return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpGet("users-stats")]
+        public async Task<IActionResult> GetUserStatsByOrgId()
+        {
+            var response = await userService.GetUserStatsByOrgId(OrgId);
+            return StatusCode(response.StatusCode, response);
+        }
+
+
 
     }
 }

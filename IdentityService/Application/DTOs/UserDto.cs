@@ -57,4 +57,12 @@ namespace Application.DTOs
         public Guid NewRoleId { get; set; }
     }
 
+    public class UserStatsDto
+    {
+        public int TotalUsers { get; set; }
+        public int ActiveUsers { get; set; }
+        public int InactiveUsers { get; set; }
+    }
+
+
 }
