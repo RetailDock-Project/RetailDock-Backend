@@ -107,5 +107,17 @@ namespace AccountsServices.Controllers
             var result = await _ledgerServices.GetCashAndBankLedgers(OrgId);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet("get/ledgers/fortransaction")]
+        public async Task<IActionResult> GetAllLedgersandBankAndCash(Guid VoucherTypeId)
+        {
+            var result = await _ledgerServices.GetCrediAndDebitLedgersByVoucherId(OrgId,VoucherTypeId);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet("get/ledgers/ByName")]
+        public async Task<IActionResult> GetLedgerByName(string Name)
+        {
+            var result = await _ledgerServices.GetLedgerByName(OrgId,Name);
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }

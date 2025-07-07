@@ -16,4 +16,10 @@ namespace Application.DTO
 
 
     }
+    public class GetCreditAndDebitLedgers
+    {
+        public List<GetLedgerDetailDTO?> DrSideLedgers { get; set; }
+        public List<GetLedgerDetailDTO?> CrSideLedgers { get; set; }
+
+    }
 }
