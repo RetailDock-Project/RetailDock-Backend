@@ -17,9 +17,9 @@ namespace Application.DTO
         [Required(ErrorMessage = "ParentId is required.")]
         public Guid ParentId { get; set; }
 
-        
+        [JsonIgnore]
         public Guid CreatedBy { get; set; }
-        public Guid UpdatedBy { get; set; }
+     
         [JsonIgnore] 
         public string Nature {  get; set; }
     }

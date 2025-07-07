@@ -18,9 +18,11 @@ namespace Application.DTO
       
         public decimal OpeningBalance { get; set; }
         public string DrCr { get; set; } // "Dr" or "Cr"
-       
+        [JsonIgnore]
         public Guid? CreatedBy { get; set; }
-        public Guid UpdateBy { get; set; }
+        [JsonIgnore]
+        public Guid? UpdateBy { get; set; }
+    
         public AddLedgerDetailsDTO? Details { get; set; }
 
     }
@@ -32,6 +34,8 @@ namespace Application.DTO
         public string? GSTNumber { get; set; }
         public string? BankName { get; set; }
         public string? AccountNumber { get; set; }
+        [JsonIgnore]
+        public Guid? UpdateBy { get; set; }
         public string? IFSCCode { get; set; }
         public string? UPIId { get; set; }
 

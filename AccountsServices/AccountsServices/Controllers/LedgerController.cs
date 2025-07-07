@@ -1,4 +1,5 @@
-﻿using Application.DTO;
+﻿using AccountsServices.Controllers.BaseControllers;
+using Application.DTO;
 using Application.Interfaces.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ namespace AccountsServices.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LedgerController : ControllerBase
+    public class LedgerController : BaseController
     {
         private readonly ILedgerServices _ledgerServices;
         public LedgerController(ILedgerServices ledgerServices)
@@ -17,32 +18,38 @@ namespace AccountsServices.Controllers
             }
         }
         [HttpPost("add/new/ledger")]
-        public async Task<IActionResult>CreateNewLedger(AddLedgerDTO addLedgerDTO,Guid OrganizationId)
+        public async Task<IActionResult>CreateNewLedger(AddLedgerDTO addLedgerDTO)
         {
-            var result= await _ledgerServices.CreateLedger(addLedgerDTO, OrganizationId);
+            addLedgerDTO.CreatedBy = UserId;
+            var result= await _ledgerServices.CreateLedger(addLedgerDTO, OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/all/ledgers")]
-        public async Task<IActionResult> GetAllLedgers(Guid OrganizationId)
+        public async Task<IActionResult> GetAllLedgers()
         {
-            var result = await _ledgerServices.GetAllLedgers( OrganizationId);
+            var result = await _ledgerServices.GetAllLedgers(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledger/byId")]
-        public async Task<IActionResult> GetLedgerById(Guid id,Guid OrganizationId)
+        public async Task<IActionResult> GetLedgerById(Guid id)
         {
-            var result = await _ledgerServices.GetLedgerById(id,OrganizationId);
+            var result = await _ledgerServices.GetLedgerById(id, OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledgers/bygroup")]
-        public async Task<IActionResult> GetLedgersByGroups(Guid id, Guid OrganizationId)
+        public async Task<IActionResult> GetLedgersByGroups(Guid id)
         {
-            var result = await _ledgerServices.GetLedgersByGroup(id, OrganizationId);
+            var result = await _ledgerServices.GetLedgersByGroup(id, OrgId);
             return StatusCode(result.StatusCode, result);
         }
+
+
+
+        //add organization id validation
         [HttpPatch("update/ledger")]
         public async Task<IActionResult> UpdateLedger(Guid ledgerId, UpdateLedger updateLedgerDetailsDTO)
         {
+            updateLedgerDetailsDTO.UpdateBy= UserId;
             var result = await _ledgerServices.UpdateLedgerDetails(ledgerId, updateLedgerDetailsDTO);
             return StatusCode(result.StatusCode, result);
         }
@@ -53,51 +60,51 @@ namespace AccountsServices.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledgers/sales")]
-        public async Task<IActionResult> GetledgersUnderSalkes(Guid OrganizationId)
+        public async Task<IActionResult> GetledgersUnderSalkes()
         {
-            var result = await _ledgerServices.GetSalesAcoountLedgerts(OrganizationId);
+            var result = await _ledgerServices.GetSalesAcoountLedgerts(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledgers/purchase")]
-        public async Task<IActionResult> GetledgersUnderPurchase(Guid OrganizationId)
+        public async Task<IActionResult> GetledgersUnderPurchase()
         {
-            var result = await _ledgerServices.GetPurchaseAccountLedgerts(OrganizationId);
+            var result = await _ledgerServices.GetPurchaseAccountLedgerts(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledgers/debtors")]
-        public async Task<IActionResult> GetDebtors(Guid OrganizationId)
+        public async Task<IActionResult> GetDebtors()
         {
-            var result = await _ledgerServices.GetDebtorsandCreditors(OrganizationId);
+            var result = await _ledgerServices.GetDebtorsandCreditors(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledgers/output/gst")]
-        public async Task<IActionResult> GetLedgersOfOutPutTax(Guid OrganizationId)
+        public async Task<IActionResult> GetLedgersOfOutPutTax()
         {
-            var result = await _ledgerServices.GetOutputGSTLedgers(OrganizationId);
+            var result = await _ledgerServices.GetOutputGSTLedgers(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/ledgers/input/gst")]
-        public async Task<IActionResult> GetLedgersOfInPutTax(Guid OrganizationId)
+        public async Task<IActionResult> GetLedgersOfInPutTax()
         {
-            var result = await _ledgerServices.GetInputGSTLedgers(OrganizationId);
+            var result = await _ledgerServices.GetInputGSTLedgers(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/COGS/ledger/byname")]
-        public async Task<IActionResult> GetCOGSLedgerByName(Guid OrganizationId)
+        public async Task<IActionResult> GetCOGSLedgerByName()
         {
-            var result = await _ledgerServices.GetCOGSLedgerDetails(OrganizationId);
+            var result = await _ledgerServices.GetCOGSLedgerDetails(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/inventrytransaction/ledger/byname")]
-        public async Task<IActionResult> GetInventryTransactionLedgerByName(Guid OrganizationId)
+        public async Task<IActionResult> GetInventryTransactionLedgerByName()
         {
-            var result = await _ledgerServices.GetInventryTransactionDetails(OrganizationId);
+            var result = await _ledgerServices.GetInventryTransactionDetails(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/bankandcash/ledgers")]
-        public async Task<IActionResult> GetCashAndBankLedgers(Guid OrganizationId)
+        public async Task<IActionResult> GetCashAndBankLedgers()
         {
-            var result = await _ledgerServices.GetCashAndBankLedgers(OrganizationId);
+            var result = await _ledgerServices.GetCashAndBankLedgers(OrgId);
             return StatusCode(result.StatusCode, result);
         }
     }
