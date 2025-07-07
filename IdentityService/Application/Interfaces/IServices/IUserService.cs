@@ -17,7 +17,7 @@ namespace Application.Interfaces.IServices
         Task<ResponseDto<object>> UpdateUserOrganizationRoleAsync(UpdateUserRoleDto dto);
         Task<ResponseDto<object>> SoftDeleteUserAsync(Guid userId, Guid orgId);
         Task<ResponseDto<List<OrganizationUserDto>>> GetFilteredUsersByOrgId(
-    Guid orgId, string? search, Guid? roleId, Guid? userId);
+    Guid orgId, string? search, Guid? roleId, Guid? userId,Guid user);
 
         Task<ResponseDto<UserStatsDto>> GetUserStatsByOrgId(Guid orgId);
     }

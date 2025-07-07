@@ -99,7 +99,7 @@ namespace Infrastructure.Repositories
 
 
         public async Task<List<OrganizationUserDto>> GetFilteredUsersByOrgId(
-    Guid orgId, string? search, Guid? roleId, Guid? userId)
+    Guid orgId, string? search, Guid? roleId, Guid? userId,Guid user)
         {
             var query = context.Users
                 .Include(u => u.UserOrganizationRole)
@@ -121,6 +121,10 @@ namespace Infrastructure.Repositories
             if (userId.HasValue)
             {
                 query = query.Where(u => u.Id == userId.Value);
+            }
+            if (user!=Guid.Empty)
+            {
+                query = query.Where(u => u.Id != user);
             }
 
             var users = await query.Select(u => new OrganizationUserDto

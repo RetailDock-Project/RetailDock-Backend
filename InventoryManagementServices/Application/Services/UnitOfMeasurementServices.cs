@@ -7,7 +7,7 @@ namespace Application.Services
 {
     public interface IUnitOfMeasureServices
     {
-        Task<Responses<string>> AddUnitOfMeasure(UnitOfMeasureDto dto);
+        Task<Responses<string>> AddUnitOfMeasure(UnitOfMeasureDto dto,Guid orgId);
         Task<Responses<List<GetUnitOfMeasureDto>>> GetAllUnitOfMeasures(Guid OrganaiztionId);
         Task<Responses<GetUnitOfMeasureDto>> GetUnitOfMeasureById(int id);
         Task<Responses<string>> UpdateUnitOfMeasure(int Id,UnitOfMeasureDto dto);
@@ -24,7 +24,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<Responses<string>> AddUnitOfMeasure(UnitOfMeasureDto dto)
+        public async Task<Responses<string>> AddUnitOfMeasure(UnitOfMeasureDto dto, Guid orgId)
         {
             try
             {
@@ -34,6 +34,7 @@ namespace Application.Services
                 }
 
                 var entity = _mapper.Map<UnitOfMeasures>(dto);
+                entity.OrgnaisationId = orgId;
                 await _repository.CreateAsync(entity);
 
                 return new Responses<string> { Message = "Unit of Measure added", StatusCode = 201 };
@@ -50,6 +51,15 @@ namespace Application.Services
             {
                 var units = await _repository.GetAllAsync(OrganaiztionId);
                 var data = _mapper.Map<List<GetUnitOfMeasureDto>>(units);
+
+                if (units == null || !units.Any()) {
+                    return new Responses<List<GetUnitOfMeasureDto>>
+                    {
+                        Message = "Units not found",
+                        StatusCode = 400,
+                        Data = data
+                    };
+                }
 
                 return new Responses<List<GetUnitOfMeasureDto>>
                 {

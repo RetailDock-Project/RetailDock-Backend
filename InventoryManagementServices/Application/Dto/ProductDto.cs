@@ -18,19 +18,18 @@ namespace Application.Dto
 
         [StringLength(1000)]
         public string Description { get; set; }
-        [Required]
-        public Guid? OrgnaisationId { get; set; }
+
 
         [Required]
         [Range(1, int.MaxValue, ErrorMessage = "Product Category is required.")]
         public int ProductCategoryId { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Unit of Measure is required.")]
+        [Range(0, int.MaxValue, ErrorMessage = "Unit of Measure is required.")]
         public int UnitOfMeasuresId { get; set; }
 
         [Range(0, int.MaxValue)]
-        public int ReOrderLevel { get; set; }
+        public int ReOrderLevel { get; set; } = 5;
 
         [Required]
         [MaxLength(50)]
@@ -47,8 +46,7 @@ namespace Application.Dto
         [Required]
         [Range(0, double.MaxValue)]
         public decimal CostPrice { get; set; }
-
-        public string CreatedBy { get; set; }
+        [Required]
         public int HsnCodeId { get; set; }
         public List<IFormFile> ProductImages { get; set; }
     }

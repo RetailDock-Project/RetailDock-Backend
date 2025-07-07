@@ -143,7 +143,19 @@ namespace Infrastructure.Repositories
             }
         }
 
-        
+
+        public async Task<List<OrganizationRole>> GetOrganizationRolesWithPermissions(Guid organizationId)
+        {
+            return await context.OrganizationRoles
+                .Where(r => r.OrganizationId == organizationId && !r.IsDeleted)
+                .Include(r => r.OrganizationRolePermissions.Where(p => !p.IsDeleted))
+                    .ThenInclude(orp => orp.Permission)
+                .ToListAsync();
+        }
+
+
+
+
 
     }
 }

@@ -13,7 +13,7 @@ namespace Application.Services
 {
     public interface IHsnCodeServices
     {
-        Task<Responses<string>> AddHsn(HsnDto hsnDto);
+        Task<Responses<string>> AddHsn(HsnDto hsnDto, Guid orgId);
         Task<Responses<List<HsnDto>>> GetAllHsn(Guid OrganaiztionId);
         Task<Responses<HsnDto>> Getbyhsncode(int hsncode);
         Task<Responses<string>>UpdateHsn(int hsnCode, UpdateHsnDto hsnDto);
@@ -30,11 +30,11 @@ namespace Application.Services
             _hsnCodeRepository = hsnCodeRepository;
         }
 
-        public async Task<Responses<string>> AddHsn(HsnDto hsnDto)
+        public async Task<Responses<string>> AddHsn(HsnDto hsnDto,Guid orgId)
         {
             try
             {
-                var existingHsn = await _hsnCodeRepository.GetByHsnCodeAndOrg(hsnDto.OrgnaisationId, hsnDto.HSNCodeNumber);
+                var existingHsn = await _hsnCodeRepository.GetByHsnCodeAndOrg(orgId, int.Parse(hsnDto.HSNCodeNumber));
 
                 if (existingHsn != null)
                 {
@@ -45,6 +45,7 @@ namespace Application.Services
                     };
                 }
                 var hsn = _mapper.Map<HsnCode>(hsnDto);
+                hsn.HSNCodeNumber = hsnDto.HSNCodeNumber;
                 await _hsnCodeRepository.AddHsn(hsn);
                 return new Responses<string> { Message = "HsnCode And TaxRate Added", StatusCode = 201 };
             }
