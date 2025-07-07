@@ -1,4 +1,5 @@
-﻿using Application.Dto;
+﻿using API.Controllers.Base;
+using Application.Dto;
 using Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HsnCodeController : ControllerBase
+    public class HsnCodeController : BaseController
     {
         private readonly IHsnCodeServices _hsnCodeServices;
 
@@ -21,7 +22,7 @@ namespace API.Controllers
         {
             try
             {
-                var result = await _hsnCodeServices.AddHsn(hsnDto);
+                var result = await _hsnCodeServices.AddHsn(hsnDto,OrgId);
                 return StatusCode(result.StatusCode, result);
             }
             catch (Exception ex)
@@ -30,11 +31,11 @@ namespace API.Controllers
             }
         }
         [HttpGet("get-All")]
-        public async Task<IActionResult> GetAllHsn(Guid OrganaiztionId)
+        public async Task<IActionResult> GetAllHsn()
         {
             try
             {
-                var result = await _hsnCodeServices.GetAllHsn(OrganaiztionId);
+                var result = await _hsnCodeServices.GetAllHsn(OrgId);
                 return StatusCode(result.StatusCode, result);
             }
             catch (Exception ex)

@@ -64,5 +64,13 @@ namespace Application.DTOs
 
     }
 
-  
+    public class GetOrgRoleWithPermissionsDto
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public List<PermissionDto> Permissions { get; set; }
+    }
+
+
+
 }

@@ -18,7 +18,7 @@ namespace IdentityService.Controllers
 
         [HttpGet("roles/orgId")]
         public async Task<IActionResult> GetAllRoles() {
-            var response=await roleService.GetAllRoles(OrgId);
+            var response=await roleService.GetOrganizationRoles(OrgId);
             return StatusCode(response.StatusCode, response);
         }
 
@@ -134,7 +134,13 @@ namespace IdentityService.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
-       
+
+        [HttpGet("organization-roles-with-permissions")]
+        public async Task<IActionResult> GetOrganizationRolesWithPermissions()
+        {
+            var response = await roleService.GetOrganizationRolesWithPermissions(OrgId);
+            return StatusCode(response.StatusCode, response);
+        }
 
     }
 }

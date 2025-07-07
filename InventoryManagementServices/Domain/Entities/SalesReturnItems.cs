@@ -16,7 +16,7 @@ namespace Domain.Entities
         public int UnitId { get; set; }
         public decimal UnitCost { get; set; }
         public decimal Quantity { get; set; } = 0;
-        public int HSNCodeNumber { get;set; }
+        public string HSNCodeNumber { get;set; }
         public decimal UnitPrice { get; set; } = 0;
         public decimal TaxableAmount { get; set; } = 0;
 

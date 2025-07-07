@@ -17,7 +17,7 @@ namespace Application.Interfaces.IServices
         Task<ResponseDto<object>> UpdateRoleWithPermissionsAsync(Guid roleId, RoleDto updatedRole, Guid orgId);
         //Task<ResponseDto<object>> SoftDeleteRole(int id);
         Task<ResponseDto<object>> SoftDeleteRoleAsync(Guid roleId, Guid orgId);
-        Task<ResponseDto<List<RoleDto>>> GetAllRoles(Guid orgId);
+        //Task<ResponseDto<List<GetOrgRoleDto>>> GetAllRoles(Guid orgId);
         //Task<ResponseDto<object>> AddOrganizationRoles(List<OrgRoleDto> orgRoles);
         Task<ResponseDto<List<GetOrgRoleDto>>> GetOrganizationRoles(Guid organizationId);
 
@@ -27,5 +27,7 @@ namespace Application.Interfaces.IServices
         Task<ResponseDto<object>> AssignUserOrganizationRole(UserOrgRole newOrgUser);
         Task<ResponseDto<List<PermissionDto>>> GetPermissions();
         Task<ResponseDto<object>> AddPermission(PermissionDto newPermission);
-    }
+
+        Task<ResponseDto<List<GetOrgRoleWithPermissionsDto>>> GetOrganizationRolesWithPermissions(Guid organizationId);
+    };
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Dto;
 using Domain.Entities;
+using Domain.Enums;
 
 namespace Application.Interfaces
 {
@@ -24,5 +25,10 @@ namespace Application.Interfaces
         Task<bool> ProductStockUpdate(ProductStockUpdateDto updateData);
 
         Task<Product> GetProductHistory(Guid productId);
+        Task<List<Product>> FilterProductsAsync(
+    Guid organizationId,
+    string? search,
+    int? categoryId,
+    ProductStockStatus? stockStatus);
     }
 }
