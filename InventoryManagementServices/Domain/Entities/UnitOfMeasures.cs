@@ -9,7 +9,7 @@ namespace Domain.Entities
     {
         [Key]
         public int Id { get; set; }
-        public Guid? OrgnaisationId { get; set; }
+        public Guid OrgnaisationId { get; set; }
 
         [Required]
         [MaxLength(50)]

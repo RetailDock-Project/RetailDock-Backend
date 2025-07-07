@@ -7,7 +7,6 @@ namespace Application.Dto
         [Required]
         [MaxLength(100)]
         public string ProductCategoryName { get; set; }
-        public Guid? OrgnaisationId { get; set; }
     }
     public class GetProductCategoryDto
     {

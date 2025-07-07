@@ -198,7 +198,7 @@ namespace Infrastructure.Repositories
 
 
                     decimal taxRate = filteredProduct.HsnCode.GstRate;
-                    int hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
+                    string hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
                     decimal unitCost = filteredProduct.CostPrice;
                     int unitId = filteredProduct.UnitOfMeasuresId;
 
@@ -304,7 +304,7 @@ namespace Infrastructure.Repositories
                     filteredProduct.Stock -= item.Quantity;
 
                     decimal taxRate = filteredProduct.HsnCode.GstRate;
-                    int hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
+                    string hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
                     decimal unitCost = filteredProduct.CostPrice;
                     int unitId = filteredProduct.UnitOfMeasuresId;
 

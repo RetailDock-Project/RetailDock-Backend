@@ -24,12 +24,12 @@ namespace Infrastructure.Repositories
             return hsnCode;
 
         }
-        public async Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId,int hsnCodeNumber )
+        public async Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId,int hsnCodeId )
         {
             var result= await _appDbContext.HsnCodes
                 .FirstOrDefaultAsync(x => !x.IsDeleted
                                           && x.OrgnaisationId == organizationId
-                                          && x.HSNCodeNumber == hsnCodeNumber);
+                                          && x.HsnCodeId == hsnCodeId);
             return result;
         }
 
@@ -39,9 +39,9 @@ namespace Infrastructure.Repositories
             return await _appDbContext.HsnCodes.Where(x => !x.IsDeleted &&x.OrgnaisationId==OrganaiztionId).ToListAsync();
 
         }
-       public async Task<HsnCode> GetByHsnCode(int hsnCodeNumber)
+       public async Task<HsnCode> GetByHsnCode(int hsnCodeId)
         {
-             return await _appDbContext.HsnCodes.FirstOrDefaultAsync(x=>!x.IsDeleted&&  x.HSNCodeNumber==hsnCodeNumber);
+             return await _appDbContext.HsnCodes.FirstOrDefaultAsync(x=>!x.IsDeleted&&  x.HsnCodeId== hsnCodeId);
         }
        public async Task<HsnCode> UpdateHsn(HsnCode hsnCode)
         {
@@ -50,10 +50,10 @@ namespace Infrastructure.Repositories
             return hsnCode;
         }
 
-       public async Task<bool> DeleteHsnCode(int hsnCode)
+       public async Task<bool> DeleteHsnCode(int hsnCodeId)
         {
             var existinghsnCode = await _appDbContext.HsnCodes
-                .FirstOrDefaultAsync(x => x.HSNCodeNumber == hsnCode);
+                .FirstOrDefaultAsync(x => x.HsnCodeId == hsnCodeId);
 
             if (existinghsnCode == null)
                 return false;

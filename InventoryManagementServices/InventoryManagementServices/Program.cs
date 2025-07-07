@@ -22,6 +22,10 @@ using InventoryService.Services;
 using Infrastructure.GrpcClient;
 using PurchaseGrpc;
 using UserGrpc;
+using Microsoft.OpenApi.Models;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace InventoryManagementServices
 {
@@ -30,6 +34,113 @@ namespace InventoryManagementServices
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddCors(options => {
+                options.AddPolicy("Allow", policy => {
+                    policy.WithOrigins("http://localhost:5173")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+                });
+            });
+
+
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "InventoryService API", Version = "v1" });
+
+                // 1. Bearer token in Authorization header (for Postman, Flutter, etc.)
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                // 2. Cookie-based token (for browser sessions)
+                c.AddSecurityDefinition("cookieAuth", new OpenApiSecurityScheme
+                {
+                    Name = "accessToken",
+                    Type = SecuritySchemeType.ApiKey,
+                    In = ParameterLocation.Cookie,
+                    Description = "JWT token stored in the 'accessToken' cookie"
+                });
+
+                // Enable both in security requirement
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    },
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "cookieAuth"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+
+
+
+            });
+
+            var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+
+
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            // 1. Check Authorization header
+                            var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                            if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer "))
+                            {
+                                context.Token = authHeader["Bearer ".Length..]; // Get token after "Bearer "
+                            }
+
+                            // 2. Fallback to cookie if Authorization header is not present
+                            if (string.IsNullOrEmpty(context.Token) && context.Request.Cookies.ContainsKey("accessToken"))
+                            {
+                                context.Token = context.Request.Cookies["accessToken"];
+                            }
+
+                            return Task.CompletedTask;
+                        }
+                    };
+
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false, // set to true and configure if you have issuer
+                        ValidateAudience = false, // set to true and configure if you have audience
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ClockSkew = TimeSpan.Zero, // no token time leeway
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                    };
+                });
+
+
+
 
             // Add services to the container.
             builder.Services.AddGrpc();
@@ -102,13 +213,6 @@ namespace InventoryManagementServices
             QuestPDF.Settings.License = LicenseType.Community;
             QuestPDF.Settings.EnableDebugging = true;
 
-            builder.Services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new() { Title = "Inventory Service APIs", Version = "v1" });
-
-                // This will ensure Swagger shows enums as strings
-                options.UseInlineDefinitionsForEnums();
-            });
 
 
             // At startup (e.g., Program.cs or Startup.cs), before using EPPlus
@@ -148,6 +252,7 @@ namespace InventoryManagementServices
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("Allow");
 
             app.UseHttpsRedirection();
 

@@ -35,6 +35,7 @@ namespace Domain.Entities
         [Range(0.0, double.MaxValue, ErrorMessage = "Total amount cannot be negative.")]
         public decimal TotalAmount { get; set; }
 
+        public decimal TaxRate { get; set; }
 
         public decimal? CGST { get; set; }
         public decimal? IGST { get; set; }

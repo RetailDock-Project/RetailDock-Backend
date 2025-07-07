@@ -41,7 +41,7 @@ namespace IdentityService.Controllers
             [FromQuery] Guid? roleId,
             [FromQuery] Guid? userId)
         {
-            var response = await userService.GetFilteredUsersByOrgId(OrgId, search, roleId, userId);
+            var response = await userService.GetFilteredUsersByOrgId(OrgId, search, roleId, userId,UserId);
             return StatusCode(response.StatusCode, response);
         }
 

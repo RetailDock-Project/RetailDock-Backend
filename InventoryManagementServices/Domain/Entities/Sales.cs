@@ -41,10 +41,10 @@ namespace Domain.Entities
         Cash, Credit, BankTransfer
     }
 
-public enum GST_Type
-{
-    SGST,
-    UGST,
-    IGST
-}
+    public enum GST_Type
+    {
+        SGST,
+        UGST,
+        IGST
+    }
 }

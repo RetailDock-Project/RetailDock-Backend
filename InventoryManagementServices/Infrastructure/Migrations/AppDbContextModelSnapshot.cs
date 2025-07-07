@@ -138,8 +138,13 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("GstRate")
                         .HasColumnType("decimal(5,2)");
 
-                    b.Property<int>("HSNCodeNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("HSNCodeName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("HSNCodeNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
@@ -435,6 +440,9 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("TaxAmount")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<decimal>("TaxRate")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(65,30)");
 
@@ -656,6 +664,9 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("TaxAmount")
                         .HasColumnType("decimal(65,30)");
 
+                    b.Property<decimal>("TaxRate")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(65,30)");
 
@@ -685,8 +696,9 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("DiscountAmount")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int>("HSNCodeNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("HSNCodeNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<decimal>("IGST")
                         .HasColumnType("decimal(65,30)");
@@ -957,8 +969,9 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("CGST")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<int>("HSNCodeNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("HSNCodeNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<decimal>("IGST")
                         .HasColumnType("decimal(65,30)");
@@ -1096,7 +1109,7 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<Guid?>("OrgnaisationId")
+                    b.Property<Guid>("OrgnaisationId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");

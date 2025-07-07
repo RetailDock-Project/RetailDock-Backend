@@ -1,4 +1,5 @@
-﻿using Application.Dto;
+﻿using API.Controllers.Base;
+using Application.Dto;
 using Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UnitOfMeasurementController : ControllerBase
+    public class UnitOfMeasurementController : BaseController
     {
         private readonly IUnitOfMeasureServices _services;
 
@@ -21,7 +22,7 @@ namespace API.Controllers
         {
             try
             {
-                var result = await _services.AddUnitOfMeasure(dto);
+                var result = await _services.AddUnitOfMeasure(dto,OrgId);
                 return StatusCode(result.StatusCode, result);
             }
             catch (Exception ex)
@@ -31,11 +32,11 @@ namespace API.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll(Guid OrganaiztionId)
+        public async Task<IActionResult> GetAll()
         {
             try
             {
-                var result = await _services.GetAllUnitOfMeasures(OrganaiztionId);
+                var result = await _services.GetAllUnitOfMeasures(OrgId);
                 return StatusCode(result.StatusCode, result);
             }
             catch (Exception ex)

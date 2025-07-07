@@ -12,7 +12,7 @@ namespace Application.Services
 {
     public interface IProductCategoryServices
     {
-        Task<Responses<string>> AddproductCategory(ProductCategoryDto productCategoryDto);
+        Task<Responses<string>> AddproductCategory(ProductCategoryDto productCategoryDto,Guid orgId);
         Task<Responses<List<GetProductCategoryDto>>> GetAllCategoryProducts(Guid OrganaiztionId);
 
         Task<Responses<ProductCategoryDto>> GetCategoryById(int id);
@@ -31,17 +31,22 @@ namespace Application.Services
             _repository = repository;
             _mapper = mapper;
         }
-        public async Task<Responses<string>> AddproductCategory(ProductCategoryDto productCategoryDto)
+        public async Task<Responses<string>> AddproductCategory(ProductCategoryDto productCategoryDto, Guid orgId)
         {
             try
             {
+                if (orgId == Guid.Empty)
+                {
+                    return new Responses<string> { Message = "Organization id required", StatusCode = 400 };
+                }
                 var category = _mapper.Map<ProductCategory>(productCategoryDto);
+                category.OrgnaisationId = orgId;
                 await _repository.AddCategory(category);
                 return new Responses<string> { Message = "Product Category Added", StatusCode = 201 };
             }
             catch (Exception ex)
             {
-                return new Responses<string> { Message = $"Error in adding: {ex.Message}", StatusCode = 400 };
+                return new Responses<string> { Message = $"Error in adding: {ex.Message}", StatusCode = 500 };
 
             }
 
@@ -58,7 +63,7 @@ namespace Application.Services
             }
             catch (Exception ex)
             {
-                return new Responses<List<GetProductCategoryDto>> { StatusCode = 200, Message = $"Error fetching categories: {ex.Message}" };
+                return new Responses<List<GetProductCategoryDto>> { StatusCode = 500, Message = $"Error fetching categories: {ex.Message}" };
             }
         }
 

@@ -5,10 +5,6 @@ namespace Application.Dto
 {
     public class UnitOfMeasureDto
     {
-        //[Required]
-        //public int Id { get; set; }
-        [Required]
-        public Guid? OrgnaisationId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -19,7 +15,6 @@ namespace Application.Dto
     {
         [Required]
         public int Id { get; set; }
-        public Guid? OrgnaisationId { get; set; }
 
         [Required]
         [MaxLength(50)]

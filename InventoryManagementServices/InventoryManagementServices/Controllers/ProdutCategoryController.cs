@@ -1,4 +1,5 @@
-﻿using Application.Dto;
+﻿using API.Controllers.Base;
+using Application.Dto;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,7 +9,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductCategoryController : ControllerBase
+    public class ProductCategoryController : BaseController
     {
         private readonly IProductCategoryServices _services;
 
@@ -22,7 +23,7 @@ namespace API.Controllers
         {
             try
             {
-                var result = await _services.AddproductCategory(productCategoryDto);
+                var result = await _services.AddproductCategory(productCategoryDto,OrgId);
                 return StatusCode(result.StatusCode, result);
             }
             catch (Exception ex)

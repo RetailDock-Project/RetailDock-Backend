@@ -1,6 +1,9 @@
-﻿using Application.Dto;
+﻿using API.Controllers.Base;
+using Application.Dto;
 using Application.Services;
 using Domain.Entities;
+using Domain.Enums;
+using GrpcContracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +11,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseController
     {
         private readonly IProductServices _services;
 
@@ -19,7 +22,7 @@ namespace API.Controllers
         [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProduct([FromForm] ProductDto productDto)
         {
-            var result = await _services.AddProduct(productDto);
+            var result = await _services.AddProduct(productDto,UserId,OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpPut("update/product")]
@@ -104,6 +107,19 @@ namespace API.Controllers
 
             return StatusCode(response.StatusCode,response);
 
+        }
+
+        [HttpGet("filtered-products")]
+        public async Task<IActionResult> GetFilteredProducts(
+
+    [FromQuery] string? search,
+    [FromQuery] int? categoryId,
+    [FromQuery] ProductStockStatus? stockStatus = null) // ✅ Nullable
+        {
+            var result = await _services.GetFilteredProductsAsync(
+                OrgId, search, categoryId, stockStatus);
+
+            return StatusCode(result.StatusCode, result);
         }
     }
 }
