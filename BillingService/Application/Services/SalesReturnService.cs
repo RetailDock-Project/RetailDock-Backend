@@ -21,20 +21,20 @@ namespace Application.Services
         private readonly ISaleReturnRepository saleReturnRepo;
         private readonly ILogger<SalesReturnViewDto> logger;
         private readonly IAccountGrpc accountGrpc;
-        private readonly IUnitOfWorkRepository unitOfWork;
-        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger,IAccountGrpc _accountGrpc, IUnitOfWorkRepository _unitOfWork)
+  
+        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger,IAccountGrpc _accountGrpc)
         {
             mapper = _mapper;
             saleReturnRepo = _saleReturnRepo;
             logger = _logger;
             accountGrpc = _accountGrpc;
-            unitOfWork = _unitOfWork;
+           
         }
         public async Task<ResponseDto<object>> AddSalesReturn(AddSalesReturnDto salesReturn, Guid orgId, Guid userId)
         {
             try
             {
-                await unitOfWork._BiginTransaction();
+                
 
                 var sale= await saleReturnRepo.fetchSalesByInvoice(salesReturn.SaleInvoiceNumber,orgId);
 
@@ -131,7 +131,7 @@ namespace Application.Services
 
                 if (addLedger.StatusCode != 200)
                 {
-                    await unitOfWork._RolBackTransaction();
+                  
              
 
                     return new ResponseDto<object> { Message = "Error in AccountingService", StatusCode = 200 };
@@ -139,7 +139,7 @@ namespace Application.Services
                 }
                 if (addLedger.StatusCode == 200)
                 {
-                    await unitOfWork._CommitTransaction();
+                    
                     await saleReturnRepo.SaveChanges();
 
            return  new ResponseDto<object> { Message = "New sales return is created", StatusCode = 201 };
@@ -150,7 +150,7 @@ namespace Application.Services
             }
             catch (Exception ex)
             {
-                await unitOfWork._RolBackTransaction();
+           
                 logger.LogError(ex, "error from addind new salesReturn  ");
                 return new ResponseDto<object> { Message ="internal Server Error", StatusCode = 500 };
             }
