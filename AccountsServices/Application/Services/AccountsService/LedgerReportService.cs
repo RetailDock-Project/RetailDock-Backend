@@ -27,7 +27,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
-
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<LedgerDetailsReportDTO>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
                 var data = await _ledgerReportRepository.GetLedgerDetailsAsync(organizationId, ledgerId, startDate, endDate);
                 if (data != null)
@@ -64,6 +71,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<LedgerSummaryDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var summaries = await _ledgerReportRepository.GetAllLedgerSummariesAsync(organizationId, startDate, endDate);
 
                 return new ApiResponseDTO<List<LedgerSummaryDTO>>
@@ -89,6 +104,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<LedgerSummaryDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
 
                 var data = await _ledgerReportRepository.GetLedgerSummaryByGroupHierarchyAsync(groupId, organizationId, startDate, endDate);
@@ -123,8 +146,16 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<GroupWithLedgersSummaryDTO>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var result = await _ledgerReportRepository.GetGroupAndLedgerSummaryAsync(groupId, organizationId, start, end);
-                if(result != null)
+                if (result != null)
                 {
                     return new ApiResponseDTO<GroupWithLedgersSummaryDTO>
                     {

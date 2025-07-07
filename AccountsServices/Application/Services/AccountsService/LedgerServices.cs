@@ -26,6 +26,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<string>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var isExists = await _ledgerRepository.IsLedgerNameExistsAsync(ledgerDTO.LedgerName, organizationId);
                 if (isExists)
                 {
@@ -59,7 +67,7 @@ namespace Application.Services.AccountsService
                     ClosingBalance = ledgerDTO.OpeningBalance,
                     DrCr = ledgerDTO.DrCr,
                     CreatedBy = ledgerDTO.CreatedBy,
-                    UpdatedBy = ledgerDTO.UpdateBy,
+                 
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = DateTime.UtcNow,
@@ -82,7 +90,7 @@ namespace Application.Services.AccountsService
                         IFSCCode = ledgerDTO.Details.IFSCCode,
                         UPIId = ledgerDTO.Details.UPIId,
                         CreatedBy = ledgerDTO.CreatedBy,
-                        UpdatedBy = ledgerDTO.UpdateBy,
+                      
                         CreatedAt = DateTime.UtcNow,
                         UpdatedAt = DateTime.UtcNow
                     };
@@ -110,7 +118,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
-
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
                 var ledgers = await _ledgerRepository.GetAllLedgers(organizationId);
                 if (ledgers.Count > 0)
@@ -145,7 +160,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
-
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<GetLedgerDetailsDTO>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
                 var ledger = await _ledgerRepository.GetLedgerById(id, organizationId);
                 if (ledger == null)
@@ -181,7 +203,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
-
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
                 var ledger = await _ledgerRepository.GetLedgersByGroup(groupId, organizationId);
                 if (ledger.Count > 0)
@@ -294,6 +323,14 @@ namespace Application.Services.AccountsService
 
         public async Task<ApiResponseDTO<List<GetLedgerDetailsDTO>>> GetSalesAcoountLedgerts(Guid organizationId)
         {
+            if (organizationId == Guid.Empty)
+            {
+                return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                {
+                    StatusCode = 400,
+                    Message = "OrganizationId is Required"
+                };
+            }
             try
             {
                 var data = await _ledgerRepository.GetLedgersUnderSalesAccountGroup(organizationId);
@@ -329,6 +366,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var data = await _ledgerRepository.GetLedgersUnderPurchaseAccountGroup(organizationId);
                 if (data.Count > 0)
                 {
@@ -362,6 +407,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var groupIds = await _ledgerRepository.GetDebtorAndCreditorGroupIds(OrganizationId);
                 if (groupIds == null || groupIds.Count == 0)
                 {
@@ -413,6 +466,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var groupId = await _ledgerRepository.GetInputGSTGroupId(organizationId);
                 if (groupId == null || groupId == Guid.Empty)
                 {
@@ -455,6 +516,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var groupId = await _ledgerRepository.GetOutputGSTGroupId(organizationId);
                 if (groupId == null || groupId == Guid.Empty)
                 {
@@ -496,6 +565,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<GetLedgerDetailsDTO>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var data = await _ledgerRepository.GetCOGSLedgerByBame(OrganizationId);
 
                 if (data == null)
@@ -529,6 +606,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<GetLedgerDetailsDTO>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var data = await _ledgerRepository.GetInventryTransactionLedgerByBame(OrganizationId);
 
                 if (data == null)
@@ -561,6 +646,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetLedgerDetailDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var data = await _ledgerRepository.GetCashAndBankLedgers(organizationId);
                 if (data.Count > 0)
                 {
@@ -596,6 +689,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var isExists = await _ledgerRepository.IsLedgerNameExistsAsync(ledgerDTO.LedgerName, OrganizationId);
                 if (isExists)
                 {
@@ -637,7 +738,7 @@ namespace Application.Services.AccountsService
                     ClosingBalance = ledgerDTO.OpeningBalance,
                     DrCr = ledgerDTO.DrCr,
                     CreatedBy = ledgerDTO.CreatedBy,
-                    UpdatedBy = ledgerDTO.UpdateBy,
+                  
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
                    
@@ -660,7 +761,7 @@ namespace Application.Services.AccountsService
                         IFSCCode = ledgerDTO.Details.IFSCCode,
                         UPIId = ledgerDTO.Details.UPIId,
                         CreatedBy = ledgerDTO.CreatedBy,
-                        UpdatedBy = ledgerDTO.UpdateBy,
+                      
                         CreatedAt = DateTime.UtcNow,
                        
                     };
@@ -691,6 +792,14 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 var isExists = await _ledgerRepository.IsLedgerNameExistsAsync(ledgerDTO.LedgerName, OrganizationId);
                 if (isExists)
                 {
@@ -732,7 +841,7 @@ namespace Application.Services.AccountsService
                     ClosingBalance = ledgerDTO.OpeningBalance,
                     DrCr = ledgerDTO.DrCr,
                     CreatedBy = ledgerDTO.CreatedBy,
-                    UpdatedBy = ledgerDTO.UpdateBy,
+                    
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
                    
@@ -755,7 +864,7 @@ namespace Application.Services.AccountsService
                         IFSCCode = ledgerDTO.Details.IFSCCode,
                         UPIId = ledgerDTO.Details.UPIId,
                         CreatedBy = ledgerDTO.CreatedBy,
-                        UpdatedBy = ledgerDTO.UpdateBy,
+                       
                         CreatedAt = DateTime.UtcNow,
                       
                     };
