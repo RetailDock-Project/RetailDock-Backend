@@ -20,7 +20,7 @@ namespace Application.Interfaces.IRepositories
         Task UpdateUserOrganizationRoleAsync(UserOrganizationRole userOrgRole);
         Task UpdateUserAsync(User user);
         Task<List<OrganizationUserDto>> GetFilteredUsersByOrgId(
-     Guid orgId, string? search, Guid? roleId, Guid? userId);
+     Guid orgId, string? search, Guid? roleId, Guid? userId,Guid user);
 
         Task<UserStatsDto> GetUserStatsByOrgId(Guid orgId);
     }

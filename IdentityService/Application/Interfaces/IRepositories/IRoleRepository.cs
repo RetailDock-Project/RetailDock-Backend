@@ -28,5 +28,7 @@ namespace Application.Interfaces.IRepositories
         Task AddPermission(Permission newPermission);
         Task<object> checkAlreadyAddedRole(List<OrgRoleDto> orgRoles);
 
+        Task<List<OrganizationRole>> GetOrganizationRolesWithPermissions(Guid organizationId);
+
     }
 }

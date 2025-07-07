@@ -17,6 +17,7 @@ namespace Domain.Entities
         public decimal TotalAmount { get; set; }
         public decimal TaxAmount { get; set; }
 
+        public decimal TaxRate { get; set; }
 
         public decimal? CGST { get; set; }
         public decimal? IGST { get; set; }

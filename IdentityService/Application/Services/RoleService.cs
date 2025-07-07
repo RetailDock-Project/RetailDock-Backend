@@ -141,15 +141,15 @@ namespace Application.Services
             return new ResponseDto<object> { StatusCode = 200, Message = "Role deleted successfully" };
         }
 
-        public async Task<ResponseDto<List<RoleDto>>> GetAllRoles(Guid orgId) { 
-            var roles=await roleRepository.GetAllRoles(orgId);
-            if (roles == null || !roles.Any()) {
-                return new ResponseDto<List<RoleDto>> { StatusCode = 200 ,Message="Roles not found"};
-            }
-            var result=mapper.Map<List<RoleDto>>(roles);
-            return new ResponseDto<List<RoleDto>> { StatusCode = 200, Message = "Roles retrieved",Data=result };
+        //public async Task<ResponseDto<List<GetOrgRoleDto>>> GetAllRoles(Guid orgId) { 
+        //    var roles=await roleRepository.GetAllRoles(orgId);
+        //    if (roles == null || !roles.Any()) {
+        //        return new ResponseDto<List<GetOrgRoleDto>> { StatusCode = 200 ,Message="Roles not found"};
+        //    }
+        //    var result=mapper.Map<List<GetOrgRoleDto>>(roles);
+        //    return new ResponseDto<List<GetOrgRoleDto>> { StatusCode = 200, Message = "Roles retrieved",Data=result };
 
-        }
+        //}
 
         //public async Task<ResponseDto<object>> AddOrganizationRoles(List<OrgRoleDto> orgRoles) {
         //    var roles = mapper.Map<List<OrganizationRole>>(orgRoles);
@@ -220,7 +220,19 @@ namespace Application.Services
 
         }
 
-       
+        public async Task<ResponseDto<List<GetOrgRoleWithPermissionsDto>>> GetOrganizationRolesWithPermissions(Guid organizationId)
+        {
+            var roles = await roleRepository.GetOrganizationRolesWithPermissions(organizationId);
+            var result = mapper.Map<List<GetOrgRoleWithPermissionsDto>>(roles);
+
+            return new ResponseDto<List<GetOrgRoleWithPermissionsDto>>
+            {
+                StatusCode = 200,
+                Message = "Organization roles with permissions retrieved",
+                Data = result
+            };
+        }
+
 
     }
 }

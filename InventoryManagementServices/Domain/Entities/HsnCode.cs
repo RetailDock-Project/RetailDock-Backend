@@ -12,7 +12,11 @@ namespace Domain.Entities
     {
         [Key]
        public int HsnCodeId { get; set; }
-        public int HSNCodeNumber { get; set; }
+        public string HSNCodeNumber { get; set; }
+
+        public string HSNCodeName { get; set; }
+
+
         public Guid? OrgnaisationId { get; set; }
 
         [Required(ErrorMessage = "GST rate is required.")]

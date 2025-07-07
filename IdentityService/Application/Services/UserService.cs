@@ -117,7 +117,7 @@ namespace Application.Services
         }
 
         public async Task<ResponseDto<List<OrganizationUserDto>>> GetFilteredUsersByOrgId(
-    Guid orgId, string? search, Guid? roleId, Guid? userId)
+    Guid orgId, string? search, Guid? roleId, Guid? userId,Guid user)
         {
             if (orgId == Guid.Empty)
             {
@@ -128,7 +128,7 @@ namespace Application.Services
                 };
             }
 
-            var result = await userRepo.GetFilteredUsersByOrgId(orgId, search, roleId, userId);
+            var result = await userRepo.GetFilteredUsersByOrgId(orgId, search, roleId, userId, user);
 
             if (result == null || !result.Any())
             {

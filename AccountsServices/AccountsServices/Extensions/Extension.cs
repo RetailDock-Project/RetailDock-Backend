@@ -14,11 +14,13 @@ namespace AccountsService.Extensions
             services.AddScoped<IAccountsGroupService, AccountsGroupServices>();
             services .AddScoped<ILedgerRepository, LedgerRepository>();
             services.AddScoped<ILedgerServices, LedgerServices>();
-            services.AddScoped<IAccountsRepository, VoucherRepository>();
+            services.AddScoped<IVoucherRepository, VoucherRepository>();
 
             services.AddScoped<IVoucherService, VoucherService>();
             services.AddScoped<ILedgerReportRepository, LedgerReportRepository>();
             services.AddScoped<ILedgerReportServices,LedgerReportService>();
+            services.AddScoped<IAccountsReportRepository, AccountsReportRepository>();
+            services.AddScoped<IAccountsReportService, AccountsReportService>();
 
 
             return services;

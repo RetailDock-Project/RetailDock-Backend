@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Application.Dto;
 using Application.Interfaces;
 using Domain.Entities;
+using Domain.Enums;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -152,5 +153,43 @@ namespace Infrastructure.Repositories
         public async Task<Product> GetProductHistory(Guid productId) {
             return await _appDbContext.Products.Include(p => p.SaleItems).ThenInclude(si=>si.Sales).ThenInclude(s=>s.Invoices).Include(p => p.SalesReturnItems).ThenInclude(sri=>sri.SalesReturn).ThenInclude(sr => sr.ReturnInvoice).Include(p=>p.PurchaseItems).ThenInclude(pi=>pi.Purchase).ThenInclude(p=>p.PurchaseInvoice).Include(p=>p.PurchaseReturnItems).ThenInclude(pri=>pri.PurchaseReturn).ThenInclude(pr=>pr.PurchaseReturnInvoice).FirstOrDefaultAsync(p=>p.Id==productId && !p.IsDeleted);
         }
+
+        public async Task<List<Product>> FilterProductsAsync(
+    Guid organizationId,
+    string? search,
+    int? categoryId,
+    ProductStockStatus? stockStatus)
+        {
+            var query = _appDbContext.Products
+                .Include(p => p.Images)
+                .Include(p => p.UnitOfMeasures)
+                .Include(p => p.Category)
+                .Include(p => p.HsnCode)
+                .Where(p => !p.IsDeleted && p.OrgnaisationId == organizationId)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(p =>
+                    p.ProductName.Contains(search) ||
+                    p.ProductCode.Contains(search));
+            }
+
+            if (categoryId.HasValue)
+            {
+                query = query.Where(p => p.ProductCategoryId == categoryId.Value);
+            }
+
+            query = stockStatus switch
+            {
+                ProductStockStatus.InStock => query.Where(p => p.Stock > p.ReOrderLevel),
+                ProductStockStatus.OutOfStock => query.Where(p => p.Stock == 0),
+                ProductStockStatus.LowStock => query.Where(p => p.Stock > 0 && p.Stock <= p.ReOrderLevel),
+                _ => query
+            };
+
+            return await query.ToListAsync();
+        }
+
     }
-    }
+}

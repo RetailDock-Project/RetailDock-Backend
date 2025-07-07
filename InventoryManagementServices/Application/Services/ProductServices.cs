@@ -14,12 +14,13 @@ using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 using Application.Interfaces.IRepository;
 using Application.Events;
+using Domain.Enums;
 
 namespace Application.Services
 {
     public interface IProductServices
     {
-        Task<Responses<string>> AddProduct(ProductDto productdto);
+        Task<Responses<string>> AddProduct(ProductDto productdto,Guid orgId,Guid userId);
         Task<Responses<string>> UpdateProduct(Guid id,ProductDto productdto);
         Task<Responses<ProductReadDto>> GetProductById(Guid id);
         Task<Responses<List<ProductReadDto>>> GetAllProducts(Guid OrganizationId);
@@ -36,7 +37,11 @@ namespace Application.Services
 
         Task<Responses<List<ProductHistoryDTO>>> GetProductHistory(Guid productId);
 
-
+        Task<Responses<List<ProductReadDto>>> GetFilteredProductsAsync(
+    Guid organizationId,
+    string? search,
+    int? categoryId,
+    ProductStockStatus? stockStatus);
     }
 
     public class Productservices:IProductServices
@@ -54,7 +59,7 @@ namespace Application.Services
             _producer= producer;
         }
 
-        public async Task<Responses<string>> AddProduct(ProductDto productdto)
+        public async Task<Responses<string>> AddProduct(ProductDto productdto, Guid orgId, Guid userId)
         {
             try
             {
@@ -96,6 +101,8 @@ namespace Application.Services
 
                 var product = _mapper.Map<Product>(productdto);
                 product.Id=Guid.NewGuid();
+                product.OrgnaisationId = orgId;
+                product.CreatedBy = userId;
                 product.BarCodeImageBase64 = Domain.Entities.BarcodeHelper.GenerateBarcodeBase64(product.ProductCode);
                 product.Images = new List<Images>();
                 if (productdto.ProductImages != null)
@@ -615,5 +622,48 @@ namespace Application.Services
 
             }
         }
+
+
+
+        public async Task<Responses<List<ProductReadDto>>> GetFilteredProductsAsync(
+    Guid organizationId,
+    string? search,
+    int? categoryId,
+    ProductStockStatus? stockStatus)
+        {
+            try
+            {
+                var products = await _repository.FilterProductsAsync(
+                    organizationId, search, categoryId, stockStatus);
+
+                if (!products.Any())
+                {
+                    return new Responses<List<ProductReadDto>>
+                    {
+                        StatusCode = 200,
+                        Message = "No products found for the given criteria."
+                    };
+                }
+
+                var mapped = _mapper.Map<List<ProductReadDto>>(products);
+
+                return new Responses<List<ProductReadDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Products retrieved successfully.",
+                    Data = mapped
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to retrieve products");
+                return new Responses<List<ProductReadDto>>
+                {
+                    StatusCode = 500,
+                    Message = "An error occurred while retrieving products."
+                };
+            }
+        }
+
     }
 }

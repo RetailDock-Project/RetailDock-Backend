@@ -15,16 +15,24 @@ namespace Application.Services.AccountsService
     public class VoucherService : IVoucherService
     {
         private readonly ILogger<VoucherService> _logger;
-        private readonly IAccountsRepository _accountsRepository;
-        public VoucherService(ILogger<VoucherService> logger, IAccountsRepository accountsRepository)
+        private readonly IVoucherRepository _VoucherRepository;
+        public VoucherService(ILogger<VoucherService> logger, IVoucherRepository accountsRepository)
         {
             _logger = logger;
-            _accountsRepository = accountsRepository;
+            _VoucherRepository = accountsRepository;
         }
         public async Task<ApiResponseDTO<bool>> AddVoucherEntrys(Guid organizationId, Guid CreatedBy, AddVouchersDTO addVoucherDTO)
         {
             try
             {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<bool>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
                 if (addVoucherDTO == null)
                 {
                     return new ApiResponseDTO<bool>
@@ -110,7 +118,7 @@ namespace Application.Services.AccountsService
                         Message = "Debit and credit amount must be equal"
                     };
                 }
-                var VoucherNumber = await _accountsRepository.GenerateVoucherNumber(organizationId, addVoucherDTO.VoucherTypeId);
+                var VoucherNumber = await _VoucherRepository.GenerateVoucherNumber(organizationId, addVoucherDTO.VoucherTypeId);
                 var voucherId = Guid.NewGuid();
 
                 var voucher = new Vouchers
@@ -126,7 +134,7 @@ namespace Application.Services.AccountsService
 
 
                 };
-                var result = await _accountsRepository.AddVoucherEntrys(organizationId, CreatedBy, voucher,allTransactions);
+                var result = await _VoucherRepository.AddVoucherEntrys(organizationId, CreatedBy, voucher,allTransactions);
 
                 return new ApiResponseDTO<bool>
                 {
@@ -152,6 +160,79 @@ namespace Application.Services.AccountsService
 
 
         }
-       
+       public async Task<ApiResponseDTO<List<GetVoucherTransactionByVoucherTypeId>>> GetTransactionsByVoucherTypeAsync(Guid voucherTypeId, Guid organizationId, DateTime? fromDate, DateTime? toDate)
+        {
+            try
+            {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetVoucherTransactionByVoucherTypeId>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
+                var data = await _VoucherRepository.GetTransactionsByVoucherTypeAsync(voucherTypeId, organizationId, fromDate, toDate);
+                if (data.Count> 0)
+                {
+                    return new ApiResponseDTO<List<GetVoucherTransactionByVoucherTypeId>>
+                    {
+                        StatusCode = 200,
+                        Message = "Voucher  report Fetched Succussfully",
+
+                        Data = data
+
+                    };
+                }
+
+                return new ApiResponseDTO<List<GetVoucherTransactionByVoucherTypeId>>
+                {
+                    StatusCode = 200,
+                    Message = "No data found this id or date "
+                };
+
+            }
+            catch (Exception ex)
+            
+            {
+                _logger.LogError(ex.Message, "Error in Voucher Report");
+                return new ApiResponseDTO<List<GetVoucherTransactionByVoucherTypeId>>
+                {
+                    StatusCode = 500,
+                    Message = "Error in Voucher Report"
+                };
+            }
+        }
+        public async Task<ApiResponseDTO<List<GetAllVoucherTypeDTO>>> GetAllVoucherTypes()
+        {
+            try
+            {
+                var data = await _VoucherRepository.GetAllVoucherTypes();
+                if (data.Count> 0)
+                {
+                    return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                    {
+                        StatusCode = 200,
+                        Message = "All voucher type fetched Succussfully",
+                        Data = data
+                        
+                    };
+                }
+                return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                {
+                    StatusCode = 200,
+                    Message = "No data Found"
+                };
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error in Get All Voucher Types");
+                return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "GetAllVoucherTypeDTO"
+                };
+            }
+        }
     }
 }
