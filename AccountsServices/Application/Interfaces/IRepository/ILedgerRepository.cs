@@ -14,8 +14,8 @@ namespace Application.Interfaces.IRepository
        
         Task<bool> CreateLedgerAsync(Ledger ledger);
         Task<bool> IsLedgerNameExistsAsync(string ledgerName, Guid organizationId);
-      
-        Task<List<GetLedgerDetailsDTO>> GetAllLedgers(Guid organizationId);
+        
+          Task<List<GetLedgerDetailsDTO>> GetAllLedgers(Guid organizationId);
         Task<GetLedgerDetailsDTO>GetLedgerById(Guid id,Guid organizationId);
         Task<List<GetLedgerDetailsDTO>> GetLedgersByGroup(Guid groupId, Guid organizationId);
         Task<bool> UpdateLedgerDetails(Guid ledgerId, UpdateLedger updateLedger);
@@ -30,6 +30,7 @@ namespace Application.Interfaces.IRepository
         Task<List<GetLedgerDetailDTO>> GetCashAndBankLedgers(Guid organizationId);
         Task<string?> GetNatureByGroupIdOrMasterGroupIdAsync(Guid id);
         Task<Guid> GetGroupIdByNameAndOrganizationId(Guid organizationId, string groupname);
-
+        Task<List<GetLedgerDetailDTO>> GetLedgersByPassingOrganizationId(Guid OrganizationId);
+        Task<GetLedgerDetailsDTO> GetLedgerByBame(Guid organizationId, string name);
     }
 }

@@ -891,5 +891,139 @@ namespace Application.Services.AccountsService
             }
 
         }
+        public async Task<ApiResponseDTO<GetCreditAndDebitLedgers>> GetCrediAndDebitLedgersByVoucherId(Guid organizationId,Guid VoucherId)
+        {
+            try
+            {
+                var CashAnBankLedgers = await _ledgerRepository.GetCashAndBankLedgers(organizationId);
+
+                var AllLedgers = await _ledgerRepository.GetLedgersByPassingOrganizationId(organizationId);
+
+
+                if (VoucherId == Guid.Parse("a5be9fad-421a-11f0-a0c7-862ccfb05833")) //  Receipt
+                {
+                   
+                    var ledgers = new GetCreditAndDebitLedgers
+                    {
+                        DrSideLedgers = CashAnBankLedgers,
+                        CrSideLedgers = AllLedgers
+                    };
+                    return new ApiResponseDTO<GetCreditAndDebitLedgers>
+                    {
+                        StatusCode = 200,
+                        Message = "Get Succussfully Ledgers",
+                        Data = ledgers
+                    };
+                }
+                else if (VoucherId == Guid.Parse("a5bd3238-421a-11f0-a0c7-862ccfb05833")) //Jornel
+                {
+                    var ledgers = new GetCreditAndDebitLedgers
+                    {
+                        DrSideLedgers = AllLedgers,
+                        CrSideLedgers = AllLedgers
+                    };
+                    return new ApiResponseDTO<GetCreditAndDebitLedgers>
+                    {
+                        StatusCode = 200,
+                        Message = "Get Succussfully Ledgers",
+                        Data = ledgers
+                    };
+                }
+                else if(VoucherId == Guid.Parse("a5be99bc-421a-11f0-a0c7-862ccfb05833")) // payment a5be99bc-421a-11f0-a0c7-862ccfb05833
+                {
+                    var ledgers = new GetCreditAndDebitLedgers
+                    {
+                        DrSideLedgers = AllLedgers,
+                        CrSideLedgers = CashAnBankLedgers
+                    };
+                    return new ApiResponseDTO<GetCreditAndDebitLedgers>
+                    {
+                        StatusCode = 200,
+                        Message = "Get Succussfully Ledgers",
+                        Data = ledgers
+                    };
+                }
+                else if(VoucherId == Guid.Parse("a5bea054-421a-11f0-a0c7-862ccfb05833"))// Contra a5bea054-421a-11f0-a0c7-862ccfb05833
+                {
+                    var ledgers = new GetCreditAndDebitLedgers
+                    {
+                        DrSideLedgers = CashAnBankLedgers,
+                        CrSideLedgers = CashAnBankLedgers
+                    };
+                    return new ApiResponseDTO<GetCreditAndDebitLedgers>
+                    {
+                        StatusCode = 200,
+                        Message = "Get Succussfully Ledgers",
+                        Data = ledgers
+                    };
+                }
+                else
+                {
+                    var ledgers = new GetCreditAndDebitLedgers
+                    {
+                        DrSideLedgers = AllLedgers,
+                        CrSideLedgers = AllLedgers
+                    };
+                    return new ApiResponseDTO<GetCreditAndDebitLedgers>
+                    {
+                        StatusCode = 200,
+                        Message = "Get Succussfully Ledgers",
+                        Data = ledgers
+                    };
+
+                }
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error in Fetching Details");
+                return new ApiResponseDTO<GetCreditAndDebitLedgers>
+                {
+                    StatusCode = 500,
+                    Message = "Error in Fetching Details"
+
+                };
+            }
+        }
+        public async Task<ApiResponseDTO<Guid>> GetLedgerByName(Guid OrganizationId,string Name)
+        {
+            try
+            {
+                if (OrganizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
+                var data = await _ledgerRepository.GetLedgerByBame(OrganizationId,Name);
+
+                if (data == null)
+                {
+                    return new ApiResponseDTO<Guid>
+                    {
+                        StatusCode = 200,
+                        Message = "COGS ledger not found for this organization"
+                    };
+                }
+
+                return new ApiResponseDTO<Guid>
+                {
+                    StatusCode = 200,
+                    Message = "COGS ledger fetched successfully",
+                    Data = data.Id
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching COGS ledger");
+                return new ApiResponseDTO<Guid>
+                {
+                    StatusCode = 500,
+                    Message = "Error fetching COGS ledger"
+                };
+            }
+        }
+
     }
 }
