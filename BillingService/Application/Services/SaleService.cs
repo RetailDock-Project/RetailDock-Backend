@@ -24,16 +24,15 @@ namespace Application.Services
         private readonly ILogger<SaleService> logger;
         private readonly IMapper mapper;
         private readonly IAccountGrpc accountGrpc;
-        private readonly IUnitOfWorkRepository _unitOfWork;
-        public SaleService(ISaleRepository _saleRepo, ILogger<SaleService> _logger, IMapper _mapper, IAccountGrpc _accountGrpc, IUnitOfWorkRepository unitOfWorkRepo)
+ 
+        public SaleService(ISaleRepository _saleRepo, ILogger<SaleService> _logger, IMapper _mapper, IAccountGrpc _accountGrpc)
         {
             logger = _logger;
             saleRepo = _saleRepo;
             mapper = _mapper;
             accountGrpc = _accountGrpc;
-            _unitOfWork = unitOfWorkRepo;
+
         } 
-        
         public async Task<ResponseDto<object>> CashReceivedFromDebtor(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId)
         {
             try
@@ -52,7 +51,7 @@ namespace Application.Services
         {
             try
             {
-                await _unitOfWork._BiginTransaction();
+           
                 var voucher = new Voucher { CreatedBy = userId.ToString(), OrganizationId = orgId.ToString(), Remarks = sales.SaleVoucher.Remarks, VoucherTypeId = "a5bea1e0-421a-11f0-a0c7-862ccfb05833", VoucherDate = DateTime.Now.ToString() ,TransactionsDebit = new List<Transaction>(),
                     TransactionsCredit = new List<Transaction>()
                 };
@@ -67,7 +66,7 @@ namespace Application.Services
                 
                     if (product.UnitPrice > filteredProduct.MRP  )
                     {
-                        await _unitOfWork._RolBackTransaction();
+                       
                         return new ResponseDto<object> { StatusCode = 304, Message = "moreThan marketPrice" };
                     }
 
@@ -176,13 +175,13 @@ namespace Application.Services
                 logger.LogInformation("logging from new sale voucher:{@Response}", response);
                 if (response.StatusCode != 200)
                 {
-                    await _unitOfWork._RolBackTransaction();
+                   
                    
                     return result;
                 }
                 if (response.StatusCode == 200)
                 {
-                    await _unitOfWork._CommitTransaction();
+         
                     await saleRepo.SaveChanges();
                     return result;
                 }       
@@ -192,7 +191,7 @@ namespace Application.Services
             }
             catch (Exception ex)
             {
-                await _unitOfWork._RolBackTransaction();
+              
                 logger.LogError(ex, "Error while adding new sale");
                 return new ResponseDto<object> { StatusCode = 500, Message = "Internal Server Error" };
             }

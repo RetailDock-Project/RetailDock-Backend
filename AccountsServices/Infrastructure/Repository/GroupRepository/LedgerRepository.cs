@@ -383,7 +383,23 @@ namespace Infrastructure.Repository.GroupRepository
             return GroupId;
         }
       
+        public async Task<List<GetLedgerDetailDTO>>GetLedgersByPassingOrganizationId(Guid organizationId)
+        {
+            var sql = @"Select Id,LedgerName From Ledgers where OrganizationId=@OrganizationId";
+            using var connection = _dapperContext.CreateConnection();
+            var ledgers = await connection.QueryAsync<GetLedgerDetailDTO>(sql, new { OrganizationId = organizationId });
+            return ledgers.ToList();
+        }
+        public async Task<GetLedgerDetailsDTO> GetLedgerByBame(Guid organizationId, string name)
+        {
+            var sql = @"SELECT Id 
+                FROM Ledgers 
+                WHERE LedgerName = @Name
+                  AND OrganizationId = @OrganizationId;";
 
-
+            var connection = _dapperContext.CreateConnection();
+            var result = await connection.QueryFirstOrDefaultAsync<GetLedgerDetailsDTO>(sql, new { OrganizationId = organizationId , Name=name});
+            return result;
+        }
     }
 }
