@@ -9,7 +9,7 @@ namespace Domain.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        public Guid? OrgnaisationId { get; set; }
+        public Guid OrgnizationId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -35,10 +35,11 @@ namespace Domain.Entities
         [ForeignKey("UnitOfMeasures")]
         public int UnitOfMeasuresId { get; set; }
 
+
         [Range(0, int.MaxValue)]
         public int ReOrderLevel { get; set; }
 
-        public DateTime LastStockUpdate { get; set; }
+        public DateTime? LastStockUpdate { get; set; } = null;
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal MRP { get; set; }
@@ -59,6 +60,8 @@ namespace Domain.Entities
         public DateTime? UpdatedAt { get; set; }
 
         public Guid CreatedBy { get; set; }
+        public bool IsActive { get; set; }
+
 
         public Guid? UpdatedBy { get; set; } = null;
 
@@ -73,8 +76,9 @@ namespace Domain.Entities
 
         public List<PurchaseReturnItem> PurchaseReturnItems { get; set; }
 
-        public SaleItems SaleItems { get; set; }
-        public SalesReturnItems SalesReturnItems { get; set; }
+        public List<SaleItems> SaleItems { get; set; }
+        public List<SalesReturnItems> SalesReturnItems { get; set; }
+
 
 
     }

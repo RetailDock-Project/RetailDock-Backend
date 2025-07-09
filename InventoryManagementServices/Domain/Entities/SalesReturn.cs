@@ -25,7 +25,7 @@ namespace Domain.Entities
      
 
         public Guid? UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; } = null;
         public  List<SalesReturnItems> SalesReturnItems { get; set; }
         public SalesReturnInvoice ReturnInvoice { get; set; }
         public Sales Sales {  get; set; }   

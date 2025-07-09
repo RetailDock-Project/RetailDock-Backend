@@ -31,8 +31,8 @@ namespace Domain.Entities
         public decimal TotalAmount { get; set; } = 0;
         [Required]
         public DateTime CreatedAt { get; set; }  = DateTime.Now;
-          public Guid UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
+          public Guid? UpdatedBy { get; set; } = null;
+        public DateTime? UpdatedAt { get; set; } = null;
      
         
             public SalesReturn SalesReturn { get; set; }

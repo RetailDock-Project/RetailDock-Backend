@@ -30,5 +30,7 @@ namespace Application.Interfaces
     string? search,
     int? categoryId,
     ProductStockStatus? stockStatus);
+
+        Task<ProductDashboardDto> GetProductDashboardData(Guid organizationId);
     }
 }

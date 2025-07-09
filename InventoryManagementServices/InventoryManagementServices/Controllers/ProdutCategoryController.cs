@@ -33,11 +33,11 @@ namespace API.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAllCategories(Guid OrganaiztionId)
+        public async Task<IActionResult> GetAllCategories()
         {
             try
             {
-                var result = await _services.GetAllCategoryProducts(OrganaiztionId);
+                var result = await _services.GetAllCategoryProducts(OrgId);
         
                 return StatusCode(result.StatusCode, result);
             }

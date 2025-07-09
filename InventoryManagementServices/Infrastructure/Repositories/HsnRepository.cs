@@ -24,12 +24,12 @@ namespace Infrastructure.Repositories
             return hsnCode;
 
         }
-        public async Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId,int hsnCodeId )
+        public async Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId,string hsnCodeNumber )
         {
             var result= await _appDbContext.HsnCodes
                 .FirstOrDefaultAsync(x => !x.IsDeleted
                                           && x.OrgnaisationId == organizationId
-                                          && x.HsnCodeId == hsnCodeId);
+                                          && x.HSNCodeNumber == hsnCodeNumber);
             return result;
         }
 
