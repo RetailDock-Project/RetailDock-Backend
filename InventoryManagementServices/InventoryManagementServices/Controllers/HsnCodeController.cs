@@ -22,6 +22,7 @@ namespace API.Controllers
         {
             try
             {
+                Console.WriteLine(OrgId);
                 var result = await _hsnCodeServices.AddHsn(hsnDto,OrgId);
                 return StatusCode(result.StatusCode, result);
             }
