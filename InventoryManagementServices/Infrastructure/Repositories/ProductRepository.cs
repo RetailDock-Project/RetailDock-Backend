@@ -52,7 +52,7 @@ namespace Infrastructure.Repositories
                   .Include(p => p.UnitOfMeasures)
                   .Include(p => p.Category)
                   .Include(p => p.HsnCode)
-                  .Where(p => !p.IsDeleted && p.OrgnaisationId == OrganizationId)
+                  .Where(p => !p.IsDeleted && p.OrgnizationId == OrganizationId)
                   .ToListAsync();
         }
 
@@ -63,6 +63,10 @@ namespace Infrastructure.Repositories
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.HsnCode)
+                .Include(p=>p.SaleItems)
+                .ThenInclude(si=>si.Sales)
+                .Include(p=>p.PurchaseItems)
+                .ThenInclude(pi=>pi.Purchase)
                 .FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted);
         }
         public async Task<Product> UpdateProduct(Product product)
@@ -87,7 +91,7 @@ namespace Infrastructure.Repositories
         }
         public async Task<List<Product>> GetLowStock(Guid OrganizationId)
         {
-            var products = await _appDbContext.Products.Where(x => x.OrgnaisationId == OrganizationId && x.Stock <= x.ReOrderLevel).ToListAsync();
+            var products = await _appDbContext.Products.Where(x => x.OrgnizationId == OrganizationId && x.Stock <= x.ReOrderLevel).ToListAsync();
             return products;
         }
         public async Task<List<Product>> GetProductByCategory(int categoryId, Guid organizationId)
@@ -96,7 +100,7 @@ namespace Infrastructure.Repositories
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.UnitOfMeasures)
-                .Where(p => p.ProductCategoryId == categoryId && p.OrgnaisationId == organizationId)
+                .Where(p => p.ProductCategoryId == categoryId && p.OrgnizationId == organizationId)
                 .ToListAsync();
 
             return categoryItems;
@@ -106,7 +110,7 @@ namespace Infrastructure.Repositories
             searchTerm = searchTerm?.Trim().ToLower(); 
 
             var query = _appDbContext.Products
-                .Where(p => p.OrgnaisationId == organizationId &&
+                .Where(p => p.OrgnizationId == organizationId &&
                             (string.IsNullOrEmpty(searchTerm) ||
                              p.ProductName.ToLower().Contains(searchTerm) ||  
                              p.ProductCode.ToLower().Contains(searchTerm)));
@@ -121,7 +125,7 @@ namespace Infrastructure.Repositories
         public async Task<ProductStatisticsDto> GetProductStatisticsAsync(Guid organizationId)
         {
             var products = await _appDbContext.Products
-                .Where(p => !p.IsDeleted && p.OrgnaisationId == organizationId)
+                .Where(p => !p.IsDeleted && p.OrgnizationId == organizationId)
                 .ToListAsync();
 
             return new ProductStatisticsDto
@@ -134,7 +138,7 @@ namespace Infrastructure.Repositories
         }
 
         public async Task<bool> ProductStockUpdate(ProductStockUpdateDto updateData) {
-            var product = await _appDbContext.Products.FirstOrDefaultAsync(p => p.Id == updateData.ProductId && p.OrgnaisationId == updateData.OrgId);
+            var product = await _appDbContext.Products.FirstOrDefaultAsync(p => p.Id == updateData.ProductId && p.OrgnizationId == updateData.OrgId);
 
 
             if (product == null) {
@@ -165,7 +169,7 @@ namespace Infrastructure.Repositories
                 .Include(p => p.UnitOfMeasures)
                 .Include(p => p.Category)
                 .Include(p => p.HsnCode)
-                .Where(p => !p.IsDeleted && p.OrgnaisationId == organizationId)
+                .Where(p => !p.IsDeleted && p.OrgnizationId == organizationId)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search))
@@ -190,6 +194,26 @@ namespace Infrastructure.Repositories
 
             return await query.ToListAsync();
         }
+
+
+        public async Task<ProductDashboardDto> GetProductDashboardData(Guid organizationId)
+        {
+            var products = await _appDbContext.Products
+                .Where(p => !p.IsDeleted && p.OrgnizationId == organizationId)
+                .ToListAsync();
+
+            var dashboard = new ProductDashboardDto
+            {
+                TotalProducts = products.Count,
+                ActiveProducts = products.Count(p => !p.IsDeleted),
+                LowStockProducts = products.Count(p => p.Stock > 0 && p.Stock <= p.ReOrderLevel),
+                OutOfStockProducts = products.Count(p => p.Stock == 0),
+                TotalInventoryValue = products.Sum(p => p.Stock * p.CostPrice)
+            };
+
+            return dashboard;
+        }
+
 
     }
 }

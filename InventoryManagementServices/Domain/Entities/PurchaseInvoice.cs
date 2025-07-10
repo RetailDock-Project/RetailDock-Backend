@@ -28,7 +28,7 @@ namespace Domain.Entities
 
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; }= DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; }= null;
 
         public Purchase Purchase { get; set; }
         public List<PurchaseReturnInvoice> PurchaseReturnInvoices { get; set; }

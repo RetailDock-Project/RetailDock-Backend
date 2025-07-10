@@ -22,7 +22,7 @@ namespace Application.Services
     {
         Task<Responses<string>> AddProduct(ProductDto productdto,Guid orgId,Guid userId);
         Task<Responses<string>> UpdateProduct(Guid id,ProductDto productdto);
-        Task<Responses<ProductReadDto>> GetProductById(Guid id);
+        Task<Responses<GetProductDetailDto>> GetProductById(Guid id);
         Task<Responses<List<ProductReadDto>>> GetAllProducts(Guid OrganizationId);
         Task<Responses<List<ProductBillingGetDto>>> GetAllProductsForBilling(Guid OrganizationId);
         Task <Responses<bool>> DeleteProduct(Guid productId);
@@ -42,6 +42,8 @@ namespace Application.Services
     string? search,
     int? categoryId,
     ProductStockStatus? stockStatus);
+
+        Task<Responses<ProductDashboardDto>> GetDashboardData(Guid organizationId);
     }
 
     public class Productservices:IProductServices
@@ -59,11 +61,13 @@ namespace Application.Services
             _producer= producer;
         }
 
-        public async Task<Responses<string>> AddProduct(ProductDto productdto, Guid orgId, Guid userId)
+        public async Task<Responses<string>> AddProduct(ProductDto productDto, Guid userId, Guid orgId)
         {
             try
             {
-                bool productExists = await _repository.ProductExistsAsync(productdto.ProductName, productdto.ProductCode);
+
+
+                bool productExists = await _repository.ProductExistsAsync(productDto.ProductName, productDto.ProductCode);
                 if (productExists)
                 {
                     return new Responses<string>
@@ -72,7 +76,7 @@ namespace Application.Services
                         StatusCode = 409 
                     };
                 }
-                else if (productdto.CostPrice >= productdto.SellingPrice)
+                else if (productDto.CostPrice >= productDto.SellingPrice)
                 {
                     return new Responses<string>
                     {
@@ -81,7 +85,7 @@ namespace Application.Services
                     };
                 }
 
-                else if (productdto.SellingPrice >= productdto.MRP)
+                else if (productDto.SellingPrice >= productDto.MRP)
                 {
                     return new Responses<string>
                     {
@@ -90,7 +94,7 @@ namespace Application.Services
                     };
                 }
 
-                else if (productdto.CostPrice >= productdto.MRP)
+                else if (productDto.CostPrice >= productDto.MRP)
                 {
                     return new Responses<string>
                     {
@@ -99,18 +103,18 @@ namespace Application.Services
                     };
                 }
 
-                var product = _mapper.Map<Product>(productdto);
+                var product = _mapper.Map<Product>(productDto);
                 product.Id=Guid.NewGuid();
-                product.OrgnaisationId = orgId;
+                product.OrgnizationId = orgId;
                 product.CreatedBy = userId;
                 product.BarCodeImageBase64 = Domain.Entities.BarcodeHelper.GenerateBarcodeBase64(product.ProductCode);
                 product.Images = new List<Images>();
-                if (productdto.ProductImages != null)
+                if (productDto.ProductImages != null)
                 {
-                    foreach (var imageFile in productdto.ProductImages)
+                    foreach (var imageFile in productDto.ProductImages)
                     {
                         var base64 = Domain.Entities.ImageHelper.ConvertToBase64(imageFile);
-                        product.Images.Add(new Images { ImageData = base64, FileName=imageFile.FileName,ProductId=product.Id,ContentType=imageFile.GetType().ToString(),CreatedAt=DateTime.UtcNow });
+                        product.Images.Add(new Images { ImageData = base64, FileName=imageFile.FileName,ProductId=product.Id,ContentType= imageFile.ContentType, CreatedAt=DateTime.UtcNow });
                     }
 
                 }
@@ -171,7 +175,7 @@ namespace Application.Services
 
                 var product = _mapper.Map(productdto, prdct); 
                 product.UpdatedAt = DateTime.UtcNow;
-                if (productdto.ProductImages != null)
+                if (productdto.ProductImages != null || productdto.ProductImages.Any())
                 {
                     foreach (var imageFile in productdto.ProductImages)
                     {
@@ -213,37 +217,57 @@ namespace Application.Services
                 };
             }
         }
-        public async Task <Responses<ProductReadDto>> GetProductById(Guid id)
+        public async Task<Responses<GetProductDetailDto>> GetProductById(Guid id)
         {
             try
             {
                 var product = await _repository.GetProductById(id);
-                var productread = _mapper.Map<ProductReadDto>(product);
+
                 if (product == null)
                 {
-                    return new Responses<ProductReadDto>
+                    return new Responses<GetProductDetailDto>
                     {
                         StatusCode = 404,
-                        Message = "No product is found this id"
+                        Message = "No product is found with this ID"
                     };
                 }
-                return new Responses<ProductReadDto>
+
+                var productread = _mapper.Map<GetProductDetailDto>(product);
+
+                // Optional chaining to avoid null exception
+                var lastSale = product.SaleItems?.OrderByDescending(s => s.Sales.CreatedAt)
+                    .FirstOrDefault()?.Sales.CreatedAt;
+
+                var lastPurchase = product.PurchaseItems?
+                    .OrderByDescending(p => p.Purchase.CreatedAt)
+                    .FirstOrDefault()?.Purchase.CreatedAt;
+
+                productread.productAudit = new ProductAudit
+                {
+                    LastSale = lastSale,
+                    LastPurchase = lastPurchase,
+                    CreatedAt = product.CreatedAt,
+                    LastUpdate = product.UpdatedAt
+                };
+
+                return new Responses<GetProductDetailDto>
                 {
                     StatusCode = 200,
-                    Message = "Product fetched succesfully ",
+                    Message = "Product fetched successfully",
                     Data = productread
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _logger.LogError(ex.Message, "Product fetched failed");
-                return new Responses<ProductReadDto>
+                _logger.LogError(ex, "Product fetch failed");
+                return new Responses<GetProductDetailDto>
                 {
                     StatusCode = 500,
-                    Message = "Product fetched failed"
+                    Message = "Product fetch failed"
                 };
             }
         }
+
         public async Task <Responses<List<ProductReadDto>>> GetAllProducts(Guid OrganizationId)
         {
             try
@@ -542,11 +566,11 @@ namespace Application.Services
             }
         }
 
-        public async Task<Responses<List<ProductHistoryDTO>>> GetProductHistory(Guid productId) {
+        public async Task<Responses<List<ProductHistoryDTO>>> GetProductHistory(Guid productId)
+        {
             try
             {
-
-                if (productId == null || Guid.Empty == productId)
+                if (productId == Guid.Empty)
                 {
                     return new Responses<List<ProductHistoryDTO>>
                     {
@@ -556,33 +580,51 @@ namespace Application.Services
                 }
 
                 var product = await _repository.GetProductHistory(productId);
+
+                if (product == null)
+                {
+                    return new Responses<List<ProductHistoryDTO>>
+                    {
+                        StatusCode = 404,
+                        Message = "Product not found",
+                    };
+                }
+
                 var history = new List<ProductHistoryDTO>();
 
-                // Sale Items
-                if (product.SaleItems != null)
+                // ✅ Sale Items (loop through all)
+                if (product.SaleItems != null && product.SaleItems.Any())
                 {
-                    history.Add(new ProductHistoryDTO
+                    foreach (var saleItem in product.SaleItems)
                     {
-                        Date = product.SaleItems.Sales.CreatedAt,
-                        Type = "Sale",
-                        Quantity = Convert.ToDecimal(product.SaleItems.Quantity),
-                        ReferenceNumber = product.SaleItems.Sales.Invoices.B2CInvoiceNumber ?? product.SaleItems.Sales.Invoices.B2BInvoiceNumber
-                    });
+                        history.Add(new ProductHistoryDTO
+                        {
+                            Date = saleItem.Sales.CreatedAt,
+                            Type = "Sale",
+                            Quantity = Convert.ToDecimal(saleItem.Quantity),
+                            ReferenceNumber = saleItem.Sales.Invoices?.B2CInvoiceNumber
+                                ?? saleItem.Sales.Invoices?.B2BInvoiceNumber
+                        });
+                    }
                 }
 
-                // Sales Return Items
-                if (product.SalesReturnItems != null)
+                // ✅ Sales Return Items (loop through all)
+                if (product.SalesReturnItems != null && product.SalesReturnItems.Any())
                 {
-                    history.Add(new ProductHistoryDTO
+                    foreach (var returnItem in product.SalesReturnItems)
                     {
-                        Date = product.SalesReturnItems.SalesReturn.ReturnDate,
-                        Type = "Sales Return",
-                        Quantity = Convert.ToDecimal(product.SalesReturnItems.Quantity),
-                        ReferenceNumber = product.SalesReturnItems.SalesReturn.ReturnInvoice.B2CReturnInvoiceNumber ?? product.SalesReturnItems.SalesReturn.ReturnInvoice.B2BReturnInvoiceNumber
-                    });
+                        history.Add(new ProductHistoryDTO
+                        {
+                            Date = returnItem.SalesReturn.ReturnDate,
+                            Type = "Sales Return",
+                            Quantity = Convert.ToDecimal(returnItem.Quantity),
+                            ReferenceNumber = returnItem.SalesReturn.ReturnInvoice?.B2CReturnInvoiceNumber
+                                ?? returnItem.SalesReturn.ReturnInvoice?.B2BReturnInvoiceNumber
+                        });
+                    }
                 }
 
-                // Purchase Items
+                // ✅ Purchase Items
                 if (product.PurchaseItems != null && product.PurchaseItems.Any())
                 {
                     foreach (var pi in product.PurchaseItems)
@@ -592,12 +634,12 @@ namespace Application.Services
                             Date = pi.Purchase.CreatedAt,
                             Type = "Purchase",
                             Quantity = Convert.ToDecimal(pi.Quantity),
-                            ReferenceNumber = pi.Purchase.PurchaseInvoice.InvoiceNumber
+                            ReferenceNumber = pi.Purchase.PurchaseInvoice?.InvoiceNumber
                         });
                     }
                 }
 
-                // Purchase Return Items
+                // ✅ Purchase Return Items
                 if (product.PurchaseReturnItems != null && product.PurchaseReturnItems.Any())
                 {
                     foreach (var pri in product.PurchaseReturnItems)
@@ -607,21 +649,30 @@ namespace Application.Services
                             Date = pri.PurchaseReturn.CreatedAt,
                             Type = "Purchase Return",
                             Quantity = Convert.ToDecimal(pri.ReturnedQuantity),
-                            ReferenceNumber = pri.PurchaseReturn.PurchaseReturnInvoice.InvoiceNumber
+                            ReferenceNumber = pri.PurchaseReturn.PurchaseReturnInvoice?.InvoiceNumber
                         });
                     }
                 }
-                return new Responses<List<ProductHistoryDTO>> { StatusCode = 200 ,Message="Product history retrieved successfully",Data= history.OrderByDescending(h => h.Date).ToList() };
-                // Sort history by date
-                
 
+                return new Responses<List<ProductHistoryDTO>>
+                {
+                    StatusCode = 200,
+                    Message = "Product history retrieved successfully",
+                    Data = history.OrderByDescending(h => h.Date).ToList()
+                };
             }
             catch (Exception ex)
             {
-                return new Responses<List<ProductHistoryDTO>> { StatusCode = 500, Message = "Error in retrieving Product history retrieved successfully" };
+                _logger.LogError(ex, "Error while fetching product history");
 
+                return new Responses<List<ProductHistoryDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "Error while retrieving product history"
+                };
             }
         }
+
 
 
 
@@ -664,6 +715,32 @@ namespace Application.Services
                 };
             }
         }
+
+
+        public async Task<Responses<ProductDashboardDto>> GetDashboardData(Guid organizationId)
+        {
+            try
+            {
+                var dashboardData = await _repository.GetProductDashboardData(organizationId);
+
+                return new Responses<ProductDashboardDto>
+                {
+                    StatusCode = 200,
+                    Message = "Dashboard data fetched successfully",
+                    Data = dashboardData
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while fetching dashboard data");
+                return new Responses<ProductDashboardDto>
+                {
+                    StatusCode = 500,
+                    Message = "Something went wrong"
+                };
+            }
+        }
+
 
     }
 }

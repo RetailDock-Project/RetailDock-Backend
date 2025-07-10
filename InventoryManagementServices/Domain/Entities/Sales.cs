@@ -25,8 +25,8 @@ namespace Domain.Entities
         public decimal TotalUnitCost { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public Guid UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public Guid? UpdatedBy { get; set; } = null;
+        public DateTime? UpdatedAt { get; set; } = null;
         public SalesInvoice Invoices { get; set; }
         public CashCustomers CashCustomers { get; set; }
         public CreditCustomers CreditCustomers { get; set; }

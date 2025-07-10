@@ -48,7 +48,7 @@ namespace Application.Dto
         public decimal CostPrice { get; set; }
         [Required]
         public int HsnCodeId { get; set; }
-        public List<IFormFile> ProductImages { get; set; }
+        public List<IFormFile>? ProductImages { get; set; }
     }
     public class ProductReadDto
     {
@@ -66,14 +66,14 @@ namespace Application.Dto
         public decimal MRP { get; set; }
         public decimal SellingPrice { get; set; }
         public decimal CostPrice { get; set; }
-        public decimal TaxRate { get; set; }
+        //public decimal TaxRate { get; set; }
 
 
-        public string CreatedBy { get; set; }
-        public string BarCodeImageBase64 { get; set; }
+        //public string CreatedBy { get; set; }
+        //public string BarCodeImageBase64 { get; set; }
 
 
-        public List<string> ProductImagesBase64 { get; set; }
+        //public List<string> ProductImagesBase64 { get; set; }
     }
     public class ProductBillingGetDto
     {
@@ -139,6 +139,44 @@ namespace Application.Dto
         public decimal Quantity { get; set; }
         public string ReferenceNumber { get; set; } // e.g., Invoice number
     }
+
+
+    public class GetProductDetailDto
+    {
+        public Guid Id { get; set; }
+        public string ProductName { get; set; }
+        public string ProductCode { get; set; }
+
+
+        public string Description { get; set; }
+        public string ProductCategory { get; set; }
+        public int Stock { get; set; }
+        public string UnitOfMeasures { get; set; }
+        public int ReOrderLevel { get; set; }
+        public DateTime LastStockUpdate { get; set; }
+        public decimal MRP { get; set; }
+        public decimal SellingPrice { get; set; }
+        public decimal CostPrice { get; set; }
+        public decimal TaxRate { get; set; }
+
+
+        public string CreatedBy { get; set; }
+        public string BarCodeImageBase64 { get; set; }
+
+
+        public List<string> ProductImagesBase64 { get; set; }
+
+        public ProductAudit productAudit { get; set; }
+    }
+
+    public class ProductAudit {
+        public DateTime CreatedAt { get; set; }
+        public DateTime? LastPurchase { get; set; }
+        public DateTime? LastUpdate { get; set; }
+        public DateTime? LastSale { get; set; }
+
+    }
+
 
 
 }

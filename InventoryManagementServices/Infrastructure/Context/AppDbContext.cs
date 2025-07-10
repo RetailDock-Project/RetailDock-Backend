@@ -70,13 +70,15 @@ namespace Infrastructure.Context
                     .HasForeignKey(p => p.UnitOfMeasuresId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne(p => p.SaleItems)
-                .WithOne(si => si.Product)
-                .HasForeignKey<SaleItems>(si => si.ProductId);
+                //entity.HasOne(p => p.SaleItems)
+                //.WithOne(si => si.Product)
+                //.HasForeignKey<SaleItems>(si => si.ProductId);
 
-                entity.HasOne(p => p.SalesReturnItems)
-                .WithOne(sri => sri.Products)
-                .HasForeignKey<SalesReturnItems>(sri => sri.ProductId);
+      
+
+                //entity.HasOne(p => p.SalesReturnItems)
+                //.WithOne(sri => sri.Products)
+                //.HasForeignKey<SalesReturnItems>(sri => sri.ProductId);
             });
                 
 
@@ -301,6 +303,10 @@ namespace Infrastructure.Context
                 entity.HasOne(si => si.UnitOfMeasures)
                 .WithMany(um=>um.SaleItems)
                 .HasForeignKey(si => si.UnitId);
+
+                entity.HasOne(si => si.Product)
+                .WithMany(p => p.SaleItems)
+                .HasForeignKey(si => si.ProductId);
             });
 
             modelBuilder.Entity<SalesReturnItems>(entity =>
@@ -308,6 +314,10 @@ namespace Infrastructure.Context
                 entity.HasOne(si => si.UnitOfMeasures)
                 .WithMany(um=>um.SalesReturnItems)
                 .HasForeignKey(sri => sri.UnitId);
+
+                entity.HasOne(sri => sri.Products)
+                .WithMany(p => p.SalesReturnItems)
+                .HasForeignKey(si => si.ProductId);
             });
 
         }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250707122140_initial-migration")]
+    [Migration("20250709075035_initial-migration")]
     partial class initialmigration
     {
         /// <inheritdoc />
@@ -152,7 +152,7 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<Guid?>("OrgnaisationId")
+                    b.Property<Guid>("OrgnaisationId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("HsnCodeId");
@@ -222,16 +222,19 @@ namespace Infrastructure.Migrations
                     b.Property<int>("HsnCodeId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime>("LastStockUpdate")
+                    b.Property<DateTime?>("LastStockUpdate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<decimal>("MRP")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid?>("OrgnaisationId")
+                    b.Property<Guid>("OrgnizationId")
                         .HasColumnType("char(36)");
 
                     b.Property<int>("ProductCategoryId")
@@ -333,7 +336,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("SupplierInvoiceNumber")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("UpdatedBy")
@@ -399,7 +402,7 @@ namespace Infrastructure.Migrations
                     b.Property<decimal?>("UGST")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -741,8 +744,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("SaleId");
 
@@ -793,10 +795,10 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("TotalUnitCost")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("UpdatedBy")
+                    b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -856,10 +858,10 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("TotalUGST")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("UpdatedBy")
+                    b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -895,7 +897,7 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("TotalUnitCost")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("UpdatedBy")
@@ -952,10 +954,10 @@ namespace Infrastructure.Migrations
                     b.Property<decimal>("TotalUGST")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("UpdatedBy")
+                    b.Property<Guid?>("UpdatedBy")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -1014,8 +1016,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("ReturnId");
 
@@ -1085,7 +1086,7 @@ namespace Infrastructure.Migrations
                     b.Property<string>("UPIId")
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("UpdatedBy")
@@ -1300,8 +1301,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.SaleItems", b =>
                 {
                     b.HasOne("Domain.Entities.Product", "Product")
-                        .WithOne("SaleItems")
-                        .HasForeignKey("Domain.Entities.SaleItems", "ProductId")
+                        .WithMany("SaleItems")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1369,8 +1370,8 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.SalesReturnItems", b =>
                 {
                     b.HasOne("Domain.Entities.Product", "Products")
-                        .WithOne("SalesReturnItems")
-                        .HasForeignKey("Domain.Entities.SalesReturnItems", "ProductId")
+                        .WithMany("SalesReturnItems")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1418,11 +1419,9 @@ namespace Infrastructure.Migrations
 
                     b.Navigation("PurchaseReturnItems");
 
-                    b.Navigation("SaleItems")
-                        .IsRequired();
+                    b.Navigation("SaleItems");
 
-                    b.Navigation("SalesReturnItems")
-                        .IsRequired();
+                    b.Navigation("SalesReturnItems");
                 });
 
             modelBuilder.Entity("Domain.Entities.ProductCategory", b =>

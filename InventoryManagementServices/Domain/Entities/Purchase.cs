@@ -19,7 +19,7 @@ namespace Domain.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public Guid? UpdatedBy { get; set; } = null;
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; } = null;
         public Guid OrganizationId { get; set; }
 
         public Guid? PurchaseOrderId { get; set; }

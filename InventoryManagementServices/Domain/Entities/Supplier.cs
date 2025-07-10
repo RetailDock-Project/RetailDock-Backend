@@ -31,7 +31,7 @@ namespace Domain.Entities
         public Guid CreatedBy { get; set; }
         public Guid? UpdatedBy { get; set; } = null;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; } = null;
 
         public List<Purchase> Purchases { get; set; }
         public List<PurchaseReturn> PurchaseReturns { get; set; }
