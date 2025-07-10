@@ -10,8 +10,9 @@ namespace Application.Dto
     public class AddPurchaseOrderDto
     {
         public Guid SupplierId { get; set; }
-     
-        public Guid CreatedBy { get; set; }
+        public DateTime? OrderDate { get; set; }
+
+
         public List<AddPurchaseOrderItemDto> Items { get; set; }
     }
 

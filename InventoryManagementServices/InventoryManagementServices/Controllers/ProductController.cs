@@ -129,5 +129,14 @@ namespace API.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
+        [HttpDelete("delete")]
+        public async Task<IActionResult> DeleteProduct(Guid productId)
+        {
+            var result = await _services.DeleteProduct(productId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+
+
     }
 }

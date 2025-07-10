@@ -45,5 +45,33 @@ namespace Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<(List<Supplier>, int)> GetSuppliersByFilterAsync(Guid orgId, string? search, bool? isActive, int? pageNumber, int? pageSize)
+        {
+            var query = context.Suppliers
+                .Where(s => s.OrganizationId == orgId);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(s => s.Name.Contains(search));
+            }
+
+            if (isActive.HasValue)
+            {
+                query = query.Where(s => s.IsActive == isActive.Value);
+            }
+
+            int totalCount = await query.CountAsync();
+
+            if (pageNumber.HasValue && pageSize.HasValue)
+            {
+                int skip = (pageNumber.Value - 1) * pageSize.Value;
+                query = query.Skip(skip).Take(pageSize.Value);
+            }
+
+            var result = await query.ToListAsync();
+
+            return (result, totalCount);
+        }
+
     }
 }

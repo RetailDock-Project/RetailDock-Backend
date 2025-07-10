@@ -30,6 +30,8 @@ namespace Application.Mapper
                 
                 .ForMember(dest => dest.UnitOfMeasures,
                     opt => opt.MapFrom(src => src.UnitOfMeasures.Measurement))
+                .ForMember(dest => dest.TaxRate,
+                    opt => opt.MapFrom(src => src.HsnCode.GstRate))
                 //.ForMember(dest => dest.BarCodeImageBase64,
                 //    opt => opt.MapFrom(src => Convert.ToBase64String(src.BarCodeImageBase64)))
                 //.ForMember(dest => dest.ProductImagesBase64,
@@ -46,7 +48,7 @@ namespace Application.Mapper
                     opt => opt.MapFrom(src => Convert.ToBase64String(src.BarCodeImageBase64)))
                 .ForMember(dest => dest.ProductImagesBase64,
                        opt => opt.MapFrom(src =>
-                      src.Images.Select(img => Convert.ToBase64String(img.ImageData)).ToList()))
+                      src.Images.Select(img => new ImageData { Id= img.Id, Image= Convert.ToBase64String(img.ImageData) }).ToList()))
                 .ForMember(dest => dest.TaxRate, opt => opt.MapFrom(src => src.HsnCode.GstRate))
                 ;
 
