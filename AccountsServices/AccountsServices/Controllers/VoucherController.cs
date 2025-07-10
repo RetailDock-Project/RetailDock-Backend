@@ -33,5 +33,11 @@ namespace AccountsServices.Controllers
             var result = await _voucherService.GetAllVoucherTypes();
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet("get/all/vouchertypes/with/items")]
+        public async Task<IActionResult> GetAllVoucherTypesWithItemWise()
+        {
+            var result = await _voucherService.GetAllVoucherTypesWithItemWise();
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }

@@ -106,5 +106,12 @@ namespace Infrastructure.Repository.AccountsRepository
             var result = await connection.QueryAsync<GetAllVoucherTypeDTO>(sql);
             return result.ToList();
         }
+        public async Task<List<GetAllVoucherTypeDTO>> GetAllVoucherTypesWithItemWise()
+        {
+            var sql = "SELECT Id,TypeName,DisplayName FROM VoucherTypes";
+            var connection = _dapperConection.CreateConnection();
+            var result = await connection.QueryAsync<GetAllVoucherTypeDTO>(sql);
+            return result.ToList();
+        }
     }
 }

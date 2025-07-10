@@ -11,7 +11,7 @@ namespace Application.DTO
     public class AddSubGroupDTO
     {
         [Required(ErrorMessage = "GroupName is required.")]
-        [RegularExpression(@"\S+", ErrorMessage = "GroupName cannot be just whitespace.")]
+      
         public string GroupName { get; set; }
 
         [Required(ErrorMessage = "ParentId is required.")]
@@ -21,7 +21,7 @@ namespace Application.DTO
         public Guid CreatedBy { get; set; }
      
         [JsonIgnore] 
-        public string Nature {  get; set; }
+        public string? Nature {  get; set; }
     }
 
 }

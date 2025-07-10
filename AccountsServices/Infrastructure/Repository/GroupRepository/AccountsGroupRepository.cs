@@ -104,6 +104,17 @@ namespace Infrastructure.Repository.GroupRepository
             var result = await connection.QueryAsync<GetSubGroupsDTO>(sql, new { OrganizationId = organizationId });
             return result.ToList();
         }
+        public async Task<List<GetSubGroupsDTO>> GetAllGroups(Guid organizationId)
+        {
+            var sql = @"SELECT Id, GroupName 
+                FROM AccountsGroups 
+              
+                Where (OrganizationId IS NULL OR OrganizationId = @OrganizationId) AND CanAddLedgers=TRUE";
+
+            using var connection = _dapperConection.CreateConnection();
+            var result = await connection.QueryAsync<GetSubGroupsDTO>(sql, new { OrganizationId = organizationId });
+            return result.ToList();
+        }
         public async Task<bool> IsGroupNameExists(Guid organizationId, string groupName)
         {
             var sql = @"

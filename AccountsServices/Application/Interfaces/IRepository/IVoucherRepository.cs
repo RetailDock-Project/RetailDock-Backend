@@ -16,5 +16,6 @@ namespace Application.Interfaces.IRepository
         Task<bool> AddVoucherEntrys(Guid organizationId, Guid CreatedBy, Vouchers vouchers, List<TransactionsDTO> transactions);
         Task<List<GetVoucherTransactionByVoucherTypeId>> GetTransactionsByVoucherTypeAsync(Guid voucherTypeId, Guid organizationId, DateTime? fromDate, DateTime? toDate);
         Task<List<GetAllVoucherTypeDTO>> GetAllVoucherTypes();
+        Task<List<GetAllVoucherTypeDTO>> GetAllVoucherTypesWithItemWise();
     }
 }

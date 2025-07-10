@@ -42,6 +42,12 @@ namespace AccountsServices.Controllers
             var result = await _accountsGroupService.GetParentGroups(OrgId);
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet("get/all/groups")]
+        public async Task<IActionResult> GetAllGroups()
+        {
+            var result = await _accountsGroupService.GetAllGroups(OrgId);
+            return StatusCode(result.StatusCode, result);
+        }
         [HttpPost("create/default/groups/organizationId")]
         public async Task<IActionResult> CreateDefaultGroups()
         {

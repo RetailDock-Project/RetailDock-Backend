@@ -16,7 +16,8 @@ namespace Application.Interfaces.IServices
         Task<ApiResponseDTO<List<GetSubGroupsDTO>>> GetSubGroups(Guid organizationId);
         Task<ApiResponseDTO<List<GetParentGroupsDTO>> >GetParentGroups(Guid organizationId);
         Task<ApiResponseDTO<bool>> CreateDefaultGroups(Guid organizationId, Guid createdBy);
-      
+        Task<ApiResponseDTO<List<GetSubGroupsDTO>>> GetAllGroups(Guid organizationId);
+
 
 
 
