@@ -30,8 +30,8 @@ namespace Domain.Entities
         public decimal TotalAmount { get; set; } = 0;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-  public Guid UpdatedBy { get;set; }
-  public DateTime  UpdatedAt { get; set; }
+        public Guid? UpdatedBy { get; set; } = null;
+        public DateTime? UpdatedAt { get; set; } = null;
         public Sales Sales { get; set; }
         //public Users users { get; set; }
 

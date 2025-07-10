@@ -10,8 +10,14 @@ namespace Application.Dto
 {
     public class HsnDto
     {
+        public int HsnCodeId { get; set; }
+
         [Required]
         public string HSNCodeNumber { get; set; }
+        [Required]
+
+        public string HSNCodeName { get; set; }
+
 
         [Required(ErrorMessage = "GST rate is required.")]
         [Range(0, 100, ErrorMessage = "GST rate must be between 0 and 100.")]

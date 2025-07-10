@@ -12,7 +12,7 @@ namespace Application.Interfaces
         Task<HsnCode>AddHsn(HsnCode hsnCode);
         Task<List<HsnCode>> GetAllHsnCodes(Guid OrganaiztionId);
         Task<HsnCode> GetByHsnCode(int hsnCodeNumber);
-        Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId, int hsnCodeId);
+        Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId, string hsnCodeNumber);
         Task<HsnCode>UpdateHsn(HsnCode hsnCode);
         Task<bool> DeleteHsnCode(int hsnCode);
     }

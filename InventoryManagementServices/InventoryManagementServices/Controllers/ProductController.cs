@@ -38,9 +38,9 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("get/product/all")]
-        public async Task<IActionResult> GetAllProduct(Guid organizationId)
+        public async Task<IActionResult> GetAllProduct()
         {
-            var result = await _services.GetAllProducts(organizationId);
+            var result = await _services.GetAllProducts(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("Get/Product/Billing/All")]
@@ -74,12 +74,12 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpGet("export/{organizationId}/products/excel")]
-        public async Task<IActionResult> ExportProducts(Guid organizationId)
+        [HttpGet("export/products/excel")]
+        public async Task<IActionResult> ExportProducts()
         {
             try
             {
-                var excelBytes = await _services.ExportProductsAsExcelAsync(organizationId);
+                var excelBytes = await _services.ExportProductsAsExcelAsync(OrgId);
                 return File(
                     fileContents: excelBytes,
                     contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -121,5 +121,13 @@ namespace API.Controllers
 
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpGet("products-overview")]
+        public async Task<IActionResult> GetDashboardData()
+        {
+            var response = await _services.GetDashboardData(OrgId);
+            return StatusCode(response.StatusCode, response);
+        }
+
     }
 }

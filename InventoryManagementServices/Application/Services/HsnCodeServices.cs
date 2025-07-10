@@ -34,7 +34,7 @@ namespace Application.Services
         {
             try
             {
-                var existingHsn = await _hsnCodeRepository.GetByHsnCodeAndOrg(orgId, int.Parse(hsnDto.HSNCodeNumber));
+                var existingHsn = await _hsnCodeRepository.GetByHsnCodeAndOrg(orgId, hsnDto.HSNCodeNumber);
 
                 if (existingHsn != null)
                 {
@@ -45,7 +45,7 @@ namespace Application.Services
                     };
                 }
                 var hsn = _mapper.Map<HsnCode>(hsnDto);
-                hsn.HSNCodeNumber = hsnDto.HSNCodeNumber;
+                hsn.OrgnaisationId = orgId;
                 await _hsnCodeRepository.AddHsn(hsn);
                 return new Responses<string> { Message = "HsnCode And TaxRate Added", StatusCode = 201 };
             }

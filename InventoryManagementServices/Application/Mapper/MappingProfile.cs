@@ -30,12 +30,25 @@ namespace Application.Mapper
                 
                 .ForMember(dest => dest.UnitOfMeasures,
                     opt => opt.MapFrom(src => src.UnitOfMeasures.Measurement))
+                //.ForMember(dest => dest.BarCodeImageBase64,
+                //    opt => opt.MapFrom(src => Convert.ToBase64String(src.BarCodeImageBase64)))
+                //.ForMember(dest => dest.ProductImagesBase64,
+                //       opt => opt.MapFrom(src =>
+                //      src.Images.Select(img => Convert.ToBase64String(img.ImageData)).ToList()))
+                //.ForMember(dest=>dest.TaxRate,opt=>opt.MapFrom(src=>src.HsnCode.GstRate))
+                ;
+
+            CreateMap<Product, GetProductDetailDto>()
+                .ForMember(dest => dest.ProductCategory, opt => opt.MapFrom(src => src.Category.ProductCategoryName))
+                .ForMember(dest => dest.UnitOfMeasures,
+                    opt => opt.MapFrom(src => src.UnitOfMeasures.Measurement))
                 .ForMember(dest => dest.BarCodeImageBase64,
                     opt => opt.MapFrom(src => Convert.ToBase64String(src.BarCodeImageBase64)))
                 .ForMember(dest => dest.ProductImagesBase64,
                        opt => opt.MapFrom(src =>
                       src.Images.Select(img => Convert.ToBase64String(img.ImageData)).ToList()))
-                .ForMember(dest=>dest.TaxRate,opt=>opt.MapFrom(src=>src.HsnCode.GstRate));
+                .ForMember(dest => dest.TaxRate, opt => opt.MapFrom(src => src.HsnCode.GstRate))
+                ;
 
 
 
