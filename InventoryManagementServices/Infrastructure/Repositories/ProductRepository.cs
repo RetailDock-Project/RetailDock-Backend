@@ -69,6 +69,13 @@ namespace Infrastructure.Repositories
                 .ThenInclude(pi=>pi.Purchase)
                 .FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted);
         }
+
+        public async Task<Product> GetProductByIdWithImages(Guid id)
+        {
+            return await _appDbContext.Products
+                .Include(p => p.Images)
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
         public async Task<Product> UpdateProduct(Product product)
         {
             //var exists = await _appDbContext.Products.AnyAsync(p => p.Id == product.Id);

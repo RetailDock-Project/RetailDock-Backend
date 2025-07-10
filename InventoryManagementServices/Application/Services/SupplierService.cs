@@ -120,5 +120,40 @@ namespace Application.Services
             }
         }
 
+
+        public async Task<Responses<List<SupplierDto>>> GetSuppliersByFilterAsync(Guid orgId, string? search, bool? isActive, int? pageNumber, int? pageSize)
+        {
+            try
+            {
+                if (orgId == Guid.Empty)
+                {
+                    return new Responses<List<SupplierDto>>
+                    {
+                        StatusCode = 400,
+                        Message = "Invalid Organization Id"
+                    };
+                }
+
+                var (suppliers, totalCount) = await supplierRepo.GetSuppliersByFilterAsync(orgId, search, isActive, pageNumber, pageSize);
+
+                var supplierDtos = mapper.Map<List<SupplierDto>>(suppliers);
+
+                return new Responses<List<SupplierDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Suppliers retrieved successfully",
+                    Data = supplierDtos,
+                };
+            }
+            catch (Exception)
+            {
+                return new Responses<List<SupplierDto>>
+                {
+                    StatusCode = 500,
+                    Message = "An error occurred while fetching suppliers"
+                };
+            }
+        }
+
     }
 }
