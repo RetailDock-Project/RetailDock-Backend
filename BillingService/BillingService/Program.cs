@@ -24,14 +24,18 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
-
-builder.Services.AddCors(options => options.AddPolicy("AllowAll", policy =>
+builder.Services.AddCors(options =>
 {
-    policy.WithOrigins("http://localhost:5173")
-   .AllowAnyHeader()
-.AllowAnyMethod()
-  .AllowAnyOrigin();
-}));
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5173") // ✅ Set your frontend URL
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials(); // ✅ Required for withCredentials
+    });
+});
+
 
 
 builder.Services.AddGrpcClient<PurchaseGrpc.VoucherGrpcService.VoucherGrpcServiceClient>(o =>
@@ -47,7 +51,7 @@ builder.Services.AddGrpcClient<LedgerGrpc.LedgerService.LedgerServiceClient>(opt
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "IdentityService API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BillingService API", Version = "v1" });
 
     // 1. Bearer token in Authorization header (for Postman, Flutter, etc.)
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
