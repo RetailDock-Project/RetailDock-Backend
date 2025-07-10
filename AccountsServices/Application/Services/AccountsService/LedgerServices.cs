@@ -52,8 +52,19 @@ namespace Application.Services.AccountsService
                         Message = "Group Not found"
                     };
                 }
+                if (ledgerDTO.OpeningBalance == 0)
+                {
+                    ledgerDTO.DrCr=nature;
+                }
 
-
+                if(ledgerDTO.OpeningBalance < 0)
+                {
+                    return new ApiResponseDTO<string>
+                    {
+                        StatusCode = 409,
+                        Message = "Opening Balance Must be Positve"
+                    };
+                }
                 var ledgerId = Guid.NewGuid();
 
                 var ledger = new Ledger

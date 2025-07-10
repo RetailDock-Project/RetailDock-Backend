@@ -234,5 +234,36 @@ namespace Application.Services.AccountsService
                 };
             }
         }
+        public async Task <ApiResponseDTO<List<GetAllVoucherTypeDTO>>> GetAllVoucherTypesWithItemWise()
+        {
+            try
+            {
+                var data = await _VoucherRepository.GetAllVoucherTypesWithItemWise();
+                if (data.Count > 0)
+                {
+                    return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                    {
+                        StatusCode = 200,
+                        Message = "All voucher type fetched Succussfully",
+                        Data = data
+
+                    };
+                }
+                return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                {
+                    StatusCode = 200,
+                    Message = "No data Found"
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error in Get All Voucher Types");
+                return new ApiResponseDTO<List<GetAllVoucherTypeDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "GetAllVoucherTypeDTO"
+                };
+            }
+        }
     }
 }

@@ -100,6 +100,16 @@ namespace Application.Services.AccountsService
         {
             try
             {
+                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(addSubGroupDTO.ParentId);
+                if (nature == null)
+                {
+                    return new ApiResponseDTO<object>
+                    {
+                        StatusCode = 404,
+                        Message = "Group Not found"
+                    };
+                }
+                addSubGroupDTO.Nature = nature;
                 if (OrganizationId == Guid.Empty)
                 {
                     return new ApiResponseDTO<object>
@@ -127,16 +137,8 @@ namespace Application.Services.AccountsService
                         Message = "GroupName cannot be empty or whitespace."
                     };
                 }
-                var nature = await _ledgerRepository.GetNatureByGroupIdOrMasterGroupIdAsync(addSubGroupDTO.ParentId);
-                if (nature == null)
-                {
-                    return new ApiResponseDTO<object>
-                    {
-                        StatusCode = 404,
-                        Message = "Group Not found"
-                    };
-                }
-                addSubGroupDTO.Nature = nature;
+               
+               
                 var result = await _accountsGroupRepository.AddSubGroup(OrganizationId, addSubGroupDTO);
                 if (result)
                 {
@@ -294,7 +296,49 @@ namespace Application.Services.AccountsService
                 };
             }
         }
-        
 
+        public async Task<ApiResponseDTO<List<GetSubGroupsDTO>>> GetAllGroups(Guid organizationId)
+        {
+            try
+            {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<List<GetSubGroupsDTO>>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
+                var result = await _accountsGroupRepository.GetAllGroups(organizationId);
+                if (result.Count > 0)
+                {
+                    return new ApiResponseDTO<List<GetSubGroupsDTO>>
+                    {
+                        StatusCode = 200,
+                        Message = "Succussfully Fetched",
+                        Data = result
+                    };
+
+                }
+                return new ApiResponseDTO<List<GetSubGroupsDTO>>
+                {
+                    StatusCode = 404,
+                    Message = "Organization not found"
+                };
+
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Error in Fetching groups");
+                return new ApiResponseDTO<List<GetSubGroupsDTO>>
+                {
+                    StatusCode = 500,
+                    Message = "Error in Fetching groups"
+
+                };
+            }
+
+        }
     }
 }
