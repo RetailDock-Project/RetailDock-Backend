@@ -17,7 +17,7 @@ namespace Application.DTO
         public Guid GroupId { get; set; }
       
         public decimal OpeningBalance { get; set; }
-        public string DrCr { get; set; } // "Dr" or "Cr"
+        public string? DrCr { get; set; } // "Dr" or "Cr"
         [JsonIgnore]
         public Guid? CreatedBy { get; set; }
         [JsonIgnore]

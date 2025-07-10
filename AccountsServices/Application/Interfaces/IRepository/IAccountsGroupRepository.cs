@@ -15,8 +15,8 @@ namespace Application.Interfaces.IRepository
         Task<List<GetParentGroupsDTO>> GetParentGroups(Guid OrganizationId);
         Task<List<GetSubGroupsDTO>> GetSubGroups(Guid organizationId);
         Task<bool> createGroupDefault(Guid OrganizationId, Guid CreatedBy);
-    
 
+        Task<List<GetSubGroupsDTO>> GetAllGroups(Guid organizationId);
 
     }
 }
