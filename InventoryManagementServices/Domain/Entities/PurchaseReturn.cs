@@ -15,6 +15,7 @@ namespace Domain.Entities
         public Guid PurchaseReturnInvoiceId { get; set; }
         public Guid SupplierId { get; set; }
         public string Reason { get; set; }
+        public string? voucherNumber { get; set; }
         public string Notes { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }=DateTime.UtcNow;

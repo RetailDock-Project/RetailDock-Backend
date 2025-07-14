@@ -59,7 +59,7 @@ namespace Infrastructure.Repositories
                 .Include(p => p.UnitOfMeasures)
                 .Include(p => p.Category)
                 .Include(p => p.HsnCode)
-                .FirstOrDefaultAsync(p => p.Id == productId && !p.IsDeleted && p.OrgnaisationId == orgId);
+                .FirstOrDefaultAsync(p => p.Id == productId && !p.IsDeleted && p.OrgnizationId == orgId);
         }
 
 
@@ -396,7 +396,7 @@ namespace Infrastructure.Repositories
 
             try
             {
-                var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == saleId && x.OrganisationId == orgId);
+                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si=>si.Products).Include(s => s.SaleItems).ThenInclude(si=>si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == saleId && x.OrganisationId == orgId);
 
                 return sales;
             }
@@ -412,7 +412,7 @@ namespace Infrastructure.Repositories
 
             try
             {
-                var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Invoices.B2CInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
+                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Invoices.B2CInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
 
                 return sales;
 
@@ -429,7 +429,7 @@ namespace Infrastructure.Repositories
 
             try
             {
-                var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Invoices.B2BInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
+                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Invoices.B2BInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
 
                 return sales;
 
@@ -446,7 +446,7 @@ namespace Infrastructure.Repositories
 
             try
             {
-                var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).Where(x => x.CreatedAt >= fromDate && x.CreatedAt <= toDate && x.OrganisationId == orgId).OrderBy(x => x.CreatedAt).ToListAsync();
+                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).Where(x => x.CreatedAt >= fromDate && x.CreatedAt <= toDate && x.OrganisationId == orgId).OrderBy(x => x.CreatedAt).ToListAsync();
 
                 return sales;
 

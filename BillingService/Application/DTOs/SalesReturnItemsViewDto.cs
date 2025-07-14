@@ -16,6 +16,7 @@ namespace Application.DTOs
         public string ProductName { get; set; }
         public decimal Quantity { get; set; }
         public int UnitId { get; set; }
+        public string UnitName { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TaxableAmount => UnitPrice * Quantity;
      

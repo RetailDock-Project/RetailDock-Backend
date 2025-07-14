@@ -42,16 +42,16 @@ namespace BillingService.Controllers
             var result = await saleService.GetDebtorsSalesDetails(debtorId,OrgId);
             return StatusCode(result.StatusCode, result);
         }
-        [HttpGet("GetAllSaleById")]
+        [HttpGet("GetSaleById")]
 
         public async Task<IActionResult> GetSalesById( Guid saleId)
         {
             var result = await saleService.GetSalesDetailsById(saleId,  OrgId);
             return StatusCode(result.StatusCode, result);
         }
-        [HttpGet("GetAllSaleByInvoice")]
+        [HttpGet("GetsaleBill")]
 
-        public async Task<IActionResult> GetSalesByInvoice( string invoiceNum)
+        public async Task<IActionResult> GetSalesBill( string invoiceNum)
         {
             var result = await saleService.GetSalesDetailsByInvoice(invoiceNum, OrgId);
             var document = new InvoiceDocument(result.Data);
@@ -59,6 +59,12 @@ namespace BillingService.Controllers
 
 
             return File(pdfBytes, "application/pdf", $"Invoice_{result.Data.InvoiceNumber}.pdf");
+        }
+        [HttpGet("GetsaleByInvoice")]
+        public async Task<IActionResult> GetSalesByInvoice( string invoiceNum)
+        {
+            var result = await saleService.GetSalesDetailsByInvoice(invoiceNum, OrgId);
+            return StatusCode(result.StatusCode, result);
         }
         [HttpGet("GetAllSaleByDate")]
         public async Task<IActionResult> GetSalesByDate( DateTime fromDate, DateTime? toDate)

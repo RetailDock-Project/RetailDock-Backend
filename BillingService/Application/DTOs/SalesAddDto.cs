@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Application.DTOs
     public  class SalesAddDto
     {
         public PaymentMode PaymentType { get; set; }=PaymentMode.Cash;
+        [Required]
         public string MobileNum { get; set; }
             public string? Text { get; set; }
         public SalesMode SalesMode { get; set; }=SalesMode.B2C;

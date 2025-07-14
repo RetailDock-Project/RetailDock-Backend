@@ -39,7 +39,7 @@ namespace Infrastructure.Grpc_Client
 
             var response = await AccountGrpcClient.AddVoucherEntryAsync(request);
          
-            return new ResponseDto<object> { Message = response.Message, StatusCode = response.StatusCode };
+            return new ResponseDto<object> { Message = response.Message, StatusCode = response.StatusCode ,Data=response.Data};
         }
 
     }
