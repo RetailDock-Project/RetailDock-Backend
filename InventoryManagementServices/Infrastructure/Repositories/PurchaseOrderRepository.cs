@@ -64,5 +64,61 @@ namespace Infrastructure.Repositories
             var lastPo = await _context.PurchaseOrders.Where(po => po.OrganizationId == organizationId).OrderByDescending(po => po.CreatedAt).Select(po => po.PurchaseOrderNumber).FirstOrDefaultAsync();
             return lastPo;
         }
+
+        public async Task<List<PurchaseOrder>> GetAllPurchaseOrdersAsync(
+    Guid orgId,
+    string? searchString,
+    string? status,
+    DateTime? startDate,
+    DateTime? endDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            var query = _context.PurchaseOrders
+                .Include(p => p.Supplier)
+                .Include(p => p.PurchaseOrderItems)
+                    .ThenInclude(i => i.Product)
+                .Where(p => p.OrganizationId == orgId)
+                .AsQueryable();
+
+            // 🔍 Filter by search string (supplier or product)
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query.Where(p =>
+                    p.Supplier.Name.Contains(searchString) ||
+                    p.PurchaseOrderItems.Any(i => i.Product.ProductName.Contains(searchString))
+                );
+            }
+
+            // 📦 Filter by status
+            if (!string.IsNullOrEmpty(status))
+            {
+                query = query.Where(p => p.OrderStatus.Equals(status, StringComparison.OrdinalIgnoreCase));
+            }
+
+            // 📅 Filter by date range
+            if (startDate.HasValue)
+            {
+                query = query.Where(p => p.OrderDate >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                query = query.Where(p => p.OrderDate <= endDate.Value);
+            }
+
+            // 📄 Order by latest
+            query = query.OrderByDescending(p => p.OrderDate);
+
+            // 📃 Apply pagination only if both pageNumber and pageSize are provided
+            if (pageNumber.HasValue && pageSize.HasValue)
+            {
+                query = query
+                    .Skip((pageNumber.Value - 1) * pageSize.Value)
+                    .Take(pageSize.Value);
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

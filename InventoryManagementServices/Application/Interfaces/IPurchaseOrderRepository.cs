@@ -16,5 +16,13 @@ namespace Application.Interfaces
         Task<bool> DeletePurchaseOrderAsync(Guid id);
 
         Task<string> GetLastPurchaseOrderNumber(Guid organizationId);
-    }
+        Task<List<PurchaseOrder>> GetAllPurchaseOrdersAsync(
+    Guid orgId,
+    string? searchString,
+    string? status,
+    DateTime? startDate,
+    DateTime? endDate,
+    int? pageNumber,
+    int? pageSize);
+}
 }

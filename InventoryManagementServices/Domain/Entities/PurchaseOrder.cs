@@ -17,7 +17,7 @@ namespace Domain.Entities
         public string PurchaseOrderNumber { get; set; }
         public Guid SupplierId { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }= DateTime.UtcNow;
         public decimal GrossTotalAmount {  get; set; }
 
         public string OrderStatus { get; set; } = "Pending";

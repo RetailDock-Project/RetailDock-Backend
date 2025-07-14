@@ -49,6 +49,7 @@ namespace Application.Dto
         [Required]
         public int HsnCodeId { get; set; }
         public List<IFormFile>? ProductImages { get; set; }
+        public List<int>? ExistingImageIds { get; set; }
     }
     public class ProductReadDto
     {
@@ -65,6 +66,8 @@ namespace Application.Dto
         public DateTime LastStockUpdate { get; set; }
         public decimal MRP { get; set; }
         public decimal SellingPrice { get; set; }
+        public decimal TaxRate { get; set; }
+
         public decimal CostPrice { get; set; }
         //public decimal TaxRate { get; set; }
 
@@ -165,9 +168,15 @@ namespace Application.Dto
         public string BarCodeImageBase64 { get; set; }
 
 
-        public List<string> ProductImagesBase64 { get; set; }
+        public List<ImageData> ProductImagesBase64 { get; set; }
 
         public ProductAudit productAudit { get; set; }
+    }
+
+    public class ImageData { 
+        public string Image { get; set; }
+        public int Id { get; set; }
+
     }
 
     public class ProductAudit {

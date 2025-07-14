@@ -25,7 +25,7 @@ namespace Application.Services
         Task<Responses<GetProductDetailDto>> GetProductById(Guid id);
         Task<Responses<List<ProductReadDto>>> GetAllProducts(Guid OrganizationId);
         Task<Responses<List<ProductBillingGetDto>>> GetAllProductsForBilling(Guid OrganizationId);
-        Task <Responses<bool>> DeleteProduct(Guid productId);
+        Task <Responses<object>> DeleteProduct(Guid productId);
         Task<Responses<List<GetLowStockDTO>>> GetLowStockItems(Guid organizationId);
         Task<Responses<List<ProductReadDto>>>GetProductByCategory(int categoryId,Guid OrganizationId);
         Task<Responses<List<SearchProductDto>>> SearchProducts(Guid organizationId, int? categoryId, string searchTerm);
@@ -136,16 +136,17 @@ namespace Application.Services
 
             }
         }
-        public async Task<Responses<string>> UpdateProduct(Guid id,ProductDto productdto)
+        public async Task<Responses<string>> UpdateProduct(Guid id, ProductDto productdto)
         {
             try
             {
-                var prdct= await _repository.GetProductById(id);
-                if(prdct == null)
+                var prdct = await _repository.GetProductByIdWithImages(id); // include Images
+                if (prdct == null)
                 {
                     return new Responses<string> { Message = "ProductId not found", StatusCode = 400 };
                 }
 
+                // Validations
                 if (productdto.CostPrice >= productdto.SellingPrice)
                 {
                     return new Responses<string>
@@ -173,50 +174,73 @@ namespace Application.Services
                     };
                 }
 
-                var product = _mapper.Map(productdto, prdct); 
+                // Map updated properties (excluding images)
+                var product = _mapper.Map(productdto, prdct);
                 product.UpdatedAt = DateTime.UtcNow;
-                if (productdto.ProductImages != null || productdto.ProductImages.Any())
+
+                // Handle Images
+                if (productdto.ExistingImageIds != null && productdto.ExistingImageIds.Any())
+                {
+                    // Keep only selected images
+                    product.Images = product.Images
+                        .Where(img => productdto.ExistingImageIds.Contains(img.Id))
+                        .ToList();
+                }
+                else
+                {
+                    // No existing images selected → clear all
+                    product.Images.Clear();
+                }
+
+                // Add new images
+                if (productdto.ProductImages != null && productdto.ProductImages.Any())
                 {
                     foreach (var imageFile in productdto.ProductImages)
                     {
                         var base64 = Domain.Entities.ImageHelper.ConvertToBase64(imageFile);
-                        product.Images.Add(new Images { ImageData = base64, FileName = imageFile.FileName, ProductId = product.Id, ContentType = imageFile.GetType().ToString(), CreatedAt = DateTime.UtcNow });
+                        product.Images.Add(new Images
+                        {
+                            ImageData = base64,
+                            FileName = imageFile.FileName,
+                            ProductId = product.Id,
+                            ContentType = imageFile.ContentType,
+                            CreatedAt = DateTime.UtcNow
+                        });
                     }
-
                 }
 
+                // Publish Event (optional)
                 var productUpdatedEvent = _mapper.Map<ProductCreatedEvent>(product);
                 _producer.Publish(productUpdatedEvent);
 
-
+                // Update DB
                 var data = await _repository.UpdateProduct(product);
                 if (data != null)
                 {
                     return new Responses<string>
                     {
                         StatusCode = 200,
-                        Message = "Product Updated",
-                        
+                        Message = "Product Updated"
                     };
                 }
+
                 return new Responses<string>
                 {
                     StatusCode = 200,
-                    Message = "Product doesn't exist",
-
+                    Message = "Product doesn't exist"
                 };
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                _logger.LogError(ex.Message, "Product updated failed");
+                _logger.LogError(ex.Message, "Product update failed");
                 return new Responses<string>
                 {
                     StatusCode = 500,
-                    Message = ex.Message,
-
+                    Message = ex.Message
                 };
             }
         }
+
         public async Task<Responses<GetProductDetailDto>> GetProductById(Guid id)
         {
             try
@@ -336,23 +360,21 @@ namespace Application.Services
 
             }
         }
-        public async Task<Responses<bool>> DeleteProduct(Guid productId)
+        public async Task<Responses<object>> DeleteProduct(Guid productId)
         {
             try
             {
                 var products = await _repository.DeleteProduct(productId);
                 if (products)
                 {
-                    _producer.Publish(productId);
-
-                    return new Responses<bool>
+                    return new Responses<object>
                     {
                         StatusCode = 200,
                         Message = "Product deleted succesfully",
                         Data= products
                     };
                 }
-                return new Responses<bool>
+                return new Responses<object>
                 {
                     StatusCode = 404,
                     Message = "Products not found"
@@ -360,8 +382,7 @@ namespace Application.Services
             }
             catch(Exception ex)
             {
-                _logger.LogError("Error in product deleting", ex.Message);
-                return new Responses<bool>
+                return new Responses<object>
                 {
                     StatusCode = 500,
                     Message = "Error in product deleting"

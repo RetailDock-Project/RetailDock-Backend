@@ -16,7 +16,7 @@ namespace Application.Interfaces.IRepository
         Task AddPurchase(Purchase purchase);
         Task UpdateStocksAndUnitPrice(PurchaseItem purchaseItem, Guid userId);
         Task<List<Purchase>> GetAllPurchase(Guid organizationId, DateTime? fromDate, DateTime? toDate);
-        Task<Purchase>GetPurchaseById(Guid purchaseId);
+        Task<Purchase> GetPurchaseById(Guid purchaseId);
 
 
         Task CreatePurchaseReturn(PurchaseReturn purchaseReturn);
@@ -29,11 +29,12 @@ namespace Application.Interfaces.IRepository
         Task UpdateProductStock(PurchaseReturnItem purchaseReturnItem);
         Task<List<PurchaseReturn>> GetAllPurchaseReturn(Guid organaizationId);
         Task<PurchaseReturn> getPurchaseReturn(Guid PurchaseReturnId);
-//>>>>>>> b80b0ab47de4d81e95c3c12fc1b6ca358902868d
+        //>>>>>>> b80b0ab47de4d81e95c3c12fc1b6ca358902868d
 
         Task<string> GetLastPurchaseInvoiceNumber(Guid orgId);
         Task<string> GetLastPurchaseReturnInvoiceNumber(Guid orgId);
 
         Task<PurchaseOrderItem> GetProductPurchaseOrder(Guid productId, Guid? purchaseOrderId);
+
     }
 }

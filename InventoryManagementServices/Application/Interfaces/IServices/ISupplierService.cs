@@ -13,5 +13,6 @@ namespace Application.Interfaces.IServices
         Task<Responses<object>> CreateSupplier(SupplierDto newSupplier, Guid orgId, Guid userId);
         Task<Responses<object>> RemoveSupplier(Guid supplierId, Guid orgId, Guid userId);
         Task<Responses<List<SupplierDto>>> GetAllSuppliersByOrganizationId(Guid orgId);
+        Task<Responses<List<SupplierDto>>> GetSuppliersByFilterAsync(Guid orgId, string? search, bool? isActive, int? pageNumber, int? pageSize);
     }
 }

@@ -32,5 +32,7 @@ namespace Application.Interfaces
     ProductStockStatus? stockStatus);
 
         Task<ProductDashboardDto> GetProductDashboardData(Guid organizationId);
+
+        Task<Product> GetProductByIdWithImages(Guid id);
     }
 }

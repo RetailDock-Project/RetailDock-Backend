@@ -11,7 +11,9 @@ namespace Application.Dto
         public Guid? Id { get; set; }
         public string Name { get; set; }
         public decimal? OpeningBalance { get; set; } 
-        public bool? IsDebit { get; set; }           
+        public bool? IsDebit { get; set; }  
+        
+        public bool? IsActive { get; set; }
 
         public string? ContactName { get; set; }
         public string? ContactNumber { get; set; }

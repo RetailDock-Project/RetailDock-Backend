@@ -14,12 +14,20 @@ namespace Application.Services
 {
     public interface IPurchaseOrderService
     {
-        Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId, AddPurchaseOrderDto dto);
+        Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId,Guid userId, AddPurchaseOrderDto dto);
         Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(Guid orgnaizationId);
         Task<Responses<PurchaseOrderDto>> GetOrderByIdAsync(Guid id);
         Task<Responses<string>> UpdateOrderStatusAsync(Guid id, UpdateOrderStatusDto dto);
         Task<Responses<string>> DeleteOrderAsync(Guid id);
         Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id);
+        Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(
+    Guid orgId,
+    string? searchString,
+    string? status,
+    DateTime? startDate,
+    DateTime? endDate,
+    int? pageNumber,
+    int? pageSize);
     }
     public class PurchaseOrderService:IPurchaseOrderService
     {
@@ -33,7 +41,7 @@ namespace Application.Services
             _mapper = mapper;
             invoiceNumberGenerator = _invoiceNumberGenerator;
         }
-        public async Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId, AddPurchaseOrderDto dto)
+        public async Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId,Guid userId, AddPurchaseOrderDto dto)
         {
             try
             {
@@ -45,8 +53,8 @@ namespace Application.Services
                     PurchaseOrderNumber= newPoNumber,
                     PurchaseOrderId = Guid.NewGuid(),
                     SupplierId = dto.SupplierId,
-                    CreatedBy = dto.CreatedBy,
-                    OrderDate = DateTime.UtcNow,
+                    CreatedBy = userId,
+                    OrderDate = dto.OrderDate ?? DateTime.UtcNow,
                     OrderStatus = "Pending",
                     GrossTotalAmount = dto.Items.Sum(x => x.Quantity * x.RatePerPiece),
                     PurchaseOrderItems = dto.Items.Select(x => new PurchaseOrderItem
@@ -111,6 +119,22 @@ namespace Application.Services
             var orderDto = _mapper.Map<PurchaseOrderDto>(order);
             return PurchaseOrderPdfGeneratorHelper.GeneratePdf(orderDto);
         }
+
+
+        public async Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(
+    Guid orgId,
+    string? searchString,
+    string? status,
+    DateTime? startDate,
+    DateTime? endDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            var orders = await _repo.GetAllPurchaseOrdersAsync(orgId, searchString, status, startDate, endDate, pageNumber, pageSize);
+            var result = _mapper.Map<List<PurchaseOrderDto>>(orders);
+            return new Responses<List<PurchaseOrderDto>> { Message = "Purchase Orders Fetched", StatusCode = 200, Data = result };
+        }
+
 
     }
 }

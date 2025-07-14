@@ -1,4 +1,5 @@
-﻿using Application.Dto;
+﻿using API.Controllers.Base;
+using Application.Dto;
 using Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +8,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PurchaseOrderController : ControllerBase
+    public class PurchaseOrderController : BaseController
     {
         private readonly IPurchaseOrderService _service;
 
@@ -16,16 +17,16 @@ namespace API.Controllers
             _service = service;
         }
         [HttpPost("Create")]
-        public async Task<IActionResult> CreateOrder( [FromBody] AddPurchaseOrderDto dto ,Guid orgnaizationId)
+        public async Task<IActionResult> CreateOrder( [FromBody] AddPurchaseOrderDto dto )
         {
-            var result = await _service.AddPurchaseOrderAsync(orgnaizationId, dto);
+            var result = await _service.AddPurchaseOrderAsync(OrgId,UserId, dto);
             return StatusCode(result.StatusCode, result);
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAllOrders(Guid orgnaizationId)
+        public async Task<IActionResult> GetAllOrders()
         {
-            var result = await _service.GetAllOrdersAsync(orgnaizationId);
+            var result = await _service.GetAllOrdersAsync(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("{id}")]
@@ -64,6 +65,22 @@ namespace API.Controllers
                 return NotFound(new { message = ex.Message });
             }
         }
+
+
+
+        [HttpGet("all/filters")]
+        public async Task<IActionResult> GetPurchaseOrdersWithFilters(
+    [FromQuery] string? searchString,
+    [FromQuery] string? status,
+    [FromQuery] DateTime? startDate,
+    [FromQuery] DateTime? endDate,
+    [FromQuery] int pageNumber,
+    [FromQuery] int pageSize )
+        {
+            var result = await _service.GetAllOrdersAsync(OrgId, searchString, status, startDate, endDate, pageNumber, pageSize);
+            return StatusCode(result.StatusCode, result);
+        }
+
 
     }
 }
