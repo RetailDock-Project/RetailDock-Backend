@@ -21,13 +21,13 @@ namespace Application.Services.AccountsService
             _logger = logger;
             _VoucherRepository = accountsRepository;
         }
-        public async Task<ApiResponseDTO<bool>> AddVoucherEntrys(Guid organizationId, Guid CreatedBy, AddVouchersDTO addVoucherDTO)
+        public async Task<ApiResponseDTO<object>> AddVoucherEntrys(Guid organizationId, Guid CreatedBy, AddVouchersDTO addVoucherDTO)
         {
             try
             {
                 if (organizationId == Guid.Empty)
                 {
-                    return new ApiResponseDTO<bool>
+                    return new ApiResponseDTO<object>
                     {
                         StatusCode = 400,
                         Message = "OrganizationId is Required"
@@ -35,7 +35,7 @@ namespace Application.Services.AccountsService
                 }
                 if (addVoucherDTO == null)
                 {
-                    return new ApiResponseDTO<bool>
+                    return new ApiResponseDTO<object>
                     {
                         StatusCode = 400,
                         Message = "Enter all details "
@@ -78,7 +78,7 @@ namespace Application.Services.AccountsService
 
                 if (duplicateLedgers.Any())
                 {
-                    return new ApiResponseDTO<bool>
+                    return new ApiResponseDTO<object>
                     {
                         StatusCode = 400,
                         Message = "A ledger is repeated more than once on the same side (Debit or Credit). Please correct the entry."
@@ -100,7 +100,7 @@ namespace Application.Services.AccountsService
 
                 if (commonLedgers.Any())
                 {
-                    return new ApiResponseDTO<bool>
+                    return new ApiResponseDTO<object>
                     {
                         StatusCode = 400,
                         Message = "A ledger cannot be used in both Debit and Credit sides. Please correct the entry."
@@ -112,7 +112,7 @@ namespace Application.Services.AccountsService
                 var creditSum = allTransactions.Where(x => !x.IsDebit).Sum(x => x.Amount);
                 if (debitSum != creditSum)
                 {
-                    return new ApiResponseDTO<bool>
+                    return new ApiResponseDTO<object>
                     {
                         StatusCode = 400,
                         Message = "Debit and credit amount must be equal"
@@ -134,12 +134,14 @@ namespace Application.Services.AccountsService
 
 
                 };
-                var result = await _VoucherRepository.AddVoucherEntrys(organizationId, CreatedBy, voucher,allTransactions);
+                var result = await _VoucherRepository.AddVoucherEntrys( organizationId, CreatedBy, voucher,allTransactions);
 
-                return new ApiResponseDTO<bool>
+                return new ApiResponseDTO<object>
                 {
                     StatusCode = 200,
-                    Message = "Transaction Created Succussfully"
+                    Message = "Transaction Created Succussfully",
+                    Data=VoucherNumber
+              
                 };
 
 
@@ -149,7 +151,7 @@ namespace Application.Services.AccountsService
 
 
                 _logger.LogError(ex.Message, "Voucher Entry Creation failed");
-                return new ApiResponseDTO<bool>
+                return new ApiResponseDTO<object>
                 {
                     StatusCode = 500,
                     Message = "Voucher Entry Creation failed"

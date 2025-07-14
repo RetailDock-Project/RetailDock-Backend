@@ -14,12 +14,13 @@ namespace Domain.Entities
 
 
         public Guid SaleId  {get;set;}
-
+      
        public Guid OrganisationId {get;set;}
         public Guid ReturnInvoiceId {get;set; }
         public DateTime ReturnDate { get; set; } = DateTime.Now;
-
+        public string? voucherNumber { get; set; }
        public string  Notes {get;set;}
+
         public decimal TotalUnitCost { get; set; }
         public Guid  CreatedBy { get; set; }
      

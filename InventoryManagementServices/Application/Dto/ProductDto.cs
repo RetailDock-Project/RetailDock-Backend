@@ -55,7 +55,7 @@ namespace Application.Dto
         public Guid Id { get; set; }
         public string ProductName { get; set; }
         public string ProductCode { get; set; }
-
+        public decimal GstRate { get; set; }
 
         public string Description { get; set; }
         public string ProductCategory { get; set; }
@@ -101,6 +101,7 @@ namespace Application.Dto
         public int ReOrderLevel { get; set; }
         public decimal SellingPrice { get; set; }
         public decimal CostPrice { get; set; }
+ 
     }
 
         public class ProductExportDto

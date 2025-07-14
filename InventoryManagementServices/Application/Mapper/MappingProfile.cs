@@ -27,7 +27,7 @@ namespace Application.Mapper
 
             CreateMap<Product, ProductReadDto>()
                 .ForMember(dest => dest.ProductCategory, opt => opt.MapFrom(src => src.Category.ProductCategoryName))
-                
+                .ForMember(dest=>dest.GstRate,opt=>opt.MapFrom(src=>src.HsnCode.GstRate))
                 .ForMember(dest => dest.UnitOfMeasures,
                     opt => opt.MapFrom(src => src.UnitOfMeasures.Measurement))
                 //.ForMember(dest => dest.BarCodeImageBase64,

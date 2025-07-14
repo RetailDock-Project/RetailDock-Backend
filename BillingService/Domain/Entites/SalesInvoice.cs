@@ -12,9 +12,9 @@ namespace Domain.Entites
     {
         [Key]
 
-        public Guid  Id { get; set; }
+        public Guid Id { get; set; }
 
-        public string? B2BInvoiceNumber { get; set; }     
+        public string? B2BInvoiceNumber { get; set; }
         public string? B2CInvoiceNumber { get; set; }
         public Guid OrganisationId { get; set; }
         public DateTime? DueDate { get; set; }
@@ -30,12 +30,12 @@ namespace Domain.Entites
         public decimal TotalAmount { get; set; } = 0;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-  public Guid UpdatedBy { get;set; }
-  public DateTime  UpdatedAt { get; set; }
+        public Guid? UpdatedBy { get; set; } = null;
+        public DateTime? UpdatedAt { get; set; } = null;
         public Sales Sales { get; set; }
         //public Users users { get; set; }
 
-}
+    }
 
 
 }   

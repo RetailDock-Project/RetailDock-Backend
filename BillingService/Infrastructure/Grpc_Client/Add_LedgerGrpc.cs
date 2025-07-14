@@ -26,7 +26,7 @@ namespace Infrastructure.Grpc_Client
 
         public async Task<ResponseDto<string>> AddDebtor(CreateCustomerDto customerData,Guid orgId,Guid userId)
         {
-            var request = new LedgerRequest { OrganizationId = orgId.ToString(),AccountNumber=customerData.accountNumber,Address=customerData.Address,BankName=customerData.bankName,ContactName=customerData.contactName,ContactNumber=customerData.PhoneNumber,GstNumber=customerData.GstNumber,CreatedBy=userId.ToString(),DrCr=customerData.drCr,IfscCode=customerData.ifscCode,OpeningBalance=customerData.openingBalance,LedgerName=customerData.CompanyName,UpiId=customerData.upiId};
+            var request = new LedgerRequest { OrganizationId = orgId.ToString(),AccountNumber=customerData.accountNumber,Address=customerData.Address,BankName=customerData.bankName,ContactName=customerData.CompanyName,ContactNumber=customerData.PhoneNumber,GstNumber=customerData.GstNumber,CreatedBy=userId.ToString(),DrCr=customerData.drCr,IfscCode=customerData.ifscCode,OpeningBalance=customerData.openingBalance,LedgerName=customerData.contactName,UpiId=customerData.upiId};
            
 
             var response = _ledger.AddDebtor(request);

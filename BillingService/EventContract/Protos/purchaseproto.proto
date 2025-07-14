@@ -28,5 +28,5 @@ message AddVoucherRequest {
 message ApiResponses {
   int32 statusCode = 1;
   string message = 2;
-  bool data = 3;
+  string data = 3;
 }

@@ -12,12 +12,14 @@ namespace Domain.Entites
         public Guid Id { get; set; }
         public Guid ReturnId { get; set; }
         public Guid ProductId { get; set; }
+        public string? reason { get; set; }
         public int UnitId { get; set; }
         public decimal UnitCost { get; set; }
         public decimal Quantity { get; set; } = 0;
         public string HSNCodeNumber { get; set; }
         public decimal UnitPrice { get; set; } = 0;
         public decimal TaxableAmount { get; set; } = 0;
+
 
         public decimal TaxRate { get; set; }
         public decimal CGST { get; set; } = 0;
