@@ -135,7 +135,7 @@ namespace Infrastructure.Repositories
         }
         public async Task AddNewCrditCustomer(CreateCustomerDto customer, Guid orgId, Guid userId, string ledgerId)
         {
-            var newCustomer = new CreditCustomers { Id = Guid.NewGuid(), CustomerName = customer.CompanyName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, GstNumber = customer.GstNumber, CreatedAt = DateTime.Now, LedgerId = Guid.Parse(ledgerId) };
+            var newCustomer = new CreditCustomers { Id = Guid.NewGuid(), CustomerName = customer.contactName, ContactNumber = customer.PhoneNumber, OrganisationId = orgId, Email = customer.Email, CreatedBy = userId, Place = customer.Place, GstNumber = customer.GstNumber, CreatedAt = DateTime.Now, LedgerId = Guid.Parse(ledgerId) };
 
             await context.CreditCustomers.AddAsync(newCustomer);
         }

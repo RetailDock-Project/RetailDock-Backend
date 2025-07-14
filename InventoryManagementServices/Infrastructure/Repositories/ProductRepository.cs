@@ -114,12 +114,12 @@ namespace Infrastructure.Repositories
         }
         public async Task<List<Product>> SearchProducts(Guid organizationId, int? categoryId, string searchTerm)
         {
-            searchTerm = searchTerm?.Trim().ToLower(); 
+            searchTerm = searchTerm?.Trim().ToLower();
 
-            var query = _appDbContext.Products
+            var query = _appDbContext.Products.Include(x => x.HsnCode)
                 .Where(p => p.OrgnizationId == organizationId &&
                             (string.IsNullOrEmpty(searchTerm) ||
-                             p.ProductName.ToLower().Contains(searchTerm) ||  
+                             p.ProductName.ToLower().Contains(searchTerm) ||
                              p.ProductCode.ToLower().Contains(searchTerm)));
 
             if (categoryId.HasValue)

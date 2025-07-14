@@ -56,21 +56,7 @@ namespace Infrastructure.BillingContext
                 .HasForeignKey(p => p.HsnCodeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.HasOne(p => p.UnitOfMeasures)
-                    .WithMany(u => u.Products)
-                    .HasForeignKey(p => p.UnitOfMeasuresId)
-                    .OnDelete(DeleteBehavior.Restrict);
-
-                entity.HasOne(p => p.SaleItems)
-                .WithOne(si => si.Products)
-                .HasForeignKey<SaleItems>(si => si.ProductId);
-
-                entity.HasOne(p => p.SalesReturnItems)
-                .WithOne(sri => sri.Products)
-                .HasForeignKey<SalesReturnItems>(sri => sri.ProductId);
-            });
+          
 
 
 
@@ -124,6 +110,10 @@ namespace Infrastructure.BillingContext
                 entity.HasOne(si => si.UnitOfMeasures)
                 .WithMany(um => um.SaleItems)
                 .HasForeignKey(si => si.UnitId);
+
+                entity.HasOne(si => si.Products)
+                .WithMany(p => p.SaleItems)
+                .HasForeignKey(si => si.ProductId);
             });
 
             modelBuilder.Entity<SalesReturnItems>(entity =>
@@ -131,7 +121,12 @@ namespace Infrastructure.BillingContext
                 entity.HasOne(si => si.UnitOfMeasures)
                 .WithMany(um => um.SalesReturnItems)
                 .HasForeignKey(sri => sri.UnitId);
+
+                entity.HasOne(sri => sri.Products)
+                .WithMany(p => p.SalesReturnItems)
+                .HasForeignKey(si => si.ProductId);
             });
+
 
         }
 

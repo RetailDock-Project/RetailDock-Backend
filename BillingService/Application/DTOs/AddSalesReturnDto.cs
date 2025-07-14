@@ -14,6 +14,7 @@ namespace Application.DTOs
 
        public  PaymentMode returnPayment { get; set; } = PaymentMode.Cash;
         public string Text { get; set; }
+        public string? ReturnCondition { get; set; }
 
   
         public List<SalesReturnItemsAddDto> ReturnItems { get; set; }

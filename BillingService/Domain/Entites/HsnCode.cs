@@ -16,7 +16,7 @@ namespace Domain.Entites
         public string HSNCodeName { get; set; }
 
 
-        public Guid? OrgnaisationId { get; set; }
+        public Guid OrgnaisationId { get; set; }
 
         [Required(ErrorMessage = "GST rate is required.")]
         [Range(0, 100, ErrorMessage = "GST rate must be between 0 and 100.")]

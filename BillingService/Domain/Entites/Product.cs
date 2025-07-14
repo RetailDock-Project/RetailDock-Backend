@@ -12,7 +12,7 @@ namespace Domain.Entites
     {
         [Key]
         public Guid Id { get; set; }
-        public Guid? OrgnaisationId { get; set; }
+        public Guid OrgnizationId { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -32,16 +32,17 @@ namespace Domain.Entites
         [ForeignKey("Category")]
         public int ProductCategoryId { get; set; }
 
-      
+
         public decimal Stock { get; set; } = 0;
 
         [ForeignKey("UnitOfMeasures")]
         public int UnitOfMeasuresId { get; set; }
 
+
         [Range(0, int.MaxValue)]
         public int ReOrderLevel { get; set; }
 
-        public DateTime LastStockUpdate { get; set; }
+        public DateTime? LastStockUpdate { get; set; } = null;
 
         [Column(TypeName = "decimal(18,2)")]
         public decimal MRP { get; set; }
@@ -57,13 +58,15 @@ namespace Domain.Entites
 
         public bool IsDeleted { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public DateTime? UpdatedAt { get; set; }
 
         public Guid CreatedBy { get; set; }
+        public bool IsActive { get; set; }
 
-        public Guid? UpdatedBy { get; set; }
+
+        public Guid? UpdatedBy { get; set; } = null;
 
         public ProductCategory Category { get; set; }
         public HsnCode HsnCode { get; set; }
@@ -72,11 +75,13 @@ namespace Domain.Entites
 
         //public List<Images> Images { get; set; }
         //public List<PurchaseOrderItem> PurchaseOrderItems { get; set; }
-        //public List<PurchaseItem> PurchaseItemItems { get; set; }
+        //public List<PurchaseItem> PurchaseItems { get; set; }
 
         //public List<PurchaseReturnItem> PurchaseReturnItems { get; set; }
 
-        public SaleItems SaleItems { get; set; }
-        public SalesReturnItems SalesReturnItems { get; set; }
+        public List<SaleItems> SaleItems { get; set; }
+        public List<SalesReturnItems> SalesReturnItems { get; set; }
+
+
     }
 }

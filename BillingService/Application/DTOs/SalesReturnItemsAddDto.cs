@@ -13,6 +13,6 @@ namespace Application.DTOs
 
 
         public decimal Quantity { get; set; }
-
+        public string? Reason { get; set; }  
     }
 }

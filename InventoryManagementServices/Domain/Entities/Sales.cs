@@ -18,6 +18,7 @@ namespace Domain.Entities
         public  GST_Type  GST_Type{ get; set; }
         public string SalesType { get; set; } = "B2C";
         public string? Narration { get; set; }
+        public string? voucherNumber { get;set; }
         public Guid OrganisationId { get; set; }
         public Guid? CashCustomerId { get; set; }
         public Guid? DebtorsId { get; set; }

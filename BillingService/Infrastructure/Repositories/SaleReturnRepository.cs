@@ -126,7 +126,7 @@ namespace Infrastructure.Repositories
         {
 
 
-            var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => (x.Invoices.B2CInvoiceNumber == invoiceNum || x.Invoices.B2BInvoiceNumber == invoiceNum) && x.OrganisationId == orgId);
+            var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => (x.Invoices.B2CInvoiceNumber == invoiceNum || x.Invoices.B2BInvoiceNumber == invoiceNum) && x.OrganisationId == orgId);
             if(sales== null)
             {
                 return null;
@@ -140,7 +140,7 @@ namespace Infrastructure.Repositories
         }
         public async Task<Product> fetchProductById(Guid orgId, Guid productId)
         {
-            return await context.Products.FirstOrDefaultAsync(x => x.Id == productId && x.OrgnaisationId == orgId);
+            return await context.Products.FirstOrDefaultAsync(x => x.Id == productId && x.OrgnizationId == orgId);
         }
 
 
@@ -185,15 +185,15 @@ namespace Infrastructure.Repositories
 
                         if (gst_Type == GST_Type.SGST)
                         {
-                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST,UnitId=_saleItem.UnitId };
+                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST,UnitId=_saleItem.UnitId,reason=returnProduct.Reason };
                         }
                         if (gst_Type == GST_Type.UGST)
                         {
-                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST,UnitId = _saleItem.UnitId };
+                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST,UnitId = _saleItem.UnitId,reason = returnProduct.Reason };
                         }
                         if (gst_Type == GST_Type.IGST)
                         {
-                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId };
+                            returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId, reason = returnProduct.Reason };
 
                         }
                         context.Products.Update(product);
@@ -267,15 +267,15 @@ namespace Infrastructure.Repositories
                         logger.LogInformation("unitIdFromSoldProduct:{@UnitId}", _saleItem.UnitId);
                         if (gst_Type == GST_Type.SGST)
                         {
-                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST, UnitId =_saleItem.UnitId };
+                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, SGST = SGST, UnitId =_saleItem.UnitId, reason = returnProduct.Reason };
                         }
                         if (gst_Type == GST_Type.UGST)
                         {
-                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST, UnitId = _saleItem.UnitId };
+                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, CGST = CGST, UGST = UGST, UnitId = _saleItem.UnitId, reason = returnProduct.Reason };
                         }
                         if (gst_Type == GST_Type.IGST)
                         {
-                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId };
+                            returnItems = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId, reason = returnProduct.Reason };
                         }
 
                         inMemoryReturnSaleItems.Add(returnItems);
@@ -286,6 +286,7 @@ namespace Infrastructure.Repositories
                     await AddnewB2CSaleInvoices(inMemoryReturnSaleItems, returnId, returnInvoiceId, orgId, paymentMode);
 
                     var totalUnitCost = inMemoryReturnSaleItems.Sum(items => items.UnitCost);
+
 
                     var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId };
                     await context.SalesReturn.AddAsync(_salesReturn);
@@ -310,17 +311,17 @@ namespace Infrastructure.Repositories
         }
         public async Task<SalesReturn> GetSalesReturnDetailsById(Guid returnId, Guid orgId)
         {
-            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == returnId && x.OrganisationId == orgId);
+            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri=>sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == returnId && x.OrganisationId == orgId);
 
         }
         public async Task<SalesReturn> GetSalesReturnDetailsByInvoice(string invoiceNum, Guid orgId)
         {
-            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.ReturnInvoice.B2CReturnInvoiceNumber == invoiceNum || x.ReturnInvoice.B2BReturnInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
+            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.ReturnInvoice.B2CReturnInvoiceNumber == invoiceNum || x.ReturnInvoice.B2BReturnInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
 
         }
         public async Task<List<SalesReturn>> GetSalesReturnDetailsBydate(DateTime fromDate, DateTime? toDate, Guid orgId)
         {
-            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).Where(x => x.ReturnDate >= fromDate && x.ReturnDate <= toDate && x.OrganisationId == orgId).ToListAsync();
+            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).Where(x => x.ReturnDate >= fromDate && x.ReturnDate <= toDate && x.OrganisationId == orgId).ToListAsync();
 
         }
 

@@ -100,7 +100,7 @@ namespace Application.PdfGenerator
 
                         // Data Rows
                         int count = 0;
-                        foreach (var item in _sales.Items)
+                        foreach (var item in _sales.SaleItems)
                         {
                             count++;
 
