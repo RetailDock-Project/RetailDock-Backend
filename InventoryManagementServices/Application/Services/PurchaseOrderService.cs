@@ -16,7 +16,7 @@ namespace Application.Services
     {
         Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId,Guid userId, AddPurchaseOrderDto dto);
         Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(Guid orgnaizationId);
-        Task<Responses<PurchaseOrderDto>> GetOrderByIdAsync(Guid id);
+        Task<Responses<PurchaseOrderDetailDto>> GetOrderByIdAsync(Guid id);
         Task<Responses<string>> UpdateOrderStatusAsync(Guid id, UpdateOrderStatusDto dto);
         Task<Responses<string>> DeleteOrderAsync(Guid id);
         Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id);
@@ -81,14 +81,14 @@ namespace Application.Services
             var result = _mapper.Map<List<PurchaseOrderDto>>(orders);
             return new Responses<List<PurchaseOrderDto>> {Message="PurchaseOrder Fetched", StatusCode = 200, Data = result };
         }
-        public async Task<Responses<PurchaseOrderDto>> GetOrderByIdAsync(Guid id)
+        public async Task<Responses<PurchaseOrderDetailDto>> GetOrderByIdAsync(Guid id)
         {
             var order = await _repo.GetPurchaseOrderByIdAsync(id);
             if (order == null)
-                return new Responses<PurchaseOrderDto> { StatusCode = 404, Message = "Order Not Found" };
+                return new Responses<PurchaseOrderDetailDto> { StatusCode = 404, Message = "Order Not Found" };
 
-            var result = _mapper.Map<PurchaseOrderDto>(order);
-            return new Responses<PurchaseOrderDto> {Message="PurchaseOrder Fetched", StatusCode = 200, Data = result };
+            var result = _mapper.Map<PurchaseOrderDetailDto>(order);
+            return new Responses<PurchaseOrderDetailDto> {Message="PurchaseOrder Fetched", StatusCode = 200, Data = result };
         }
         public async Task<Responses<string>> UpdateOrderStatusAsync(Guid id, UpdateOrderStatusDto dto)
         {
@@ -116,7 +116,7 @@ namespace Application.Services
             if (order == null)
                 throw new Exception("Purchase Order not found");
 
-            var orderDto = _mapper.Map<PurchaseOrderDto>(order);
+            var orderDto = _mapper.Map<PurchaseOrderDetailDto>(order);
             return PurchaseOrderPdfGeneratorHelper.GeneratePdf(orderDto);
         }
 

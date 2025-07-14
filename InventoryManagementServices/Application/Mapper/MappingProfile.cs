@@ -85,13 +85,51 @@ namespace Application.Mapper
             CreateMap<AddPurchaseOrderItemDto, PurchaseOrderItem>()
                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.Quantity * src.RatePerPiece));
 
-            CreateMap<PurchaseOrder, PurchaseOrderDto>()
-                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.PurchaseOrderItems))
-                .ForMember(dest=>dest.Supplier,opt=>opt.MapFrom(src=>src.Supplier));
-
             CreateMap<PurchaseOrderItem, PurchaseOrderItemDto>()
-                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
-                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.Quantity * src.RatePerPiece));
+            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
+            .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity))
+            .ForMember(dest => dest.GstRate, opt => opt.MapFrom(src => src.Product.HsnCode.GstRate))
+
+            .ForMember(dest => dest.RatePerPiece, opt => opt.MapFrom(src => src.RatePerPiece))
+            .ForMember(dest => dest.NetTotal, opt => opt.MapFrom(src => src.Quantity * src.RatePerPiece))
+            .ForMember(dest => dest.TaxAmount, opt => opt.MapFrom(src =>
+                (src.Quantity * src.RatePerPiece) * ((src.Product.HsnCode != null ? src.Product.HsnCode.GstRate : 0) / 100)))
+            .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src =>
+                (src.Quantity * src.RatePerPiece) * (1 + ((src.Product.HsnCode != null ? src.Product.HsnCode.GstRate : 0) / 100))))
+            .ForMember(dest => dest.ReceivedQuantity, opt => opt.MapFrom(src => src.ReceivedQuantity));
+
+            CreateMap<PurchaseOrder, PurchaseOrderDetailDto>()
+                .ForMember(dest => dest.TaxAmount, opt => opt.MapFrom(
+                    src => src.PurchaseOrderItems.Sum(poi =>
+                        (poi.RatePerPiece * poi.Quantity) * ((poi.Product.HsnCode != null ? poi.Product.HsnCode.GstRate : 0) / 100)
+                    )))
+                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(
+                    src => src.PurchaseOrderItems.Sum(poi =>
+                        (poi.RatePerPiece * poi.Quantity) * (1 + ((poi.Product.HsnCode != null ? poi.Product.HsnCode.GstRate : 0) / 100))
+                    )))
+                .ForMember(dest => dest.NetAmount, opt => opt.MapFrom(
+                    src => src.PurchaseOrderItems.Sum(poi =>
+                        poi.RatePerPiece * poi.Quantity
+                    )))
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.PurchaseOrderItems))
+                .ForMember(dest => dest.Supplier, opt => opt.MapFrom(src => src.Supplier));
+
+            CreateMap<PurchaseOrder, PurchaseOrderDto>()
+                .ForMember(dest => dest.TaxAmount, opt => opt.MapFrom(
+                    src => src.PurchaseOrderItems.Sum(poi =>
+                        (poi.RatePerPiece * poi.Quantity) * ((poi.Product.HsnCode != null ? poi.Product.HsnCode.GstRate : 0) / 100)
+                    )))
+                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(
+                    src => src.PurchaseOrderItems.Sum(poi =>
+                        (poi.RatePerPiece * poi.Quantity) * (1 + ((poi.Product.HsnCode != null ? poi.Product.HsnCode.GstRate : 0) / 100))
+                    )))
+                .ForMember(dest => dest.NetAmount, opt => opt.MapFrom(
+                    src => src.PurchaseOrderItems.Sum(poi =>
+                        poi.RatePerPiece * poi.Quantity
+                    )))
+                .ForMember(dest => dest.Supplier, opt => opt.MapFrom(src => src.Supplier));
+
+
 
             CreateMap<Purchase,GetPurchaseDto>()
                 .ForMember(dest=>dest.TotalAmount,opt=>opt.MapFrom(src=>src.PurchaseInvoice.TotalAmount))

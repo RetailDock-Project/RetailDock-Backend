@@ -9,7 +9,7 @@ namespace Application.Helpers
 {
     public class PurchaseOrderPdfGeneratorHelper
     {
-        public static byte[] GeneratePdf(PurchaseOrderDto order)
+        public static byte[] GeneratePdf(PurchaseOrderDetailDto order)
         {
             var document = Document.Create(container =>
             {
@@ -93,7 +93,7 @@ namespace Application.Helpers
                             table.Footer(footer =>
                             {
                                 footer.Cell().ColumnSpan(3).Text("Total").Bold();
-                                footer.Cell().AlignRight().Text(order.GrossTotalAmount.ToString("C")).Bold();
+                                footer.Cell().AlignRight().Text(order.TotalAmount.ToString("C")).Bold();
                             });
                         });
                     });
