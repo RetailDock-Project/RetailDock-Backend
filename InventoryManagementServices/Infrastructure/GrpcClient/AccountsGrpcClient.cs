@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Dto;
 using Application.Interfaces.IRepository;
@@ -31,6 +32,8 @@ namespace Infrastructure.GrpcClient
                 Console.WriteLine($"VoucherDate: {voucherData.VoucherDate}");
                 Console.WriteLine($"Remarks: {voucherData.Remarks}");
 
+                var data = JsonSerializer.Serialize(voucherData);
+                Console.WriteLine(data);
 
                 var request = new AddVoucherRequest
                 {
@@ -38,7 +41,7 @@ namespace Infrastructure.GrpcClient
                     CreatedBy = voucherData.CreatedBy,
                     VoucherTypeId = voucherData.VoucherTypeId,
                     VoucherDate = voucherData.VoucherDate,
-                    Remarks = voucherData.Remarks
+                    Remarks = voucherData.Remarks ?? ""
                 };
      
                 if (voucherData.TransactionsDebit != null)

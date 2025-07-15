@@ -17,6 +17,12 @@ namespace Application.Interfaces.IServices
 
         Task <Responses<List<GetPurchaseReturnDto>>> GetAllPurchaseReturn(Guid organaizationId);
         Task<Responses<GetPurchaseReturnDetailsDto>> GetPurchaseReturn(Guid PurchaseReturnId);
-        Task<Responses<object>> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate);
+        Task<byte[]?> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate);        Task<Responses<List<GetPurchaseDto>>> GetPurchasesAsync(
+    Guid organizationId,
+    string? searchTerm,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize);
     }
 }
