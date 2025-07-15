@@ -200,7 +200,47 @@ namespace Infrastructure.Repositories
         }
 
 
-        
+        public async Task<List<Purchase>> GetPurchases(
+    Guid organizationId,
+    string? searchTerm,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            var query = context.Purchases
+                .Include(p => p.PurchaseInvoice)
+                .Include(p => p.PurchaseItems).ThenInclude(i => i.Product)
+                .Where(p => p.OrganizationId == organizationId)
+                .AsQueryable();
+
+            // Date filters
+            if (fromDate.HasValue)
+                query = query.Where(p => p.CreatedAt >= fromDate.Value.Date);
+
+            if (toDate.HasValue)
+                query = query.Where(p => p.CreatedAt <= toDate.Value.Date);
+
+            // Search filter
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                var lowerTerm = searchTerm.ToLower();
+                query = query.Where(p =>
+                    (p.PurchaseInvoice.InvoiceNumber != null && p.PurchaseInvoice.InvoiceNumber.ToLower().Contains(lowerTerm))  ||
+                    p.PurchaseItems.Any(i => i.Product.ProductName.ToLower().Contains(lowerTerm))
+                );
+            }
+
+            // Conditional pagination
+            if (pageNumber.HasValue && pageSize.HasValue)
+            {
+                var skip = (pageNumber.Value - 1) * pageSize.Value;
+                query = query.Skip(skip).Take(pageSize.Value);
+            }
+
+            return await query.OrderByDescending(p => p.CreatedAt).ToListAsync();
+        }
+
 
 
 

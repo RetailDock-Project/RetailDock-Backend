@@ -40,7 +40,7 @@ namespace Application.Dto
 
 
         [Required(ErrorMessage = "Purchase items are required.")]
-        [MinLength(1, ErrorMessage = "At least one purchase item is required.")]
+        [JsonPropertyName("purchaseItems")]
         public List<PurchaseItemDto> purchaseItems { get; set; }
 
         public VoucherDto Voucher { get; set; } 
@@ -51,17 +51,14 @@ namespace Application.Dto
 
         [Required(ErrorMessage = "ProductId is required.")]
         public Guid ProductId { get; set; }
-
-        [Required(ErrorMessage = "Quantity is required.")]
-        [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1.")]
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
 
         [Required(ErrorMessage = "Rate per piece is required.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Rate per piece must be greater than 0.")]
         public decimal RatePerPiece { get; set; }
 
         [Range(0, 100, ErrorMessage = "Discount must be between 0 and 100 percent.")]
-        public decimal Discount { get; set; } = 0;
+        public decimal? Discount { get; set; } = 0;
 
         public DateOnly? ExpiryDate { get; set; }
     }
@@ -100,7 +97,7 @@ namespace Application.Dto
         public Guid Id { get; set; }
         public string ProductName { get; set; }
         public decimal RatePerPiece { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal TaxAmount { get; set; }
         public decimal TotalAmount { get; set; }
         public decimal? CGST { get; set; }

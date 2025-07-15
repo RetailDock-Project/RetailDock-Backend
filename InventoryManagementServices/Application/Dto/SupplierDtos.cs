@@ -9,6 +9,8 @@ namespace Application.Dto
     public class SupplierDto
     {
         public Guid? Id { get; set; }
+        public Guid? LedgerId { get; set; }
+
         public string Name { get; set; }
         public decimal? OpeningBalance { get; set; } 
         public bool? IsDebit { get; set; }  
@@ -36,6 +38,8 @@ namespace Application.Dto
 
     {
         public Guid Id { get; set; }
+        public Guid LedgerId { get; set; }
+
 
         public string Name { get; set; }
         public string? ContactNumber { get; set; }

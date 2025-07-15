@@ -35,6 +35,13 @@ namespace Application.Interfaces.IRepository
         Task<string> GetLastPurchaseReturnInvoiceNumber(Guid orgId);
 
         Task<PurchaseOrderItem> GetProductPurchaseOrder(Guid productId, Guid? purchaseOrderId);
+        Task<List<Purchase>> GetPurchases(
+    Guid organizationId,
+    string? searchTerm,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize);
 
     }
 }

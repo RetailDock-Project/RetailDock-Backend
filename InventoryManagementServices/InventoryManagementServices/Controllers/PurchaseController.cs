@@ -19,19 +19,19 @@ namespace API.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> AddPurchase(PurchaseAddDto newPurchase, Guid orgId, Guid userId) {
+        public async Task<IActionResult> AddPurchase(PurchaseAddDto newPurchase) {
 
             //orgId, userId from claim
-            var response = await purchaseService.AddPurchase(newPurchase, orgId, userId);
+            var response = await purchaseService.AddPurchase(newPurchase, OrgId, UserId);
             return StatusCode(response.StatusCode, response);
 
         }
 
         //[HttpPost]
         [HttpGet("all/organaizationId")]
-        public async Task <IActionResult>GetAllPurchases(Guid organaizationId, DateTime? fromDate, DateTime? toDate)
+        public async Task <IActionResult>GetAllPurchases( DateTime? fromDate, DateTime? toDate)
         {
-            var responses= await purchaseService.GetAllPurchases(organaizationId,fromDate,toDate);
+            var responses= await purchaseService.GetAllPurchases(OrgId,fromDate,toDate);
             return StatusCode(responses.StatusCode, responses);
         }
         [HttpGet("get/{purchaseId}")]
@@ -62,14 +62,37 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpGet("{organizationId}/export")]
-        public async Task<IActionResult> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate)
+        [HttpGet("organizationId/export")]
+        public async Task<IActionResult> ExportPurchases(DateTime? fromDate, DateTime? toDate)
         {
-            var result = await purchaseService.ExportPurchases(organizationId, fromDate, toDate);
+            var excelBytes = await purchaseService.ExportPurchases(OrgId, fromDate, toDate);
 
-         
+            if (excelBytes == null)
+            {
+                return StatusCode(500, "Error while exporting purchases.");
+            }
 
-            return StatusCode(result.StatusCode, result);
+            return File(
+                excelBytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "PurchaseList.xlsx"
+            );
         }
+
+
+        [HttpGet("purchases-filter")]
+        public async Task<IActionResult> GetPurchases(
+    string? searchTerm,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            var responses = await purchaseService.GetPurchasesAsync(
+                OrgId, searchTerm, fromDate, toDate, pageNumber, pageSize);
+
+            return StatusCode(responses.StatusCode, responses);
+        }
+
     }
 }
