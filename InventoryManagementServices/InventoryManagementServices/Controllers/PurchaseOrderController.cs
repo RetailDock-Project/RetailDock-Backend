@@ -74,8 +74,8 @@ namespace API.Controllers
     [FromQuery] string? status,
     [FromQuery] DateTime? startDate,
     [FromQuery] DateTime? endDate,
-    [FromQuery] int pageNumber,
-    [FromQuery] int pageSize )
+    [FromQuery] int? pageNumber,
+    [FromQuery] int? pageSize )
         {
             var result = await _service.GetAllOrdersAsync(OrgId, searchString, status, startDate, endDate, pageNumber, pageSize);
             return StatusCode(result.StatusCode, result);

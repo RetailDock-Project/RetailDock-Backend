@@ -29,20 +29,49 @@ namespace Application.Dto
         public string PurchaseOrderNumber { get; set; }
         public SupplierShortDto Supplier { get; set; }
         public DateTime OrderDate { get; set; }
-        public decimal GrossTotalAmount { get; set; }
+        public decimal NetAmount { get; set; }
+        public decimal TotalAmount { get; set; }
+
+        public decimal TaxAmount { get; set; }
+
+        public string OrderStatus { get; set; } = "Pending";
+        public Guid CreatedBy { get; set; }
+    }
+
+
+    public class PurchaseOrderDetailDto
+    {
+        public Guid PurchaseOrderId { get; set; }
+        public string PurchaseOrderNumber { get; set; }
+        public SupplierShortDto Supplier { get; set; }
+        public DateTime OrderDate { get; set; }
+        public decimal NetAmount { get; set; }
+        public decimal TotalAmount { get; set; }
+
+        public decimal TaxAmount { get; set; }
+
         public string OrderStatus { get; set; } = "Pending";
         public Guid CreatedBy { get; set; }
         public List<PurchaseOrderItemDto> Items { get; set; }
     }
+
+
     public class PurchaseOrderItemDto
     {
+        public Guid ProductId { get; set; }
+
+        public decimal GstRate { get; set; }
+
         public Guid PurchaseOrderItemId { get; set; }
 
         public string ProductName { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal RatePerPiece { get; set; }
         public decimal TotalAmount { get; set; }
-        public decimal ReceivedQuantity { get; set; }
+        public decimal NetTotal { get; set; }
+        public decimal TaxAmount { get; set; }
+
+public decimal ReceivedQuantity { get; set; }
 
     }
     public class UpdateOrderStatusDto
