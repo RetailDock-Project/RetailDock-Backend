@@ -29,11 +29,11 @@ namespace Application.Services
             logger = _logger;
             _ledger = ledger;
         }
-        public async Task<ResponseDto<List<ViewCustomerSalesDto>>> GetAllCustomers(Guid orgId)
+        public async Task<ResponseDto<List<ViewCustomerSalesDto>>> GetAllCustomers(Guid orgId, Guid userId, bool isFullData, int? skip, int? take)
         {
             try
             {
-                var customers = await customerRepo.GetAllCustomers(orgId);
+                var customers = await customerRepo.GetAllCustomers(orgId,userId,isFullData,skip,take);
                 if (customers == null)
                 {
                     return new ResponseDto<List<ViewCustomerSalesDto>> { Message = "no customers found", StatusCode = 404 };
@@ -49,11 +49,11 @@ namespace Application.Services
 
         }
 
-        public async Task<ResponseDto<List<ViewCustomerDto>>> GetAllCreditCustomers(Guid orgId)
+        public async Task<ResponseDto<List<ViewCustomerDto>>> GetAllCreditCustomers(Guid orgId, Guid userId, bool isFullData, int? skip, int? take)
         {
             try
             {
-                var customers = await customerRepo.GetCreditCustomers(orgId);
+                var customers = await customerRepo.fetchAllCreditCustomers(orgId,userId,isFullData,skip,take);
                 if (customers == null)
                 {
                     return new ResponseDto<List<ViewCustomerDto>> { Message = "no cerdit customers found", StatusCode = 404 };

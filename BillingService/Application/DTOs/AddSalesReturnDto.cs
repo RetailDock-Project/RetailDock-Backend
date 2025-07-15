@@ -13,6 +13,7 @@ namespace Application.DTOs
         public string  SaleInvoiceNumber { get; set; }
 
        public  PaymentMode returnPayment { get; set; } = PaymentMode.Cash;
+        public DateTime returnDate { get;set; }=DateTime.Now;
         public string Text { get; set; }
         public string? ReturnCondition { get; set; }
 

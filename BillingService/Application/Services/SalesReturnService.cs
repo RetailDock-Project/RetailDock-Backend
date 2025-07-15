@@ -55,7 +55,14 @@ namespace Application.Services
 
 
                 foreach (var returnProduct in salesReturn.ReturnItems)
+
                 {
+
+                    decimal returnItemsCount = await saleReturnRepo.getReturnedProductCount(sale.Id, returnProduct.ProductId, orgId);
+                    if (returnProduct.Quantity > returnItemsCount)
+                    {
+                        return new ResponseDto<object> { Message = "these product already Returned", StatusCode = 409 };
+                    }
                     var _saleItem = await saleReturnRepo.soldProductItems(sale.Id, returnProduct.ProductId);
                     if (_saleItem == null)
                     {
@@ -156,6 +163,25 @@ namespace Application.Services
             }
 
         }
+        public async Task<ResponseDto<decimal>> getReturnedProductCount(Guid saleId,Guid productId,Guid orgId)
+        {
+            try
+            {
+                decimal returnedProductCount =await saleReturnRepo.getReturnedProductCount(saleId, productId, orgId);
+                return new ResponseDto<decimal> { Data=returnedProductCount,Message= "successfullyFetched   alreadyreturned product count",StatusCode=200 };
+
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error from fetching  alreadyreturned product count");
+                return new ResponseDto<decimal>
+                {
+                    Message = "Internal Server Error",
+                    StatusCode = 500
+                };
+            }
+        }
         public async Task<ResponseDto<List<SalesReturnViewDto>>> GetSalesReturnByDate(DateTime fromDate, DateTime? toDate, Guid orgId)
         {
             try
@@ -192,11 +218,11 @@ namespace Application.Services
         }
 
 
-        public async Task<ResponseDto<List<SalesReturnViewDto>>> GetAllSalesReturnDetails(Guid orgId)
+        public async Task<ResponseDto<List<SalesReturnViewDto>>> GetAllSalesReturnDetails(Guid orgId,Guid userId,bool isFullData,int? skip ,int? take)
         {
             try
             {
-                var totalSalesReturn = await saleReturnRepo.fetchAllSalesReturn(orgId);
+                var totalSalesReturn = await saleReturnRepo.fetchAllSalesReturn(orgId,userId,isFullData,skip,take);
                 if (!totalSalesReturn.Any())
                 {
                     return new ResponseDto<List<SalesReturnViewDto>>

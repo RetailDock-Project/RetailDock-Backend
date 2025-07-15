@@ -370,27 +370,48 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
-        public async Task<List<Sales>> GetAllSalesDetails(Guid orgId)
+        public async Task<List<Sales>> GetAllSalesDetails(Guid orgId, Guid userId, bool isFullData, int? skip, int? take)
         {
             try
             {
-                var sales = await context.Sales.Include(s => s.SaleItems).Include(s => s.Invoices).Where(s => s.OrganisationId == orgId).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).ToListAsync();
+                var query = context.Sales
+                    .Include(s => s.SaleItems)
+                        .ThenInclude(si => si.Products)
+                    .Include(s => s.SaleItems)
+                        .ThenInclude(si => si.UnitOfMeasures)
+                    .Include(s => s.Invoices)
+                    .Include(s => s.CashCustomers)
+                    .Include(s => s.CreditCustomers)
+                    .Where(s => s.OrganisationId == orgId)
+                    .AsQueryable();
 
+                if (!isFullData)
+                {
+                    query = query.Where(s => s.CreatedBy == userId);
+                }
 
-                //var sales = await context.Sales.Where(x => x.OrganisationId == orgId).ToListAsync();
-                return sales;
+                // Order by most recent sale (adjust the field if needed)
+                query = query.OrderByDescending(s => s.CreatedAt); 
 
+                // Apply pagination
+                if (skip.HasValue && take.HasValue)
+                {
+                    query = query.Skip(skip.Value).Take(take.Value);
+                }
+                else if (take.HasValue)
+                {
+                    query = query.Take(take.Value);
+                }
 
-
+                return await query.ToListAsync();
             }
             catch (Exception ex)
             {
-
-                logger.LogError(ex.Message, "error from fetching all  sales details");
-
+                logger.LogError(ex, "Error fetching all sales details");
                 throw;
             }
         }
+
         public async Task<Sales> GetSalesDetailsById(Guid saleId, Guid orgId)
         {
 
@@ -441,23 +462,49 @@ namespace Infrastructure.Repositories
                 throw;
             }
         }
-        public async Task<List<Sales>> GetSaleDetailsByDate(DateTime fromDate, DateTime toDate, Guid orgId)
+        public async Task<List<Sales>> GetSaleDetailsByDate(DateTime fromDate, DateTime toDate, Guid orgId, Guid userId, bool fullData, int? skip, int? take)
         {
-
             try
             {
-                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).Where(x => x.CreatedAt >= fromDate && x.CreatedAt <= toDate && x.OrganisationId == orgId).OrderBy(x => x.CreatedAt).ToListAsync();
+                var query = context.Sales
+                    .Include(s => s.SaleItems)
+                        .ThenInclude(si => si.Products)
+                    .Include(s => s.SaleItems)
+                        .ThenInclude(si => si.UnitOfMeasures)
+                    .Include(s => s.Invoices)
+                    .Include(s => s.CashCustomers)
+                    .Include(s => s.CreditCustomers)
+                    .Where(s => s.CreatedAt >= fromDate && s.CreatedAt <= toDate && s.OrganisationId == orgId)
+                    .AsQueryable();
 
-                return sales;
+                // Filter by userId if fullData is false
+                if (!fullData)
+                {
+                    query = query.Where(s => s.CreatedBy == userId);
+                }
 
+                // Order by latest created
+                query = query.OrderByDescending(s => s.CreatedAt);
+
+                // Apply pagination
+                if (skip.HasValue && take.HasValue)
+                {
+                    query = query.Skip(skip.Value).Take(take.Value);
+                }
+                else if (take.HasValue)
+                {
+                    query = query.Take(take.Value);
+                }
+
+                return await query.ToListAsync();
             }
             catch (Exception ex)
             {
-                logger.LogError(ex.Message, "error from fetching  sales details By Date");
-
+                logger.LogError(ex, "Error fetching sales details by date");
                 throw;
             }
         }
+
 
 
 

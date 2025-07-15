@@ -12,6 +12,7 @@ namespace Application.DTOs
     {
         public Guid SaleId { get; set; }
         public string InvoiceNumber { get; set; }
+
         public Guid ledgerId { get; set; }
         public string CustomerName { get; set; }
         public DateTime SaleDate { get; set; }

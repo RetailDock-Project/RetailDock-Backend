@@ -14,6 +14,7 @@ namespace Application.DTOs
   public string? Email { get; set; }
   public string Place { get; set; }
  public string? GstNumber { get; set; }
+
 public List<SalesResponseDto> Sales { get; set; }
 }
 }

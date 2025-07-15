@@ -224,13 +224,14 @@ namespace Application.Services
                 return new ResponseDto<List<SalesResponseDto>> { Message = "internal Server Error ", StatusCode = 500 };
             }
         }
-        public async Task<ResponseDto<List<SalesResponseDto>>> GetSalesByDate(DateTime fromDate, DateTime? toDate, Guid orgId)
+        public async Task<ResponseDto<List<SalesResponseDto>>> GetSalesByDate(DateTime fromDate, DateTime? toDate, Guid orgId,Guid userId,bool? isFulldata,int? skip,int? take)
         {
             try
             {
                 DateTime finalToDate = toDate ?? DateTime.Now;
+                bool fullData = isFulldata ?? false;
 
-                var sale = await saleRepo.GetSaleDetailsByDate(fromDate, finalToDate, orgId);
+                var sale = await saleRepo.GetSaleDetailsByDate(fromDate, finalToDate, orgId,userId,fullData,skip,take);
                 if (sale == null)
                 {
                     return new ResponseDto<List<SalesResponseDto>>
@@ -260,11 +261,13 @@ namespace Application.Services
         }
 
 
-        public async Task<ResponseDto<List<SalesResponseDto>>> GetAllSalesDetails(Guid orgId)
+        public async Task<ResponseDto<List<SalesResponseDto>>> GetAllSalesDetails(Guid orgId, Guid userId, bool? isFullData, int? skip, int? take)
         {
             try
             {
-                var totalSales = await saleRepo.GetAllSalesDetails(orgId);
+
+                bool fullData=isFullData ?? false;  
+                var totalSales = await saleRepo.GetAllSalesDetails(orgId,userId,fullData,skip,take);
                 if (!totalSales.Any())
                 {
                     return new ResponseDto<List<SalesResponseDto>>
