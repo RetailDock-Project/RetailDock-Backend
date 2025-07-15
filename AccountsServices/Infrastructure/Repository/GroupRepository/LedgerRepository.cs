@@ -309,7 +309,7 @@ namespace Infrastructure.Repository.GroupRepository
         {
             var sql = @"SELECT Id 
                 FROM AccountsGroups 
-                WHERE GroupName = 'Input GST'
+                WHERE GroupName = 'Output Tax'
                   AND OrganizationId = @OrganizationId;";
 
             var connection = _dapperContext.CreateConnection();
@@ -320,7 +320,7 @@ namespace Infrastructure.Repository.GroupRepository
         {
             var sql = @"SELECT Id 
                 FROM AccountsGroups 
-                WHERE GroupName = 'Input GST'
+                WHERE GroupName = 'Input Tax'
                   AND OrganizationId = @OrganizationId;";
 
             var connection = _dapperContext.CreateConnection();
