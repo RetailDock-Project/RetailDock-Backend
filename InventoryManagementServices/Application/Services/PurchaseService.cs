@@ -113,9 +113,9 @@ namespace Application.Services
                     //var gstRate = 11m;
                     Console.WriteLine("this is gst rate");
                     Console.WriteLine(gstRate);
-                    var itemAmount = product.Quantity * product.RatePerPiece;
-                    var itemDiscount = (product.Discount / 100) * itemAmount;
-                    var itemTotal = itemAmount - itemDiscount;
+                    decimal itemAmount = product.Quantity * product.RatePerPiece;
+                    decimal itemDiscount = (product.Discount??0 / 100) * itemAmount;
+                    decimal itemTotal = itemAmount - itemDiscount;
                     var productTax = 0m;
                     decimal cgst = 0m;
                     decimal sgst = 0m;
@@ -154,7 +154,7 @@ namespace Application.Services
                         ProductId = product.ProductId,
                         Quantity = product.Quantity,
                         RatePerPiece = product.RatePerPiece,
-                        Discount = product.Discount,
+                        Discount = product.Discount ?? 0,
                         TaxAmount = productTax,
                         CGST = cgst,
                         SGST = sgst,
@@ -278,6 +278,8 @@ namespace Application.Services
                     await purchaseRepo.AddPurchaseInvoice(purchaseInvoice);
 
                     var response=await accountGrpcService.UpdatePurchaseUccounts(voucher);
+                    var responsedata=JsonSerializer.Serialize(response);
+                    Console.WriteLine(responsedata);
                     if (response.StatusCode != 200) {
                         await transaction.RollbackAsync();
                         return new Responses<object> { StatusCode = 400, Message = $"Error in adding purchase" };
@@ -703,17 +705,16 @@ namespace Application.Services
 
 
 
-        public async Task<Responses<object>> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate)
+        public async Task<byte[]?> ExportPurchases(Guid organizationId, DateTime? fromDate, DateTime? toDate)
         {
             try
             {
-                var purchases = await purchaseRepo.GetAllPurchase(organizationId, fromDate, toDate); // Get data
-                var result = mapper.Map<List<GetPurchaseDto>>(purchases); // Map if needed
+                var purchases = await purchaseRepo.GetAllPurchase(organizationId, fromDate, toDate);
+                var result = mapper.Map<List<GetPurchaseDto>>(purchases);
 
                 using var package = new ExcelPackage();
                 var worksheet = package.Workbook.Worksheets.Add("Purchases");
 
-                // Set headers
                 worksheet.Cells[1, 1].Value = "ID";
                 worksheet.Cells[1, 2].Value = "Purchase Date";
                 worksheet.Cells[1, 3].Value = "Total Amount";
@@ -721,7 +722,6 @@ namespace Application.Services
                 worksheet.Cells[1, 5].Value = "Purchase Invoice Number";
 
                 int row = 2;
-
                 foreach (var purchase in result)
                 {
                     worksheet.Cells[row, 1].Value = purchase.Id.ToString();
@@ -729,35 +729,60 @@ namespace Application.Services
                     worksheet.Cells[row, 3].Value = purchase.TotalAmount;
                     worksheet.Cells[row, 4].Value = purchase.SupplierInvoiceNumber ?? "";
                     worksheet.Cells[row, 5].Value = purchase.PurchaseInvoiceNumber;
-
                     row++;
                 }
 
-                worksheet.Cells.AutoFitColumns(); // Auto size columns
+                worksheet.Cells.AutoFitColumns();
+                return await package.GetAsByteArrayAsync();
+            }
+            catch
+            {
+                return null; // Handle error in controller
+            }
+        }
 
-                var excelBytes = await package.GetAsByteArrayAsync();
 
-                return new Responses<object>
+        public async Task<Responses<List<GetPurchaseDto>>> GetPurchasesAsync(
+    Guid organizationId,
+    string? searchTerm,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            try
+            {
+                var purchases = await purchaseRepo.GetPurchases(
+                    organizationId, searchTerm, fromDate, toDate, pageNumber, pageSize);
+
+                if (purchases.Count == 0)
+                {
+                    return new Responses<List<GetPurchaseDto>>
+                    {
+                        StatusCode = 400,
+                        Message = "No purchases found"
+                    };
+                }
+
+                var mappedPurchase = mapper.Map<List<GetPurchaseDto>>(purchases);
+                return new Responses<List<GetPurchaseDto>>
                 {
                     StatusCode = 200,
-                    Message = "Purchases exported successfully",
-                    Data = new
-                    {
-                        file = excelBytes,
-                        fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        fileName = "PurchaseList.xlsx"
-                    }
+                    Message = "Purchases fetched successfully",
+                    Data = mappedPurchase
                 };
             }
             catch (Exception ex)
             {
-                return new Responses<object>
+                logger.LogError(ex, "Error in fetching purchases");
+                return new Responses<List<GetPurchaseDto>>
                 {
                     StatusCode = 500,
-                    Message = "Error while exporting purchases"
+                    Message = "Error in fetching purchases"
                 };
             }
         }
+
 
     }
 }
