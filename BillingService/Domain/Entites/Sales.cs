@@ -11,22 +11,22 @@ namespace Domain.Entites
     {
 
         [Key]
-        public Guid Id { get; set; }    
+        public Guid Id { get; set; }
 
         public Guid InvoiceId { get; set; }
-        public PaymentMode PaymentType { get; set; }        
-        public  GST_Type  GST_Type{ get; set; }
+        public PaymentMode PaymentType { get; set; }
+        public GST_Type GST_Type { get; set; }
         public string SalesType { get; set; } = "B2C";
         public string? Narration { get; set; }
         public Guid OrganisationId { get; set; }
         public Guid? CashCustomerId { get; set; }
         public Guid? DebtorsId { get; set; }
-
+        public string? voucherNumber { get; set; }
         public decimal TotalUnitCost { get; set; }
         public Guid CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public Guid UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public Guid? UpdatedBy { get; set; } = null;
+        public DateTime? UpdatedAt { get; set; } = null;
         public SalesInvoice Invoices { get; set; }
         public CashCustomers CashCustomers { get; set; }
         public CreditCustomers CreditCustomers { get; set; }

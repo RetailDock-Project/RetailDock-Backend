@@ -133,7 +133,7 @@ namespace Application.Services
                         
                         return new ResponseDto<object> { StatusCode = 404, Message = "no customer found" };
                     }
-                    if (sales.SaleVoucher.TransactionsDebit != null && sales.SaleVoucher.TransactionsDebit.Count>=2)
+                    if (sales.SaleVoucher.TransactionsDebit != null )
                     {
                         voucher.TransactionsDebit.Add( new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = cashCustomer.LedgerId.ToString(), Narration = $"CashSaleDoneTo{cashCustomer.CustomerName}" });
 
@@ -166,7 +166,7 @@ namespace Application.Services
                     {
                         LedgerId = sales.SaleVoucher.TransactionsCredit[2].LedgerId,
                         Amount = (double)costOfGoodsSold,
-                        Narration =  sales.SaleVoucher.TransactionsCredit[2].Narration ?? "Sale - costOfGoddsSold "
+                        Narration =  sales.SaleVoucher.TransactionsCredit[2].Narration ?? "Sale - SaleInventory A/c "
                     });
 
                 }

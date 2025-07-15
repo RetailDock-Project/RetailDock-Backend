@@ -10,9 +10,10 @@ namespace Domain.Entites
     public  class SalesReturnInvoice
     {
      
-            [Key]
+            
+        [Key]
 
-            public Guid Id { get; set; }
+        public Guid Id { get; set; }
 
         public string? B2BReturnInvoiceNumber { get; set; }
         public string? B2CReturnInvoiceNumber { get; set; }
@@ -30,16 +31,16 @@ namespace Domain.Entites
         [Required]
         public decimal TotalAmount { get; set; } = 0;
         [Required]
-        public DateTime CreatedAt { get; set; }  = DateTime.Now;
-          public Guid UpdatedBy { get; set; }
-        public DateTime UpdatedAt { get; set; }
-     
-        
-            public SalesReturn SalesReturn { get; set; }
-            //public Users users { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public Guid? UpdatedBy { get; set; } = null;
+        public DateTime? UpdatedAt { get; set; } = null;
 
-        
-       
+
+        public SalesReturn SalesReturn { get; set; }
+        //public Users users { get; set; }
+
+
+
 
     }
 

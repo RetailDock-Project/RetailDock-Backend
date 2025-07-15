@@ -71,7 +71,7 @@ public class VoucherGrpcService : PurchaseGrpc.VoucherGrpcService.VoucherGrpcSer
             {
                 StatusCode = result.StatusCode,
                 Message = result.Message,
-                Data = result.StatusCode == 200
+                Data = result.Data?.ToString() //
             };
         }
         catch (Exception ex)
@@ -81,7 +81,7 @@ public class VoucherGrpcService : PurchaseGrpc.VoucherGrpcService.VoucherGrpcSer
             {
                 StatusCode = 500,
                 Message = "Internal Server Error",
-                Data = false
+                Data = ""
             };
         }
     }
