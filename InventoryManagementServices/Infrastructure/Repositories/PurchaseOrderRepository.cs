@@ -39,7 +39,7 @@ namespace Infrastructure.Repositories
             return await _context.PurchaseOrders
                                 .Include(p => p.Supplier)
                 .Include(p => p.PurchaseOrderItems)
-                .ThenInclude(i => i.Product)
+                .ThenInclude(i => i.Product).ThenInclude(p=>p.HsnCode)
                 .FirstOrDefaultAsync(p => p.PurchaseOrderId == id);
         }
         public async Task<PurchaseOrder> UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder)
@@ -93,7 +93,7 @@ namespace Infrastructure.Repositories
             // 📦 Filter by status
             if (!string.IsNullOrEmpty(status))
             {
-                query = query.Where(p => p.OrderStatus.Equals(status, StringComparison.OrdinalIgnoreCase));
+                query = query.Where(p => p.OrderStatus==status);
             }
 
             // 📅 Filter by date range
