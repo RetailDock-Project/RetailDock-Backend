@@ -19,8 +19,8 @@ namespace Application.Interfaces.Repository_Interfaces
         Task<ResponseDto<object>> AddNewCashSale(SalesAddDto sales,CreateSaleIdsDto allIdsDto);
         Task<ResponseDto<object>>  AddNewCreditSale(SalesAddDto sales,CreateSaleIdsDto allIdsDto);
         Task CashReceived(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId);
-        Task<List<Sales>>GetSaleDetailsByDate(DateTime fromDate, DateTime toDate,Guid orgId);
-        Task<List<Sales>> GetAllSalesDetails(Guid orgId);
+        Task<List<Sales>> GetSaleDetailsByDate(DateTime fromDate, DateTime toDate, Guid orgId, Guid userId, bool fullData, int? skip, int? take);
+        Task<List<Sales>> GetAllSalesDetails(Guid orgId, Guid userId, bool isFullData, int? skip, int? take);
         Task<Sales> GetSalesDetailsById(Guid saleId,Guid orgId);
         Task<Sales> GetB2CSalesDetailsByInvoice(string invoiceNum,Guid orgId);
         Task<Sales> GetB2BSalesDetailsByInvoice(string invoiceNum,Guid orgId);

@@ -136,7 +136,7 @@ namespace Infrastructure.Repositories
         }
         public async Task<SaleItems> soldProductItems(Guid saleId, Guid productId)
         {
-            return await context.SaleItems.Include(x => x.Sales).ThenInclude(x => x.Invoices).FirstOrDefaultAsync(x => x.SaleId == saleId && x.ProductId == productId);
+            return await context.SaleItems.Include(x => x.Sales).ThenInclude(x => x.Invoices).Include(si=>si.Products).Include(si=>si.UnitOfMeasures).FirstOrDefaultAsync(x => x.SaleId == saleId && x.ProductId == productId );
         }
         public async Task<Product> fetchProductById(Guid orgId, Guid productId)
         {
@@ -163,7 +163,15 @@ namespace Infrastructure.Repositories
                     List<SalesReturnItems> inMemoryReturnSaleItems = new List<SalesReturnItems>();
                     foreach (var returnProduct in salesReturn.ReturnItems)
                     {
+
+
+                        //decimal returnItemCount = await getReturnedProductCount(saleId, returnProduct.ProductId, orgId);
+                        //if (returnProduct.Quantity > returnItemCount)
+                        //{
+
+                        //}
                         var _saleItem = await soldProductItems(saleId, returnProduct.ProductId);
+                        
 
                         var product = await fetchProductById(orgId, returnProduct.ProductId);
                         product.Stock += returnProduct.Quantity;
@@ -207,7 +215,7 @@ namespace Infrastructure.Repositories
 
                     var totalUnitCost = inMemoryReturnSaleItems.Sum(items => items.UnitCost);
 
-                    var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId };
+                    var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId,ReturnDate= salesReturn.returnDate };
 
                     await context.SalesReturn.AddAsync(_salesReturn);
 
@@ -288,7 +296,7 @@ namespace Infrastructure.Repositories
                     var totalUnitCost = inMemoryReturnSaleItems.Sum(items => items.UnitCost);
 
 
-                    var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId };
+                    var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId ,ReturnDate=salesReturn.returnDate};
                     await context.SalesReturn.AddAsync(_salesReturn);
 
                     await transaction.CommitAsync();
@@ -305,10 +313,39 @@ namespace Infrastructure.Repositories
         }
 
 
-        public async Task<List<SalesReturn>> fetchAllSalesReturn(Guid orgId)
+        public async Task<List<SalesReturn>> fetchAllSalesReturn(Guid orgId, Guid userId, bool isFullData, int? skip, int? take)
         {
-            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).Where(sr => sr.OrganisationId == orgId).ToListAsync();
+            var query = context.SalesReturn
+                .Include(sr => sr.ReturnInvoice)
+                .Include(sr => sr.SalesReturnItems)
+                .Include(sr => sr.Sales)
+                    .ThenInclude(s => s.CashCustomers)
+                .Include(sr => sr.Sales)
+                    .ThenInclude(s => s.CreditCustomers)
+                .Where(sr => sr.OrganisationId == orgId)
+                .AsQueryable();
+
+         
+            if (!isFullData)
+            {
+                query = query.Where(sr => sr.CreatedBy == userId);
+            }
+
+       
+            query = query.OrderByDescending(sr => sr.ReturnDate);
+
+            if (skip.HasValue && take.HasValue)
+            {
+                query = query.Skip(skip.Value).Take(take.Value);
+            }
+            else if (take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return await query.ToListAsync();
         }
+
         public async Task<SalesReturn> GetSalesReturnDetailsById(Guid returnId, Guid orgId)
         {
             return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri=>sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == returnId && x.OrganisationId == orgId);
@@ -326,7 +363,14 @@ namespace Infrastructure.Repositories
         }
 
 
-
+        public async Task<decimal> getReturnedProductCount(Guid saleId,Guid productId,Guid orgId)
+        {
+            return await context.SalesReturn
+        .Where(s => s.SaleId == saleId && s.OrganisationId==orgId)
+        .SelectMany(s => s.SalesReturnItems)
+        .Where(item => item.ProductId == productId)
+        .SumAsync(item => item.Quantity);
+        }
 
 
         public async Task<string> GenerateB2BReturnInvoiceNumber(Guid orgId)

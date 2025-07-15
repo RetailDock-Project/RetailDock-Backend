@@ -22,9 +22,9 @@ namespace BillingService.Controllers
 
         [HttpGet("GetAllSaleDetails")]
 
-        public async Task<IActionResult> GetAllSalesDetails()
+        public async Task<IActionResult> GetAllSalesDetails( bool? isFullData, int? skip, int? take)
         {
-            var result = await saleService.GetAllSalesDetails(OrgId);
+            var result = await saleService.GetAllSalesDetails(OrgId,UserId,isFullData,skip,take);
             return StatusCode(result.StatusCode, result);
         }
         [HttpPatch("cashRecievedFromDebtor")]
@@ -67,9 +67,9 @@ namespace BillingService.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("GetAllSaleByDate")]
-        public async Task<IActionResult> GetSalesByDate( DateTime fromDate, DateTime? toDate)
+        public async Task<IActionResult> GetSalesByDate( DateTime fromDate, DateTime? toDate,bool? isFulldata,int? skip,int? take)
         {
-            var result = await saleService.GetSalesByDate(fromDate, toDate, OrgId);
+            var result = await saleService.GetSalesByDate(fromDate, toDate, OrgId,UserId,isFulldata,skip,take);
             return StatusCode(result.StatusCode, result);
         }
         [HttpPost("AddNewSale")]

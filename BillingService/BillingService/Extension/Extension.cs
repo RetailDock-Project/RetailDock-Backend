@@ -19,7 +19,13 @@ namespace BillingService.Extension
             services.AddScoped<ISaleReturnService, SalesReturnService>();
             services.AddScoped<IAddLedger, Add_LedgerGrpc>();
             services.AddScoped<IAccountGrpc, AccountGrpc_Client>();
+
+
             services.AddScoped<IUnitOfWorkRepository, UnitOfWorkRepository>();
+
+
+            services.AddScoped<I_InvoiceRepository, InvoiceRepository>();
+            services.AddScoped<I_InvoiceService, InvoiceService>();
 
 
             return services;

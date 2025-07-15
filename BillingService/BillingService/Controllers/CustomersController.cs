@@ -19,15 +19,15 @@ namespace BillingService.Controllers
 
         }
         [HttpGet("getAllCustomers")]
-        public async Task<IActionResult> fetchallCustomers()
+        public async Task<IActionResult> fetchallCustomers(bool isFullData, int? skip, int? take)
         {
-            var result = await customerService.GetAllCustomers(OrgId);
+            var result = await customerService.GetAllCustomers(OrgId,UserId,isFullData,skip,take);
             return StatusCode(result.StatusCode, result);
         }   
         [HttpGet("getCreditCustomers")]
-        public async Task<IActionResult> fetchCreditCustomers()
+        public async Task<IActionResult> fetchCreditCustomers(bool isFullData, int? skip, int? take)
         {
-            var result = await customerService.GetAllCreditCustomers(OrgId);
+            var result = await customerService.GetAllCreditCustomers(OrgId, UserId, isFullData, skip, take);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("viewCustomerById")]

@@ -12,12 +12,13 @@ namespace Application.Interfaces.Repository_Interfaces
     public  interface ICustomerRepository
     {
 
- Task<List<Sales>> GetAllCustomers(Guid orgId);
-  
+        Task<List<Sales>> GetAllCustomers(Guid orgId, Guid userId, bool isFullData, int? skip, int? take);
+
+
         Task<List<CreditCustomers>> fetchCreditCustomerSaleDetailsByDate(DateTime fromDate, DateTime toDate,Guid orgId);
-        Task<List<CashCustomers>> fetchAllCashCustomers(Guid orgId);
+        Task<List<CashCustomers>> fetchAllCashCustomers(Guid orgId, Guid userId, bool isFullData, int? skip, int? take);
      
-        Task<List<CreditCustomers>> fetchAllCreditCustomers(Guid orgId);
+        Task<List<CreditCustomers>> fetchAllCreditCustomers(Guid orgId, Guid userId, bool isFullData, int? skip, int? take);
 
         Task<CashCustomers> fetchCashCustomersById(Guid customerId,Guid orgId);
         Task<CreditCustomers> fetchCreditCustomersById(Guid customerId,Guid orgId);
@@ -27,7 +28,7 @@ namespace Application.Interfaces.Repository_Interfaces
         Task<CashCustomers> fetchCashCusomersByMobile(string mobile,Guid orgId);
         Task<CreditCustomers> fetchCreditCustomerSaleDetailsById(Guid customerId,Guid orgId);
         Task<CashCustomers> fetchCashCustomerSaleDetailsById(Guid customerId,Guid orgId);
-        Task<List<CreditCustomers>> GetCreditCustomers(Guid orgId); 
+       
         Task AddNewCashCustomer(CreateCashCustomerDto customer, Guid orgId, Guid userId);
 
        

@@ -18,9 +18,9 @@ namespace BillingService.Controllers
         }
         [HttpGet("GetAllSaleReturn")]
 
-        public async Task<IActionResult> GetAllSalesReturn()
+        public async Task<IActionResult> GetAllSalesReturn(bool isFulldata,int? skip,int take)
         {
-            var result = await saleReturnService.GetAllSalesReturnDetails(OrgId);
+            var result = await saleReturnService.GetAllSalesReturnDetails(OrgId,UserId,isFulldata,skip,take);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("GetAllSaleReturnById")]
@@ -41,6 +41,12 @@ namespace BillingService.Controllers
         public async Task<IActionResult> GetSalesReturnByDate(DateTime fromDate,DateTime? toDate)
         {
             var result = await saleReturnService.GetSalesReturnByDate(fromDate,toDate, OrgId);
+            return StatusCode(result.StatusCode, result);
+        } 
+        [HttpGet("GetreturnedProductCount")]
+        public async Task<IActionResult> GetreturnedProductCount(Guid saleId,Guid productId)
+        {
+            var result = await saleReturnService.getReturnedProductCount(saleId,productId, OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpPost("AddSaleReturn")]
