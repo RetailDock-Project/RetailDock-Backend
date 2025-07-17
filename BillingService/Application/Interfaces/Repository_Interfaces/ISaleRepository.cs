@@ -12,6 +12,8 @@ namespace Application.Interfaces.Repository_Interfaces
     public interface ISaleRepository
     {
         Task<CreditCustomers> GetCreditCustomers(string phoneNUmber, Guid OrgId);
+        Task<string> GenerateB2BInvoiceNumber(Guid orgId);
+        Task<string> GenerateB2CInvoiceNumber(Guid orgId);
         Task<CashCustomers> GetCashCustomers(string phoneNUmber, Guid OrgId);
         Task<List<Sales>> GetDebtorsSales(Guid debtorId, Guid orgId);
         Task<Product> GetProductById(Guid productId, Guid orgId);
