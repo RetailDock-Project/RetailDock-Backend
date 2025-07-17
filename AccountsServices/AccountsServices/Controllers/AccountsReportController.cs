@@ -16,6 +16,7 @@ namespace AccountsServices.Controllers
             _accountsReportService = accountsReportService;
         }
         [HttpGet("get/pandl/account")]
+       
         public async Task <IActionResult> GetPandLAccount( DateTime? fromDate, DateTime? toDate)
         {
             var data= await _accountsReportService.GetPLRawDataAsync(OrgId, fromDate, toDate);
