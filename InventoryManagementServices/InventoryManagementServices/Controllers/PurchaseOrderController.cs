@@ -81,6 +81,22 @@ namespace API.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
+        [HttpGet("stats")]
+        public async Task<IActionResult> GetPurchaseOrderStats()
+        {
+            var result = await _service.GetOrderStatsAsync(OrgId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateOrder([FromBody] UpdatePurchaseOrderDto dto)
+        {
+            var result = await _service.UpdatePurchaseOrderAsync(OrgId, UserId, dto);
+            return StatusCode(result.StatusCode, result);
+        }
+
+
+
 
     }
 }

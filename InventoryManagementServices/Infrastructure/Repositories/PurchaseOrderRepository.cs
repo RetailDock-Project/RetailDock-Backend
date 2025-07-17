@@ -78,6 +78,7 @@ namespace Infrastructure.Repositories
                 .Include(p => p.Supplier)
                 .Include(p => p.PurchaseOrderItems)
                     .ThenInclude(i => i.Product)
+                    .ThenInclude(p=>p.HsnCode)
                 .Where(p => p.OrganizationId == orgId)
                 .AsQueryable();
 
@@ -120,5 +121,75 @@ namespace Infrastructure.Repositories
 
             return await query.ToListAsync();
         }
+
+
+        public async Task<object> GetPurchaseOrderStatsAsync(Guid orgId)
+        {
+            var purchaseOrders = await _context.PurchaseOrders
+                .Include(p => p.PurchaseOrderItems)
+                    .ThenInclude(i => i.Product)
+                        .ThenInclude(p => p.HsnCode)
+                .Where(p => p.OrganizationId == orgId)
+                .ToListAsync();
+
+            int totalOrders = purchaseOrders.Count;
+            int currentMonthOrders = purchaseOrders
+                .Count(p => p.OrderDate.Month == DateTime.UtcNow.Month && p.OrderDate.Year == DateTime.UtcNow.Year);
+
+            // Calculate total value including GST
+            decimal totalValue = 0;
+            decimal pendingValue = 0;
+            int pendingOrders = 0;
+
+            foreach (var po in purchaseOrders)
+            {
+                decimal orderTotalWithTax = 0;
+
+                foreach (var item in po.PurchaseOrderItems)
+                {
+                    var amount = item.RatePerPiece * item.Quantity;
+                    var gstRate = item.Product?.HsnCode?.GstRate ?? 0;
+                    var tax = amount * gstRate / 100;
+                    orderTotalWithTax += amount + tax;
+                }
+
+                totalValue += orderTotalWithTax;
+
+                if (po.OrderStatus == "Pending")
+                {
+                    pendingOrders++;
+                    pendingValue += orderTotalWithTax;
+                }
+            }
+
+            decimal avgValue = totalOrders > 0 ? totalValue / totalOrders : 0;
+
+            return new
+            {
+                TotalOrders = totalOrders,
+                TotalValue = totalValue,
+                AvgValue = avgValue,
+                CurrentMonthOrders = currentMonthOrders,
+                PendingOrders = pendingOrders,
+                PendingValue = pendingValue
+            };
+        }
+
+
+        //public async Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid id)
+        //{
+        //    return await _context.PurchaseOrders
+        //        .Include(p => p.PurchaseOrderItems)
+        //        .FirstOrDefaultAsync(p => p.PurchaseOrderId == id);
+        //}
+
+        //public async Task UpdatePurchaseOrderAsync(PurchaseOrder order)
+        //{
+        //    _context.PurchaseOrders.Update(order);
+        //    await _context.SaveChangesAsync();
+        //}
+
+
+
     }
 }

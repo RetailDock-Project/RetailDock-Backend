@@ -24,5 +24,7 @@ namespace Application.Interfaces
     DateTime? endDate,
     int? pageNumber,
     int? pageSize);
+
+        Task<object> GetPurchaseOrderStatsAsync(Guid orgId);
 }
 }

@@ -17,7 +17,7 @@ namespace Application.Services
         Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId,Guid userId, AddPurchaseOrderDto dto);
         Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(Guid orgnaizationId);
         Task<Responses<PurchaseOrderDetailDto>> GetOrderByIdAsync(Guid id);
-        Task<Responses<string>> UpdateOrderStatusAsync(Guid id, UpdateOrderStatusDto dto);
+        //Task<Responses<string>> UpdateOrderStatusAsync(Guid id, UpdateOrderStatusDto dto);
         Task<Responses<string>> DeleteOrderAsync(Guid id);
         Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id);
         Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(
@@ -28,6 +28,9 @@ namespace Application.Services
     DateTime? endDate,
     int? pageNumber,
     int? pageSize);
+
+        Task<Responses<object>> GetOrderStatsAsync(Guid orgId);
+        Task<Responses<string>> UpdatePurchaseOrderAsync(Guid orgId, Guid userId, UpdatePurchaseOrderDto dto);
     }
     public class PurchaseOrderService:IPurchaseOrderService
     {
@@ -134,6 +137,59 @@ namespace Application.Services
             var result = _mapper.Map<List<PurchaseOrderDto>>(orders);
             return new Responses<List<PurchaseOrderDto>> { Message = "Purchase Orders Fetched", StatusCode = 200, Data = result };
         }
+
+        public async Task<Responses<object>> GetOrderStatsAsync(Guid orgId)
+        {
+            var stats = await _repo.GetPurchaseOrderStatsAsync(orgId);
+            return new Responses<object>
+            {
+                StatusCode = 200,
+                Message = "Purchase Order Stats Fetched",
+                Data = stats
+            };
+        }
+
+
+        public async Task<Responses<string>> UpdatePurchaseOrderAsync(Guid orgId, Guid userId, UpdatePurchaseOrderDto dto)
+        {
+            try
+            {
+                var order = await _repo.GetPurchaseOrderByIdAsync(dto.PurchaseOrderId);
+                if (order == null)
+                    return new Responses<string> { StatusCode = 404, Message = "Order not found" };
+
+                order.SupplierId = dto.SupplierId;
+                order.OrderDate = dto.OrderDate ?? order.OrderDate;
+                order.UpdatedBy = userId;
+                order.UpdatedAt = DateTime.UtcNow;
+
+                // Remove old items and add updated ones
+                order.PurchaseOrderItems.Clear();
+                foreach (var item in dto.Items)
+                {
+                    order.PurchaseOrderItems.Add(new PurchaseOrderItem
+                    {
+                        PurchaseOrderItemId = item.PurchaseOrderItemId ?? Guid.NewGuid(),
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                        RatePerPiece = item.RatePerPiece,
+                        TotalAmount = item.Quantity * item.RatePerPiece
+                    });
+                }
+
+                order.GrossTotalAmount = order.PurchaseOrderItems.Sum(x => x.TotalAmount);
+
+                await _repo.UpdatePurchaseOrderAsync(order);
+
+                return new Responses<string> { StatusCode = 200, Message = "Order updated", Data = order.PurchaseOrderId.ToString() };
+            }
+            catch (Exception ex)
+            {
+                return new Responses<string> { StatusCode = 500, Message = ex.Message };
+            }
+        }
+
+
 
 
     }

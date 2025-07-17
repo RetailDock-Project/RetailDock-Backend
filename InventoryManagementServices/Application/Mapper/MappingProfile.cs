@@ -168,7 +168,7 @@ namespace Application.Mapper
                  .ForMember(dest=>dest.SupplierDetails,opt=>opt.MapFrom(src=>src.Supplier))
             ;
 
-            CreateMap<PurchaseReturnItem, PurchaseReturnItemsDetailsDto>()
+            CreateMap<PurchaseReturnItem,PurchaseReturnItemsDetailsDto>()
                 .ForMember(dest => dest.OriginalQuantity, opt => opt.MapFrom(src => src.PurchaseItem.Quantity))
                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount+src.TaxAmount))
                 .ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Product.ProductName))
