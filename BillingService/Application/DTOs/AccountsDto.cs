@@ -10,8 +10,8 @@ namespace Application.Dto
 {
     public class VoucherDto
     {
-        public string? VoucherTypeId { get; set; }
-        public string? Remarks { get; set; }
+    
+
         public List<TransactionDto> TransactionsDebit { get; set; }
         public List<TransactionDto> TransactionsCredit { get; set; }
     }
@@ -20,12 +20,8 @@ namespace Application.Dto
     public class TransactionDto
     {
         public string LedgerId { get; set; }
-        public string? Narration { get; set; } = "items Sold";
+   
     }
-
-
-
-
 
 
     public class Voucher

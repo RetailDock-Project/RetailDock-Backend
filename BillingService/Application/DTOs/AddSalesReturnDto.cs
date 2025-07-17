@@ -11,12 +11,13 @@ namespace Application.DTOs
     public class AddSalesReturnDto
     {
         public string  SaleInvoiceNumber { get; set; }
-
+        public string ReturnInvoiceNumber { get; set; }
+        
        public  PaymentMode returnPayment { get; set; } = PaymentMode.Cash;
         public DateTime returnDate { get;set; }=DateTime.Now;
         public string Text { get; set; }
         public string? ReturnCondition { get; set; }
-
+        
   
         public List<SalesReturnItemsAddDto> ReturnItems { get; set; }
         public VoucherDto Voucher { get; set; }

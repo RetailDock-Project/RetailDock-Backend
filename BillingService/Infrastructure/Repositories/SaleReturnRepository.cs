@@ -140,18 +140,24 @@ namespace Infrastructure.Repositories
         }
         public async Task<Product> fetchProductById(Guid orgId, Guid productId)
         {
-            return await context.Products.FirstOrDefaultAsync(x => x.Id == productId && x.OrgnizationId == orgId);
+            return await context.Products.Include(p=>p.UnitOfMeasures).FirstOrDefaultAsync(x => x.Id == productId && x.OrgnizationId == orgId);
         }
 
 
-        public async Task addNewB2BSalesReturn(AddSalesReturnDto salesReturn, Guid saleId, Guid orgId, Guid userId, GST_Type gst_Type)
+
+        public async Task addproductStock(Guid orgId,Guid productId,decimal quantitiy)
+        {
+            var product = await fetchProductById(orgId, productId);
+            product.Stock += quantitiy;
+            context.Products.Update(product);
+        }
+
+
+
+        public async Task addNewB2BSalesReturn(AddSalesReturnDto salesReturn, Guid saleId, Guid orgId, Guid userId, GST_Type gst_Type )
         {
             {
-                var transaction = await context.Database.BeginTransactionAsync();
-
-
-                try
-                {
+               
 
 
                     Guid returnInvoiceId = Guid.NewGuid();
@@ -173,8 +179,7 @@ namespace Infrastructure.Repositories
                         var _saleItem = await soldProductItems(saleId, returnProduct.ProductId);
                         
 
-                        var product = await fetchProductById(orgId, returnProduct.ProductId);
-                        product.Stock += returnProduct.Quantity;
+
 
 
                         decimal taxableAmount = _saleItem.UnitPrice * returnProduct.Quantity;
@@ -204,7 +209,7 @@ namespace Infrastructure.Repositories
                             returnItem = new SalesReturnItems { ProductId = returnProduct.ProductId, Quantity = returnProduct.Quantity, UnitCost = _saleItem.UnitCost, HSNCodeNumber = _saleItem.HSNCodeNumber, UnitPrice = _saleItem.UnitPrice, ReturnId = returnId, TaxRate = _saleItem.TaxRate, TaxableAmount = taxableAmount, TotalAmount = totalAmount, IGST = taxAmount, UnitId = _saleItem.UnitId, reason = returnProduct.Reason };
 
                         }
-                        context.Products.Update(product);
+                    
                         inMemoryReturnSaleItems.Add(returnItem);
                         await context.SalesReturnItems.AddAsync(returnItem);
                     }
@@ -215,30 +220,21 @@ namespace Infrastructure.Repositories
 
                     var totalUnitCost = inMemoryReturnSaleItems.Sum(items => items.UnitCost);
 
-                    var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId,ReturnDate= salesReturn.returnDate };
+                    var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId,ReturnDate= salesReturn.returnDate, };
 
                     await context.SalesReturn.AddAsync(_salesReturn);
 
 
-                    await transaction.CommitAsync();
-                }
-
-                catch (Exception ex)
-                {
-                    await transaction.RollbackAsync();
-                    // Log the error
-                    throw new Exception("Error while adding new sales return", ex);
-                }
+             
             }
         }
 
         public async Task addNewB2CSalesReturn(AddSalesReturnDto salesReturn, Guid saleId, Guid orgId, Guid userId, GST_Type gst_Type)
         {
             {
-                var transaction = await context.Database.BeginTransactionAsync();
+               
 
-                try
-                {
+               
 
 
                     Guid returnInvoiceId = Guid.NewGuid();
@@ -261,6 +257,8 @@ namespace Infrastructure.Repositories
                         decimal UGST = taxAmount / 2;
 
                         SalesReturnItems returnItems = new SalesReturnItems();
+
+
                         decimal totalAmount = taxableAmount + taxAmount;
                         logger.LogInformation("UnitId: {UnitId}  for sale Items", _saleItem.UnitId);
 
@@ -299,18 +297,13 @@ namespace Infrastructure.Repositories
                     var _salesReturn = new SalesReturn { Id = returnId, CreatedBy = userId, TotalUnitCost = totalUnitCost, Notes = salesReturn.Text, OrganisationId = orgId, ReturnInvoiceId = returnInvoiceId, SaleId = saleId ,ReturnDate=salesReturn.returnDate};
                     await context.SalesReturn.AddAsync(_salesReturn);
 
-                    await transaction.CommitAsync();
-                }
 
-                catch (Exception ex)
-                {
-                    await transaction.RollbackAsync();
-                    logger.LogError(ex.Message,"error from sale Return repo exceprion");
+                
 
-                    throw new Exception("Error while adding new sales return", ex);
-                }
+             
             }
         }
+
 
 
         public async Task<List<SalesReturn>> fetchAllSalesReturn(Guid orgId, Guid userId, bool isFullData, int? skip, int? take)
@@ -356,9 +349,15 @@ namespace Infrastructure.Repositories
             return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.ReturnInvoice.B2CReturnInvoiceNumber == invoiceNum || x.ReturnInvoice.B2BReturnInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
 
         }
-        public async Task<List<SalesReturn>> GetSalesReturnDetailsBydate(DateTime fromDate, DateTime? toDate, Guid orgId)
+        public async Task<List<SalesReturn>> GetSalesReturnDetailsBydate(DateTime fromDate, DateTime? toDate,bool isFullData, Guid orgId,Guid userId)
         {
-            return await context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).Where(x => x.ReturnDate >= fromDate && x.ReturnDate <= toDate && x.OrganisationId == orgId).ToListAsync();
+            var query= context.SalesReturn.Include(sr => sr.ReturnInvoice).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures).Include(sr => sr.Sales).ThenInclude(s => s.CashCustomers).Include(sr => sr.Sales).ThenInclude(s => s.CreditCustomers).Where(x => x.ReturnDate >= fromDate && x.ReturnDate <= toDate && x.OrganisationId == orgId).AsQueryable();
+
+            if (!isFullData)
+            {
+                query = query.Where(sr => sr.CreatedBy == userId);
+            }
+            return await  query.ToListAsync();
 
         }
 

@@ -46,9 +46,9 @@ namespace Infrastructure.Repositories
         {
             return await context.CreditCustomers.FirstOrDefaultAsync(x => x.OrganisationId == OrgId && x.ContactNumber == phoneNUmber);
         }
-        public async Task<List<Sales>> GetDebtorsSales(Guid debtorId,Guid orgId)
+        public async Task<List<Sales>> GetDebtorsSales(Guid debtorId, Guid orgId)
         {
-            return await context.Sales.Include(s=>s.Invoices).Include(s=>s.SaleItems).Where(s => s.DebtorsId == debtorId).ToListAsync();
+            return await context.Sales.Include(s => s.Invoices).Include(s => s.SaleItems).Where(s => s.DebtorsId == debtorId).ToListAsync();
         }
         public async Task<Product> GetProductById(Guid productId, Guid orgId)
 
@@ -73,307 +73,270 @@ namespace Infrastructure.Repositories
 
         public async Task AddnewB2CSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto, DateTime dueDate, decimal recievedAmount)
         {
-            try
+
+
+            var invoiceNumber = await GenerateB2CInvoiceNumber(allIdsDto.OrganisationId);
+
+            var taxable = saleItems.Sum(si => si.TaxableAmount);
+            var totalDiscount = saleItems.Sum(si => si.DiscountAmount);
+            var totalIGST = saleItems.Sum(si => si.IGST);
+            var totalCGST = saleItems.Sum(si => si.CGST);
+            var totalSGST = saleItems.Sum(si => si.SGST);
+            var totalUGST = saleItems.Sum(si => si.UGST);
+            var totalAmt = saleItems.Sum(si => si.TotalAmount);
+
+            var newInvoice = new SalesInvoice
             {
+                Id = allIdsDto.InvoiceId,
+                B2CInvoiceNumber = invoiceNumber,
+                DueDate = dueDate,
+                RecievedAmount = recievedAmount,
 
-                var invoiceNumber = await GenerateB2CInvoiceNumber(allIdsDto.OrganisationId);
+                OrganisationId = allIdsDto.OrganisationId,
+                TotalCGST = totalCGST,
+                TotalSGST = totalSGST,
+                TotalIGST = totalIGST,
+                TotalUGST = totalUGST,
+                TaxableAmount = taxable,
+                DiscountAmount = totalDiscount,
 
-                var taxable = saleItems.Sum(si => si.TaxableAmount);
-                var totalDiscount = saleItems.Sum(si => si.DiscountAmount);
-                var totalIGST = saleItems.Sum(si => si.IGST);
-                var totalCGST = saleItems.Sum(si => si.CGST);
-                var totalSGST = saleItems.Sum(si => si.SGST);
-                var totalUGST = saleItems.Sum(si => si.UGST);
-                var totalAmt = saleItems.Sum(si => si.TotalAmount);
+                TotalAmount = totalAmt,
+                CreatedAt = DateTime.UtcNow
+            };
 
-                var newInvoice = new SalesInvoice
-                {
-                    Id = allIdsDto.InvoiceId,
-                    B2CInvoiceNumber = invoiceNumber,
-                    DueDate = dueDate,
-                    RecievedAmount = recievedAmount,
-
-                    OrganisationId = allIdsDto.OrganisationId,
-                    TotalCGST = totalCGST,
-                    TotalSGST = totalSGST,
-                    TotalIGST = totalIGST,
-                    TotalUGST = totalUGST,
-                    TaxableAmount = taxable,
-                    DiscountAmount = totalDiscount,
-
-                    TotalAmount = totalAmt,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                await context.SalesInvoices.AddAsync(newInvoice);
+            await context.SalesInvoices.AddAsync(newInvoice);
 
 
-            }
-            catch (Exception ex)
-            {
-
-                logger.LogError(ex.Message, "error from adding new invoices");
-
-                throw;
-            }
         }
+        
         public async Task AddnewB2BSaleInvoices(List<SaleItems> saleItems, CreateSaleIdsDto allIdsDto, DateTime dueDate, decimal recievedAmount)
         {
-            try
+
+
+            var invoiceNumber = await GenerateB2BInvoiceNumber(allIdsDto.OrganisationId);
+
+
+            var taxable = saleItems.Sum(si => si.TaxableAmount);
+            var totalDiscount = saleItems.Sum(si => si.DiscountAmount);
+            var totalIGST = saleItems.Sum(si => si.IGST);
+            var totalCGST = saleItems.Sum(si => si.CGST);
+            var totalSGST = saleItems.Sum(si => si.SGST);
+            var totalUGST = saleItems.Sum(si => si.UGST);
+            var totalAmt = saleItems.Sum(si => si.TotalAmount);
+
+            var newInvoice = new SalesInvoice
             {
+                Id = allIdsDto.InvoiceId,
+                B2BInvoiceNumber = invoiceNumber,
+                TotalCGST = totalCGST,
+                TotalSGST = totalSGST,
+                TotalIGST = totalIGST,
+                TotalUGST = totalUGST,
+                OrganisationId = allIdsDto.OrganisationId,
+                RecievedAmount = recievedAmount,
+                DueDate = dueDate,
 
-                var invoiceNumber = await GenerateB2BInvoiceNumber(allIdsDto.OrganisationId);
+                TaxableAmount = taxable,
+                DiscountAmount = totalDiscount,
 
+                TotalAmount = totalAmt,
+                CreatedAt = DateTime.UtcNow
+            };
 
-                var taxable = saleItems.Sum(si => si.TaxableAmount);
-                var totalDiscount = saleItems.Sum(si => si.DiscountAmount);
-                var totalIGST = saleItems.Sum(si => si.IGST);
-                var totalCGST = saleItems.Sum(si => si.CGST);
-                var totalSGST = saleItems.Sum(si => si.SGST);
-                var totalUGST = saleItems.Sum(si => si.UGST);
-                var totalAmt = saleItems.Sum(si => si.TotalAmount);
-
-                var newInvoice = new SalesInvoice
-                {
-                    Id = allIdsDto.InvoiceId,
-                    B2BInvoiceNumber = invoiceNumber,
-                    TotalCGST = totalCGST,
-                    TotalSGST = totalSGST,
-                    TotalIGST = totalIGST,
-                    TotalUGST = totalUGST,
-                    OrganisationId = allIdsDto.OrganisationId,
-                    RecievedAmount = recievedAmount,
-                    DueDate = dueDate,
-
-                    TaxableAmount = taxable,
-                    DiscountAmount = totalDiscount,
-
-                    TotalAmount = totalAmt,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                await context.SalesInvoices.AddAsync(newInvoice);
+            await context.SalesInvoices.AddAsync(newInvoice);
 
 
-            }
-            catch (Exception ex)
-            {
 
-                logger.LogError(ex.Message, "error from adding new invoices");
-
-                throw;
-            }
         }
         public async Task<ResponseDto<object>> AddNewCreditSale(SalesAddDto sales, CreateSaleIdsDto allIdsDto)
         {
-            //fetch hsncode and taxrate from productId
 
-            var transaction = await context.Database.BeginTransactionAsync();
-            try
+
+            var creditCustomer = await GetCreditCustomers(sales.MobileNum, allIdsDto.OrganisationId);
+            if (creditCustomer == null)
             {
-                var creditCustomer = await GetCreditCustomers(sales.MobileNum, allIdsDto.OrganisationId);
-                if (creditCustomer == null)
-                {
 
-                    return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
+                return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
 
-                }
-
-                DateTime dueDate = sales.DueDate ?? DateTime.UtcNow.AddDays(30);
-
-                List<SaleItems> inMemorySale = new List<SaleItems>();
-
-
-                foreach (var item in sales.SaleItems)
-                {
-
-                    var filteredProduct = await GetProductById(item.ProductId, allIdsDto.OrganisationId);
-
-                    if (filteredProduct == null)
-                    {
-                        return new ResponseDto<object> { StatusCode = 404, Message = "product not found," };
-                    }
-
-                    filteredProduct.Stock -= item.Quantity;
-
-
-                    decimal taxRate = filteredProduct.HsnCode.GstRate;
-                    string hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
-                    decimal unitCost = filteredProduct.CostPrice;
-                    int unitId = filteredProduct.UnitOfMeasuresId;
-
-                    decimal taxableAmount = item.Quantity * item.UnitPrice;
-
-                    decimal taxAmount = (taxableAmount - item.DiscountAmount) * (taxRate / 100);
-
-                    decimal _SGST = taxAmount / 2;
-                    decimal _CGST = taxAmount / 2;
-                    decimal _UGST = taxAmount / 2;
-
-                    decimal totalAmount = (taxableAmount - item.DiscountAmount) + (taxAmount);
-
-
-                    SaleItems newItems = new SaleItems();
-
-
-                    if (sales.GST_Type == GST_Type.SGST)
-                    {
-                        newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitId = unitId, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, SGST = _SGST, UnitCost = unitCost };
-                    }
-                    if (sales.GST_Type == GST_Type.UGST)
-                    {
-                        newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, UnitId = unitId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, UGST = _UGST, UnitCost = unitCost };
-                    }
-                    if (sales.GST_Type == GST_Type.IGST)
-                    {
-                        newItems = new SaleItems { ProductId = item.ProductId, UnitId = unitId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, IGST = taxAmount, UnitCost = unitCost };
-                    }
-
-                    inMemorySale.Add(newItems);
-                    context.Products.Update(filteredProduct);
-                };
-
-                await context.SaleItems.AddRangeAsync(inMemorySale);
-                var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
-                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, DebtorsId = creditCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, Narration = sales.Text, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost ,SalesType=sales.SalesMode.ToString()};
-
-
-                await context.Sales.AddAsync(newSale);
-
-
-                if (sales.SalesMode == SalesMode.B2C)
-                {
-                    await AddnewB2CSaleInvoices(inMemorySale, allIdsDto, dueDate, 0);
-                }
-                if (sales.SalesMode == SalesMode.B2B)
-                {
-                    await AddnewB2BSaleInvoices(inMemorySale, allIdsDto, dueDate, 0);
-                }
-
-
-                //var respond = accountClient.  (new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
-                //if (respond.Success == false)
-                //{
-                //    transaction.Rollback();
-                //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
-                //}
-
-
-
-
-                await transaction.CommitAsync();
-                return new ResponseDto<object> { StatusCode = 201, Message = "new credit sale is created" };
             }
-            catch (Exception ex)
+
+            DateTime dueDate = sales.DueDate ?? DateTime.UtcNow.AddDays(30);
+
+            List<SaleItems> inMemorySale = new List<SaleItems>();
+
+
+            foreach (var item in sales.SaleItems)
             {
-                await transaction.RollbackAsync();
-                logger.LogError(ex.Message, "error from adding new sales");
 
-                throw;
+                var filteredProduct = await GetProductById(item.ProductId, allIdsDto.OrganisationId);
+
+                if (filteredProduct == null)
+                {
+                    return new ResponseDto<object> { StatusCode = 404, Message = "product not found," };
+                }
+
+                filteredProduct.Stock -= item.Quantity;
+
+
+                decimal taxRate = filteredProduct.HsnCode.GstRate;
+                string hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
+                decimal unitCost = filteredProduct.CostPrice;
+                int unitId = filteredProduct.UnitOfMeasuresId;
+
+                decimal taxableAmount = item.Quantity * item.UnitPrice;
+
+                decimal taxAmount = (taxableAmount - item.DiscountAmount) * (taxRate / 100);
+
+                decimal _SGST = taxAmount / 2;
+                decimal _CGST = taxAmount / 2;
+                decimal _UGST = taxAmount / 2;
+
+                decimal totalAmount = (taxableAmount - item.DiscountAmount) + (taxAmount);
+
+
+                SaleItems newItems = new SaleItems();
+
+
+                if (sales.GST_Type == GST_Type.SGST)
+                {
+                    newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitId = unitId, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, SGST = _SGST, UnitCost = unitCost };
+                }
+                if (sales.GST_Type == GST_Type.UGST)
+                {
+                    newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, UnitId = unitId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, UGST = _UGST, UnitCost = unitCost };
+                }
+                if (sales.GST_Type == GST_Type.IGST)
+                {
+                    newItems = new SaleItems { ProductId = item.ProductId, UnitId = unitId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, IGST = taxAmount, UnitCost = unitCost };
+                }
+
+                inMemorySale.Add(newItems);
+                context.Products.Update(filteredProduct);
+            };
+
+            await context.SaleItems.AddRangeAsync(inMemorySale);
+            var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
+            var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, DebtorsId = creditCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, Narration = sales.Text, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost, SalesType = sales.SalesMode.ToString() };
+
+
+            await context.Sales.AddAsync(newSale);
+
+
+            if (sales.SalesMode == SalesMode.B2C)
+            {
+                await AddnewB2CSaleInvoices(inMemorySale, allIdsDto, dueDate, 0);
             }
+            if (sales.SalesMode == SalesMode.B2B)
+            {
+                await AddnewB2BSaleInvoices(inMemorySale, allIdsDto, dueDate, 0);
+            }
+
+
+            //var respond = accountClient.  (new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
+            //if (respond.Success == false)
+            //{
+            //    transaction.Rollback();
+            //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
+            //}
+
+
+
+
+            return new ResponseDto<object> { StatusCode = 201, Message = "new credit sale is created" };
+
         }
         public async Task<ResponseDto<object>> AddNewCashSale(SalesAddDto sales, CreateSaleIdsDto allIdsDto)
         {
             //fetch hsncode and taxrate from productId
 
-            var transaction = await context.Database.BeginTransactionAsync();
-            try
+
+
+            var cashCustomer = await GetCashCustomers(sales.MobileNum, allIdsDto.OrganisationId);
+
+            if (cashCustomer == null)
             {
+                return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
+            }
+            //var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.OrganisationId.ToString() });
+            DateTime dueDate = DateTime.Now;
+            List<SaleItems> inMemorySale = new List<SaleItems>();
+            foreach (var item in sales.SaleItems)
+            {
+                var filteredProduct = await GetProductById(item.ProductId, allIdsDto.OrganisationId);
 
-                var cashCustomer = await GetCashCustomers(sales.MobileNum, allIdsDto.OrganisationId);
-
-                if (cashCustomer == null)
+                if (filteredProduct == null)
                 {
-                    return new ResponseDto<object> { StatusCode = 404, Message = "customer not found,please add new customer" };
+                    return new ResponseDto<object> { StatusCode = 404, Message = "product not found," };
                 }
-                //var response = await _grpcClient.GetProductsByOrganizationAsync(new OrganizationRequest { OrganizationId = allIdsDto.OrganisationId.ToString() });
-                DateTime dueDate = DateTime.Now;
-                List<SaleItems> inMemorySale = new List<SaleItems>();
-                foreach (var item in sales.SaleItems)
+
+
+
+
+                filteredProduct.Stock -= item.Quantity;
+
+                decimal taxRate = filteredProduct.HsnCode.GstRate;
+                string hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
+                decimal unitCost = filteredProduct.CostPrice;
+                int unitId = filteredProduct.UnitOfMeasuresId;
+
+                decimal taxableAmount = item.Quantity * item.UnitPrice;
+
+                decimal taxAmount = (taxableAmount - item.DiscountAmount) * (taxRate / 100);
+
+                decimal _SGST = taxAmount / 2;
+                decimal _CGST = taxAmount / 2;
+                decimal _UGST = taxAmount / 2;
+
+                decimal totalAmount = (taxableAmount - item.DiscountAmount) + (taxAmount);
+                SaleItems newItems = new SaleItems();
+                if (sales.GST_Type == GST_Type.SGST)
                 {
-                    var filteredProduct = await GetProductById(item.ProductId, allIdsDto.OrganisationId);
-
-                    if (filteredProduct == null)
-                    {
-                        return new ResponseDto<object> { StatusCode = 404, Message = "product not found," };
-                    }
-
-
-
-
-                    filteredProduct.Stock -= item.Quantity;
-
-                    decimal taxRate = filteredProduct.HsnCode.GstRate;
-                    string hsnCode = filteredProduct.HsnCode.HSNCodeNumber;
-                    decimal unitCost = filteredProduct.CostPrice;
-                    int unitId = filteredProduct.UnitOfMeasuresId;
-
-                    decimal taxableAmount = item.Quantity * item.UnitPrice;
-
-                    decimal taxAmount = (taxableAmount - item.DiscountAmount) * (taxRate / 100);
-
-                    decimal _SGST = taxAmount / 2;
-                    decimal _CGST = taxAmount / 2;
-                    decimal _UGST = taxAmount / 2;
-
-                    decimal totalAmount = (taxableAmount - item.DiscountAmount) + (taxAmount);
-                    SaleItems newItems = new SaleItems();
-                    if (sales.GST_Type == GST_Type.SGST)
-                    {
-                        newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, SGST = _SGST, UnitId = unitId, UnitCost = unitCost };
-                    }
-                    if (sales.GST_Type == GST_Type.UGST)
-                    {
-                        newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, UGST = _UGST, UnitId = unitId, UnitCost = unitCost };
-                    }
-                    if (sales.GST_Type == GST_Type.IGST)
-                    {
-                        newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, IGST = taxAmount, UnitId = unitId, UnitCost = unitCost };
-                    }
+                    newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, SGST = _SGST, UnitId = unitId, UnitCost = unitCost };
+                }
+                if (sales.GST_Type == GST_Type.UGST)
+                {
+                    newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, CGST = _CGST, UGST = _UGST, UnitId = unitId, UnitCost = unitCost };
+                }
+                if (sales.GST_Type == GST_Type.IGST)
+                {
+                    newItems = new SaleItems { ProductId = item.ProductId, DiscountAmount = item.DiscountAmount, Quantity = item.Quantity, UnitPrice = item.UnitPrice, SaleId = allIdsDto.SaleId, TaxRate = taxRate, HSNCodeNumber = hsnCode, TotalAmount = totalAmount, TaxableAmount = taxableAmount, IGST = taxAmount, UnitId = unitId, UnitCost = unitCost };
+                }
 
 
 
-                    inMemorySale.Add(newItems);
-                    context.Products.Update(filteredProduct);
+                inMemorySale.Add(newItems);
+                context.Products.Update(filteredProduct);
 
-                };
+            };
 
-                await context.SaleItems.AddRangeAsync(inMemorySale);
-                var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
-                var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, CashCustomerId = cashCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
+            await context.SaleItems.AddRangeAsync(inMemorySale);
+            var totalUnitCost = inMemorySale.Sum(x => x.UnitCost);
+            var newSale = new Sales { Id = allIdsDto.SaleId, InvoiceId = allIdsDto.InvoiceId, CashCustomerId = cashCustomer.Id, PaymentType = sales.PaymentType, CreatedBy = allIdsDto.UserId, OrganisationId = allIdsDto.OrganisationId, GST_Type = sales.GST_Type, TotalUnitCost = totalUnitCost };
 
-                await context.Sales.AddAsync(newSale);
+            await context.Sales.AddAsync(newSale);
 
-                await AddnewB2CSaleInvoices(inMemorySale, allIdsDto, dueDate, inMemorySale.Sum(x => x.TotalAmount));
+            await AddnewB2CSaleInvoices(inMemorySale, allIdsDto, dueDate, inMemorySale.Sum(x => x.TotalAmount));
 
-                //foreach (var product in inMemorySale)
-                //{ 
-                //var respond = stockclient.updateProductStock(new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
-                //if (respond.Success == false)
-                //{
-                //    transaction.Rollback();
-                //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
-                //}
-                //}
+            //foreach (var product in inMemorySale)
+            //{ 
+            //var respond = stockclient.updateProductStock(new updateStockRequest { OrganisationId = allIdsDto.OrganisationId.ToString(), Increase = false, ProductId = product.ProductId.ToString(), Quantity = (int)product.Quantity, UserId = allIdsDto.UserId.ToString() });
+            //if (respond.Success == false)
+            //{
+            //    transaction.Rollback();
+            //    return new ResponseDto<object> { StatusCode = 400, Message = respond.Message };
+            //}
+            //}
 
 
 
 
-                await transaction.CommitAsync();
-                return new ResponseDto<object> { StatusCode = 201, Message = "new cash sale is created" };
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                logger.LogError(ex.Message, "error from adding new sales");
 
-                throw;
-            }
+            return new ResponseDto<object> { StatusCode = 201, Message = "new cash sale is created" };
+        
         }
         public async Task<List<Sales>> GetAllSalesDetails(Guid orgId, Guid userId, bool isFullData, int? skip, int? take)
         {
-            try
-            {
+           
                 var query = context.Sales
                     .Include(s => s.SaleItems)
                         .ThenInclude(si => si.Products)
@@ -391,7 +354,7 @@ namespace Infrastructure.Repositories
                 }
 
                 // Order by most recent sale (adjust the field if needed)
-                query = query.OrderByDescending(s => s.CreatedAt); 
+                query = query.OrderByDescending(s => s.CreatedAt);
 
                 // Apply pagination
                 if (skip.HasValue && take.HasValue)
@@ -405,67 +368,43 @@ namespace Infrastructure.Repositories
 
                 return await query.ToListAsync();
             }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error fetching all sales details");
-                throw;
-            }
-        }
+          
+        
 
         public async Task<Sales> GetSalesDetailsById(Guid saleId, Guid orgId)
         {
 
-            try
-            {
-                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si=>si.Products).Include(s => s.SaleItems).ThenInclude(si=>si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == saleId && x.OrganisationId == orgId);
+        
+                var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Id == saleId && x.OrganisationId == orgId);
 
                 return sales;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message, "error from fetching  sales details By Id");
-
-                throw;
-            }
+        
         }
         public async Task<Sales> GetB2CSalesDetailsByInvoice(string invoiceNum, Guid orgId)
         {
 
-            try
-            {
+        
                 var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Invoices.B2CInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
 
                 return sales;
 
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message, "error from fetching  sales details By Invoice");
-
-                throw;
-            }
+            
+        
         }
         public async Task<Sales> GetB2BSalesDetailsByInvoice(string invoiceNum, Guid orgId)
         {
 
-            try
-            {
+            
                 var sales = await context.Sales.Include(s => s.SaleItems).ThenInclude(si => si.Products).Include(s => s.SaleItems).ThenInclude(si => si.UnitOfMeasures).Include(s => s.Invoices).Include(s => s.CashCustomers).Include(s => s.CreditCustomers).FirstOrDefaultAsync(x => x.Invoices.B2BInvoiceNumber == invoiceNum && x.OrganisationId == orgId);
 
                 return sales;
 
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.Message, "error from fetching  sales details By Invoice");
-
-                throw;
-            }
+            
+    
         }
         public async Task<List<Sales>> GetSaleDetailsByDate(DateTime fromDate, DateTime toDate, Guid orgId, Guid userId, bool fullData, int? skip, int? take)
         {
-            try
-            {
+            
                 var query = context.Sales
                     .Include(s => s.SaleItems)
                         .ThenInclude(si => si.Products)
@@ -497,12 +436,7 @@ namespace Infrastructure.Repositories
                 }
 
                 return await query.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error fetching sales details by date");
-                throw;
-            }
+        
         }
 
 
@@ -516,7 +450,7 @@ namespace Infrastructure.Repositories
 
             // Get only pending invoices
             var pendingInvoices = sales
-                .Where(s => s.Invoices.DueDate <= currentDate && s.Invoices.RecievedAmount <= s.Invoices.TotalAmount && s.OrganisationId==orgId)
+                .Where(s => s.Invoices.DueDate <= currentDate && s.Invoices.RecievedAmount <= s.Invoices.TotalAmount && s.OrganisationId == orgId)
                 .OrderBy(s => s.CreatedAt)
                 .Select(s => s.Invoices)
                 .ToList();
@@ -540,12 +474,12 @@ namespace Infrastructure.Repositories
                     currentBalance = 0;
                 }
 
-             
+
                 if (receivedAmount >= remainingDue)
                 {
                     invoice.RecievedAmount += remainingDue;
                     receivedAmount -= remainingDue;
- 
+
                 }
                 else
                 {
@@ -558,8 +492,10 @@ namespace Infrastructure.Repositories
 
         }
 
-        // Save to DB (make sure your repo context is tracking these)
        
+
+        // Save to DB (make sure your repo context is tracking these)
+
 
         public async Task<string> GenerateB2CInvoiceNumber(Guid orgId)
         {
@@ -586,6 +522,7 @@ namespace Infrastructure.Repositories
             string fullInvoice = $"{prefix}B2C{nextSequence.ToString("D3")}";
             return fullInvoice;
         }
+
 
 
 
