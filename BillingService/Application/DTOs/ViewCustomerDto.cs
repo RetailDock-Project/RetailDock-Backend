@@ -14,6 +14,7 @@ namespace Application.DTOs
         public string? ContactNumber { get; set; }
         public string? Email { get; set; }
         public string Place { get; set; }
+        public bool creditCustomer { get; set; }
         public string GstNumber { get; set; }
         public Guid LedgerId { get; set; }
 

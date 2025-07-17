@@ -13,7 +13,9 @@ namespace Application.DTOs
     public  class SalesAddDto
     {
         public PaymentMode PaymentType { get; set; }=PaymentMode.Cash;
+        public bool creditCustomer { get; set; }=false;
         [Required]
+        public string InvoiceNumber { get; set; }
         public string MobileNum { get; set; }
             public string? Text { get; set; }
         public SalesMode SalesMode { get; set; }=SalesMode.B2C;
@@ -34,5 +36,6 @@ public class CreateSaleIdsDto
     public Guid SaleId { get; set; }
     public Guid UserId { get; set; }
     public Guid OrganisationId { get; set; }
+
 }
 }

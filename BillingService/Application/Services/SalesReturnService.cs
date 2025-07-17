@@ -21,30 +21,30 @@ namespace Application.Services
         private readonly ISaleReturnRepository saleReturnRepo;
         private readonly ILogger<SalesReturnViewDto> logger;
         private readonly IAccountGrpc accountGrpc;
-  
-        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger,IAccountGrpc _accountGrpc)
+        private readonly IUnitOfWorkRepository unitOfWork;
+        public SalesReturnService(IMapper _mapper, ISaleReturnRepository _saleReturnRepo, ILogger<SalesReturnViewDto> _logger,IAccountGrpc _accountGrpc, IUnitOfWorkRepository _unitOfWork)
         {
             mapper = _mapper;
             saleReturnRepo = _saleReturnRepo;
             logger = _logger;
             accountGrpc = _accountGrpc;
-           
+           unitOfWork = _unitOfWork;
         }
         public async Task<ResponseDto<object>> AddSalesReturn(AddSalesReturnDto salesReturn, Guid orgId, Guid userId)
         {
             try
             {
-                
-
-                var sale= await saleReturnRepo.fetchSalesByInvoice(salesReturn.SaleInvoiceNumber,orgId);
-
+                await unitOfWork._BiginTransaction();
+                var sale = await saleReturnRepo.fetchSalesByInvoice(salesReturn.SaleInvoiceNumber, orgId);
 
                 if (sale == null)
                 {
+                    await unitOfWork._RolBackTransaction();
                     return new ResponseDto<object> { Message = "NoSale found", StatusCode = 404 };
 
 
                 }
+
                 decimal taxableAmount =0;
                 decimal taxAmount = 0;
                 decimal costOfGoodsSold = 0;
@@ -58,17 +58,24 @@ namespace Application.Services
 
                 {
 
-                    decimal returnItemsCount = await saleReturnRepo.getReturnedProductCount(sale.Id, returnProduct.ProductId, orgId);
-                    if (returnProduct.Quantity > returnItemsCount)
-                    {
-                        return new ResponseDto<object> { Message = "these product already Returned", StatusCode = 409 };
-                    }
+                   
                     var _saleItem = await saleReturnRepo.soldProductItems(sale.Id, returnProduct.ProductId);
                     if (_saleItem == null)
                     {
+                        await unitOfWork._RolBackTransaction();
+                        return   new ResponseDto<object> { Message = "NoProduct found in That sale", StatusCode = 404 };
                         
-                    return   new ResponseDto<object> { Message = "NoProduct found in That sale", StatusCode = 404 };
-                        
+                    }
+                    decimal returnItemsCount = await saleReturnRepo.getReturnedProductCount(sale.Id, returnProduct.ProductId, orgId);
+                    if (returnProduct.Quantity > returnItemsCount)
+                    {
+                        await unitOfWork._RolBackTransaction();
+                        return new ResponseDto<object> { Message = "these product already Returned", StatusCode = 409 };
+                    }
+
+                    if (salesReturn.ReturnCondition == "Good")
+                    {
+                        await saleReturnRepo.addproductStock(orgId,returnProduct.ProductId,returnProduct.Quantity);
                     }
 
                      taxableAmount += _saleItem.UnitPrice * returnProduct.Quantity;
@@ -79,7 +86,7 @@ namespace Application.Services
 
                     taxAmount += (_saleItem.UnitPrice * returnProduct.Quantity) * (taxRate / 100);
                 }
-                    var voucher= new Voucher { CreatedBy=userId.ToString(),OrganizationId=orgId.ToString(),Remarks=salesReturn.Voucher.Remarks,VoucherDate=DateTime.Now.ToString(),VoucherTypeId= "d2c28912-421a-11f0-a0c7-862ccfb05833" ,TransactionsCredit=new List<Transaction>(),TransactionsDebit=new List<Transaction>()};
+                    var voucher= new Voucher { CreatedBy=userId.ToString(),OrganizationId=orgId.ToString(),Remarks=$"SR_InvoiceNumber{salesReturn.ReturnInvoiceNumber}",VoucherDate=DateTime.Now.ToString(),VoucherTypeId= "d2c28912-421a-11f0-a0c7-862ccfb05833" ,TransactionsCredit=new List<Transaction>(),TransactionsDebit=new List<Transaction>()};
 
 
 
@@ -89,7 +96,7 @@ namespace Application.Services
                     {
                         LedgerId = salesReturn.Voucher.TransactionsDebit[0].LedgerId,
                         Amount = (double)taxableAmount,
-                        Narration = salesReturn.Voucher.TransactionsDebit[0].Narration ?? $"SaleReturn - sales "
+                        Narration = $"SR_InvoiceNumber:{salesReturn.ReturnInvoiceNumber}"
                     });
 
                     // Credit for tax amount
@@ -97,23 +104,23 @@ namespace Application.Services
                     {
                         LedgerId = salesReturn.Voucher.TransactionsDebit[1].LedgerId,
                         Amount = (double)taxAmount,
-                        Narration = salesReturn.Voucher.TransactionsDebit[1].Narration ?? $"SaleReturn - Tax"
+                        Narration = $"SR_InvoiceNumber:{salesReturn.ReturnInvoiceNumber}"
                     });   
                     voucher.TransactionsDebit.Add(new Transaction
                     {
                         LedgerId = salesReturn.Voucher.TransactionsDebit[2].LedgerId,
                         Amount = (double)costOfGoodsSold,
-                        Narration = salesReturn.Voucher.TransactionsDebit[2].Narration ?? $"SaleReturn - inventoryA/c"
+                        Narration = $"SR_InvoiceNumber:{salesReturn.ReturnInvoiceNumber}"
                     });
                 }
               
 
                 if (salesReturn.Voucher.TransactionsCredit!= null)
                 {
-                    voucher.TransactionsCredit.Add(new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = debtorId.ToString(), Narration = $"{DebtorName} Debtor from saleReturn" });
+                    voucher.TransactionsCredit.Add(new Transaction { Amount = (double)taxableAmount + (double)taxAmount, LedgerId = debtorId.ToString(), Narration = $"SR_InvoiceNumber:{salesReturn.ReturnInvoiceNumber}" });
 
 
-                        voucher.TransactionsCredit.Add(new Transaction { Amount = (double)costOfGoodsSold, LedgerId = salesReturn.Voucher.TransactionsCredit[0].LedgerId, Narration = salesReturn.Voucher.TransactionsCredit[0].Narration ?? $"SaleReturn - costOfGoodsSold" });
+                        voucher.TransactionsCredit.Add(new Transaction { Amount = (double)costOfGoodsSold, LedgerId = salesReturn.Voucher.TransactionsCredit[0].LedgerId, Narration = $"SR_InvoiceNumber:{salesReturn.ReturnInvoiceNumber}" });
 
                 }
             
@@ -138,15 +145,15 @@ namespace Application.Services
 
                 if (addLedger.StatusCode != 200)
                 {
-                  
-             
+                    await unitOfWork._RolBackTransaction();
+
 
                     return new ResponseDto<object> { Message = "Error in AccountingService", StatusCode = 200 };
 
                 }
                 if (addLedger.StatusCode == 200)
                 {
-                    
+                    await unitOfWork._CommitTransaction();
                     await saleReturnRepo.SaveChanges();
 
            return  new ResponseDto<object> { Message = "New sales return is created", StatusCode = 201 };
@@ -157,6 +164,7 @@ namespace Application.Services
             }
             catch (Exception ex)
             {
+                await unitOfWork._RolBackTransaction();
            
                 logger.LogError(ex, "error from addind new salesReturn  ");
                 return new ResponseDto<object> { Message ="internal Server Error", StatusCode = 500 };
@@ -182,13 +190,51 @@ namespace Application.Services
                 };
             }
         }
-        public async Task<ResponseDto<List<SalesReturnViewDto>>> GetSalesReturnByDate(DateTime fromDate, DateTime? toDate, Guid orgId)
+public async Task<ResponseDto<SalesReturnTaxReportDto>> GetSalesReturnTaxReport(DateTime? fromDate, DateTime? toDate, Guid orgId,Guid userId)
+        {
+            try
+            {
+                DateTime thisTime = DateTime.Now;
+                DateTime _fromDate = fromDate ?? new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                bool fullData = true;
+                DateTime finalToDate=toDate ?? DateTime.Now;
+
+                var saleReturn = await saleReturnRepo.GetSalesReturnDetailsBydate(_fromDate, finalToDate, fullData, orgId,userId);
+                if (saleReturn == null)
+                {
+                    return new ResponseDto<SalesReturnTaxReportDto>
+                    {
+
+                        Message = "no salesReturn is found between that date",
+                        StatusCode = 404
+                    };
+                }
+
+                var mappedSaleReturn = mapper.Map<List<SalesReturnViewDto>>(saleReturn);
+                var hsnTaxReport = saleReturn.SelectMany(sr => sr.SalesReturnItems).GroupBy(sri => sri.HSNCodeNumber).Select(hsn => new HsnReturnTaxReportDto { HSNCode = hsn.Key, CGST = hsn.Sum(x => x.CGST), IGST = hsn.Sum(x => x.IGST), SGST = hsn.Sum(x => x.SGST), UGST = hsn.Sum(x => x.UGST), TotalTaxableAmount = hsn.Sum(x => x.TaxableAmount) }).ToList();
+
+                return new ResponseDto<SalesReturnTaxReportDto> { Data=new SalesReturnTaxReportDto { HsnReturnTaxReport=hsnTaxReport,SalesReturnView=mappedSaleReturn},Message="sales Return Tax Report Fetched successFully" ,StatusCode=200 };
+
+
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error from fetching all salesReturn TaxReport");
+                return new ResponseDto<SalesReturnTaxReportDto>
+                {
+                    Message = "Internal Server Error",
+                    StatusCode = 500
+                };
+            }
+        }
+        public async Task<ResponseDto<List<SalesReturnViewDto>>> GetSalesReturnByDate(DateTime fromDate, DateTime? toDate,bool?fullData, Guid orgId,Guid userId)
         {
             try
             {
                 DateTime finalToDate = toDate ?? DateTime.Now;
-
-                var saleReturn = await saleReturnRepo.GetSalesReturnDetailsBydate(fromDate, finalToDate, orgId);
+                bool _fullData=fullData ?? false;
+                var saleReturn = await saleReturnRepo.GetSalesReturnDetailsBydate(fromDate, finalToDate,_fullData, orgId,userId);
                 if (saleReturn == null)
                 {
                     return new ResponseDto<List<SalesReturnViewDto>>
@@ -283,7 +329,35 @@ namespace Application.Services
         }
 
 
+      public async  Task<ResponseDto<string>> GenerateB2BReturnInvoiceNumber(Guid orgId)
+        {
+            try
+            {
 
+                var invoiceNum=await saleReturnRepo.GenerateB2BReturnInvoiceNumber(orgId);
+                return new ResponseDto<string> { Data = invoiceNum, Message = "B2B return invoice fetched successFully", StatusCode = 200 };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "error from fetching B2B salesReturn Invoice");
+                return new ResponseDto<string> { Message = "internal Server Error ", StatusCode = 500 };
+            }
+        }
+       public async Task<ResponseDto<string>> GenerateB2CReturnInvoiceNumber(Guid orgId)
+        {
+            try
+            {
+
+                var invoiceNum =await saleReturnRepo.GenerateB2CReturnInvoiceNumber(orgId);
+                return  new ResponseDto<string>{ Data =invoiceNum,Message="B2C return invoice fetched successFully",StatusCode=200};
+
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "error from fetching B2C salesReturn details By Invoice");
+                return new ResponseDto<string> { Message = "internal Server Error ", StatusCode = 500 };
+            }
+        }
 
 
     }
