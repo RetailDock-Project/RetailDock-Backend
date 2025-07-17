@@ -48,7 +48,24 @@ namespace BillingService.Controllers
         {
             var result = await saleService.GetSalesDetailsById(saleId,  OrgId);
             return StatusCode(result.StatusCode, result);
-        }
+        } 
+        
+        [HttpGet("GetB2BSaleInvoice")]
+
+        public async Task<IActionResult> GetB2BSaleInvoiceNumber( )
+        {
+
+            var result = await saleService.GenerateB2BInvoiceNumber(  OrgId);
+            return StatusCode(result.StatusCode, result);
+        }  
+          [HttpGet("GetB2CSaleInvoice")]
+
+        public async Task<IActionResult> GetB2CSaleInvoiceNumber( )
+        {
+
+            var result = await saleService.GenerateB2CInvoiceNumber(  OrgId);
+            return StatusCode(result.StatusCode, result);
+        }  
         [HttpGet("GetsaleBill")]
 
         public async Task<IActionResult> GetSalesBill( string invoiceNum)
@@ -65,9 +82,24 @@ namespace BillingService.Controllers
         {
             var result = await saleService.GetSalesDetailsByInvoice(invoiceNum, OrgId);
             return StatusCode(result.StatusCode, result);
+        } 
+        [HttpGet("GetsaleInvoiceNumber")]
+        public async Task<IActionResult> getSaleInvoiceNumber( string saleMode)
+        {
+            if(saleMode == "B2C")
+            {
+                var result = await saleService.GenerateB2CInvoiceNumber( OrgId);
+                return StatusCode(result.StatusCode, result);
+            }
+            else
+            {
+                var result = await saleService.GenerateB2BInvoiceNumber(OrgId);
+                return StatusCode(result.StatusCode, result);
+            }
+   
         }
         [HttpGet("GetAllSaleByDate")]
-        public async Task<IActionResult> GetSalesByDate( DateTime fromDate, DateTime? toDate,bool? isFulldata,int? skip,int? take)
+        public async Task<IActionResult> GetSalesByDate( DateTime? fromDate, DateTime? toDate,bool? isFulldata,int? skip,int? take)
         {
             var result = await saleService.GetSalesByDate(fromDate, toDate, OrgId,UserId,isFulldata,skip,take);
             return StatusCode(result.StatusCode, result);
@@ -76,6 +108,13 @@ namespace BillingService.Controllers
         public async Task<IActionResult> AddNewSale(SalesAddDto sales)
         {
             var result = await saleService.AddNewSale(sales, OrgId, UserId);
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet("getSaleTaxReport")]
+
+        public async Task<IActionResult> getSalesDetailsWithTaxReport(DateTime? fromDate, DateTime? toDate,  int? skip, int? take)
+        {
+            var result = await saleService.getSalesDetailsWithTaxReport(fromDate,toDate, OrgId, UserId,skip,take);
             return StatusCode(result.StatusCode, result);
         }
     }

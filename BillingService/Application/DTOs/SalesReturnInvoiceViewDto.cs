@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain.Entites;
 
@@ -18,8 +19,8 @@ namespace Application.DTOs
         public string? Email { get; set; }
         public string Place { get; set; }
         public string? GstNumber { get; set; }
-
-     public PaymentMode paymentMode { get; set; }   
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public PaymentMode paymentMode { get; set; }   
        
         public decimal TaxableAmount { get; set; }
 

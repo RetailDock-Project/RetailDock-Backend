@@ -38,9 +38,15 @@ namespace BillingService.Controllers
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("GetAllSaleReturnByDate")]
-        public async Task<IActionResult> GetSalesReturnByDate(DateTime fromDate,DateTime? toDate)
+        public async Task<IActionResult> GetSalesReturnByDate(DateTime fromDate,DateTime? toDate,bool? isFullData)
         {
-            var result = await saleReturnService.GetSalesReturnByDate(fromDate,toDate, OrgId);
+            var result = await saleReturnService.GetSalesReturnByDate(fromDate,toDate,isFullData, OrgId,UserId);
+            return StatusCode(result.StatusCode, result);
+        }     
+        [HttpGet("GetAllSaleReturnTaxReport")]
+        public async Task<IActionResult> GetSalesReturnTaxReport(DateTime? fromDate,DateTime? toDate)
+        {
+            var result = await saleReturnService.GetSalesReturnTaxReport(fromDate,toDate, OrgId,UserId);
             return StatusCode(result.StatusCode, result);
         } 
         [HttpGet("GetreturnedProductCount")]
@@ -48,6 +54,22 @@ namespace BillingService.Controllers
         {
             var result = await saleReturnService.getReturnedProductCount(saleId,productId, OrgId);
             return StatusCode(result.StatusCode, result);
+        } 
+        [HttpGet("GetsalesReturnInvoice")]
+        public async Task<IActionResult> GetSalereturnInvoiceNumber(string saleMode)
+        {
+            if (saleMode == "B2C")
+            {
+                var result = await saleReturnService.GenerateB2CReturnInvoiceNumber(OrgId);
+                return StatusCode(result.StatusCode, result);
+            }else
+            {
+
+                var result = await saleReturnService.GenerateB2BReturnInvoiceNumber(OrgId);
+                return StatusCode(result.StatusCode, result);
+            }
+  
+
         }
         [HttpPost("AddSaleReturn")]
         public async Task<IActionResult> AddSaleReturn(AddSalesReturnDto salesReturn)

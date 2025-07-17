@@ -11,13 +11,18 @@ namespace Application.Interfaces.Service_Interfaces
 {
     public interface ISaleService
     {
+
+ Task<ResponseDto<string>> GenerateB2CInvoiceNumber(Guid orgId);
+     Task<ResponseDto<string>> GenerateB2BInvoiceNumber(Guid orgId);
         Task<ResponseDto<object>> AddNewSale(SalesAddDto sales, Guid orgId, Guid userId);
         Task<ResponseDto<List<SalesResponseDto>>> GetAllSalesDetails(Guid orgId, Guid userId, bool? isFullData, int? skip, int? take);
         Task<ResponseDto<SalesResponseDto>> GetSalesDetailsById(Guid saleId,Guid orgId);
         Task<ResponseDto<SalesResponseDto>> GetSalesDetailsByInvoice(string invoiceNumber,Guid orgId);
-        Task<ResponseDto<List<SalesResponseDto>>> GetSalesByDate(DateTime fromDate, DateTime? toDate, Guid orgId, Guid userId, bool? isFulldata, int? skip, int? take);
+        Task<ResponseDto<List<SalesResponseDto>>> GetSalesByDate(DateTime? fromDate, DateTime? toDate, Guid orgId, Guid userId, bool? isFulldata, int? skip, int? take);
         Task<ResponseDto<object>> CashReceivedFromDebtor(Guid debtorsId, decimal receivedAmount, decimal currentBalance, Guid orgId);
        Task<ResponseDto<List<SalesResponseDto>>> GetDebtorsSalesDetails(Guid debtorId, Guid orgId);
+
+        Task<ResponseDto<SaleWithTaxReportDto>> getSalesDetailsWithTaxReport(DateTime? fromDate, DateTime? toDate, Guid orgId, Guid userId,  int? skip, int? take);
 
     }
 }

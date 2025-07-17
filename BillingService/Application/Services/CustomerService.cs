@@ -222,13 +222,14 @@ namespace Application.Services
                 var creditCustomer = await customerRepo.fetchCreditCusomersByMobile(phoneNum, orgId);
                 if (creditCustomer != null)
                 {
-                    var customer = mapper.Map<ViewCustomerDto>(creditCustomer);
-                    return new ResponseDto<ViewCustomerDto> { Data = customer, Message = "fetch credit customers successfully", StatusCode = 200 };
+                
+                    var crCustomer=new ViewCustomerDto { ContactNumber =creditCustomer.ContactNumber,creditCustomer=true,CustomerId=creditCustomer.Id,CustomerName=creditCustomer.CustomerName,Email=creditCustomer.Email,GstNumber=creditCustomer.GstNumber,LedgerId=creditCustomer.LedgerId,Place=creditCustomer.Place };
+                    return new ResponseDto<ViewCustomerDto> { Data = crCustomer, Message = "fetch credit customers successfully", StatusCode = 200 };
                 }
                 if (cashCustomer != null)
                 {
-                    var customer = mapper.Map<ViewCustomerDto>(cashCustomer);
-                    return new ResponseDto<ViewCustomerDto> { Data = customer, Message = "fetch cash customers successfully", StatusCode = 200 };
+                    var cash_Customer = new ViewCustomerDto { ContactNumber = cashCustomer.ContactNumber, creditCustomer = false, CustomerId = cashCustomer.Id, CustomerName = cashCustomer.CustomerName, Email = cashCustomer.Email, LedgerId = cashCustomer.LedgerId };
+                    return new ResponseDto<ViewCustomerDto> { Data = cash_Customer, Message = "fetch cash customers successfully", StatusCode = 200 };
                 }
                 return new ResponseDto<ViewCustomerDto> { Message = "no Customer found on this Number", StatusCode = 404 };
 

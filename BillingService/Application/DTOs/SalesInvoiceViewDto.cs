@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Domain.Entites;
 
@@ -22,7 +23,8 @@ namespace Application.DTOs
         public DateTime? DueDate { get; set; }
         public decimal pendingAmount { get; set; }
         public decimal RecievedAmount { get; set; }
-        public decimal TaxableAmount { get; set; } 
+        public decimal TaxableAmount { get; set; }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public PaymentMode paymentMod { get; set; }
         public decimal DiscountAmount { get; set; } 
         public decimal TotalCGST { get; set; } 
