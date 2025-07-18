@@ -12,7 +12,8 @@ namespace Application.Interfaces
         Task<PurchaseOrder> AddPurchaseOrderAsync(PurchaseOrder purchaseOrder);
         Task<List<PurchaseOrder>> GetAllPurchaseOrdersAsync(Guid orgnaizationId);
         Task<PurchaseOrder> GetPurchaseOrderByIdAsync(Guid? id);
-        Task<PurchaseOrder> UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder);
+
+        Task UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder);
         Task<bool> DeletePurchaseOrderAsync(Guid id);
 
         Task<string> GetLastPurchaseOrderNumber(Guid organizationId);
@@ -26,5 +27,10 @@ namespace Application.Interfaces
     int? pageSize);
 
         Task<object> GetPurchaseOrderStatsAsync(Guid orgId);
-}
+
+        Task<PurchaseOrder> GetByIdAsync(Guid? purchaseOrderId);
+        Task UpdateAsync(PurchaseOrder order);
+        Task AddItemsAsync(IEnumerable<PurchaseOrderItem> items);
+
+    }
 }

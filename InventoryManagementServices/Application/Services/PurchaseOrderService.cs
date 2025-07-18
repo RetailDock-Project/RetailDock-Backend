@@ -9,6 +9,7 @@ using Application.Interfaces;
 using Application.Interfaces.IServices;
 using AutoMapper;
 using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Services
 {
@@ -30,8 +31,7 @@ namespace Application.Services
     int? pageSize);
 
         Task<Responses<object>> GetOrderStatsAsync(Guid orgId);
-        Task<Responses<string>> UpdatePurchaseOrderAsync(Guid orgId, Guid userId, UpdatePurchaseOrderDto dto);
-    }
+        Task<Responses<string>> UpdatePurchaseOrderAsync(Guid orgId, Guid userId, UpdatePurchaseOrderDto dto);    }
     public class PurchaseOrderService:IPurchaseOrderService
     {
         private readonly IPurchaseOrderRepository _repo;
@@ -152,42 +152,73 @@ namespace Application.Services
 
         public async Task<Responses<string>> UpdatePurchaseOrderAsync(Guid orgId, Guid userId, UpdatePurchaseOrderDto dto)
         {
-            try
+            var existingOrder = await _repo.GetByIdAsync(dto.PurchaseOrderId);
+
+            if (existingOrder == null)
             {
-                var order = await _repo.GetPurchaseOrderByIdAsync(dto.PurchaseOrderId);
-                if (order == null)
-                    return new Responses<string> { StatusCode = 404, Message = "Order not found" };
-
-                order.SupplierId = dto.SupplierId;
-                order.OrderDate = dto.OrderDate ?? order.OrderDate;
-                order.UpdatedBy = userId;
-                order.UpdatedAt = DateTime.UtcNow;
-
-                // Remove old items and add updated ones
-                order.PurchaseOrderItems.Clear();
-                foreach (var item in dto.Items)
+                return new Responses<string>
                 {
-                    order.PurchaseOrderItems.Add(new PurchaseOrderItem
+                    Message = "Purchase Order not found",
+                    StatusCode = 404,
+                    Data = null
+                };
+            }
+
+            existingOrder.SupplierId = dto.SupplierId;
+            existingOrder.OrderDate = dto.OrderDate ?? existingOrder.OrderDate;
+            existingOrder.UpdatedAt = DateTime.UtcNow;
+            existingOrder.UpdatedBy = userId;
+
+            var updatedItems = new List<PurchaseOrderItem>();
+
+            foreach (var itemDto in dto.Items)
+            {
+                if (itemDto.PurchaseOrderItemId != null && itemDto.PurchaseOrderItemId != Guid.Empty)
+                {
+                    // Update existing item
+                    var existingItem = existingOrder.PurchaseOrderItems
+                        .FirstOrDefault(i => i.PurchaseOrderItemId == itemDto.PurchaseOrderItemId);
+
+                    if (existingItem != null)
                     {
-                        PurchaseOrderItemId = item.PurchaseOrderItemId ?? Guid.NewGuid(),
-                        ProductId = item.ProductId,
-                        Quantity = item.Quantity,
-                        RatePerPiece = item.RatePerPiece,
-                        TotalAmount = item.Quantity * item.RatePerPiece
+                        existingItem.ProductId = itemDto.ProductId;
+                        existingItem.Quantity = itemDto.Quantity;
+                        existingItem.RatePerPiece = itemDto.RatePerPiece;
+                        existingItem.TotalAmount = itemDto.Quantity * itemDto.RatePerPiece;
+                    }
+                }
+                else
+                {
+                    // Add new item
+                    updatedItems.Add(new PurchaseOrderItem
+                    {
+                        PurchaseOrderItemId = Guid.NewGuid(),
+                        PurchaseOrderId = existingOrder.PurchaseOrderId,
+                        ProductId = itemDto.ProductId,
+                        Quantity = itemDto.Quantity,
+                        RatePerPiece = itemDto.RatePerPiece,
+                        TotalAmount = itemDto.Quantity * itemDto.RatePerPiece
                     });
                 }
-
-                order.GrossTotalAmount = order.PurchaseOrderItems.Sum(x => x.TotalAmount);
-
-                await _repo.UpdatePurchaseOrderAsync(order);
-
-                return new Responses<string> { StatusCode = 200, Message = "Order updated", Data = order.PurchaseOrderId.ToString() };
             }
-            catch (Exception ex)
+
+            if (updatedItems.Any())
             {
-                return new Responses<string> { StatusCode = 500, Message = ex.Message };
+                await _repo.AddItemsAsync(updatedItems);
             }
+
+            await _repo.UpdateAsync(existingOrder);
+
+            return new Responses<string>
+            {
+                Message = "Purchase Order updated successfully",
+                StatusCode = 200,
+                Data = null
+            };
         }
+
+
+
 
 
 

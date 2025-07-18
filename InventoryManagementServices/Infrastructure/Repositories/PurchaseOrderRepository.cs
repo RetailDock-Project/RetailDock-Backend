@@ -42,11 +42,10 @@ namespace Infrastructure.Repositories
                 .ThenInclude(i => i.Product).ThenInclude(p=>p.HsnCode)
                 .FirstOrDefaultAsync(p => p.PurchaseOrderId == id);
         }
-        public async Task<PurchaseOrder> UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder)
+        public async Task UpdatePurchaseOrderAsync(PurchaseOrder purchaseOrder)
         {
-            _context.PurchaseOrders.Update(purchaseOrder);
+            // EF Core is tracking the changes already
             await _context.SaveChangesAsync();
-            return purchaseOrder;
         }
         public async Task<bool> DeletePurchaseOrderAsync(Guid id)
         {
@@ -188,6 +187,25 @@ namespace Infrastructure.Repositories
         //    _context.PurchaseOrders.Update(order);
         //    await _context.SaveChangesAsync();
         //}
+
+        public async Task<PurchaseOrder> GetByIdAsync(Guid? purchaseOrderId)
+        {
+            return await _context.PurchaseOrders
+                .Include(po => po.PurchaseOrderItems)
+                .FirstOrDefaultAsync(po => po.PurchaseOrderId == purchaseOrderId);
+        }
+
+        public async Task UpdateAsync(PurchaseOrder order)
+        {
+            _context.PurchaseOrders.Update(order);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddItemsAsync(IEnumerable<PurchaseOrderItem> items)
+        {
+            await _context.PurchaseOrdersItem.AddRangeAsync(items);
+            await _context.SaveChangesAsync();
+        }
 
 
 

@@ -13,9 +13,9 @@ namespace Application.Dto
 
         public string Name { get; set; }
         public decimal? OpeningBalance { get; set; } 
-        public bool? IsDebit { get; set; }  
-        
-        public bool? IsActive { get; set; }
+        public bool? IsDebit { get; set; }
+
+        public bool? IsActive { get; set; } = true;
 
         public string? ContactName { get; set; }
         public string? ContactNumber { get; set; }

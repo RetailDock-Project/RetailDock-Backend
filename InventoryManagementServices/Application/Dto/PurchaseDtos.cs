@@ -95,6 +95,8 @@ namespace Application.Dto
     public class PurchaseItemDetailsDto
     {
         public Guid Id { get; set; }
+        public string ProductId { get; set; }
+
         public string ProductName { get; set; }
         public decimal RatePerPiece { get; set; }
         public decimal Quantity { get; set; }

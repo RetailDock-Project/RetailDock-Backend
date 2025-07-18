@@ -145,6 +145,7 @@ namespace Application.Mapper
                 .ForMember(dest => dest.PurchaseOrderNumber, opt => opt.MapFrom(src => src.PurchaseOrder.PurchaseOrderNumber));
 
             CreateMap<PurchaseItem, PurchaseItemDetailsDto>()
+                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.Id))
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
 
