@@ -69,7 +69,7 @@ namespace Application.Services.AccountsService
                 };
             }
 
-        }
+        } 
         public async Task<ApiResponseDTO<BalanceSheetResponseDto>> GetBalanceSheetSummaryAsync(Guid organizationId, DateTime? fromDate, DateTime? toDate)
         {
             try

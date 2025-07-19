@@ -114,8 +114,11 @@ namespace Infrastructure.Repository.AccountsRepository
             }
 
             // Step 6: Get detailed transactions with opposite ledgers
-            var transactionListSql = @"
-    WITH SelectedLedgerEntries AS (
+            var transactionListSql =
+
+   @"
+   
+WITH SelectedLedgerEntries AS (
     SELECT T.*
     FROM Transactions T
     INNER JOIN Vouchers V ON V.Id = T.VoucherId
@@ -154,11 +157,16 @@ INNER JOIN Vouchers V ON T.VoucherId = V.Id
 INNER JOIN VoucherTypes VT ON V.VoucherTypeId = VT.Id
 INNER JOIN TotalOppositeSide TOA ON TOA.VoucherId = T.VoucherId
 INNER JOIN OppositeLedgers OL ON OL.VoucherId = T.VoucherId
-WHERE OL.IsDebit != T.IsDebit;
+WHERE OL.IsDebit != T.IsDebit
+  AND NOT (
+      VT.TypeName IN ('Sales', 'SalesReturn') AND 
+      OL.OppositeLedger LIKE '%Inventory Transaction%'  -- case-insensitive match
+  );
 
 
+"
+;
 
-";
 
             var transactions = (await connection.QueryAsync<LedgerReportDTO>(
                 transactionListSql,
