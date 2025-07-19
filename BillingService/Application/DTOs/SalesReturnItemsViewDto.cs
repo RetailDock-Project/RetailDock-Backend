@@ -18,9 +18,16 @@ namespace Application.DTOs
         public int UnitId { get; set; }
         public string UnitName { get; set; }
         public decimal UnitPrice { get; set; }
+        public decimal TaxRate { get; set; }
+        public decimal? SGST { get; set; }
+        public decimal? CGST { get; set; }
+        public decimal? IGST { get; set; }
+        public decimal? UGST { get; set; }
+
+        public decimal? TotalTaxAmount => (SGST + CGST + UGST + IGST);
         public decimal TaxableAmount => UnitPrice * Quantity;
      
-        public decimal TaxRate { get; set; }
+
 
         public decimal TotalAmount =>
     TaxableAmount  + (TaxableAmount  * (TaxRate / 100));

@@ -17,7 +17,7 @@ namespace Domain.Entities
         public string  CustomerName {get;set;}
         public string? ContactNumber { get;set;}
         public string? Email { get; set; }
-
+        public string? Place {  get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
        public Guid  CreatedBy { get;set; }
         public List<Sales> Sales { get; set; }

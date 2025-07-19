@@ -228,7 +228,7 @@ namespace Application.Services
                 }
                 if (cashCustomer != null)
                 {
-                    var cash_Customer = new ViewCustomerDto { ContactNumber = cashCustomer.ContactNumber, creditCustomer = false, CustomerId = cashCustomer.Id, CustomerName = cashCustomer.CustomerName, Email = cashCustomer.Email, LedgerId = cashCustomer.LedgerId };
+                    var cash_Customer = new ViewCustomerDto { ContactNumber = cashCustomer.ContactNumber, creditCustomer = false, CustomerId = cashCustomer.Id, CustomerName = cashCustomer.CustomerName, Email = cashCustomer.Email, LedgerId = cashCustomer.LedgerId ,Place=cashCustomer.Place};
                     return new ResponseDto<ViewCustomerDto> { Data = cash_Customer, Message = "fetch cash customers successfully", StatusCode = 200 };
                 }
                 return new ResponseDto<ViewCustomerDto> { Message = "no Customer found on this Number", StatusCode = 404 };

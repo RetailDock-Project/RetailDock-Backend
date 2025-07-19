@@ -310,7 +310,7 @@ namespace Infrastructure.Repositories
         {
             var query = context.SalesReturn
                 .Include(sr => sr.ReturnInvoice)
-                .Include(sr => sr.SalesReturnItems)
+                .Include(sr => sr.SalesReturnItems).ThenInclude(sri=>sri.Products).Include(sr => sr.SalesReturnItems).ThenInclude(sri => sri.UnitOfMeasures)
                 .Include(sr => sr.Sales)
                     .ThenInclude(s => s.CashCustomers)
                 .Include(sr => sr.Sales)

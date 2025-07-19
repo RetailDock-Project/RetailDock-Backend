@@ -18,7 +18,7 @@ namespace BillingService.Controllers
         }
         [HttpGet("GetAllSaleReturn")]
 
-        public async Task<IActionResult> GetAllSalesReturn(bool isFulldata,int? skip,int take)
+        public async Task<IActionResult> GetAllSalesReturn(bool? isFulldata,int? skip,int? take)
         {
             var result = await saleReturnService.GetAllSalesReturnDetails(OrgId,UserId,isFulldata,skip,take);
             return StatusCode(result.StatusCode, result);

@@ -14,7 +14,7 @@ namespace Domain.Entities
         public Guid SupplierId { get; set; }
         public DateTime Purchasedate { get; set; }
         public string? SupplierInvoiceNumber { get; set; }
-        public string? voucherNumber { get; set; }
+
         public DateTime? DueDate { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
