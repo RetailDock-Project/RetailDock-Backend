@@ -17,6 +17,7 @@ namespace Domain.Entites
         public Guid LedgerId { get; set; }
         public string? ContactNumber { get;set;}
         public string? Email { get; set; }
+        public string? Place {  get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
        public Guid  CreatedBy { get;set; }

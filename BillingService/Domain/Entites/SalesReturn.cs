@@ -22,8 +22,8 @@ namespace Domain.Entites
         public string Notes { get; set; }
         public decimal TotalUnitCost { get; set; }
         public Guid CreatedBy { get; set; }
-
-        public string? voucherNumber { get; set; }
+        public DateTime CreatedAt { get; set; } 
+ 
         public Guid? UpdatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; } = null;
         public List<SalesReturnItems> SalesReturnItems { get; set; }

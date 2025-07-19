@@ -20,7 +20,12 @@ namespace Application.DTOs
         public string? Email { get; set; }
         public string Place { get; set; }
         public string? GstNumber { get; set; }
+        public DateTime updatedAt { get; set; }
+        public Guid updatedBy { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime createdBy { get; set; }
         public DateTime? DueDate { get; set; }
+        public SalesMode SalesMode { get; set; }
         public decimal pendingAmount { get; set; }
         public decimal RecievedAmount { get; set; }
         public decimal TaxableAmount { get; set; }
@@ -31,7 +36,8 @@ namespace Application.DTOs
         public decimal TotalSGST { get; set; } 
         public decimal TotalIGST { get; set; } 
         public decimal TotalUGST { get; set; } 
-
+        public decimal TotalTaxAmount => 
+            SaleItems?.Sum(i => i.TotalTaxAmount) ?? 0;
         public decimal TotalAmount { get; set; } 
 
         public DateTime SaleDate { get; set; } 

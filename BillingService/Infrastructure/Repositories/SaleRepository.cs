@@ -448,7 +448,6 @@ namespace Infrastructure.Repositories
 
             var sales = await GetDebtorsSales(debtorsId, orgId);
 
-            // Get only pending invoices
             var pendingInvoices = sales
                 .Where(s => s.Invoices.DueDate <= currentDate && s.Invoices.RecievedAmount <= s.Invoices.TotalAmount && s.OrganisationId == orgId)
                 .OrderBy(s => s.CreatedAt)

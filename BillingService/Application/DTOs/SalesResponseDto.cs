@@ -15,11 +15,13 @@ namespace Application.DTOs
 
         public Guid ledgerId { get; set; }
         public string CustomerName { get; set; }
+        public string Place { get; set; }
         public DateTime SaleDate { get; set; }
         public string PaymentType { get; set; }
 
         public List<SaleItemsResponseDto> SaleItems { get; set; }
       public decimal TaxableAmount => SaleItems?.Sum(i=>i.TaxableAmount)??0;
+
         public decimal? TotalCGST => SaleItems?.Sum(i=>i.CGST);
         public decimal? TotalSGST => SaleItems?.Sum(i => i.SGST);
         public decimal? TotalIGST => SaleItems?.Sum(i => i.IGST);
