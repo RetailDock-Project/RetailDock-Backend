@@ -11,7 +11,7 @@ namespace Application.Interfaces.Service_Interfaces
     public  interface ISaleReturnService
     {
         Task<ResponseDto<object>> AddSalesReturn(AddSalesReturnDto salesReturn, Guid orgId, Guid userId);
-        Task<ResponseDto<List<SalesReturnViewDto>>> GetAllSalesReturnDetails(Guid orgId,Guid userId,bool isFullData,int? skip,int? Take);
+        Task<ResponseDto<List<SalesReturnViewDto>>> GetAllSalesReturnDetails(Guid orgId,Guid userId,bool? isFullData,int? skip,int? Take);
 
         Task<ResponseDto<decimal>> getReturnedProductCount(Guid saleId, Guid productId, Guid orgId);
         Task<ResponseDto<SalesReturnViewDto>> GetSalesReturnDetailsById(Guid saleId, Guid orgId);

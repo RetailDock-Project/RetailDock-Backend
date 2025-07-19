@@ -97,6 +97,10 @@ namespace Application.AutoMapper
                      src.Sales.CashCustomerId.HasValue
                          ? null
                          : src.Sales.CreditCustomers.Place))
+             .ForMember(dest => dest.SalesMode,
+                 opt => opt.MapFrom(src =>
+                     src.Sales.SalesType))
+                  
 
              .ForMember(dest => dest.SaleDate,
                  opt => opt.MapFrom(src => src.Sales.CreatedAt))

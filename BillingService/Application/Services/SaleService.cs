@@ -420,7 +420,7 @@ namespace Application.Services
                 return new ResponseDto<SaleWithTaxReportDto>
                 {
                     Data = new SaleWithTaxReportDto { SalesDetails = mappedSales, HsnTaxReport = taxReport },
-                    Message = "no sales is found between that date",
+                    Message = "no sales taxReport between that date",
                     StatusCode = 404
                 };
 

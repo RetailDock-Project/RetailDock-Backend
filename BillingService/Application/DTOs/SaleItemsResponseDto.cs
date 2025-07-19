@@ -23,9 +23,9 @@ namespace Application.DTOs
         public decimal? SGST {  get; set; } 
         public decimal? CGST {  get; set; } 
         public decimal? IGST {  get; set; } 
-        public decimal? UGST {  get; set; } 
+        public decimal? UGST {  get; set; }
 
-
+        public decimal? TotalTaxAmount => (SGST + CGST + UGST + IGST);
         public decimal? TotalAmount=>          
     (TaxableAmount - DiscountAmount) + ((TaxableAmount - DiscountAmount) * (TaxRate / 100));
 

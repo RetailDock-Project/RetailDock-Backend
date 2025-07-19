@@ -29,7 +29,8 @@ namespace Application.DTOs
         public decimal TotalSGST { get; set; }
         public decimal TotalIGST { get; set; }
         public decimal TotalUGST { get; set; }
-
+        public decimal TotalTaxAmount =>
+           SaleReturnItems?.Sum(i => i.TotalTaxAmount) ?? 0;
         public decimal TotalAmount { get; set; }
 
         public DateTime ReturnDate { get; set; }

@@ -20,6 +20,7 @@ namespace Application.DTOs
 
         public List<SaleItemsResponseDto> SaleItems { get; set; }
       public decimal TaxableAmount => SaleItems?.Sum(i=>i.TaxableAmount)??0;
+
         public decimal? TotalCGST => SaleItems?.Sum(i=>i.CGST);
         public decimal? TotalSGST => SaleItems?.Sum(i => i.SGST);
         public decimal? TotalIGST => SaleItems?.Sum(i => i.IGST);

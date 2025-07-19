@@ -39,10 +39,14 @@ namespace Application.Services
 
                 if (sale == null)
                 {
-                    await unitOfWork._RolBackTransaction();
+                  
                     return new ResponseDto<object> { Message = "NoSale found", StatusCode = 404 };
 
 
+                }
+                if(salesReturn.returnDate < sale.CreatedAt || salesReturn.returnDate >  DateTime.Now)
+                {
+                    return new ResponseDto<object> { Message = "change sales Return Date", StatusCode = 404 };
                 }
 
                 decimal taxableAmount =0;
@@ -63,11 +67,12 @@ namespace Application.Services
                     if (_saleItem == null)
                     {
                         await unitOfWork._RolBackTransaction();
-                        return   new ResponseDto<object> { Message = "NoProduct found in That sale", StatusCode = 404 };
+                        return   new ResponseDto<object> { Message = "Product not found in That sale", StatusCode = 404 };
                         
                     }
                     decimal returnItemsCount = await saleReturnRepo.getReturnedProductCount(sale.Id, returnProduct.ProductId, orgId);
-                    if (returnProduct.Quantity > returnItemsCount)
+                    decimal remainingQuantity = _saleItem.Quantity - returnItemsCount;
+                    if (returnProduct.Quantity > remainingQuantity)
                     {
                         await unitOfWork._RolBackTransaction();
                         return new ResponseDto<object> { Message = "these product already Returned", StatusCode = 409 };
@@ -264,11 +269,13 @@ public async Task<ResponseDto<SalesReturnTaxReportDto>> GetSalesReturnTaxReport(
         }
 
 
-        public async Task<ResponseDto<List<SalesReturnViewDto>>> GetAllSalesReturnDetails(Guid orgId,Guid userId,bool isFullData,int? skip ,int? take)
+        public async Task<ResponseDto<List<SalesReturnViewDto>>> GetAllSalesReturnDetails(Guid orgId,Guid userId,bool? isFullData,int? skip ,int? take)
         {
             try
             {
-                var totalSalesReturn = await saleReturnRepo.fetchAllSalesReturn(orgId,userId,isFullData,skip,take);
+                bool fullData = isFullData ?? false;
+
+                var totalSalesReturn = await saleReturnRepo.fetchAllSalesReturn(orgId,userId,fullData,skip,take);
                 if (!totalSalesReturn.Any())
                 {
                     return new ResponseDto<List<SalesReturnViewDto>>
