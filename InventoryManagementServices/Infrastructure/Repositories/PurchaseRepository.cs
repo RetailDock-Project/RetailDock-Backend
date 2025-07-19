@@ -242,6 +242,52 @@ namespace Infrastructure.Repositories
         }
 
 
+        public async Task<List<PurchaseReturn>> GetPurchaseReturnsFilterAsync(
+    Guid organizationId,
+    string? search,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            var query = context.PurchaseReturns
+                .Include(pr => pr.Items)
+                .Include(pr => pr.PurchaseReturnInvoice)
+                .Include(pr => pr.Purchase)
+                    .ThenInclude(p => p.PurchaseInvoice)
+                .Where(pr => pr.OrganizationId == organizationId)
+                .AsQueryable();
+
+            if (fromDate.HasValue)
+            {
+                var from = DateOnly.FromDateTime(fromDate.Value);
+                query = query.Where(pr => pr.ReturnDate >= from);
+            }
+
+            if (toDate.HasValue)
+            {
+                var to = DateOnly.FromDateTime(toDate.Value);
+                query = query.Where(pr => pr.ReturnDate <= to);
+            }
+
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                search = search.ToLower();
+                query = query.Where(pr =>
+                    pr.Reason.ToLower().Contains(search) ||
+                    pr.PurchaseReturnInvoice.InvoiceNumber.ToLower().Contains(search) ||
+                    pr.Purchase.Supplier.Name.ToLower().Contains(search));
+            }
+
+            if (pageNumber.HasValue && pageSize.HasValue && pageNumber > 0 && pageSize > 0)
+            {
+                int skip = (pageNumber.Value - 1) * pageSize.Value;
+                query = query.Skip(skip).Take(pageSize.Value);
+            }
+
+            return await query.ToListAsync();
+        }
 
 
     }

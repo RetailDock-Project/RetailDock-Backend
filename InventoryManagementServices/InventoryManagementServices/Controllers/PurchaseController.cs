@@ -94,5 +94,19 @@ namespace API.Controllers
             return StatusCode(responses.StatusCode, responses);
         }
 
+
+        [HttpGet("Get/Return/OrganizationId")]
+        public async Task<IActionResult> GetPurchaseReturnsFilter(
+    [FromQuery] string? search,
+    [FromQuery] DateTime? fromDate,
+    [FromQuery] DateTime? toDate,
+    [FromQuery] int? pageNumber,
+    [FromQuery] int? pageSize)
+        {
+            var result = await purchaseService.GetPurchaseReturnsFilterAsync(OrgId, search, fromDate, toDate, pageNumber, pageSize);
+            return StatusCode(result.StatusCode, result);
+        }
+
+
     }
 }

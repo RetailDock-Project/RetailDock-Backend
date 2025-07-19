@@ -43,5 +43,13 @@ namespace Application.Interfaces.IRepository
     int? pageNumber,
     int? pageSize);
 
+        Task<List<PurchaseReturn>> GetPurchaseReturnsFilterAsync(
+    Guid organizationId,
+    string? search,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize);
+
     }
 }

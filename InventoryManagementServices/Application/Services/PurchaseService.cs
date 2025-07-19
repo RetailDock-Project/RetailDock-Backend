@@ -381,7 +381,18 @@ namespace Application.Services
 
         public async Task<Responses<object>> AddPurchaseReturn(PurchaseReturnDto newPurchaseReturn, Guid userId, Guid orgId)
         {
+            var data = JsonSerializer.Serialize(newPurchaseReturn);
+            Console.WriteLine("\n");
+            Console.WriteLine("\n");
 
+            Console.WriteLine("\n");
+            Console.WriteLine("\n");
+            Console.WriteLine("\n");
+            Console.WriteLine("\n");
+            Console.WriteLine("\n");
+
+
+            Console.WriteLine(data);
             try
             {
 
@@ -560,29 +571,54 @@ namespace Application.Services
                 {
                     voucher.TransactionsCredit.Add(new Transaction
                     {
-                        LedgerId = newPurchaseReturn.Voucher.TransactionsCredit[0].LedgerId,
+                        LedgerId = newPurchaseReturn.Voucher.TransactionsDebit[0].LedgerId,
                         Amount = (double)returnInvoice.SubTotal + (double)returnInvoice.TaxAmount,
-                        Narration = newPurchaseReturn.Voucher.TransactionsCredit[0].Narration
+                        Narration = newPurchaseReturn.Voucher.TransactionsDebit[0].Narration
                     });
-                    
+                    Console.WriteLine(newPurchaseReturn.Voucher.TransactionsDebit[0].LedgerId);
+                    Console.WriteLine((double)returnInvoice.SubTotal + (double)returnInvoice.TaxAmount);
+                    Console.WriteLine(newPurchaseReturn.Voucher.TransactionsDebit[0].Narration);
+
+
                 }
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                var trCredit = JsonSerializer.Serialize(voucher.TransactionsDebit);
+                Console.WriteLine(trCredit);
+ 
 
                 if (newPurchaseReturn.Voucher.TransactionsCredit?.Count >= 2)
                 {
                     voucher.TransactionsDebit.Add(new Transaction
                     {
-                        LedgerId = newPurchaseReturn.Voucher.TransactionsDebit[0].LedgerId,
+                        LedgerId = newPurchaseReturn.Voucher.TransactionsCredit[0].LedgerId,
                         Amount = (double)returnInvoice.SubTotal,
-                        Narration = newPurchaseReturn.Voucher.TransactionsDebit[0].Narration
+                        Narration = newPurchaseReturn.Voucher.TransactionsCredit[0].Narration
                     });
 
                     voucher.TransactionsDebit.Add(new Transaction
                     {
-                        LedgerId = newPurchaseReturn.Voucher.TransactionsDebit[1].LedgerId,
+                        LedgerId = newPurchaseReturn.Voucher.TransactionsCredit[1].LedgerId,
                         Amount = (double)returnInvoice.TaxAmount,
-                        Narration = newPurchaseReturn.Voucher.TransactionsDebit[1].Narration
+                        Narration = newPurchaseReturn.Voucher.TransactionsCredit[1].Narration
                     });
                 }
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                Console.WriteLine("\n");
+                var trDebit = JsonSerializer.Serialize(voucher.TransactionsCredit);
+                Console.WriteLine(trCredit);
 
 
                 using var transaction = await unitOfWork.BeginTransactionAsync();
@@ -782,6 +818,49 @@ namespace Application.Services
                 };
             }
         }
+
+
+        public async Task<Responses<List<GetPurchaseReturnDto>>> GetPurchaseReturnsFilterAsync(
+    Guid organizationId,
+    string? search,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            try
+            {
+                var purchaseReturns = await purchaseRepo.GetPurchaseReturnsFilterAsync(organizationId, search, fromDate, toDate, pageNumber, pageSize);
+
+                if (purchaseReturns == null || !purchaseReturns.Any())
+                {
+                    return new Responses<List<GetPurchaseReturnDto>>
+                    {
+                        StatusCode = 404,
+                        Message = "No purchase returns found."
+                    };
+                }
+
+                var mapped = mapper.Map<List<GetPurchaseReturnDto>>(purchaseReturns);
+
+                return new Responses<List<GetPurchaseReturnDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Purchase returns fetched successfully.",
+                    Data = mapped
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error in fetching purchase return data.");
+                return new Responses<List<GetPurchaseReturnDto>>
+                {
+                    StatusCode = 500,
+                    Message = "Internal server error: " + ex.Message
+                };
+            }
+        }
+
 
 
     }
