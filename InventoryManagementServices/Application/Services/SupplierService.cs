@@ -33,15 +33,24 @@ namespace Application.Services
                 if (orgId == Guid.Empty || userId == Guid.Empty) {
                     return new Responses<object> { StatusCode=400,Message="invalid credentials"};
                 }
-                var alreadyExist = await supplierRepo.GetSupplierWithGSTNumber(newSupplier.GSTNumber,orgId);
+                if (!string.IsNullOrWhiteSpace(newSupplier.GSTNumber))
+                {
+                    var alreadyExist = await supplierRepo.GetSupplierWithGSTNumber(newSupplier.GSTNumber, orgId);
 
-                if (alreadyExist != null) {
-                    return new Responses<object> { StatusCode = 409 ,Message=$"Supplier with GST-{newSupplier.GSTNumber} already exist"};
+                    if (alreadyExist != null)
+                    {
+                        return new Responses<object>
+                        {
+                            StatusCode = 409,
+                            Message = $"Supplier with GST-{newSupplier.GSTNumber} already exists"
+                        };
+                    }
                 }
 
                 var supplier=mapper.Map<Supplier>(newSupplier);
                 supplier.OrganizationId = orgId;
                 supplier.CreatedBy = userId;
+                supplier.IsActive = true;
                 
                 using var transaction = await unitOfWork.BeginTransactionAsync();
                 try {

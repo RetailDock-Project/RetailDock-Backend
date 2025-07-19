@@ -145,6 +145,7 @@ namespace Application.Mapper
                 .ForMember(dest => dest.PurchaseOrderNumber, opt => opt.MapFrom(src => src.PurchaseOrder.PurchaseOrderNumber));
 
             CreateMap<PurchaseItem, PurchaseItemDetailsDto>()
+                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.Id))
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
 
@@ -168,7 +169,7 @@ namespace Application.Mapper
                  .ForMember(dest=>dest.SupplierDetails,opt=>opt.MapFrom(src=>src.Supplier))
             ;
 
-            CreateMap<PurchaseReturnItem, PurchaseReturnItemsDetailsDto>()
+            CreateMap<PurchaseReturnItem,PurchaseReturnItemsDetailsDto>()
                 .ForMember(dest => dest.OriginalQuantity, opt => opt.MapFrom(src => src.PurchaseItem.Quantity))
                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount+src.TaxAmount))
                 .ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Product.ProductName))

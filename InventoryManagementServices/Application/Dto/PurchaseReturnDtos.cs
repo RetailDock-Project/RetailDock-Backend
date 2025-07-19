@@ -11,14 +11,13 @@ namespace Application.Dto
     {
 
         public Guid OriginalPurchaseId { get; set; }
-
         public DateOnly ReturnDate { get; set; }
         public Guid SupplierId { get; set; }
         public string Reason { get; set; }
         public string Notes { get; set; }
-
-        public VoucherDto Voucher { get; set; }
         public List<PurchaseReturnItemDto> Items { get; set; }
+        public VoucherDto Voucher { get; set; }
+
     }
 
     public class PurchaseReturnItemDto

@@ -79,4 +79,22 @@ public decimal ReceivedQuantity { get; set; }
         [RegularExpression("Pending|Cancelled|Completed", ErrorMessage = "Invalid Status")]
         public string OrderStatus { get; set; }
     }
+
+
+    public class UpdatePurchaseOrderDto
+    {
+        public Guid? PurchaseOrderId { get; set; }
+        public Guid SupplierId { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public List<UpdatePurchaseOrderItemDto> Items { get; set; }
+    }
+
+    public class UpdatePurchaseOrderItemDto
+    {
+        public Guid? PurchaseOrderItemId { get; set; } // Nullable for newly added items
+        public Guid ProductId { get; set; }
+        public decimal Quantity { get; set; }
+        public decimal RatePerPiece { get; set; }
+    }
+
 }
