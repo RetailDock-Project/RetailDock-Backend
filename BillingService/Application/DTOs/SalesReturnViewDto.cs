@@ -12,6 +12,15 @@ namespace Application.DTOs
         public Guid ReturnId { get; set; }
         public string ReturnInvoiceNumber { get; set; }
         public string CustomerName { get; set; }
+        public string? GstNumber { get; set; }
+              public string Place { get; set; }
+        public Guid SaleId { get; set; }
+        public DateTime updatedAt { get; set; }
+        public Guid updatedBy { get; set; }
+        public DateTime createdAt { get; set; }
+        public Guid createdBy { get; set; }
+
+  
         public DateTime ReturnDate { get; set; }
         public string PaymentType { get; set; }
 

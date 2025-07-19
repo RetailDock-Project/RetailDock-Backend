@@ -19,6 +19,10 @@ namespace Application.DTOs
         public string? Email { get; set; }
         public string Place { get; set; }
         public string? GstNumber { get; set; }
+        public DateTime updatedAt { get; set; }
+        public Guid updatedBy { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime createdBy { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public PaymentMode paymentMode { get; set; }   
        

@@ -15,6 +15,7 @@ namespace Application.DTOs
 
         public Guid ledgerId { get; set; }
         public string CustomerName { get; set; }
+        public string Place { get; set; }
         public DateTime SaleDate { get; set; }
         public string PaymentType { get; set; }
 

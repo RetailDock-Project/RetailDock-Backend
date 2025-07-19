@@ -57,7 +57,20 @@ namespace Application.AutoMapper
 
 
 
-            CreateMap<SalesReturn, SalesReturnViewDto>().ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Sales.CashCustomerId.HasValue ? src.Sales.CashCustomers.CustomerName : src.Sales.CreditCustomers.CustomerName)).ForMember(dest => dest.ReturnInvoiceNumber, opt => opt.MapFrom(SRC => SRC.ReturnInvoice.B2CReturnInvoiceNumber??SRC.ReturnInvoice.B2BReturnInvoiceNumber)).ForMember(dest => dest.ReturnId, opt => opt.MapFrom(src => src.Id)).ForMember(dest => dest.ReturnDate, opt => opt.MapFrom(src => src.ReturnDate)).ForMember(dest => dest.ReturnItems, opt => opt.MapFrom(src => src.SalesReturnItems)).ForMember(dest=>dest.PaymentType,opt=>opt.MapFrom(src=>src.ReturnInvoice.PaymentMode));
+            CreateMap<SalesReturn, SalesReturnViewDto>()
+                .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Sales.CashCustomerId.HasValue ? src.Sales.CashCustomers.CustomerName : src.Sales.CreditCustomers.CustomerName)) 
+
+
+                .ForMember(dest => dest.Place, opt => opt.MapFrom(src => src.Sales.CashCustomerId.HasValue ? src.Sales.CashCustomers.Place : src.Sales.CreditCustomers.Place)) 
+
+                .ForMember(dest => dest.GstNumber, opt => opt.MapFrom(src => src.Sales.CashCustomerId.HasValue ?null : src.Sales.CreditCustomers.GstNumber))
+
+                .ForMember(dest => dest.ReturnInvoiceNumber, opt => opt.MapFrom(SRC => SRC.ReturnInvoice.B2CReturnInvoiceNumber??SRC.ReturnInvoice.B2BReturnInvoiceNumber))
+
+                .ForMember(dest => dest.ReturnId, opt => opt.MapFrom(src => src.Id)).ForMember(dest => dest.ReturnDate, opt => opt.MapFrom(src => src.ReturnDate))
+
+                .ForMember(dest => dest.ReturnItems, opt => opt.MapFrom(src => src.SalesReturnItems))
+                .ForMember(dest=>dest.PaymentType,opt=>opt.MapFrom(src=>src.ReturnInvoice.PaymentMode));
 
 
             CreateMap<SalesReturnItems, SalesReturnItemsViewDto>().ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Products.ProductName)).ForMember(dest => dest.UnitName, opt => opt.MapFrom(src => src.UnitOfMeasures.Measurement)); ;
@@ -121,6 +134,7 @@ namespace Application.AutoMapper
             CreateMap<SalesReturnInvoice, SalesReturnInvoiceViewDto>()
                 .ForMember(dest => dest.InvoiceNumber,
                     opt => opt.MapFrom(src => src.B2BReturnInvoiceNumber ?? src.B2CReturnInvoiceNumber))
+              
 
                 .ForMember(dest => dest.CustomerName,
                     opt => opt.MapFrom(src =>
