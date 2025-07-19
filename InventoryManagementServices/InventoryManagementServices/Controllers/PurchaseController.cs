@@ -42,16 +42,16 @@ namespace API.Controllers
         }
 
         [HttpPost("return")]
-        public async Task<IActionResult> AddPurchaseReturn(PurchaseReturnDto newPurchaseReturn,Guid userId,Guid orgid)
+        public async Task<IActionResult> AddPurchaseReturn(PurchaseReturnDto newPurchaseReturn)
         {
-            var result=await purchaseService.AddPurchaseReturn(newPurchaseReturn, userId,orgid);
+            var result=await purchaseService.AddPurchaseReturn(newPurchaseReturn,UserId, OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("Get/Return/OrgnaizationId")]
 
-        public async Task <IActionResult>GetAllPurchaseReturn(Guid orgnaizationId)
+        public async Task <IActionResult>GetAllPurchaseReturn()
         {
-            var result= await purchaseService.GetAllPurchaseReturn(orgnaizationId);
+            var result= await purchaseService.GetAllPurchaseReturn(OrgId);
             return StatusCode(result.StatusCode, result);
         }
         [HttpGet("Get/Return/{PurchaseReturnId}")]

@@ -24,6 +24,12 @@ namespace Domain.Entities
         public Guid CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }=DateTime.UtcNow;
 
+        public Guid UpdatedBy { get; set; }
+
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
+
+
         public Supplier Supplier { get; set; }
 
         public List<Purchase> Purchases { get; set; }

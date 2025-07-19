@@ -19,12 +19,11 @@ namespace Application.Helpers
                     page.Margin(1, Unit.Centimetre);
                     page.DefaultTextStyle(x => x.FontSize(11));
 
-                    // Header with basic info
+                    // Header
                     page.Header().Column(column =>
                     {
                         column.Item().Text($"Purchase Order #{order.PurchaseOrderNumber}")
-                            .FontSize(16)
-                            .Bold();
+                            .FontSize(18).Bold().FontColor(Colors.Blue.Medium);
 
                         column.Item().Text(text =>
                         {
@@ -36,69 +35,69 @@ namespace Application.Helpers
                     // Main content
                     page.Content().PaddingVertical(10).Column(column =>
                     {
-                        // Supplier information
-                        column.Item().PaddingBottom(10).Column(col =>
+                        // Supplier section
+                        column.Item().Element(container =>
                         {
-                            col.Item().Text("Supplier").FontSize(12).Bold();
-                            col.Item().Text(order.Supplier.Name);
-                            col.Item().Text(order.Supplier.ContactNumber);
-                            col.Item().Text(order.Supplier.Address);
+                            container
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Lighten2)
+                                .Padding(10)
+                                .Column(supplierCol =>
+                                {
+                                    // Title (bold, larger font, with simulated underline using bottom border)
+                                    supplierCol.Item().PaddingBottom(5).Text("Supplier Details")
+                                        .FontSize(13).Bold()
+                                        .Underline(); // <-- removed, will replace below
 
-                            col.Item().Text(order.Supplier.City);
-                            col.Item().Text(order.Supplier.Pincode);
+                                    // Simulate underline by adding a bottom border instead
+                                    // Uncomment this if you want the underline simulation:
+                                    // supplierCol.Item().BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingBottom(5);
 
-                            col.Item().Text(order.Supplier.GSTNumber);
+                                    // Supplier details
+                                    supplierCol.Item().Text(text =>
+                                    {
+                                        text.Span("Name: ").SemiBold();
+                                        text.Span(order.Supplier.Name);
+                                    });
 
+                                    supplierCol.Item().Text(text =>
+                                    {
+                                        text.Span("Phone: ").SemiBold();
+                                        text.Span(order.Supplier.ContactNumber);
+                                    });
+
+                                    supplierCol.Item().Text(text =>
+                                    {
+                                        text.Span("Address: ").SemiBold();
+                                        text.Span(order.Supplier.Address);
+                                    });
+
+                                    supplierCol.Item().Text(text =>
+                                    {
+                                        text.Span("City: ").SemiBold();
+                                        text.Span(order.Supplier.City);
+                                    });
+
+                                    supplierCol.Item().Text(text =>
+                                    {
+                                        text.Span("Pincode: ").SemiBold();
+                                        text.Span(order.Supplier.Pincode);
+                                    });
+
+                                    supplierCol.Item().Text(text =>
+                                    {
+                                        text.Span("GST No: ").SemiBold();
+                                        text.Span(order.Supplier.GSTNumber);
+                                    });
+                                });
                         });
 
 
-                        // Created by
-                        column.Item().PaddingBottom(15).Text(text =>
-                        {
-                            text.Span("Created by: ").SemiBold();
-                            text.Span(order.CreatedBy.ToString());
-                        });
-
-                        // Products table
-                        column.Item().Table(table =>
-                        {
-                            // Define columns
-                            table.ColumnsDefinition(columns =>
-                            {
-                                columns.RelativeColumn(3);  // Product
-                                columns.ConstantColumn(60); // Qty
-                                columns.ConstantColumn(80); // Unit Price
-                                columns.ConstantColumn(80); // Total
-                            });
-
-                            // Header row
-                            table.Header(header =>
-                            {
-                                header.Cell().Text("Product").Bold();
-                                header.Cell().AlignRight().Text("Qty").Bold();
-                                header.Cell().AlignRight().Text("Price").Bold();
-                                header.Cell().AlignRight().Text("Total").Bold();
-                            });
-
-                            // Product rows
-                            foreach (var item in order.Items)
-                            {
-                                table.Cell().Text(item.ProductName);
-                                table.Cell().AlignRight().Text(item.Quantity.ToString());
-                                table.Cell().AlignRight().Text(item.RatePerPiece.ToString("C"));
-                                table.Cell().AlignRight().Text(item.TotalAmount.ToString("C"));
-                            }
-
-                            // Total row
-                            table.Footer(footer =>
-                            {
-                                footer.Cell().ColumnSpan(3).Text("Total").Bold();
-                                footer.Cell().AlignRight().Text(order.TotalAmount.ToString("C")).Bold();
-                            });
-                        });
+                        // Product Table
+                        column.Item().PaddingTop(15).Element(BuildProductTable(order));
                     });
 
-                    // Simple footer
+                    // Footer
                     page.Footer().AlignCenter().Text(x =>
                     {
                         x.Span("Generated on ");
@@ -108,6 +107,57 @@ namespace Application.Helpers
             });
 
             return document.GeneratePdf();
+        }
+
+        private static Action<IContainer> BuildProductTable(PurchaseOrderDetailDto order)
+        {
+            return container => container
+                .Border(1)
+                .BorderColor(Colors.Grey.Lighten2)
+                .Table(table =>
+                {
+                    table.ColumnsDefinition(columns =>
+                    {
+                        columns.RelativeColumn(3);  // Product Name
+                        columns.ConstantColumn(60); // Qty
+                        columns.ConstantColumn(80); // Price
+                        columns.ConstantColumn(80); // Total
+                    });
+
+                    // Header
+                    table.Header(header =>
+                    {
+                        header.Cell().Element(CellStyle).Background(Colors.Grey.Lighten2).Text("Product").Bold();
+                        header.Cell().Element(CellStyle).AlignRight().Background(Colors.Grey.Lighten2).Text("Qty").Bold();
+                        header.Cell().Element(CellStyle).AlignRight().Background(Colors.Grey.Lighten2).Text("Price").Bold();
+                        header.Cell().Element(CellStyle).AlignRight().Background(Colors.Grey.Lighten2).Text("Total").Bold();
+                    });
+
+                    // Rows
+                    foreach (var item in order.Items)
+                    {
+                        table.Cell().Element(CellStyle).Text(item.ProductName);
+                        table.Cell().Element(CellStyle).AlignRight().Text(item.Quantity.ToString("F2"));
+                        table.Cell().Element(CellStyle).AlignRight().Text(item.RatePerPiece.ToString("F2"));
+                        table.Cell().Element(CellStyle).AlignRight().Text(item.TotalAmount.ToString("F2"));
+                    }
+
+                    // Footer Total
+                    table.Footer(footer =>
+                    {
+                        footer.Cell().ColumnSpan(3).Element(CellStyle).AlignRight().Text("Total").Bold();
+                        footer.Cell().Element(CellStyle).AlignRight().Text(order.TotalAmount.ToString("F2")).Bold();
+                    });
+                });
+        }
+
+        private static IContainer CellStyle(IContainer container)
+        {
+            return container
+                .PaddingVertical(5)
+                .PaddingHorizontal(5)
+                .BorderBottom(1)
+                .BorderColor(Colors.Grey.Lighten3);
         }
     }
 }
