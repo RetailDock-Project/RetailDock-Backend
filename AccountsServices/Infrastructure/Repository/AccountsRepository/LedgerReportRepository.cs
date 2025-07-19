@@ -160,12 +160,14 @@ INNER JOIN OppositeLedgers OL ON OL.VoucherId = T.VoucherId
 WHERE OL.IsDebit != T.IsDebit
   AND NOT (
       VT.TypeName IN ('Sales', 'SalesReturn') AND 
-      OL.OppositeLedger LIKE '%Inventory Transaction%'  -- case-insensitive match
+      (
+          LOWER(OL.OppositeLedger) LIKE '%inventory transaction%' OR
+          LOWER(OL.OppositeLedger) LIKE '%inventory loss%' OR
+          LOWER(OL.OppositeLedger) LIKE '%cogs%' OR
+          LOWER(OL.OppositeLedger) LIKE '%output gst%'
+      )
   );
-
-
-"
-;
+";
 
 
             var transactions = (await connection.QueryAsync<LedgerReportDTO>(
