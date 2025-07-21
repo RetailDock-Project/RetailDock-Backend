@@ -84,15 +84,6 @@ namespace Infrastructure.Repositories
 
         public async Task<Purchase> GetPurchaseById(Guid purchaseId)
         {
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
 
 
             return await context.Purchases
@@ -287,6 +278,33 @@ namespace Infrastructure.Repositories
             }
 
             return await query.ToListAsync();
+        }
+
+
+        public async Task<List<Purchase>> GetRecentPurchases(Guid organizationId, DateTime fromDate, DateTime toDate)
+        {
+            return await context.Purchases
+                .Include(p=>p.PurchaseInvoice)
+                .Include(p => p.PurchaseItems)
+                .Include(p => p.Supplier)
+                .Where(p => p.OrganizationId == organizationId &&
+                            p.CreatedAt >= fromDate && p.CreatedAt <= toDate)
+                .AsNoTracking()
+
+                .ToListAsync();
+        }
+
+        public async Task<List<PurchaseReturn>> GetRecentReturns(Guid organizationId, DateTime fromDate, DateTime toDate)
+        {
+            return await context.PurchaseReturns
+                                .Include(p => p.PurchaseReturnInvoice)
+
+                .Include(r => r.Items)
+                .Include(r => r.Supplier)
+                .Where(r => r.OrganizationId == organizationId &&
+                            r.CreatedAt >= fromDate && r.CreatedAt <= toDate)
+                .AsNoTracking()
+                .ToListAsync();
         }
 
 

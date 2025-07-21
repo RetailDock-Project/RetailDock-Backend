@@ -162,7 +162,7 @@ namespace Application.Mapper
             CreateMap<PurchaseReturn,GetPurchaseReturnDetailsDto>()
                 .ForMember(dest => dest.InvoiceNumber, opt => opt.MapFrom(src => src.PurchaseReturnInvoice.InvoiceNumber))
                  .ForMember(dest => dest.originalInvoiceNumber, opt => opt.MapFrom(src => src.Purchase.PurchaseInvoice.InvoiceNumber))
-                 .ForMember(dest => dest.GrossTotalAmount, opt => opt.MapFrom(src => src.PurchaseReturnInvoice.TotalAmount))
+                 .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.PurchaseReturnInvoice.TotalAmount))
                  .ForMember(dest => dest.ReturnedQuantity, opt => opt.MapFrom(src => src.Items.Sum(x => x.ReturnedQuantity)))
                  .ForMember(dest=>dest.PurchaseDate,opt=>opt.MapFrom(src=>src.Purchase.Purchasedate))
                  .ForMember(dest => dest.PurchaseReturnItemsDetails, opt => opt.MapFrom(src => src.Items))
@@ -171,7 +171,6 @@ namespace Application.Mapper
 
             CreateMap<PurchaseReturnItem,PurchaseReturnItemsDetailsDto>()
                 .ForMember(dest => dest.OriginalQuantity, opt => opt.MapFrom(src => src.PurchaseItem.Quantity))
-                .ForMember(dest => dest.TotalAmount, opt => opt.MapFrom(src => src.TotalAmount+src.TaxAmount))
                 .ForMember(dest=>dest.ProductName,opt=>opt.MapFrom(src=>src.Product.ProductName))
                 .ForMember(dest=>dest.Reason,opt=>opt.MapFrom(src=>src.PurchaseReturn.Reason));
        

@@ -18,6 +18,7 @@ namespace Application.Services
         Task<Responses<HsnDto>> Getbyhsncode(int hsncode);
         Task<Responses<string>>UpdateHsn(int hsnCode, UpdateHsnDto hsnDto);
         Task<Responses<string>> DeleteHsn(int hsncode);
+        Task<Responses<InvoiceSummeryDTO>> GetInvoiceSummary(Guid orgId, DateTime? fromDate, DateTime? toDate, InvoiceType invoiceType);
     }
     public class HsnCodeServices : IHsnCodeServices
     {
@@ -150,5 +151,22 @@ namespace Application.Services
                 };
             }
         }
+
+
+
+        public async Task<Responses<InvoiceSummeryDTO>> GetInvoiceSummary(Guid orgId,DateTime? fromDate, DateTime? toDate,InvoiceType invoiceType)
+        {
+            try
+            {
+                var invoiceData = await _hsnCodeRepository.GetInvoiceSummary(orgId,fromDate,toDate,invoiceType);
+
+                return new Responses<InvoiceSummeryDTO> { StatusCode = 200 ,Data=invoiceData,Message="Invoice details fetched successfully"};
+            }
+            catch (Exception ex)
+            {
+                return new Responses<InvoiceSummeryDTO> { StatusCode = 500, Message = ex.Message };
+            }
+        }
+
     }
     }

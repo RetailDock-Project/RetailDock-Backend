@@ -1,5 +1,6 @@
 ﻿using API.Controllers.Base;
 using Application.Dto;
+using Application.Helpers;
 using Application.Interfaces.IServices;
 using Application.Services;
 using Microsoft.AspNetCore.Http;
@@ -56,7 +57,7 @@ namespace API.Controllers
         }
         [HttpGet("Get/Return/{PurchaseReturnId}")]
 
-        public async Task   <IActionResult>GetPurchaseReurn(Guid PurchaseReturnId)
+        public async Task   <IActionResult>GetPurchaseReturn(Guid PurchaseReturnId)
         {
             var result= await purchaseService.GetPurchaseReturn(PurchaseReturnId);
             return StatusCode(result.StatusCode, result);
@@ -106,6 +107,29 @@ namespace API.Controllers
             var result = await purchaseService.GetPurchaseReturnsFilterAsync(OrgId, search, fromDate, toDate, pageNumber, pageSize);
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpGet("recent/organizationId")]
+        public async Task<IActionResult> GetLastWeekTransactions()
+        {
+            var result = await purchaseService.GetLastWeekTransactions(OrgId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+
+        [HttpGet("download-purchase/{purchaseId}")]
+        public async Task<IActionResult> DownloadPurchasePdf(Guid purchaseId)
+        {
+            var result = await purchaseService.GetPurchaseDetails(purchaseId);
+
+            if (result.Data == null)
+                return NotFound("Purchase not found");
+
+            var pdfBytes = PurchasePdfGenerator.GeneratePurchasePdf(result.Data);
+            var fileName = $"Purchase_{purchaseId.ToString().Substring(0, 6)}.pdf";
+
+            return File(pdfBytes, "application/pdf", fileName);
+        }
+
 
 
     }

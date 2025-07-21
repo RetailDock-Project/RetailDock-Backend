@@ -32,5 +32,6 @@ namespace Application.Interfaces.IServices
     DateTime? toDate,
     int? pageNumber,
     int? pageSize);
+        Task<Responses<List<RecentInventoryTransactionDto>>> GetLastWeekTransactions(Guid organizationId);
     }
 }

@@ -51,5 +51,9 @@ namespace Application.Interfaces.IRepository
     int? pageNumber,
     int? pageSize);
 
+
+        Task<List<Purchase>> GetRecentPurchases(Guid organizationId, DateTime fromDate, DateTime toDate);
+        Task<List<PurchaseReturn>> GetRecentReturns(Guid organizationId, DateTime fromDate, DateTime toDate);
+
     }
 }

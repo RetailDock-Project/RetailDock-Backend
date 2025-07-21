@@ -861,7 +861,58 @@ namespace Application.Services
             }
         }
 
+        public async Task<Responses<List<RecentInventoryTransactionDto>>> GetLastWeekTransactions(Guid organizationId)
+        {
+            try
+            {
+                var fromDate = DateTime.UtcNow.AddDays(-7);
+                var toDate = DateTime.UtcNow;
 
+                var purchases = await purchaseRepo.GetRecentPurchases(organizationId, fromDate, toDate);
+                var returns = await purchaseRepo.GetRecentReturns(organizationId, fromDate, toDate);
+
+                var results = new List<RecentInventoryTransactionDto>();
+
+                results.AddRange(purchases.Select(p => new RecentInventoryTransactionDto
+                {
+                    Id= p.Id,
+                    Type = "Purchase",
+                    SupplierOrSource = p.Supplier?.Name ?? "Unknown",
+                    ItemCount = p.PurchaseItems?.Count ?? 0,
+                    Date = p.CreatedAt,
+                    Amount = p.PurchaseInvoice.TotalAmount,
+                }));
+
+                results.AddRange(returns.Select(r => new RecentInventoryTransactionDto
+                {
+                    Id= r.Id,
+                    Type = "Return",
+                    SupplierOrSource = r.Supplier?.Name ?? "Unknown",
+                    ItemCount = r.Items?.Count ?? 0,
+                    Date = r.CreatedAt,
+                    Amount = r.PurchaseReturnInvoice.TotalAmount
+                }));
+
+                var sorted = results.OrderByDescending(x => x.Date).ToList();
+
+                return new Responses<List<RecentInventoryTransactionDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Last 7 days of inventory transactions fetched successfully",
+                    Data = sorted
+                };
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error fetching recent inventory transactions");
+
+                return new Responses<List<RecentInventoryTransactionDto>>
+                {
+                    StatusCode = 500,
+                    Message = "An error occurred while fetching recent inventory transactions"
+                };
+            }
+        }
 
     }
 }
