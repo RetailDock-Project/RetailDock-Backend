@@ -187,6 +187,12 @@ namespace InventoryManagementServices
             builder.Services.AddScoped<IHsnCodeRepository, HsnRepository>();
             builder.Services.AddScoped<IPurchaseOrderRepository, PurchaseOrderRepository>();
 
+            builder.Services.AddHttpClient<IOrganizationService, OrganizationApiService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7009/");
+            });
+
+
 
             builder.Services.AddScoped<IProductCategoryServices, ProductCategoryServices>();
             builder.Services.AddScoped<IUnitOfMeasureServices, UnitOfMeasureServices>();

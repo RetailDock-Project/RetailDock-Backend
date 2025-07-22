@@ -9,7 +9,7 @@ namespace Application.Helpers
 {
     public class PurchaseOrderPdfGeneratorHelper
     {
-        public static byte[] GeneratePdf(PurchaseOrderDetailDto order)
+        public static byte[] GeneratePdf(PurchaseOrderDetailDto order, OrganizationDetailsDto organizationDatail)
         {
             var document = Document.Create(container =>
             {
@@ -35,8 +35,52 @@ namespace Application.Helpers
                     // Main content
                     page.Content().PaddingVertical(10).Column(column =>
                     {
-                        // Supplier section
+                        // Organization Details Section
                         column.Item().Element(container =>
+                        {
+                            container
+                                .Border(1)
+                                .BorderColor(Colors.Grey.Lighten2)
+                                .Padding(10)
+                                .Column(orgCol =>
+                                {
+                                    orgCol.Item().PaddingBottom(5).Text("Organization Details")
+                                        .FontSize(13).Bold().Underline();
+
+                                    orgCol.Item().Text(text =>
+                                    {
+                                        text.Span("Name: ").SemiBold();
+                                        text.Span(organizationDatail.OrganizationName);
+                                    });
+
+                                    orgCol.Item().Text(text =>
+                                    {
+                                        text.Span("Address: ").SemiBold();
+                                        text.Span(organizationDatail.Address);
+                                    });
+
+                                    orgCol.Item().Text(text =>
+                                    {
+                                        text.Span("License No: ").SemiBold();
+                                        text.Span(organizationDatail.LicenceNumber);
+                                    });
+
+                                    orgCol.Item().Text(text =>
+                                    {
+                                        text.Span("GST No: ").SemiBold();
+                                        text.Span(organizationDatail.GSTNumber);
+                                    });
+
+                                    orgCol.Item().Text(text =>
+                                    {
+                                        text.Span("PAN No: ").SemiBold();
+                                        text.Span(organizationDatail.PANNumber);
+                                    });
+                                });
+                        });
+
+                        // Supplier section
+                        column.Item().PaddingTop(10).Element(container =>
                         {
                             container
                                 .Border(1)
@@ -44,16 +88,9 @@ namespace Application.Helpers
                                 .Padding(10)
                                 .Column(supplierCol =>
                                 {
-                                    // Title (bold, larger font, with simulated underline using bottom border)
                                     supplierCol.Item().PaddingBottom(5).Text("Supplier Details")
-                                        .FontSize(13).Bold()
-                                        .Underline(); // <-- removed, will replace below
+                                        .FontSize(13).Bold().Underline();
 
-                                    // Simulate underline by adding a bottom border instead
-                                    // Uncomment this if you want the underline simulation:
-                                    // supplierCol.Item().BorderBottom(1).BorderColor(Colors.Grey.Lighten2).PaddingBottom(5);
-
-                                    // Supplier details
                                     supplierCol.Item().Text(text =>
                                     {
                                         text.Span("Name: ").SemiBold();
@@ -91,7 +128,6 @@ namespace Application.Helpers
                                     });
                                 });
                         });
-
 
                         // Product Table
                         column.Item().PaddingTop(15).Element(BuildProductTable(order));

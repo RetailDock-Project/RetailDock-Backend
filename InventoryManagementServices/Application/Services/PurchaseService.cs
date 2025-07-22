@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Application.Dto;
+using Application.Helpers;
 using Application.Interfaces;
 using Application.Interfaces.IRepository;
 using Application.Interfaces.IServices;
@@ -29,9 +30,11 @@ namespace Application.Services
         private readonly IInvoiceNumberGenerator invoiceNumberGenerator;
         private readonly IAccountGrpcService accountGrpcService;
         private readonly IPurchaseOrderRepository purchaseOrderRepo;
+        private readonly IOrganizationService organizationService;
 
 
-        public PurchaseService(IPurchaseRepository _purchaseRepo, ILogger<PurchaseService> _logger, IUnitOfWork _unitOfWork,IMapper _mapper, IInvoiceNumberGenerator _invoiceNumberGenerator, IAccountGrpcService _accountGrpcService, IPurchaseOrderRepository _purchaseOrderRepo) {
+
+        public PurchaseService(IPurchaseRepository _purchaseRepo, ILogger<PurchaseService> _logger, IUnitOfWork _unitOfWork,IMapper _mapper, IInvoiceNumberGenerator _invoiceNumberGenerator, IAccountGrpcService _accountGrpcService, IPurchaseOrderRepository _purchaseOrderRepo, IOrganizationService _organizationService) {
             purchaseRepo = _purchaseRepo;
             logger = _logger;
             unitOfWork = _unitOfWork;
@@ -39,6 +42,8 @@ namespace Application.Services
              invoiceNumberGenerator= _invoiceNumberGenerator;
             accountGrpcService=_accountGrpcService;
             purchaseOrderRepo = _purchaseOrderRepo;
+            organizationService = _organizationService;
+
 
         }
         public async Task<Responses<object>> AddPurchase(PurchaseAddDto newPurchase, Guid orgId, Guid userId)
@@ -912,6 +917,23 @@ namespace Application.Services
                     Message = "An error occurred while fetching recent inventory transactions"
                 };
             }
+        }
+
+
+        public async Task<DownloadPdfResult> DownloadPurchasePdfAsync(Guid purchaseId, Guid orgId)
+        {
+            var purchaseResult = await GetPurchaseDetails(purchaseId);
+            if (purchaseResult == null)
+                return DownloadPdfResult.Failure("Purchase not found");
+
+            var organization = await organizationService.GetOrganizationByIdAsync(orgId);
+            if (organization == null)
+                return DownloadPdfResult.Failure("Organization details not found");
+
+            var pdfBytes = PurchasePdfGenerator.GeneratePurchasePdf(purchaseResult.Data, organization);
+            var fileName = $"Purchase_{purchaseId.ToString().Substring(0, 6)}.pdf";
+
+            return DownloadPdfResult.Success(pdfBytes, fileName);
         }
 
     }
