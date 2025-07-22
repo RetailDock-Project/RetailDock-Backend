@@ -49,4 +49,10 @@ namespace Application.DTO
         public List<GroupLedgerSummaryDTO> GroupSummaries { get; set; }
         public List<DirectLedgerSummaryDTO> DirectLedgerSummaries { get; set; }
     }
+    public class LedgerClosinBalanceDTO
+    {
+        public string LedgerName { get; set; }
+        public decimal ClosingBalance { get; set; }
+        public string ClosingType { get; set; }
+    }
 }
