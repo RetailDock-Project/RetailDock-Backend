@@ -180,6 +180,54 @@ namespace Application.Services.AccountsService
                 };
             }
         }
+        public async Task<ApiResponseDTO<LedgerClosinBalanceDTO>> GetLedgerSummariesAsyncByLedgerId(Guid organizationId, DateTime? startDate, DateTime? endDate,Guid ledgerId)
+        {
+            try
+            {
+                if (organizationId == Guid.Empty)
+                {
+                    return new ApiResponseDTO<LedgerClosinBalanceDTO>
+                    {
+                        StatusCode = 400,
+                        Message = "OrganizationId is Required"
+                    };
+                }
 
+                var data = await _ledgerReportRepository.GetLedgerClosingBalanceAsync(organizationId, ledgerId, startDate, endDate);
+                if (data != null)
+                {
+                    var details = new LedgerClosinBalanceDTO
+                    {
+                        LedgerName = data.LedgerName,
+                        ClosingBalance = data.ClosingBalance,
+                        ClosingType = data.ClosingType,
+                    };
+                    return new ApiResponseDTO<LedgerClosinBalanceDTO>
+                    {
+                        StatusCode = 200,
+                        Message = "Balance Fetched Sucuusfully",
+                        Data = details
+
+                    };
+                }
+                return new ApiResponseDTO<LedgerClosinBalanceDTO>
+                {
+                    StatusCode = 404,
+                    Message = "LedgerId or Organization Not Found"
+
+                };
+            }
+            catch (Exception ex)
+
+            {
+                _logger.LogError(ex.Message, "Error in fetching details");
+                return new ApiResponseDTO<LedgerClosinBalanceDTO>
+                {
+                    StatusCode = 500,
+                    Message = "Error in fetching details"
+                };
+
+            }
+        }
     }
 }

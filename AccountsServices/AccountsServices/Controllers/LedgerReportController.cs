@@ -43,5 +43,12 @@ namespace AccountsServices.Controllers
             return StatusCode(result.StatusCode, result);
 
         }
+        [HttpGet("ledger/report/closinbalance/byid")]
+        public async Task<IActionResult> GetLedgerClosingBalanceById(Guid OrgIdS, Guid ledgerId, DateTime? startDate, DateTime? endDateid)
+        {
+            var result = await _services.GetLedgerSummariesAsyncByLedgerId(OrgIdS  ,startDate, endDateid,ledgerId);
+            return StatusCode(result.StatusCode, result);
+
+        }
     }
 }
