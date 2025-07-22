@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Dto;
@@ -9,6 +10,7 @@ using Application.Interfaces.IRepository;
 using Application.Interfaces.IServices;
 using AutoMapper;
 using Domain.Entities;
+using QuestPDF.Helpers;
 
 namespace Application.Services
 {
@@ -164,5 +166,28 @@ namespace Application.Services
             }
         }
 
+
+        
+        public async Task<Responses<object>> ChangeStatusOfSupplier(Guid supplierId,Guid userId)
+        {
+            try
+            {
+                 await supplierRepo.ChangeStatusOfSupplier(supplierId, userId);
+
+                return new Responses<object>
+                {
+                    StatusCode = 200,
+                    Message = "Suppliers status changes successfully",
+                };
+            }
+            catch (Exception)
+            {
+                return new Responses<object>
+                {
+                    StatusCode = 500,
+                    Message = "An error occurred while chnaging status of supplier"
+                };
+            }
+        }
     }
 }

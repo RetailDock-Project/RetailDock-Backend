@@ -67,4 +67,60 @@ namespace Application.Dto
         public double Amount { get; set; }
         public string Narration { get; set; }
     }
+
+    public class InVoiceDetails
+    {
+        public Guid InvoiceId { get; set; }
+        public string invoiceNumber { get; set; }
+        public string supplierorcustomerName { get; set; }
+        public string salemodeorpurchasemode { get; set; } //B2B
+        public decimal BeforeGSTValue { get; set; }
+        public decimal GstTotal { get; set; }
+        public decimal IGST { get; set; }
+        public decimal CGST { get; set; }
+        public decimal UGST { get; set; }
+        public decimal SGST { get; set; }
+
+        public decimal TotalValue { get; set; }
+
+    }
+    public class HsnDetails
+    {
+        public int HsnId { get; set; }
+        public string HsnNumber { get; set; }
+        public decimal BeforeGSTValue { get; set; }
+        public decimal GstTotal { get; set; }
+        public decimal IGST { get; set; }
+        public decimal CGST { get; set; }
+        public decimal UGST { get; set; }
+        public decimal SGST { get; set; }
+
+        public decimal TotalValue { get; set; }
+
+
+    }
+    public class InvoiceSummeryDTO
+    {
+
+        public int InvoiceCount { get; set; }
+        public decimal BeforeGSTValue { get; set; }
+        public decimal GstTotal { get; set; }
+
+        public decimal IGST { get; set; }
+        public decimal CGST { get; set; }
+        public decimal UGST { get; set; }
+        public decimal SGST { get; set; }
+        public decimal TotalValue { get; set; }
+
+        public List<InVoiceDetails> inVoiceDetails { get; set; }
+        public List<HsnDetails> hsnDetails { get; set; }
+    }
+
+    public enum InvoiceType { 
+        Purchase,
+        PurchaseReturn,
+        Sales,
+        SalesReturn
+    }
+
 }

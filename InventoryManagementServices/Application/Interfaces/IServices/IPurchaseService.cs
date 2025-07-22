@@ -24,5 +24,14 @@ namespace Application.Interfaces.IServices
     DateTime? toDate,
     int? pageNumber,
     int? pageSize);
+
+        Task<Responses<List<GetPurchaseReturnDto>>> GetPurchaseReturnsFilterAsync(
+    Guid organizationId,
+    string? search,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize);
+        Task<Responses<List<RecentInventoryTransactionDto>>> GetLastWeekTransactions(Guid organizationId);
     }
 }

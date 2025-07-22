@@ -17,5 +17,7 @@ namespace Application.Interfaces.IRepository
         Task<List<Supplier>> GetAllSuppliersByOrganizationId(Guid orgId);
         Task<(List<Supplier>, int)> GetSuppliersByFilterAsync(Guid orgId, string? search, bool? isActive, int? pageNumber, int? pageSize);
 
+        Task ChangeStatusOfSupplier(Guid supplierId, Guid userId);
+
     }
 }

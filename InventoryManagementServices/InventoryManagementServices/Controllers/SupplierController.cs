@@ -21,6 +21,13 @@ namespace API.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
+        [HttpPatch("{supplierId}/block-or-unblock")]
+        public async Task<IActionResult> ChangeStatusOfSupplier(Guid supplierId)
+        {
+            var response = await supplierService.ChangeStatusOfSupplier(supplierId,UserId);
+            return StatusCode(response.StatusCode, response);
+        }
+
         [HttpDelete("{supplierId}/remove")]
         public async Task<IActionResult> RemoveSupplier(Guid supplierId,Guid orgId,Guid userId)
         {

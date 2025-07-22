@@ -87,5 +87,20 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("get-invoices-summary")]
+        public async Task<IActionResult> GetInvoiceSummary(DateTime? fromDate,DateTime? toDate,InvoiceType invoiceType)
+        {
+            try
+            {
+                var result = await _hsnCodeServices.GetInvoiceSummary(OrgId, fromDate, toDate, invoiceType);
+                return StatusCode(result.StatusCode, result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
     }
 }

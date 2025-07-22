@@ -73,5 +73,16 @@ namespace Infrastructure.Repositories
             return (result, totalCount);
         }
 
+        public async Task ChangeStatusOfSupplier(Guid supplierId, Guid userId) {
+            var supplier = await context.Suppliers.FirstOrDefaultAsync(s => s.Id == supplierId);
+            if (supplier != null) {
+                supplier.IsActive = !supplier.IsActive;
+                supplier.UpdatedBy=userId;
+                supplier.UpdatedAt = DateTime.UtcNow;
+            }
+            await context.SaveChangesAsync();
+
+        }
+
     }
 }
