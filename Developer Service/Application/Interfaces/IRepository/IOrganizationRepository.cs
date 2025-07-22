@@ -20,6 +20,7 @@ namespace Application.Interfaces.IRepository
         Task<object> GetOrganizationAccountStatusSummaryAsync();
         Task<List<OrganizationDetails>> GetAllOrganizationWithSubscription();
         Task<bool>BlockOrganization(Guid organizationId);
+        Task<OrganizationDetails> GetOrganizationDetailById(Guid id);
 
     }
 }

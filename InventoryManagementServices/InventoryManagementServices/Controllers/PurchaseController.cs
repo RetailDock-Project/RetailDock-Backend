@@ -13,6 +13,7 @@ namespace API.Controllers
     public class PurchaseController : BaseController
     {
         private readonly IPurchaseService purchaseService;
+
         public PurchaseController(IPurchaseService _purchaseService) { 
             
             purchaseService = _purchaseService;
@@ -119,15 +120,11 @@ namespace API.Controllers
         [HttpGet("download-purchase/{purchaseId}")]
         public async Task<IActionResult> DownloadPurchasePdf(Guid purchaseId)
         {
-            var result = await purchaseService.GetPurchaseDetails(purchaseId);
+            var result = await purchaseService.DownloadPurchasePdfAsync(purchaseId,OrgId);
+            if (!result.IsSuccess)
+                return NotFound(result.ErrorMessage);
 
-            if (result.Data == null)
-                return NotFound("Purchase not found");
-
-            var pdfBytes = PurchasePdfGenerator.GeneratePurchasePdf(result.Data);
-            var fileName = $"Purchase_{purchaseId.ToString().Substring(0, 6)}.pdf";
-
-            return File(pdfBytes, "application/pdf", fileName);
+            return File(result.FileBytes, "application/pdf", result.FileName);
         }
 
 

@@ -105,6 +105,8 @@ namespace Infrastructure.Repositories
                     IGST = p.PurchaseInvoice.IGST ?? 0,
                     CGST = p.PurchaseInvoice.CGST ?? 0,
                     UGST = p.PurchaseInvoice.UGST ?? 0,
+                    SGST = p.PurchaseInvoice.UGST ?? 0,
+
                     TotalValue = p.PurchaseInvoice.TotalAmount
                 }).ToList();
 
@@ -132,6 +134,7 @@ namespace Infrastructure.Repositories
                     IGST = invoiceDetails.Sum(i => i.IGST),
                     CGST = invoiceDetails.Sum(i => i.CGST),
                     UGST = invoiceDetails.Sum(i => i.UGST),
+                    SGST= invoiceDetails.Sum(x => x.SGST),
                     TotalValue = invoiceDetails.Sum(i => i.TotalValue),
                     inVoiceDetails = invoiceDetails,
                     hsnDetails = hsnGrouped

@@ -33,5 +33,7 @@ namespace Application.Interfaces.IServices
     int? pageNumber,
     int? pageSize);
         Task<Responses<List<RecentInventoryTransactionDto>>> GetLastWeekTransactions(Guid organizationId);
+        Task<DownloadPdfResult> DownloadPurchasePdfAsync(Guid purchaseId,Guid orgId);
+
     }
 }

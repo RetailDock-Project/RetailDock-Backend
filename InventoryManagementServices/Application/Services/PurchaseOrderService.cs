@@ -20,7 +20,7 @@ namespace Application.Services
         Task<Responses<PurchaseOrderDetailDto>> GetOrderByIdAsync(Guid id);
         //Task<Responses<string>> UpdateOrderStatusAsync(Guid id, UpdateOrderStatusDto dto);
         Task<Responses<string>> DeleteOrderAsync(Guid id);
-        Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id);
+        Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id,Guid orgId);
         Task<Responses<List<PurchaseOrderDto>>> GetAllOrdersAsync(
     Guid orgId,
     string? searchString,
@@ -37,12 +37,14 @@ namespace Application.Services
         private readonly IPurchaseOrderRepository _repo;
         private readonly IMapper _mapper;
         private readonly IInvoiceNumberGenerator invoiceNumberGenerator;
+        private readonly IOrganizationService organizationService;
 
-        public PurchaseOrderService(IPurchaseOrderRepository repo, IMapper mapper, IInvoiceNumberGenerator _invoiceNumberGenerator)
+        public PurchaseOrderService(IPurchaseOrderRepository repo, IMapper mapper, IInvoiceNumberGenerator _invoiceNumberGenerator, IOrganizationService _organizationService)
         {
             _repo = repo;
             _mapper = mapper;
             invoiceNumberGenerator = _invoiceNumberGenerator;
+            organizationService = _organizationService;
         }
         public async Task<Responses<string>> AddPurchaseOrderAsync(Guid orgnaizationId,Guid userId, AddPurchaseOrderDto dto)
         {
@@ -113,14 +115,14 @@ namespace Application.Services
         }
 
 
-        public async Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id)
+        public async Task<byte[]> ExportPurchaseOrderPdfBytesAsync(Guid id,Guid orgId)
         {
             var order = await _repo.GetPurchaseOrderByIdAsync(id);
             if (order == null)
                 throw new Exception("Purchase Order not found");
-
+            var organizationDatail= await organizationService.GetOrganizationByIdAsync(orgId);
             var orderDto = _mapper.Map<PurchaseOrderDetailDto>(order);
-            return PurchaseOrderPdfGeneratorHelper.GeneratePdf(orderDto);
+            return PurchaseOrderPdfGeneratorHelper.GeneratePdf(orderDto, organizationDatail);
         }
 
 

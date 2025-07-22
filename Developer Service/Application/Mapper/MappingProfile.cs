@@ -20,6 +20,8 @@ namespace Common.Mapper
                 .ForMember(dest => dest.Amount, opt => opt.MapFrom(src => src.Subscriptions.Amount))
                 .ForMember(dest => dest.ExpiryDate, opt => opt.MapFrom(src => src.Subscriptions.ExpiryDate))
                 .ForMember(dest => dest.SubscriptionUpdatedAt, opt => opt.MapFrom(src => src.Subscriptions.UpdatedAt));
+
+            CreateMap<OrganizationDetails, OrganizationDetailsDto>();
         }
     }
 }

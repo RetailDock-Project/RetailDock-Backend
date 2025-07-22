@@ -52,7 +52,7 @@ namespace API.Controllers
         {
             try
             {
-                var pdfBytes = await _service.ExportPurchaseOrderPdfBytesAsync(id);
+                var pdfBytes = await _service.ExportPurchaseOrderPdfBytesAsync(id,OrgId);
 
                 return File(
                     fileContents: pdfBytes,
