@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Dto;
 using Domain.Entities;
 
 namespace Application.Interfaces
@@ -15,5 +16,6 @@ namespace Application.Interfaces
         Task<HsnCode> GetByHsnCodeAndOrg(Guid organizationId, string hsnCodeNumber);
         Task<HsnCode>UpdateHsn(HsnCode hsnCode);
         Task<bool> DeleteHsnCode(int hsnCode);
+        Task<InvoiceSummeryDTO> GetInvoiceSummary(Guid orgId, DateTime? fromDate, DateTime? toDate, InvoiceType invoiceType);    
     }
 }

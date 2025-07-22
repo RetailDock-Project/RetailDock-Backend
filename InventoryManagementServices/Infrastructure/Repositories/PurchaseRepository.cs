@@ -84,15 +84,6 @@ namespace Infrastructure.Repositories
 
         public async Task<Purchase> GetPurchaseById(Guid purchaseId)
         {
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
-            Console.WriteLine($"Searching for purchaseId: {purchaseId}");
-
 
 
             return await context.Purchases
@@ -242,6 +233,79 @@ namespace Infrastructure.Repositories
         }
 
 
+        public async Task<List<PurchaseReturn>> GetPurchaseReturnsFilterAsync(
+    Guid organizationId,
+    string? search,
+    DateTime? fromDate,
+    DateTime? toDate,
+    int? pageNumber,
+    int? pageSize)
+        {
+            var query = context.PurchaseReturns
+                .Include(pr => pr.Items)
+                .Include(pr => pr.PurchaseReturnInvoice)
+                .Include(pr => pr.Purchase)
+                    .ThenInclude(p => p.PurchaseInvoice)
+                .Where(pr => pr.OrganizationId == organizationId)
+                .AsQueryable();
+
+            if (fromDate.HasValue)
+            {
+                var from = DateOnly.FromDateTime(fromDate.Value);
+                query = query.Where(pr => pr.ReturnDate >= from);
+            }
+
+            if (toDate.HasValue)
+            {
+                var to = DateOnly.FromDateTime(toDate.Value);
+                query = query.Where(pr => pr.ReturnDate <= to);
+            }
+
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                search = search.ToLower();
+                query = query.Where(pr =>
+                    pr.Reason.ToLower().Contains(search) ||
+                    pr.PurchaseReturnInvoice.InvoiceNumber.ToLower().Contains(search) ||
+                    pr.Purchase.Supplier.Name.ToLower().Contains(search));
+            }
+
+            if (pageNumber.HasValue && pageSize.HasValue && pageNumber > 0 && pageSize > 0)
+            {
+                int skip = (pageNumber.Value - 1) * pageSize.Value;
+                query = query.Skip(skip).Take(pageSize.Value);
+            }
+
+            return await query.ToListAsync();
+        }
+
+
+        public async Task<List<Purchase>> GetRecentPurchases(Guid organizationId, DateTime fromDate, DateTime toDate)
+        {
+            return await context.Purchases
+                .Include(p=>p.PurchaseInvoice)
+                .Include(p => p.PurchaseItems)
+                .Include(p => p.Supplier)
+                .Where(p => p.OrganizationId == organizationId &&
+                            p.CreatedAt >= fromDate && p.CreatedAt <= toDate)
+                .AsNoTracking()
+
+                .ToListAsync();
+        }
+
+        public async Task<List<PurchaseReturn>> GetRecentReturns(Guid organizationId, DateTime fromDate, DateTime toDate)
+        {
+            return await context.PurchaseReturns
+                                .Include(p => p.PurchaseReturnInvoice)
+
+                .Include(r => r.Items)
+                .Include(r => r.Supplier)
+                .Where(r => r.OrganizationId == organizationId &&
+                            r.CreatedAt >= fromDate && r.CreatedAt <= toDate)
+                .AsNoTracking()
+                .ToListAsync();
+        }
 
 
     }

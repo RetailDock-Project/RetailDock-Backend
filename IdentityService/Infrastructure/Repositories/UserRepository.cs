@@ -133,7 +133,8 @@ namespace Infrastructure.Repositories
                 Name = u.Name,
                 Email = u.Email,
                 Role = u.UserOrganizationRole.OrganizationRole.Name,
-                Created = u.CreatedAt
+                Created = u.CreatedAt,
+                IsVerified=true
             }).ToListAsync();
 
             return users;
@@ -146,7 +147,7 @@ namespace Infrastructure.Repositories
 
             var totalUsers = await users.CountAsync();
             var activeUsers = await users.CountAsync(u => !u.IsDeleted);
-            var inactiveUsers = totalUsers - activeUsers;
+            var inactiveUsers = await users.CountAsync(u => u.IsDeleted);
 
             return new UserStatsDto
             {

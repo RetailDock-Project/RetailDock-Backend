@@ -57,7 +57,7 @@ namespace Application.Dto
 
         public SupplierDto SupplierDetails { get; set; }
         public int ReturnedQuantity { get; set; }
-        public decimal GrossTotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public List<PurchaseReturnItemsDetailsDto> PurchaseReturnItemsDetails { get; set; }
     }
 
