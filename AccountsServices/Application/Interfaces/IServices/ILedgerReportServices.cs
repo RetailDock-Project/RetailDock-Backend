@@ -15,5 +15,6 @@ namespace Application.Interfaces.IServices
         Task<ApiResponseDTO<List<LedgerSummaryDTO>>> GetAllLedgerSummariesAsync(Guid organizationId, DateTime? startDate, DateTime? endDate);
         Task<ApiResponseDTO<List<LedgerSummaryDTO>>> GetLedgerSummaryByGroupAsync(Guid groupId, Guid organizationId, DateTime? startDate, DateTime? endDate);
         Task<ApiResponseDTO<GroupWithLedgersSummaryDTO>> GetGroupLedgerSummaryAsync(Guid groupId, Guid organizationId, DateTime? start, DateTime? end);
+        Task<ApiResponseDTO<LedgerClosinBalanceDTO>> GetLedgerSummariesAsyncByLedgerId(Guid organizationId, DateTime? startDate, DateTime? endDate, Guid ledgerId);
     }
 }
