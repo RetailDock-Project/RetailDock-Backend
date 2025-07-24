@@ -48,7 +48,7 @@ namespace Infrastructure.Repositories
             if (product != null)
             {
                 var existingStock = product.Stock;
-                var existingCost = product.CostPrice;
+                decimal existingCost = product.CostPrice ?? purchaseItem.RatePerPiece;
 
                 var newQty = purchaseItem.Quantity;
                 var newRate = purchaseItem.RatePerPiece;
@@ -305,6 +305,12 @@ namespace Infrastructure.Repositories
                             r.CreatedAt >= fromDate && r.CreatedAt <= toDate)
                 .AsNoTracking()
                 .ToListAsync();
+        }
+
+
+        public async Task UpdatePurchaseItem(PurchaseItem purchaseItem)
+        {
+             context.PurchaseItems.Update(purchaseItem);
         }
 
 

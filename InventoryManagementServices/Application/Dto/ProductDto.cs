@@ -44,9 +44,6 @@ namespace Application.Dto
         public decimal SellingPrice { get; set; }
 
         [Required]
-        [Range(0, double.MaxValue)]
-        public decimal CostPrice { get; set; }
-        [Required]
         public int HsnCodeId { get; set; }
         public List<IFormFile>? ProductImages { get; set; }
         public List<int>? ExistingImageIds { get; set; }

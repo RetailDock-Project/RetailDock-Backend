@@ -48,7 +48,7 @@ namespace Domain.Entities
         public decimal SellingPrice { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal CostPrice { get; set; }
+        public decimal? CostPrice { get; set; }
 
         [Range(0, 100)]
        
