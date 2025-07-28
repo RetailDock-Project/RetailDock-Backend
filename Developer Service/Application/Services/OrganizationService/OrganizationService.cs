@@ -441,6 +441,168 @@ namespace Application.Services.OrganizationService
         //    _producer.Publish(eventMessage);
         //    return Task.CompletedTask;
         //}
+
+
+        public async Task<ApiResponseDTO<DashboardSummaryDto>> GetDashboardSummary()
+        {
+            try
+            {
+                var totalOrganizations = await _organizationRepository.TotalOrganizationCount();
+                var totalAmountMonth = await _organizationRepository.TotalSubscriptionReceivedByCurrentMonth();
+                var totalAmountYear = await _organizationRepository.TotalSubscriptionReceivedByCurrentYear();
+
+                var summary = new DashboardSummaryDto
+                {
+                    TotalOrganizations = totalOrganizations,
+                    AmountReceivedThisMonth = totalAmountMonth,
+                    AmountReceivedThisYear = totalAmountYear
+                };
+
+                return new ApiResponseDTO<DashboardSummaryDto>
+                {
+                    StatusCode = 200,
+                    Message = "Dashboard summary fetched successfully",
+                    Data = summary
+                };
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "An error occurred while generating dashboard summary");
+                return new ApiResponseDTO<DashboardSummaryDto>
+                {
+                    StatusCode = 500,
+                    Message = "Failed to fetch dashboard summary"
+                };
+            }
+        }
+
+
+        public async Task<ApiResponseDTO<List<OrganizationSignupChartDto>>> GetOrganizationSignupLast7MonthsAsync()
+        {
+            try
+            {
+                var data = await _organizationRepository.GetOrganizationSignupLast7MonthsAsync();
+
+                return new ApiResponseDTO<List<OrganizationSignupChartDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Organization signup chart fetched successfully",
+                    Data = data
+                };
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Error while fetching signup chart");
+
+                return new ApiResponseDTO<List<OrganizationSignupChartDto>>
+                {
+                    StatusCode = 500,
+                    Message = "Failed to fetch signup chart"
+                };
+            }
+        }
+
+        public async Task<ApiResponseDTO<List<MonthlyRevenueDto>>> GetLast7MonthsRevenueAsync()
+        {
+            try
+            {
+                var data = await _organizationRepository.GetLast7MonthsRevenueAsync();
+
+                return new ApiResponseDTO<List<MonthlyRevenueDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Revenue data fetched successfully",
+                    Data = data
+                };
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to fetch revenue data");
+
+                return new ApiResponseDTO<List<MonthlyRevenueDto>>
+                {
+                    StatusCode = 500,
+                    Message = "Error occurred while fetching revenue data"
+                };
+            }
+        }
+
+
+        public async Task<ApiResponseDTO<List<OrganizationListDto>>> GetAllOrganizationsAsync(string? search, string? status)
+        {
+            try
+            {
+                var data = await _organizationRepository.GetAllOrganizationsAsync(search, status);
+                return new ApiResponseDTO<List<OrganizationListDto>>
+                {
+                    StatusCode = 200,
+                    Message = "Organizations fetched successfully",
+                    Data = data
+                };
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to fetch organizations");
+
+                return new ApiResponseDTO<List<OrganizationListDto>>
+                {
+                    StatusCode = 500,
+                    Message = "Error while fetching organizations"
+                };
+            }
+        }
+
+
+        public async Task<ApiResponseDTO<OrganizationResponseDTO>> GetOrganizationDetailsAsync(Guid orgId)
+        {
+            var organization = await _organizationRepository.GetByIdAsync(orgId);
+
+            if (organization == null)
+            {
+                return new ApiResponseDTO<OrganizationResponseDTO>
+                {
+                    StatusCode = 404,
+                    Message = "Organization not found",
+                    Data = null
+                };
+            }
+
+            var dto = new OrganizationResponseDTO
+            {
+                OrganizationId = organization.OrganizationId,
+                OrganizationName = organization.OrganizationName,
+                UserId = organization.UserId,
+                Address = organization.Address,
+                LicenceNumber = organization.LicenceNumber,
+                GstNumber = organization.GSTNumber,
+                PanNumber = organization.PANNumber,
+                FinancialYearStart = organization.FinancialYearStart.ToString("yyyy-MM-dd"),
+                FinancialYearEnd = organization.FinancialYearEnd.ToString("yyyy-MM-dd"),
+                IsActive = organization.IsActive,
+                CreatedAt = organization.CreatedAt,
+                UpdatedAt = organization.UpdatedAt,
+                Subscriptions = organization.Subscriptions != null ? new SubscriptionDto
+                {
+                    SubscriptionId = organization.Subscriptions.SubscriptionId,
+                    SubscriptionName = organization.Subscriptions.SubscriptionName,
+                    TransactionId = organization.Subscriptions.TransactionId,
+                    Amount = organization.Subscriptions.Amount,
+                    CreatedAt = organization.Subscriptions.CreatedAt,
+                    UpdatedAt = organization.Subscriptions.UpdatedAt,
+                    ExpiryDate = organization.Subscriptions.ExpiryDate
+                } : null
+            };
+
+            return new ApiResponseDTO<OrganizationResponseDTO>
+            {
+                StatusCode = 200,
+                Message = "Organization details fetched successfully",
+                Data = dto
+            };
+        }
+
+
+
     }
 
 

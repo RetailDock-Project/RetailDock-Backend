@@ -14,13 +14,22 @@ namespace Application.Interfaces.IRepository
         Task<bool> CheckUserIdIsAlreadyExistInOrganization(Guid userId);
         Task<bool> AddCompanyWithSubscriptionAsync(OrganizationDetails org, Subscriptions sub);
         Task<int> TotalOrganizationCount();
-        Task<Decimal> TotalSubscriptionReceivedByCurrentMonth();
-        Task<Decimal> TotalSubscriptionReceivedByCurrentYear();
-        Task<Decimal> TotalSubscriptionReceivedBySpecificDate(DateTime FromDate, DateTime ToDate);
+        Task<decimal> TotalSubscriptionReceivedByCurrentMonth();
+        Task<decimal> TotalSubscriptionReceivedByCurrentYear();
+        Task<decimal> TotalSubscriptionReceivedBySpecificDate(DateTime FromDate, DateTime ToDate);
         Task<object> GetOrganizationAccountStatusSummaryAsync();
         Task<List<OrganizationDetails>> GetAllOrganizationWithSubscription();
         Task<bool>BlockOrganization(Guid organizationId);
         Task<OrganizationDetails> GetOrganizationDetailById(Guid id);
+
+        Task<List<OrganizationSignupChartDto>> GetOrganizationSignupLast7MonthsAsync();
+        Task<List<MonthlyRevenueDto>> GetLast7MonthsRevenueAsync();
+
+        Task<List<OrganizationListDto>> GetAllOrganizationsAsync(string? search, string? status);
+        Task<OrganizationDetails?> GetByIdAsync(Guid orgId);
+
+
+
 
     }
 }

@@ -107,6 +107,9 @@ namespace Application.Dto
         public decimal? UGST { get; set; }
         public decimal? SGST { get; set; }
 
+        public decimal? ReturnedQuantity { get; set; }
+
+
 
     }
 }

@@ -21,7 +21,15 @@ namespace Common.Mapper
                 .ForMember(dest => dest.ExpiryDate, opt => opt.MapFrom(src => src.Subscriptions.ExpiryDate))
                 .ForMember(dest => dest.SubscriptionUpdatedAt, opt => opt.MapFrom(src => src.Subscriptions.UpdatedAt));
 
-            CreateMap<OrganizationDetails, OrganizationDetailsDto>();
+            CreateMap<OrganizationDetails, OrganizationResponseDTO>()
+                .ForMember(dest => dest.GstNumber, opt => opt.MapFrom(src => src.GSTNumber))
+                .ForMember(dest => dest.PanNumber, opt => opt.MapFrom(src => src.PANNumber))
+                .ForMember(dest => dest.FinancialYearStart, opt => opt.MapFrom(src => src.FinancialYearStart.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.FinancialYearEnd, opt => opt.MapFrom(src => src.FinancialYearEnd.ToString("yyyy-MM-dd")))
+                .ForMember(dest => dest.Subscriptions, opt => opt.MapFrom(src => src.Subscriptions));
+
+            CreateMap<Subscriptions, SubscriptionDto>();
+
         }
     }
 }

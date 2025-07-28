@@ -24,7 +24,7 @@ namespace Application.Helpers
                     {
                         column.Item().Text($"Purchase Order #{order.PurchaseOrderNumber}")
                             .FontSize(18).Bold().FontColor(Colors.Blue.Medium);
-
+                             
                         column.Item().Text(text =>
                         {
                             text.Span("Date: ").SemiBold();

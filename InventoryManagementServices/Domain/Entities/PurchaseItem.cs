@@ -21,6 +21,8 @@ namespace Domain.Entities
         [Required(ErrorMessage = "Quantity is required.")]
 
         public decimal Quantity { get; set; }
+        public decimal ReturnedQuantity { get; set; }=0;
+
 
         [Required(ErrorMessage = "Rate per piece is required.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Rate per piece must be greater than 0.")]
