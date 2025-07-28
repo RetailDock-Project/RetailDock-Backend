@@ -143,7 +143,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddControllers(options =>
 {
-    //options.Filters.Add<ValidateUserClaimsAttribute>();
+    options.Filters.Add<ValidateUserClaimsAttribute>();
 });
 
 
