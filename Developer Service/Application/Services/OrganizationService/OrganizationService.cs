@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Application.DTOs;
 using Application.Events;
@@ -10,6 +11,7 @@ using Application.Interfaces.IService;
 using AutoMapper;
 using Common.ApiResponse;
 using Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Core;
@@ -380,7 +382,51 @@ namespace Application.Services.OrganizationService
 
         }
 
+        public async Task<ApiResponseDTO<OrganizationDetailsDto>> GetOrganizationDetailById(Guid id) {
+            try
+            {
+                var organizationData=await _organizationRepository.GetOrganizationDetailById(id);
+                if (organizationData == null)
+                {
+                    return new ApiResponseDTO<OrganizationDetailsDto>
+                    {
+                        StatusCode = 404,
+                        Message = "No Organization found",
+                    };
+                }
+       
+                var datas =JsonSerializer.Serialize(organizationData);
+                Console.WriteLine(datas);
+                var data = new OrganizationDetailsDto
+                {
+                    OrganizationId = organizationData.OrganizationId,
+                    OrganizationName = organizationData.OrganizationName,
+                    Address = organizationData.Address,
+                    LicenceNumber = organizationData.LicenceNumber,
+                    GSTNumber = organizationData.GSTNumber,
+                    PANNumber = organizationData.PANNumber
+                };
 
+
+
+                return new ApiResponseDTO<OrganizationDetailsDto>
+                {
+                    StatusCode = 200,
+                    Message = "organization details fetched successfully",
+                    Data = data
+                };
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in getting Organization details");
+                return new ApiResponseDTO<OrganizationDetailsDto>
+                {
+                    StatusCode = 500,
+                    Message = "Error in fetching Organization details"
+                };
+            }
+        }
 
         //public Task SubscribeUserToOrganizationAsync(Guid userId, Guid organizationId)
         //{

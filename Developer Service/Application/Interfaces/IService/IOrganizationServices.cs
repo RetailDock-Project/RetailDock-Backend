@@ -20,6 +20,7 @@ namespace Application.Interfaces.IService
         Task<ApiResponseDTO<object>> GetOrganizationAccountStatusSummaryAsync();
         Task<ApiResponseDTO<List<GetAllOrganizatinsDTO>>> GetAllOrganizationWithSubscription();
         Task<ApiResponseDTO<bool>> BlockOrganization(Guid organizationId);
+        Task<ApiResponseDTO<OrganizationDetailsDto>> GetOrganizationDetailById(Guid id);
         //microservice
     }
 }

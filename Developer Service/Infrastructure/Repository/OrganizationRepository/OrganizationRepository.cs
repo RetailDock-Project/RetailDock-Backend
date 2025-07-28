@@ -141,5 +141,9 @@ namespace Infrastructure.Repository.OrganizationRepository
             return true;
         }
 
+        public async Task<OrganizationDetails> GetOrganizationDetailById(Guid id) {
+            return await _context.OrganizationDetail.FirstOrDefaultAsync(org => org.OrganizationId == id);
+        }
+
     }
 }

@@ -70,5 +70,13 @@ namespace Developer_Service.Controllers.OrganizationController
 
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpGet("detail/{id}")]
+        public async Task<IActionResult> GetOrganizationDetailById(Guid id)
+        {
+            var result = await _organizationServices.GetOrganizationDetailById(id);
+
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }
