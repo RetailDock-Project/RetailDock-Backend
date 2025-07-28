@@ -9,13 +9,16 @@ namespace Application.DTOs
    
         public class LedgerReportDTO
         {
-            public DateTime VoucherDate { get; set; }
-            public string TypeName { get; set; }
-            public string VoucherNumber { get; set; }
-            public string OppositeLedger { get; set; }
-            public bool IsDebit { get; set; }
-            public decimal Amount { get; set; }
-        }
+        public Guid VoucherId { get; set; }
+        public string VoucherNumber { get; set; }
+        public DateTime VoucherDate { get; set; }
+        public string VoucherType { get; set; }
+        public string VoucherTypeDisplay { get; set; }
+        public Guid OppositeLedgerId { get; set; }
+        public string OppositeLedgerName { get; set; }
+        public decimal Amount { get; set; }
+        public bool OppositeIsDebit { get; set; }
+    }
         public class LedgerDetailsReportDTO
         {
             public string LedgerName { get; set; }

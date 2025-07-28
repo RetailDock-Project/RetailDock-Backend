@@ -23,8 +23,8 @@ namespace Infrastructure.Repository.AccountsRepository
             _logger = logger;
         }
 
-       
-            public async Task<LedgerDetailsReportDTO> GetLedgerDetailsAsync(Guid organizationId, Guid ledgerId, DateTime? startDate, DateTime? endDate)
+
+        public async Task<LedgerDetailsReportDTO> GetLedgerDetailsAsync(Guid organizationId, Guid ledgerId, DateTime? startDate, DateTime? endDate)
         {
             var start = startDate ?? new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1);
             var end = endDate ?? DateTime.UtcNow;
@@ -50,8 +50,8 @@ namespace Infrastructure.Repository.AccountsRepository
           AND V.OrganizationId = @OrgId
           AND V.VoucherDate < @StartDate;";
 
-            var txn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
-                openingTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start });
+            var openingTxn = await connection.QueryFirstOrDefaultAsync<(decimal TotalDebit, decimal TotalCredit)>(
+                openingTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start }) ; 
 
             // Step 3: Adjust Opening Balance
             decimal adjustedOpening = (ledgerInfo.Nature?.ToLower() == ledgerInfo.DrCr?.ToLower())
@@ -62,9 +62,9 @@ namespace Infrastructure.Repository.AccountsRepository
             string finalOpeningType;
 
             if (ledgerInfo.Nature?.ToLower() == "dr")
-                finalOpeningBalance = adjustedOpening + txn.TotalDebit - txn.TotalCredit;
+                finalOpeningBalance = adjustedOpening + openingTxn.TotalDebit - openingTxn.TotalCredit;
             else
-                finalOpeningBalance = adjustedOpening + txn.TotalCredit - txn.TotalDebit;
+                finalOpeningBalance = adjustedOpening + openingTxn.TotalCredit - openingTxn.TotalDebit;
 
             if (finalOpeningBalance >= 0)
             {
@@ -76,8 +76,8 @@ namespace Infrastructure.Repository.AccountsRepository
                 finalOpeningBalance = Math.Abs(finalOpeningBalance);
             }
 
-            // Step 4: Get Transactions BETWEEN Start and End Date
-            var betweenTxnSql = @"
+            // Step 4: Get Period Transactions Between Dates
+            var periodTxnSql = @"
         SELECT 
             IFNULL(SUM(CASE WHEN T.IsDebit = 1 THEN T.Amount ELSE 0 END), 0) AS TotalDebit,
             IFNULL(SUM(CASE WHEN T.IsDebit = 0 THEN T.Amount ELSE 0 END), 0) AS TotalCredit
@@ -88,9 +88,9 @@ namespace Infrastructure.Repository.AccountsRepository
           AND V.VoucherDate BETWEEN @StartDate AND @EndDate;";
 
             var periodTxn = await connection.QuerySingleAsync<(decimal TotalDebit, decimal TotalCredit)>(
-                betweenTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start, EndDate = end });
+                periodTxnSql, new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start, EndDate = end });
 
-            // Step 5: Adjust Closing Using Opening Type
+            // Step 5: Calculate Closing Balance
             decimal adjustedClosing = (ledgerInfo.Nature?.ToLower() == finalOpeningType?.ToLower())
                 ? finalOpeningBalance
                 : -finalOpeningBalance;
@@ -113,87 +113,93 @@ namespace Infrastructure.Repository.AccountsRepository
                 closingBalance = Math.Abs(closingBalance);
             }
 
-            // Step 6: Get detailed transactions with opposite ledgers
-            var transactionListSql =
-
-   @"
-   
-WITH SelectedLedgerEntries AS (
-    SELECT T.*
-    FROM Transactions T
-    INNER JOIN Vouchers V ON V.Id = T.VoucherId
-    WHERE T.LedgerId = @LedgerId
-      AND V.OrganizationId = @OrgId
-      AND V.VoucherDate BETWEEN @StartDate AND @EndDate
-),
-TotalOppositeSide AS (
+            // Step 6: Get Counter Ledger Transactions
+            var counterTxnSql = @"WITH LedgerSide AS (
     SELECT 
-        OT.VoucherId,
-        SUM(OT.Amount) AS TotalOppAmount
-    FROM Transactions OT
-    INNER JOIN SelectedLedgerEntries T ON OT.VoucherId = T.VoucherId
-    WHERE OT.IsDebit != T.IsDebit
-    GROUP BY OT.VoucherId
-),
-OppositeLedgers AS (
-    SELECT 
-        OT.VoucherId,
-        OT.LedgerId,
-        L.LedgerName AS OppositeLedger,
-        OT.Amount AS OppAmount,
-        OT.IsDebit
-    FROM Transactions OT
-    INNER JOIN Ledgers L ON L.Id = OT.LedgerId
-)
-SELECT 
-    OL.OppositeLedger,
-    ROUND((OL.OppAmount / TOA.TotalOppAmount) * T.Amount, 2) AS Amount,
-    V.VoucherDate,
-    VT.TypeName,
-    V.VoucherNumber,
-    T.IsDebit
-FROM SelectedLedgerEntries T
-INNER JOIN Vouchers V ON T.VoucherId = V.Id
-INNER JOIN VoucherTypes VT ON V.VoucherTypeId = VT.Id
-INNER JOIN TotalOppositeSide TOA ON TOA.VoucherId = T.VoucherId
-INNER JOIN OppositeLedgers OL ON OL.VoucherId = T.VoucherId
-WHERE OL.IsDebit != T.IsDebit
-  AND NOT (
-      VT.TypeName IN ('Sales', 'SalesReturn') AND 
-      (
-          LOWER(OL.OppositeLedger) LIKE '%inventory transaction%' OR
-          LOWER(OL.OppositeLedger) LIKE '%inventory loss%' OR
-          LOWER(OL.OppositeLedger) LIKE '%cogs%' OR
-          LOWER(OL.OppositeLedger) LIKE '%output gst%'
+        t.VoucherId,
+        t.IsDebit,
+        COUNT(*) AS SameSideCount
+    FROM Transactions t
+    WHERE t.OrganizationId = @OrganizationId
+      AND t.VoucherId IN (
+          SELECT VoucherId FROM Transactions 
+          WHERE LedgerId = @LedgerId AND OrganizationId = @OrganizationId
       )
-  );
+    GROUP BY t.VoucherId, t.IsDebit
+),
+MyEntries AS (
+    SELECT 
+        t.VoucherId,
+        t.LedgerId,
+        t.IsDebit,
+        t.Amount
+    FROM Transactions t
+    WHERE t.OrganizationId = @OrganizationId
+      AND t.LedgerId = @LedgerId
+),
+OppositeEntries AS (
+    SELECT 
+        t.VoucherId,
+        t.LedgerId AS OppositeLedgerId,
+        l.LedgerName AS OppositeLedgerName,
+        t.IsDebit AS OppositeIsDebit,
+        t.Amount
+    FROM Transactions t
+    JOIN Ledgers l ON l.Id = t.LedgerId
+    WHERE t.OrganizationId = @OrganizationId
+),
+FinalResult AS (
+    SELECT 
+        v.Id AS VoucherId,
+        v.VoucherNumber,
+        v.VoucherDate,
+        vt.TypeName AS VoucherType,
+        vt.DisplayName AS VoucherTypeDisplay,
+        oe.OppositeLedgerId,
+        oe.OppositeLedgerName,
+        ls.SameSideCount,
+        oe.OppositeIsDebit,
+        m.IsDebit AS MySide,
+        -- If only one ledger on this side, then show opposite ledger's amount
+        -- Else show this ledger’s own amount
+        CASE 
+            WHEN ls.SameSideCount = 1 THEN oe.Amount
+            ELSE m.Amount
+        END AS Amount
+    FROM MyEntries m
+    JOIN LedgerSide ls 
+        ON m.VoucherId = ls.VoucherId AND m.IsDebit = ls.IsDebit
+    JOIN OppositeEntries oe 
+        ON m.VoucherId = oe.VoucherId AND oe.OppositeIsDebit != m.IsDebit
+    JOIN Vouchers v ON v.Id = m.VoucherId
+    JOIN VoucherTypes vt ON vt.Id = v.VoucherTypeId
+)
+
+SELECT * 
+FROM FinalResult
+WHERE VoucherDate BETWEEN @StartDate AND @EndDate;
+
 ";
 
-
             var transactions = (await connection.QueryAsync<LedgerReportDTO>(
-                transactionListSql,
-                new { LedgerId = ledgerId, OrgId = organizationId, StartDate = start, EndDate = end }
+                counterTxnSql,
+                new { LedgerId = ledgerId, OrganizationId = organizationId, StartDate = start, EndDate = end }
             )).ToList();
-            foreach (var item in transactions)
-            {
-                Console.WriteLine(item.Amount);
-            }
-           
+
             // Step 7: Return Final DTO
             return new LedgerDetailsReportDTO
             {
                 LedgerName = ledgerInfo.LedgerName,
                 OpeningBalance = finalOpeningBalance,
-                
-                ClosingBalance = closingBalance,
-                ClosingType = closingType,
+                OpeningType = finalOpeningType,
                 PeriodDr = periodTxn.TotalDebit,
                 PeriodCr = periodTxn.TotalCredit,
-                Transactions = transactions,
-                OpeningType= finalOpeningType
-                
+                ClosingBalance = closingBalance,
+                ClosingType = closingType,
+                Transactions = transactions
             };
         }
+
 
 
 
