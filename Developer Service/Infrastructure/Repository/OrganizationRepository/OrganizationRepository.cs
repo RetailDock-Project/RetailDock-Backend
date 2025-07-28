@@ -57,7 +57,7 @@ namespace Infrastructure.Repository.OrganizationRepository
                 throw new Exception("Failed to get total organization count.");
             }
         }
-        public async Task<Decimal> TotalSubscriptionReceivedBySpecificDate(DateTime FromDate, DateTime ToDate)
+        public async Task<decimal> TotalSubscriptionReceivedBySpecificDate(DateTime FromDate, DateTime ToDate)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace Infrastructure.Repository.OrganizationRepository
                 throw new Exception("Failed to get get total Amount");
             }
         }
-        public  async Task<Decimal> TotalSubscriptionReceivedByCurrentYear()
+        public  async Task<decimal> TotalSubscriptionReceivedByCurrentYear()
         {
             try
             {
@@ -85,7 +85,7 @@ namespace Infrastructure.Repository.OrganizationRepository
 
            
         }
-        public async Task<Decimal> TotalSubscriptionReceivedByCurrentMonth()
+        public async Task<decimal> TotalSubscriptionReceivedByCurrentMonth()
         {
             try
             {
@@ -134,7 +134,7 @@ namespace Infrastructure.Repository.OrganizationRepository
             {
             return false;
             }
-            data.IsActive = false;
+            data.IsActive = !data.IsActive;
             data.UpdatedAt = DateTime.Now;
              _context.OrganizationDetail.Update(data);
             await _context.SaveChangesAsync();
@@ -144,6 +144,99 @@ namespace Infrastructure.Repository.OrganizationRepository
         public async Task<OrganizationDetails> GetOrganizationDetailById(Guid id) {
             return await _context.OrganizationDetail.FirstOrDefaultAsync(org => org.OrganizationId == id);
         }
+
+
+        public async Task<List<OrganizationSignupChartDto>> GetOrganizationSignupLast7MonthsAsync()
+        {
+            DateTime today = DateTime.UtcNow;
+            DateTime startDate = today.AddMonths(-6); // Last 7 months including current
+
+            var result = await _context.OrganizationDetail
+                .Where(o => o.CreatedAt >= startDate)
+                .GroupBy(o => new { o.CreatedAt.Year, o.CreatedAt.Month })
+                .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month)
+                .Select(g => new OrganizationSignupChartDto
+                {
+                    Name = new DateTime(g.Key.Year, g.Key.Month, 1).ToString("MMM"),
+                    Users = g.Count()
+                })
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<List<MonthlyRevenueDto>> GetLast7MonthsRevenueAsync()
+        {
+            DateTime today = DateTime.UtcNow;
+            DateTime startDate = today.AddMonths(-6); // Include current month + 6 before
+
+            var result = await _context.Subscription
+                .Where(s => s.CreatedAt >= startDate)
+                .GroupBy(s => new { s.CreatedAt.Year, s.CreatedAt.Month })
+                .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month)
+                .Select(g => new MonthlyRevenueDto
+                {
+                    Month = new DateTime(g.Key.Year, g.Key.Month, 1).ToString("MMM"),
+                    Revenue = g.Sum(s => s.Amount)
+                })
+                .ToListAsync();
+
+            return result;
+        }
+
+
+        public async Task<List<OrganizationListDto>> GetAllOrganizationsAsync(string? search, string? status)
+        {
+            var query = _context.OrganizationDetail
+                .Include(o => o.Subscriptions)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(o => o.OrganizationName.Contains(search));
+            }
+
+            if (!string.IsNullOrWhiteSpace(status))
+            {
+                switch (status.ToLower())
+                {
+                    case "active":
+                        query = query.Where(o => o.IsActive && o.Subscriptions.ExpiryDate >= DateTime.UtcNow);
+                        break;
+                    case "expired":
+                        query = query.Where(o => o.Subscriptions.ExpiryDate < DateTime.UtcNow);
+                        break;
+                    case "inactive":
+                        query = query.Where(o => !o.IsActive);
+                        break;
+                }
+            }
+
+            var result = await query
+                .Select(o => new OrganizationListDto
+                {
+                    OrganizationId = o.OrganizationId,
+                    OrganizationName = o.OrganizationName,
+                    PlanName = o.Subscriptions.SubscriptionName,
+                    SignUpDate = o.CreatedAt,
+                    ExpiryDate = o.Subscriptions.ExpiryDate,
+                    PlanStatus = o.Subscriptions.ExpiryDate >= DateTime.UtcNow
+                                    ? "Active"
+                                    : "Expired",
+                    IsActive = o.IsActive,
+                })
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<OrganizationDetails?> GetByIdAsync(Guid orgId)
+        {
+            return await _context.OrganizationDetail
+                .Include(o => o.Subscriptions)
+                .FirstOrDefaultAsync(o => o.OrganizationId == orgId);
+        }
+
 
     }
 }

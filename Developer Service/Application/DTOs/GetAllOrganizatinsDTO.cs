@@ -74,6 +74,18 @@ namespace Application.DTOs
        
     }
 
+    public class OrganizationListDto
+    {
+        public Guid OrganizationId { get; set; }
+        public string OrganizationName { get; set; }
+        public string PlanName { get; set; }
+        public string PlanStatus { get; set; }
+        public DateTime SignUpDate { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public bool IsActive { get; set; }
+    }
+
+
 
     public class OrganizationDetailsDto
     {

@@ -139,7 +139,7 @@ namespace Infrastructure.Repositories
             {
                 TotalProducts = products.Count,
                 LowStockItems = products.Count(p => p.Stock <= p.ReOrderLevel),
-                InventoryValue = products.Sum(p => p.Stock * p.CostPrice),  
+                InventoryValue = products.Sum(p => p.Stock * p.CostPrice??0),  
                
             };
         }
@@ -215,7 +215,7 @@ namespace Infrastructure.Repositories
                 ActiveProducts = products.Count(p => !p.IsDeleted),
                 LowStockProducts = products.Count(p => p.Stock > 0 && p.Stock <= p.ReOrderLevel),
                 OutOfStockProducts = products.Count(p => p.Stock == 0),
-                TotalInventoryValue = products.Sum(p => p.Stock * p.CostPrice)
+                TotalInventoryValue = products.Sum(p => p.Stock * p.CostPrice ?? 0)
             };
 
             return dashboard;

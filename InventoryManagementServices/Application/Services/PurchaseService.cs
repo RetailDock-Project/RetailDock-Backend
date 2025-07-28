@@ -387,15 +387,6 @@ namespace Application.Services
         public async Task<Responses<object>> AddPurchaseReturn(PurchaseReturnDto newPurchaseReturn, Guid userId, Guid orgId)
         {
             var data = JsonSerializer.Serialize(newPurchaseReturn);
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
-
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
-            Console.WriteLine("\n");
-
 
             Console.WriteLine(data);
             try
@@ -485,9 +476,23 @@ namespace Application.Services
                             Message = $"Invalid purchase item: {itemDto.OriginalPurchaseItemId}"
                         };
                     }
+                    //if (itemDto.ReturnedQuantity> originalItem.ReturnedQuantity)
+                    //{
+                    //    return new Responses<object>
+                    //    {
+                    //        StatusCode = 400,
+                    //        Message = $"Purchase return not greater than purchase"
+                    //    };
+                    //}
 
                     var totalPreviouslyReturnedQty = await purchaseRepo.GetTotalReturnedQuantity(itemDto.OriginalPurchaseItemId);
-                    if (itemDto.ReturnedQuantity + totalPreviouslyReturnedQty > originalItem.Quantity)
+                    if (itemDto.ReturnedQuantity + totalPreviouslyReturnedQty > originalItem.Quantity) {
+                        return new Responses<object>
+                        {
+                            StatusCode = 400,
+                            Message = $"Return quantity ({itemDto.ReturnedQuantity}) exceeds original quantity ({originalItem.Quantity}) for product: {product.ProductName}"
+                        };
+                    }
                         if (itemDto.ReturnedQuantity > originalItem.Quantity)
                         {
 
@@ -580,20 +585,11 @@ namespace Application.Services
                         Amount = (double)returnInvoice.SubTotal + (double)returnInvoice.TaxAmount,
                         Narration = newPurchaseReturn.Voucher.TransactionsDebit[0].Narration
                     });
-                    Console.WriteLine(newPurchaseReturn.Voucher.TransactionsDebit[0].LedgerId);
-                    Console.WriteLine((double)returnInvoice.SubTotal + (double)returnInvoice.TaxAmount);
-                    Console.WriteLine(newPurchaseReturn.Voucher.TransactionsDebit[0].Narration);
+
 
 
                 }
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
 
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
                 var trCredit = JsonSerializer.Serialize(voucher.TransactionsDebit);
                 Console.WriteLine(trCredit);
  
@@ -614,14 +610,7 @@ namespace Application.Services
                         Narration = newPurchaseReturn.Voucher.TransactionsCredit[1].Narration
                     });
                 }
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
 
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
-                Console.WriteLine("\n");
                 var trDebit = JsonSerializer.Serialize(voucher.TransactionsCredit);
                 Console.WriteLine(trCredit);
 
@@ -631,8 +620,11 @@ namespace Application.Services
                 {
                     foreach (var item in purchaseReturn.Items)
                     {
-                        await purchaseRepo.UpdateProductStock(item);
+                        var originalItem = await purchaseRepo.GetPurchaseItemById(item.OriginalPurchaseItemId);
 
+                        await purchaseRepo.UpdateProductStock(item);
+                        originalItem.ReturnedQuantity += item.ReturnedQuantity;
+                        await purchaseRepo.UpdatePurchaseItem(originalItem);
                     }
 
                     await purchaseRepo.CreatePurchaseReturnInvoice(returnInvoice);

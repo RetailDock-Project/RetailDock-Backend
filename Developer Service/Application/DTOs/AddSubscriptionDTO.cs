@@ -35,4 +35,35 @@ namespace Application.DTOs
        
 
     }
+
+
+    public class OrganizationResponseDTO
+    {
+        public Guid OrganizationId { get; set; }
+        public string OrganizationName { get; set; }
+        public Guid UserId { get; set; }
+        public string Address { get; set; }
+        public string LicenceNumber { get; set; }
+        public string GstNumber { get; set; }
+        public string PanNumber { get; set; }
+        public string FinancialYearStart { get; set; }
+        public string FinancialYearEnd { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+
+        public SubscriptionDto Subscriptions { get; set; }
+    }
+
+    public class SubscriptionDto
+    {
+        public Guid SubscriptionId { get; set; }
+        public string SubscriptionName { get; set; }
+        public string TransactionId { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime ExpiryDate { get; set; }
+    }
+
 }

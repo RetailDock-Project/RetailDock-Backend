@@ -76,14 +76,14 @@ namespace Application.Services
                         StatusCode = 409 
                     };
                 }
-                else if (productDto.CostPrice >= productDto.SellingPrice)
-                {
-                    return new Responses<string>
-                    {
-                        Message = "Cost Price must be less than Selling Price.",
-                        StatusCode = 400
-                    };
-                }
+                //else if (productDto.CostPrice >= productDto.SellingPrice)
+                //{
+                //    return new Responses<string>
+                //    {
+                //        Message = "Cost Price must be less than Selling Price.",
+                //        StatusCode = 400
+                //    };
+                //}
 
                 else if (productDto.SellingPrice >= productDto.MRP)
                 {
@@ -94,14 +94,14 @@ namespace Application.Services
                     };
                 }
 
-                else if (productDto.CostPrice >= productDto.MRP)
-                {
-                    return new Responses<string>
-                    {
-                        Message = "Cost Price must be less than MRP.",
-                        StatusCode = 400
-                    };
-                }
+                //else if (productDto.CostPrice >= productDto.MRP)
+                //{
+                //    return new Responses<string>
+                //    {
+                //        Message = "Cost Price must be less than MRP.",
+                //        StatusCode = 400
+                //    };
+                //}
 
                 var product = _mapper.Map<Product>(productDto);
                 product.Id=Guid.NewGuid();
@@ -147,14 +147,14 @@ namespace Application.Services
                 }
 
                 // Validations
-                if (productdto.CostPrice >= productdto.SellingPrice)
-                {
-                    return new Responses<string>
-                    {
-                        Message = "Cost Price must be less than Selling Price.",
-                        StatusCode = 400
-                    };
-                }
+                //if (productdto.CostPrice >= productdto.SellingPrice)
+                //{
+                //    return new Responses<string>
+                //    {
+                //        Message = "Cost Price must be less than Selling Price.",
+                //        StatusCode = 400
+                //    };
+                //}
 
                 if (productdto.SellingPrice >= productdto.MRP)
                 {
@@ -165,14 +165,14 @@ namespace Application.Services
                     };
                 }
 
-                if (productdto.CostPrice >= productdto.MRP)
-                {
-                    return new Responses<string>
-                    {
-                        Message = "Cost Price must be less than MRP.",
-                        StatusCode = 400
-                    };
-                }
+                //if (productdto.CostPrice >= productdto.MRP)
+                //{
+                //    return new Responses<string>
+                //    {
+                //        Message = "Cost Price must be less than MRP.",
+                //        StatusCode = 400
+                //    };
+                //}
 
                 // Map updated properties (excluding images)
                 var product = _mapper.Map(productdto, prdct);
